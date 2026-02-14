@@ -1,0 +1,253 @@
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; background-color: #fcfcfc; }
+
+/* Header & Nav */
+header {
+    background: #fff; display: flex; justify-content: space-between;
+    align-items: center; padding: 15px 10%; position: sticky; top: 0;
+    z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: #333;
+    
+    /* Thêm các dòng dưới đây để đưa logo ra cạnh chữ */
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+/* Định dạng kích thước ảnh logo */
+.logo-img {
+    height: 40px; 
+    width: auto;  
+    object-fit: contain;
+}
+.logo span { 
+    color: #D4AF37; 
+}
+nav ul { 
+    display: flex; 
+    list-style: none; 
+    margin-bottom: 0; 
+}
+nav ul li { 
+    margin-left: 30px; 
+}
+nav ul li a { 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    transition: 0.3s; 
+}
+nav ul li a:hover, nav ul li a.active { 
+    color: #D4AF37; 
+}
+
+/* Hero Section */
+.hero {
+    height: 60vh; 
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/ItemTrangChu(1)/odRS0bRA.jpeg') center/cover no-repeat; 
+    
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    color: #fff;
+    padding: 0 15%;
+}
+.hero-content {
+    animation: fadeInUp 1s ease;
+}
+.hero h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 3rem; 
+    margin-bottom: 20px; 
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Product/Task Card (Dùng cho bảng hoặc lưới) */
+.container-custom { 
+    padding: 40px 10%; 
+}
+.section-title { 
+    text-align: center; 
+    font-family: 'Playfair Display', serif; 
+    margin-bottom: 40px; 
+    font-size: 2.5rem; 
+}
+
+/* Style bổ sung cho CRUD */
+.task-card {
+    background: #fff; border: 1px solid #eee; padding: 20px;
+    margin-bottom: 15px; transition: 0.4s; border-radius: 4px;
+}
+.task-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.status-done { opacity: 0.6; background-color: #f8f9fa; }
+.status-done h3 { text-decoration: line-through; }
+
+/* Priority Colors */
+.priority-High { border-left: 5px solid #dc3545; }
+.priority-Medium { border-left: 5px solid #ffc107; }
+.priority-Low { border-left: 5px solid #0dcaf0; }
+
+/* Buttons của bạn */
+.btn-custom {
+    display: inline-block; padding: 10px 25px; text-decoration: none;
+    text-transform: uppercase; font-size: 0.8rem; font-weight: bold;
+    transition: 0.3s; border: none; cursor: pointer;
+}
+.btn-gold { 
+    background: #D4AF37; 
+    color: #fff; 
+}
+.btn-gold:hover { 
+    background: #b8952d; 
+}
+.btn-dark { 
+    background: #333; 
+    color: #fff; 
+}
+.btn-dark:hover { 
+    background: #000; 
+}
+
+footer { 
+    background: #222; 
+    color: #fff; 
+    text-align: center; 
+    padding: 30px 0; 
+    margin-top: 50px; }
+/* Container chính để chia cột */
+.product-grid {
+    display: grid !important; /* Quan trọng: Kích hoạt Grid Layout */
+    grid-template-columns: repeat(3, 1fr); /* Chia đều làm 3 cột */
+    gap: 30px; /* Khoảng cách giữa các card */
+    padding: 40px 0;
+}
+
+/* Định dạng Card sản phẩm */
+.product-card {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.4s ease; /* Tạo độ mượt khi nổi lên */
+    cursor: pointer;
+}
+
+/* Hiệu ứng nổi lên khi di chuột (Hover) */
+.product-card:hover {
+    transform: translateY(-10px); /* Nổi lên 10px */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Đổ bóng rộng ra */
+    border-color: #D4AF37; /* Đổi viền sang màu vàng gold */
+}
+
+.btn-detail {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #333;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-detail:hover {
+    background: #333;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Responsive: Khi màn hình nhỏ (Mobile) thì tự xuống hàng */
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+/* Container chứa 5 ô danh mục */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Chia đều 5 cột */
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+/* Định dạng từng ô danh mục */
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9; /* Nền xám nhạt */
+    padding: 25px 15px;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #eee;
+}
+
+/* Hiệu ứng nổi lên nhẹ như bạn muốn */
+.category-item:hover {
+    background: #fff;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border-color: #D4AF37;
+}
+
+.icon-box {
+    width: 70px;
+    height: 120px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-box img {
+    max-width: 150%;
+    max-height: 130%;
+    transition: transform 0.3s ease;
+}
+
+.category-item:hover .icon-box img {
+    transform: scale(1.1); /* Phóng to icon nhẹ khi hover */
+}
+
+.category-item span {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.category-item:hover span {
+    color: #D4AF37; /* Đổi màu chữ sang vàng khi hover */
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 992px) {
+    .category-grid { grid-template-columns: repeat(3, 1fr); } /* 3 ô/hàng */
+}
+@media (max-width: 576px) {
+    .category-grid { grid-template-columns: repeat(2, 1fr); } /* 2 ô/hàng */
+}
