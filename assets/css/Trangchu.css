@@ -696,38 +696,7 @@ nav-link.dropdown-toggle {
     transform: scale(1.05);
 }
 
-/* Thao tác nhanh trên ảnh */
-.product-actions {
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px;
-    background: rgba(255,255,255,0.8);
-    transition: 0.3s;
-}
 
-.product-card-v2:hover .product-actions {
-    bottom: 0;
-}
-
-.action-btn {
-    background: #fff;
-    border: 1px solid #001f3f;
-    color: #001f3f;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.action-btn:hover {
-    background: #001f3f;
-    color: #fff;
-}
 
 .product-info {
     display: flex;
@@ -1049,6 +1018,51 @@ nav-link.dropdown-toggle {
     .news-big-card-pure { max-width: 100%; }
 }
 
+/* Tùy chỉnh Side Cart */
+.offcanvas {
+    width: 380px !important;
+}
+
+.offcanvas-header {
+    background-color: #f8f9fa;
+}
+
+.cart-item h6 {
+    color: #001f3f;
+    font-size: 0.8rem;
+}
+
+.btn-add-cart {
+    background: transparent;
+    border: 1px solid #001f3f;
+    color: #001f3f;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 10px;
+    transition: 0.3s;
+    width: 100%; 
+    display: block;
+    text-align: center;
+}
+.btn-add-cart:hover {
+    background: #001f3f;
+    color: #fff;
+}
+.btn-add-cart:active {
+    transform: scale(0.95);
+}
+#cart-count {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Offcanvas Footer Styling */
+.offcanvas-footer {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 /* footer */
 html, body {
@@ -1131,7 +1145,6 @@ html, body {
     padding-left: 5px;
 }
 
-/* Cột Logo trong Footer */
 
 .footer-logo span { 
     color: #D4AF37; 
