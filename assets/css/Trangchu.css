@@ -64,15 +64,17 @@ html {
 .icon-link:hover {
     color: #D4AF37;
 }
-.nav-link.dropdown-toggle {
+nav-link.dropdown-toggle {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 8px; 
+    gap: 8px;
+    padding-bottom: 15px !important; 
+    margin-bottom: -15px !important;
 }
 
 .nav-link.dropdown-toggle::after {
     display: inline-block !important;
-    margin-top: 0 !important;      
+    margin-top: 0 !important;
     vertical-align: middle !important;
 }
 /* selection role(icon user) */
@@ -183,22 +185,32 @@ html {
 
 /* megamenu cho sanpham */
 @media all and (min-width: 992px) {
-    .navbar .has-megamenu { position: static; }
+    .navbar .has-megamenu { 
+        position: static; 
+    }
+    
     .navbar .megamenu {
         left: 0;
         right: 0;
         width: 100%;
-        margin-top: 0;
+        margin-top: 0 !important; 
         border: none;
         border-radius: 0 0 10px 10px;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         padding: 30px 10%; 
         background-color: #ffffff;
-        display: none; 
+   
+        visibility: hidden;
+        opacity: 0;
+        display: block !important; 
+        transition: all 0.3s ease;
+        pointer-events: none; 
     }
-    .navbar .nav-item:hover .megamenu {
-        display: block;
-        animation: slideDown 0.3s ease-out;
+    .nav-item.dropdown:hover .megamenu {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
     }
 }
 
@@ -1159,5 +1171,55 @@ html, body {
 @media (max-width: 576px) {
     .footer-container {
         grid-template-columns: 1fr; /* Hiện 1 cột trên mobile */
+    }
+}
+/* Nhờ tư vấn */
+/* Container cho nút liên lạc */
+.contact-messenger-wrapper {
+    position: fixed;
+    bottom: 30px; 
+    right: 30px;  
+    z-index: 9999; 
+    text-decoration: none;
+}
+
+/* Style cho nút bấm */
+.messenger-btn {
+    width: 60px;
+    height: 60px;
+    background-color: #0084FF; 
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulse-blue 2s infinite; 
+}
+
+.messenger-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    background-color: #0073e6;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Hiệu ứng */
+@keyframes pulse-blue {
+    0% { box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(0, 132, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 132, 255, 0); }
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .contact-messenger-wrapper {
+        bottom: 20px;
+        right: 20px;
+    }
+    .messenger-btn {
+        width: 50px;
+        height: 50px;
     }
 }
