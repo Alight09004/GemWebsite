@@ -29,7 +29,7 @@
                         <a class="nav-link active" href="index.html">Trang chủ</a>
                     </li>
                     <li class="nav-item dropdown has-megamenu">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" data-bs-toggle="dropdown">Sản phẩm</a>
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="TrungBaySP.html" data-bs-toggle="dropdown">Sản phẩm</a>
                         <div class="dropdown-menu megamenu" role="menu">
                              <div class="container-fluid">
                                 <div class="row g-3">
@@ -129,10 +129,10 @@
                         </ul>
                     </div>
                 </a>
-                <a href="#" class="icon-link position-relative ms-4">
+                <button class="icon-link position-relative ms-4" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" style="background: none; border: none; color: inherit; cursor: pointer;">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="badge-cart">0</span>
-                </a>
+                    <span class="badge-cart" id="cart-count">0</span>
+                </button>
             </div>
         </div>
     </div>
@@ -264,7 +264,7 @@ window.addEventListener('load', () => {
                 <h3 class="p-name">Dây chuyền bạc nữ đính đá CZ cá tiên</h3>
                 <p class="p-price">1.824.000đ</p>
                 <div class="p-buttons">
-                    <a href="#" class="btn-add-cart">THÊM GIỎ HÀNG</a>
+                    <button class="btn-add-cart" onclick="addToCart('Dây chuyền bạc nữ đính đá CZ cá tiên', 1824000, './assets/img/ItemTrangChu(1)/spnb1.jpg')">THÊM GIỎ HÀNG</button>
                     <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
                 </div>
             </div>
@@ -283,7 +283,7 @@ window.addEventListener('load', () => {
                 <h3 class="p-name">Nhẫn bạc nữ đính kim cương Moissanite Aidan</h3>
                 <p class="p-price">2.181.000đ</p>
                 <div class="p-buttons">
-                    <a href="#" class="btn-add-cart">THÊM GIỎ HÀNG</a>
+                    <button class="btn-add-cart" onclick="addToCart('Nhẫn bạc nữ đính kim cương Moissanite Aidan', 2181000, './assets/img/ItemTrangChu(1)/spnb2.jpg')">THÊM GIỎ HÀNG</button>
                     <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
                 </div>
             </div>
@@ -302,7 +302,7 @@ window.addEventListener('load', () => {
                 <h3 class="p-name">Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá</h3>
                 <p class="p-price">7.615.000đ</p>
                 <div class="p-buttons">
-                    <a href="#" class="btn-add-cart">THÊM GIỎ HÀNG</a>
+                    <button class="btn-add-cart" onclick="addToCart('Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá', 7615000, './assets/img/ItemTrangChu(1)/spnb3.jpg')">THÊM GIỎ HÀNG</button>
                     <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
                 </div>
             </div>
@@ -321,7 +321,7 @@ window.addEventListener('load', () => {
                 <h3 class="p-name">Bông tai bạc Ý S925 nữ mạ bạch kim đính đá CZ hình trái tim</h3>
                 <p class="p-price">1.619.000đ</p>
                 <div class="p-buttons">
-                    <a href="#" class="btn-add-cart">THÊM GIỎ HÀNG</a>
+                    <button class="btn-add-cart" onclick="addToCart('Bông tai bạc Ý S925 nữ mạ bạch kim đính đá CZ hình trái tim', 1619000, './assets/img/ItemTrangChu(1)/spnb4.jpeg')">THÊM GIỎ HÀNG</button>
                     <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
                 </div>
             </div>
@@ -340,7 +340,7 @@ window.addEventListener('load', () => {
                 <h3 class="p-name">Lắc tay bạc nữ đính pha lê Swarovski trái tim của biển</h3>
                 <p class="p-price">1.967.000đ</p>
                 <div class="p-buttons">
-                    <a href="#" class="btn-add-cart">THÊM GIỎ HÀNG</a>
+                    <button class="btn-add-cart" onclick="addToCart('Lắc tay bạc nữ đính pha lê Swarovski trái tim của biển', 1967000, './assets/img/ItemTrangChu(1)/spnb5.jpg')">THÊM GIỎ HÀNG</button>
                     <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
                 </div>
             </div>
@@ -359,7 +359,7 @@ window.addEventListener('load', () => {
                 <h3 class="p-name">Nhẫn nam Vàng trắng 41,6% (10K) đính đá ECZ MANCODE by PNJ </h3>
                 <p class="p-price">20.754.000đ</p>
                 <div class="p-buttons">
-                    <a href="#" class="btn-add-cart">THÊM GIỎ HÀNG</a>
+                    <button class="btn-add-cart" onclick="addToCart('Nhẫn nam Vàng trắng 41,6% (10K) đính đá ECZ MANCODE by PNJ ', 20754000, './assets/img/ItemTrangChu(1)/spnb6.png')">THÊM GIỎ HÀNG</button>
                     <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
                 </div>
             </div>
@@ -378,7 +378,7 @@ window.addEventListener('load', () => {
                 <h3 class="p-name">Nhẫn Vàng 75% (18K) PNJ</h3>
                 <p class="p-price">4.656.000đ</p>
                 <div class="p-buttons">
-                    <a href="#" class="btn-add-cart">THÊM GIỎ HÀNG</a>
+                    <button class="btn-add-cart" onclick="addToCart('Nhẫn Vàng 75% (18K) PNJ', 4656000, './assets/img/ItemTrangChu(1)/spnb7.png')">THÊM GIỎ HÀNG</button>
                     <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
                 </div>
             </div>
@@ -397,7 +397,7 @@ window.addEventListener('load', () => {
                 <h3 class="p-name">Lắc tay Bạc PNJSilver</h3>
                 <p class="p-price">1.255.000đ</p>
                 <div class="p-buttons">
-                    <a href="#" class="btn-add-cart">THÊM GIỎ HÀNG</a>
+                    <button class="btn-add-cart" onclick="addToCart('Lắc tay Bạc PNJSilver', 1255000, './assets/img/ItemTrangChu(1)/spnb8.png')">THÊM GIỎ HÀNG</button>
                     <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
                 </div>
             </div>
@@ -611,6 +611,26 @@ window.addEventListener('load', () => {
     </div>
 </footer>
 
+<!-- Giỏ hàng Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+        <h5 id="cartOffcanvasLabel" class="fw-bold"><i class="fas fa-shopping-bag me-2"></i>GIỎ HÀNG</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="cart-items-container">
+            <p class="text-center text-muted py-5">Giỏ hàng đang trống</p>
+        </div>
+    </div>
+    <div class="offcanvas-footer p-3 border-top">
+        <div class="d-flex justify-content-between mb-3">
+            <span class="fw-bold">TỔNG CỘNG:</span>
+            <span id="cart-total-price" class="fw-bold text-danger">0đ</span>
+        </div>
+        <button class="btn btn-dark w-100 py-2 fw-bold">THANH TOÁN NGAY</button>
+    </div>
+</div>
+
 <a href="https://m.me/yourprofile" target="_blank" class="contact-messenger-wrapper" aria-label="Chat with us">
     <button class="messenger-btn">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
@@ -618,5 +638,6 @@ window.addEventListener('load', () => {
         </svg>
     </button>
 </a>
+<script src="./assets/js/cart.js"></script>
 </body>
 </html>
