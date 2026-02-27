@@ -1,607 +1,961 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>JADE CHAMBER | Quản Lý Hệ Thống</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="./assets/css/Trangchu.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-</head>
-<body>
-   <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top custom-nav">
-    <div class="container-fluid px-lg-5">
+    <link rel="stylesheet" href="./assets/css/Trangchu.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="/GemWebsite/assets/img/ItemAboutUs/JadeChamber.ico"
+      type="image/png"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top custom-nav"
+    >
+      <div class="container-fluid px-lg-5">
         <a class="navbar-brand logo" href="#">
-            <img src="/assets/img/ItemTrangChu(1)/DreamCloud (7).png" alt="Logo" class="logo-img">
-            JADE<span> CHAMBER</span>
+          <img
+            src="/GemWebsite/assets/img/ItemAboutUs/JadeChamber.png"
+            alt="Logo"
+            class="logo-img"
+          />
+          JADE<span> CHAMBER</span>
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="mx-auto d-lg-flex align-items-center">
-                <ul class="navbar-nav nav-links">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Trang chủ</a>
-                    </li>
-                    <li class="nav-item dropdown has-megamenu">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="TrungBaySP.html" data-bs-toggle="dropdown">Sản phẩm</a>
-                        <div class="dropdown-menu megamenu" role="menu">
-                             <div class="container-fluid">
-                                <div class="row g-3">
-                                    <div class="col-megamenu col-md-2">
-                                        <h6 class="title"><i class="fas fa-gem me-2"></i>ĐÁ QUÝ</h6>
-                                        <ul class="list-unstyled">
-                                            <li><a href="#">Kim cương</a></li>
-                                            <li><a href="#">Sapphire</a></li>
-                                            <li><a href="#">Ruby</a></li>
-                                            <li><a href="#">Emerald</a></li>
-                                            <li><a href="#">Topaz</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-megamenu col-md-2">
-                                        <h6 class="title"><i class="fas fa-coins me-2"></i>VÀNG BẠC</h6>
-                                        <ul class="list-unstyled">
-                                            <li><a href="#">Vàng 24K</a></li>
-                                            <li><a href="#">Vàng Ý 18K</a></li>
-                                            <li><a href="#">Bạc S925</a></li>
-                                            <li><a href="#">Vàng trắng</a></li>
-                                            <li><a href="#">Vàng hồng</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-megamenu col-md-2">
-                                        <h6 class="title"><i class="fas fa-ring me-2"></i>TRANG SỨC</h6>
-                                        <ul class="list-unstyled">
-                                            <li><a href="#">Nhẫn đơn</a></li>
-                                            <li><a href="#">Dây chuyền</a></li>
-                                            <li><a href="#">Bông tai</a></li>
-                                            <li><a href="#">Lắc tay</a></li>
-                                            <li><a href="#">Nhẫn cưới</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-megamenu col-md-2">
-                                        <h6 class="title"><i class="fas fa-yin-yang me-2"></i>PHONG THỦY</h6>
-                                        <ul class="list-unstyled">
-                                            <li><a href="#">Vòng tay tỳ hưu</a></li>
-                                            <li><a href="#">Mặt dây Phật</a></li>
-                                            <li><a href="#">Đá theo mệnh</a></li>
-                                            <li><a href="#">Charm vàng</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-megamenu col-md-2">
-                                        <h6 class="title"><i class="fas fa-magic me-2"></i>PHỤ KIỆN</h6>
-                                        <ul class="list-unstyled">
-                                            <li><a href="#">Hộp trang sức</a></li>
-                                            <li><a href="#">Dụng cụ làm sạch</a></li>
-                                            <li><a href="#">Khăn lau bạc</a></li>
-                                            <li><a href="#">Dây đeo thay thế</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-megamenu col-md-2 d-none d-md-block news-promo">
-                                        <div class="promo-box">
-                                            <img src="/assets/img/ItemTrangChu(1)/spnb2.jpg" alt="Promo" class="img-fluid rounded">
-                                            <p class="mt-2 small text-muted italic">BST Aidan - Biểu tượng của sự tinh khiết</p>
-                                            <a href="#" class="btn-promo">Khám phá ngay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item me-lg-3">
-                        <a class="nav-link" href="about.html">About Us</a>
-                    </li>
-                </ul>
-
-                <form class="d-flex search-box-nav" role="search">
-                    <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search">
-                    <button class="btn btn-search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-
-            <div class="nav-icons d-flex align-items-center">
-                <a href="#" class="icon-link">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="icon-link dropdown-toggle no-arrow" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
-                            <li>
-                                <a class="dropdown-item py-2" href="index.html">
-                                    <i class="fas fa-user-circle me-2"></i> Khách hàng
-                                </a>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <a class="dropdown-item py-2" href="index_admin.html">
-                                    <i class="fas fa-user-shield me-2"></i> Admin
-                                </a>
-                            </li>
+          <div class="mx-auto d-lg-flex align-items-center">
+            <ul class="navbar-nav nav-links">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Trang chủ</a>
+              </li>
+              <li class="nav-item dropdown has-megamenu">
+                <a
+                  class="nav-link dropdown-toggle d-flex align-items-center"
+                  href="TrungBaySP.html"
+                  data-bs-toggle="dropdown"
+                  >Sản phẩm</a
+                >
+                <div class="dropdown-menu megamenu" role="menu">
+                  <div class="container-fluid">
+                    <div class="row g-3">
+                      <div class="col-megamenu col-md-2">
+                        <h6 class="title">
+                          <i class="fas fa-gem me-2"></i>ĐÁ QUÝ
+                        </h6>
+                        <ul class="list-unstyled">
+                          <li><a href="#">Kim cương</a></li>
+                          <li><a href="#">Sapphire</a></li>
+                          <li><a href="#">Ruby</a></li>
+                          <li><a href="#">Emerald</a></li>
+                          <li><a href="#">Topaz</a></li>
                         </ul>
+                      </div>
+                      <div class="col-megamenu col-md-2">
+                        <h6 class="title">
+                          <i class="fas fa-coins me-2"></i>VÀNG BẠC
+                        </h6>
+                        <ul class="list-unstyled">
+                          <li><a href="#">Vàng 24K</a></li>
+                          <li><a href="#">Vàng Ý 18K</a></li>
+                          <li><a href="#">Bạc S925</a></li>
+                          <li><a href="#">Vàng trắng</a></li>
+                          <li><a href="#">Vàng hồng</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-megamenu col-md-2">
+                        <h6 class="title">
+                          <i class="fas fa-ring me-2"></i>TRANG SỨC
+                        </h6>
+                        <ul class="list-unstyled">
+                          <li><a href="#">Nhẫn đơn</a></li>
+                          <li><a href="#">Dây chuyền</a></li>
+                          <li><a href="#">Bông tai</a></li>
+                          <li><a href="#">Lắc tay</a></li>
+                          <li><a href="#">Nhẫn cưới</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-megamenu col-md-2">
+                        <h6 class="title">
+                          <i class="fas fa-yin-yang me-2"></i>PHONG THỦY
+                        </h6>
+                        <ul class="list-unstyled">
+                          <li><a href="#">Vòng tay tỳ hưu</a></li>
+                          <li><a href="#">Mặt dây Phật</a></li>
+                          <li><a href="#">Đá theo mệnh</a></li>
+                          <li><a href="#">Charm vàng</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-megamenu col-md-2">
+                        <h6 class="title">
+                          <i class="fas fa-magic me-2"></i>PHỤ KIỆN
+                        </h6>
+                        <ul class="list-unstyled">
+                          <li><a href="#">Hộp trang sức</a></li>
+                          <li><a href="#">Dụng cụ làm sạch</a></li>
+                          <li><a href="#">Khăn lau bạc</a></li>
+                          <li><a href="#">Dây đeo thay thế</a></li>
+                        </ul>
+                      </div>
+                      <div
+                        class="col-megamenu col-md-2 d-none d-md-block news-promo"
+                      >
+                        <div class="promo-box">
+                          <img
+                            src="/assets/img/ItemTrangChu(1)/spnb2.jpg"
+                            alt="Promo"
+                            class="img-fluid rounded"
+                          />
+                          <p class="mt-2 small text-muted italic">
+                            BST Aidan - Biểu tượng của sự tinh khiết
+                          </p>
+                          <a href="#" class="btn-promo">Khám phá ngay</a>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item me-lg-3">
+                <a class="nav-link" href="about.html">About Us</a>
+              </li>
+            </ul>
+
+            <form class="d-flex search-box-nav" role="search">
+              <input
+                class="form-control search-input"
+                type="search"
+                placeholder="Tìm sản phẩm..."
+                aria-label="Search"
+              />
+              <button class="btn btn-search" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="nav-icons d-flex align-items-center">
+            <a href="#" class="icon-link">
+              <div class="nav-item dropdown">
+                <a
+                  href="#"
+                  class="icon-link dropdown-toggle no-arrow"
+                  id="userDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-user"></i>
                 </a>
-                <button class="icon-link position-relative ms-4" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" style="background: none; border: none; color: inherit; cursor: pointer;">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="badge-cart" id="cart-count">0</span>
-                </button>
-            </div>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="userDropdown"
+                >
+                  <li>
+                    <a class="dropdown-item py-2" href="index.html">
+                      <i class="fas fa-user-circle me-2"></i> Khách hàng
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item py-2" href="index_admin.html">
+                      <i class="fas fa-user-shield me-2"></i> Admin
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </a>
+            <button
+              class="icon-link position-relative ms-4"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#cartOffcanvas"
+              style="
+                background: none;
+                border: none;
+                color: inherit;
+                cursor: pointer;
+              "
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge-cart" id="cart-count">0</span>
+            </button>
+          </div>
         </div>
-    </div>
-</nav>
-<script>
-window.addEventListener('scroll', () => {
-    localStorage.setItem('jade-chamber-scroll', window.scrollY);
-});
+      </div>
+    </nav>
+    <script>
+      window.addEventListener("scroll", () => {
+        localStorage.setItem("jade-chamber-scroll", window.scrollY);
+      });
 
-function saveSliderState() {
-    localStorage.setItem('jade-chamber-slider-index', currentIndex);
-}
+      function saveSliderState() {
+        localStorage.setItem("jade-chamber-slider-index", currentIndex);
+      }
 
-const originalMoveSlide = moveSlide;
-moveSlide = function(direction) {
-    originalMoveSlide(direction);
-    saveSliderState();
-};
+      const originalMoveSlide = moveSlide;
+      moveSlide = function (direction) {
+        originalMoveSlide(direction);
+        saveSliderState();
+      };
 
-window.addEventListener('load', () => {
-    const savedScroll = localStorage.getItem('jade-chamber-scroll');
-    if (savedScroll) {
-        window.scrollTo({
+      window.addEventListener("load", () => {
+        const savedScroll = localStorage.getItem("jade-chamber-scroll");
+        if (savedScroll) {
+          window.scrollTo({
             top: parseInt(savedScroll),
-            behavior: 'auto' 
-        });
-    }
+            behavior: "auto",
+          });
+        }
 
-   
-    const savedSliderIndex = localStorage.getItem('jade-chamber-slider-index');
-    if (savedSliderIndex) {
-        currentIndex = parseInt(savedSliderIndex);
-        track.style.transition = "none"; 
-        track.style.transform = `translateX(-${currentIndex * 20.62}%)`;
-        updateActiveCard();
-    }
-});
-</script>
-<section class="hero">
-    <div class="hero-content">
+        const savedSliderIndex = localStorage.getItem(
+          "jade-chamber-slider-index",
+        );
+        if (savedSliderIndex) {
+          currentIndex = parseInt(savedSliderIndex);
+          track.style.transition = "none";
+          track.style.transform = `translateX(-${currentIndex * 20.62}%)`;
+          updateActiveCard();
+        }
+      });
+    </script>
+    <section class="hero">
+      <div class="hero-content">
         <h1>SỰ SANG TRỌNG TRONG TỪNG CHI TIẾT</h1>
-        <p>Khám phá bộ sưu tập trang sức đá quý cao cấp với vẻ đẹp tinh xảo vượt thời gian.</p>
-        <a href="#danh-muc" class="btn-detail" style="background:#D4AF37; color:white; border:none;">XEM CHI TIẾT</a>
-    </div>
-</section>
+        <p>
+          Khám phá bộ sưu tập trang sức đá quý cao cấp với vẻ đẹp tinh xảo vượt
+          thời gian.
+        </p>
+        <a
+          href="#danh-muc"
+          class="btn-detail"
+          style="background: #d4af37; color: white; border: none"
+          >XEM CHI TIẾT</a
+        >
+      </div>
+    </section>
 
-<section class="about-section">
-    <div class="about-container"> <div class="about-wrapper">
-            <div class="about-text">
-                <h2>Đôi lời giới thiệu</h2>
+    <section class="about-section">
+      <div class="about-container">
+        <div class="about-wrapper">
+          <div class="about-text">
+            <h2>Đôi lời giới thiệu</h2>
             <p>
-    Jade Chamber là điểm đến dành cho những ai trân trọng vẻ đẹp tinh tế của đá quý, vàng bạc và trang sức cao cấp. Chúng tôi mang đến bộ sưu tập được tuyển chọn kỹ lưỡng, kết hợp giữa nghệ thuật chế tác tỉ mỉ và giá trị bền vững theo thời gian.
-    <br><br> Mỗi sản phẩm tại Jade Chamber không chỉ là một món trang sức, mà còn là biểu tượng của phong cách, đẳng cấp và dấu ấn cá nhân. Từ những thiết kế thanh lịch, tối giản đến các tuyệt tác nổi bật đầy cuốn hút, chúng tôi luôn hướng đến việc tôn vinh vẻ đẹp riêng của mỗi khách hàng.
-    <br><br>
-    Với giao diện hiện đại và trải nghiệm mua sắm trực tuyến thuận tiện, Jade Chamber giúp bạn dễ dàng khám phá, lựa chọn và sở hữu những sản phẩm phù hợp nhất. Chúng tôi cam kết mang đến chất lượng, sự tinh xảo và dịch vụ tận tâm trong từng chi tiết.</p>
+              Jade Chamber là điểm đến dành cho những ai trân trọng vẻ đẹp tinh
+              tế của đá quý, vàng bạc và trang sức cao cấp. Chúng tôi mang đến
+              bộ sưu tập được tuyển chọn kỹ lưỡng, kết hợp giữa nghệ thuật chế
+              tác tỉ mỉ và giá trị bền vững theo thời gian.
+              <br /><br />
+              Mỗi sản phẩm tại Jade Chamber không chỉ là một món trang sức, mà
+              còn là biểu tượng của phong cách, đẳng cấp và dấu ấn cá nhân. Từ
+              những thiết kế thanh lịch, tối giản đến các tuyệt tác nổi bật đầy
+              cuốn hút, chúng tôi luôn hướng đến việc tôn vinh vẻ đẹp riêng của
+              mỗi khách hàng. <br /><br />
+              Với giao diện hiện đại và trải nghiệm mua sắm trực tuyến thuận
+              tiện, Jade Chamber giúp bạn dễ dàng khám phá, lựa chọn và sở hữu
+              những sản phẩm phù hợp nhất. Chúng tôi cam kết mang đến chất
+              lượng, sự tinh xảo và dịch vụ tận tâm trong từng chi tiết.
+            </p>
+          </div>
+          <div class="about-image">
+            <img
+              src="/assets/img/ItemTrangChu(1)/AA1wqJH7.jpg"
+              alt="Cửa hàng"
+            />
+          </div>
         </div>
-            <div class="about-image">
-                <img src="/assets/img/ItemTrangChu(1)/AA1wqJH7.jpg" alt="Cửa hàng">
-            </div>
-        </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="danh-muc" class="container-custom">
-    <div class="divider-header">
+    <section id="danh-muc" class="container-custom">
+      <div class="divider-header">
         <span class="ornament-line"></span>
         <h2 class="title-main">Danh mục sản phẩm</h2>
         <span class="ornament-line"></span>
-    </div>
-    
-    <div class="category-grid-simple">
+      </div>
+
+      <div class="category-grid-simple">
         <a href="#da-quy" class="cat-card">
-            <img src="/assets/img/ItemTrangChu(1)/1.png" alt="Đá quý">
-            <span>Đá quý</span>
+          <img src="/assets/img/ItemTrangChu(1)/1.png" alt="Đá quý" />
+          <span>Đá quý</span>
         </a>
         <a href="#vang-bac" class="cat-card">
-            <img src="/assets/img/ItemTrangChu(1)/2.png" alt="Vàng bạc">
-            <span>Vàng bạc</span>
+          <img src="/assets/img/ItemTrangChu(1)/2.png" alt="Vàng bạc" />
+          <span>Vàng bạc</span>
         </a>
         <a href="#trang-suc" class="cat-card">
-            <img src="/assets/img/ItemTrangChu(1)/3.png" alt="Trang sức">
-            <span>Trang sức</span>
+          <img src="/assets/img/ItemTrangChu(1)/3.png" alt="Trang sức" />
+          <span>Trang sức</span>
         </a>
         <a href="#phong-thuy" class="cat-card">
-            <img src="/assets/img/ItemTrangChu(1)/4.png" alt="Phong thủy">
-            <span>Phong thủy</span>
+          <img src="/assets/img/ItemTrangChu(1)/4.png" alt="Phong thủy" />
+          <span>Phong thủy</span>
         </a>
         <a href="#phu-kien" class="cat-card">
-            <img src="/assets/img/ItemTrangChu(1)/5.png" alt="Phụ kiện">
-            <span>Phụ kiện</span>
+          <img src="/assets/img/ItemTrangChu(1)/5.png" alt="Phụ kiện" />
+          <span>Phụ kiện</span>
         </a>
-    </div>
+      </div>
 
-    <div class="handwriting-container">
+      <div class="handwriting-container">
         <div class="hw-left">
-            <p class="hw-text">Bạn đang tìm gì hôm nay? <i class="fas fa-gem gem-icon"></i></p>
+          <p class="hw-text">
+            Bạn đang tìm gì hôm nay? <i class="fas fa-gem gem-icon"></i>
+          </p>
         </div>
         <div class="hw-right">
-            <a href="https://m.me/yourprofile" target="_blank" class="btn-consult">Nhờ tư vấn</a>
+          <a href="https://m.me/yourprofile" target="_blank" class="btn-consult"
+            >Nhờ tư vấn</a
+          >
         </div>
-        <div class="hw-full-line"></div> 
-    </div>
-</section>```
+        <div class="hw-full-line"></div>
+      </div>
+    </section>
+    ```
 
-<section class="container-custom">
-    <div class="premium-header-box">
+    <section class="container-custom">
+      <div class="premium-header-box">
         <div class="premium-line"></div>
         <div class="premium-title-wrapper">
-            <span class="premium-icon">✦</span>
-            <h2 class="premium-title">Sản Phẩm Nổi Bật</h2>
-            <span class="premium-icon">✦</span>
+          <span class="premium-icon">✦</span>
+          <h2 class="premium-title">Sản Phẩm Nổi Bật</h2>
+          <span class="premium-icon">✦</span>
         </div>
         <div class="premium-line"></div>
-    </div>
-   <div class="product-grid-4">
-        
+      </div>
+      <div class="product-grid-4">
         <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="./assets/img/ItemTrangChu(1)/spnb1.jpg" class="img-main" >
-                <img src="./assets/img/ItemTrangChu(1)/spnb1-2.jpg.webp" class="img-hover" >
+          <div class="product-img-box">
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb1.jpg"
+              class="img-main"
+            />
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb1-2.jpg.webp"
+              class="img-hover"
+            />
+          </div>
+
+          <div class="product-info">
+            <h3 class="p-name">Dây chuyền bạc nữ đính đá CZ cá tiên</h3>
+            <p class="p-price">1.824.000đ</p>
+            <div class="p-buttons">
+              <button
+                class="btn-add-cart"
+                onclick="
+                  addToCart(
+                    'Dây chuyền bạc nữ đính đá CZ cá tiên',
+                    1824000,
+                    './assets/img/ItemTrangChu(1)/spnb1.jpg',
+                  )
+                "
+              >
+                THÊM GIỎ HÀNG
+              </button>
+              <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
             </div>
-            
-            <div class="product-info">
-                <h3 class="p-name">Dây chuyền bạc nữ đính đá CZ cá tiên</h3>
-                <p class="p-price">1.824.000đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('Dây chuyền bạc nữ đính đá CZ cá tiên', 1824000, './assets/img/ItemTrangChu(1)/spnb1.jpg')">THÊM GIỎ HÀNG</button>
-                    <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
-                </div>
-            </div>
+          </div>
         </div>
         <!-- 2 -->
         <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="./assets/img/ItemTrangChu(1)/spnb2.jpg" class="img-main">
-                <img src="./assets/img/ItemTrangChu(1)/spnb2-2.jpg.webp" class="img-hover" >
+          <div class="product-img-box">
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb2.jpg"
+              class="img-main"
+            />
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb2-2.jpg.webp"
+              class="img-hover"
+            />
+          </div>
+          <div class="product-info">
+            <h3 class="p-name">Nhẫn bạc nữ đính kim cương Moissanite Aidan</h3>
+            <p class="p-price">2.181.000đ</p>
+            <div class="p-buttons">
+              <button
+                class="btn-add-cart"
+                onclick="
+                  addToCart(
+                    'Nhẫn bạc nữ đính kim cương Moissanite Aidan',
+                    2181000,
+                    './assets/img/ItemTrangChu(1)/spnb2.jpg',
+                  )
+                "
+              >
+                THÊM GIỎ HÀNG
+              </button>
+              <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
             </div>
-            <div class="product-info">
-                <h3 class="p-name">Nhẫn bạc nữ đính kim cương Moissanite Aidan</h3>
-                <p class="p-price">2.181.000đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('Nhẫn bạc nữ đính kim cương Moissanite Aidan', 2181000, './assets/img/ItemTrangChu(1)/spnb2.jpg')">THÊM GIỎ HÀNG</button>
-                    <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
-                </div>
-            </div>
+          </div>
         </div>
-    <!-- 3 -->
+        <!-- 3 -->
         <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="./assets/img/ItemTrangChu(1)/spnb3.jpg" class="img-main" >
-                <img src="./assets/img/ItemTrangChu(1)/spnb3-2.jpg.webp" class="img-hover">
+          <div class="product-img-box">
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb3.jpg"
+              class="img-main"
+            />
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb3-2.jpg.webp"
+              class="img-hover"
+            />
+          </div>
+          <div class="product-info">
+            <h3 class="p-name">
+              Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá
+            </h3>
+            <p class="p-price">7.615.000đ</p>
+            <div class="p-buttons">
+              <button
+                class="btn-add-cart"
+                onclick="
+                  addToCart(
+                    'Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá',
+                    7615000,
+                    './assets/img/ItemTrangChu(1)/spnb3.jpg',
+                  )
+                "
+              >
+                THÊM GIỎ HÀNG
+              </button>
+              <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
             </div>
-            <div class="product-info">
-                <h3 class="p-name">Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá</h3>
-                <p class="p-price">7.615.000đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá', 7615000, './assets/img/ItemTrangChu(1)/spnb3.jpg')">THÊM GIỎ HÀNG</button>
-                    <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
-                </div>
-            </div>
+          </div>
         </div>
         <!-- 4 -->
-         <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="./assets/img/ItemTrangChu(1)/spnb4.jpeg" class="img-main">
-                <img src="./assets/img/ItemTrangChu(1)/spnb4-2.jpg.webp" class="img-hover">
+        <div class="product-card-v2">
+          <div class="product-img-box">
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb4.jpeg"
+              class="img-main"
+            />
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb4-2.jpg.webp"
+              class="img-hover"
+            />
+          </div>
+          <div class="product-info">
+            <h3 class="p-name">
+              Bông tai bạc Ý S925 nữ mạ bạch kim đính đá CZ hình trái tim
+            </h3>
+            <p class="p-price">1.619.000đ</p>
+            <div class="p-buttons">
+              <button
+                class="btn-add-cart"
+                onclick="
+                  addToCart(
+                    'Bông tai bạc Ý S925 nữ mạ bạch kim đính đá CZ hình trái tim',
+                    1619000,
+                    './assets/img/ItemTrangChu(1)/spnb4.jpeg',
+                  )
+                "
+              >
+                THÊM GIỎ HÀNG
+              </button>
+              <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
             </div>
-            <div class="product-info">
-                <h3 class="p-name">Bông tai bạc Ý S925 nữ mạ bạch kim đính đá CZ hình trái tim</h3>
-                <p class="p-price">1.619.000đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('Bông tai bạc Ý S925 nữ mạ bạch kim đính đá CZ hình trái tim', 1619000, './assets/img/ItemTrangChu(1)/spnb4.jpeg')">THÊM GIỎ HÀNG</button>
-                    <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
-                </div>
-            </div>
+          </div>
         </div>
         <!-- 5 -->
-         <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="./assets/img/ItemTrangChu(1)/spnb5.jpg" class="img-main" >
-                <img src="./assets/img/ItemTrangChu(1)/spnb5-2.jpg" class="img-hover" >
+        <div class="product-card-v2">
+          <div class="product-img-box">
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb5.jpg"
+              class="img-main"
+            />
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb5-2.jpg"
+              class="img-hover"
+            />
+          </div>
+          <div class="product-info">
+            <h3 class="p-name">
+              Lắc tay bạc nữ đính pha lê Swarovski trái tim của biển
+            </h3>
+            <p class="p-price">1.967.000đ</p>
+            <div class="p-buttons">
+              <button
+                class="btn-add-cart"
+                onclick="
+                  addToCart(
+                    'Lắc tay bạc nữ đính pha lê Swarovski trái tim của biển',
+                    1967000,
+                    './assets/img/ItemTrangChu(1)/spnb5.jpg',
+                  )
+                "
+              >
+                THÊM GIỎ HÀNG
+              </button>
+              <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
             </div>
-            <div class="product-info">
-                <h3 class="p-name">Lắc tay bạc nữ đính pha lê Swarovski trái tim của biển</h3>
-                <p class="p-price">1.967.000đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('Lắc tay bạc nữ đính pha lê Swarovski trái tim của biển', 1967000, './assets/img/ItemTrangChu(1)/spnb5.jpg')">THÊM GIỎ HÀNG</button>
-                    <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
-                </div>
-            </div>
+          </div>
         </div>
         <!-- 6 -->
-         <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="./assets/img/ItemTrangChu(1)/spnb6.png" class="img-main">
-                <img src="./assets/img/ItemTrangChu(1)/spnb6-2.jpg" class="img-hover">
+        <div class="product-card-v2">
+          <div class="product-img-box">
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb6.png"
+              class="img-main"
+            />
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb6-2.jpg"
+              class="img-hover"
+            />
+          </div>
+          <div class="product-info">
+            <h3 class="p-name">
+              Nhẫn nam Vàng trắng 41,6% (10K) đính đá ECZ MANCODE by PNJ
+            </h3>
+            <p class="p-price">20.754.000đ</p>
+            <div class="p-buttons">
+              <button
+                class="btn-add-cart"
+                onclick="
+                  addToCart(
+                    'Nhẫn nam Vàng trắng 41,6% (10K) đính đá ECZ MANCODE by PNJ ',
+                    20754000,
+                    './assets/img/ItemTrangChu(1)/spnb6.png',
+                  )
+                "
+              >
+                THÊM GIỎ HÀNG
+              </button>
+              <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
             </div>
-            <div class="product-info">
-                <h3 class="p-name">Nhẫn nam Vàng trắng 41,6% (10K) đính đá ECZ MANCODE by PNJ </h3>
-                <p class="p-price">20.754.000đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('Nhẫn nam Vàng trắng 41,6% (10K) đính đá ECZ MANCODE by PNJ ', 20754000, './assets/img/ItemTrangChu(1)/spnb6.png')">THÊM GIỎ HÀNG</button>
-                    <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
-                </div>
-            </div>
+          </div>
         </div>
         <!-- 7 -->
-         <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="./assets/img/ItemTrangChu(1)/spnb7.png" class="img-main" >
-                <img src="./assets/img/ItemTrangChu(1)/spnb7-2.jpg" class="img-hover">
+        <div class="product-card-v2">
+          <div class="product-img-box">
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb7.png"
+              class="img-main"
+            />
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb7-2.jpg"
+              class="img-hover"
+            />
+          </div>
+          <div class="product-info">
+            <h3 class="p-name">Nhẫn Vàng 75% (18K) PNJ</h3>
+            <p class="p-price">4.656.000đ</p>
+            <div class="p-buttons">
+              <button
+                class="btn-add-cart"
+                onclick="
+                  addToCart(
+                    'Nhẫn Vàng 75% (18K) PNJ',
+                    4656000,
+                    './assets/img/ItemTrangChu(1)/spnb7.png',
+                  )
+                "
+              >
+                THÊM GIỎ HÀNG
+              </button>
+              <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
             </div>
-            <div class="product-info">
-                <h3 class="p-name">Nhẫn Vàng 75% (18K) PNJ</h3>
-                <p class="p-price">4.656.000đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('Nhẫn Vàng 75% (18K) PNJ', 4656000, './assets/img/ItemTrangChu(1)/spnb7.png')">THÊM GIỎ HÀNG</button>
-                    <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
-                </div>
-            </div>
+          </div>
         </div>
         <!-- 8 -->
-         <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="./assets/img/ItemTrangChu(1)/spnb8.png" class="img-main" >
-                <img src="./assets/img/ItemTrangChu(1)/spnb8-2.jpg" class="img-hover">
+        <div class="product-card-v2">
+          <div class="product-img-box">
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb8.png"
+              class="img-main"
+            />
+            <img
+              src="./assets/img/ItemTrangChu(1)/spnb8-2.jpg"
+              class="img-hover"
+            />
+          </div>
+          <div class="product-info">
+            <h3 class="p-name">Lắc tay Bạc PNJSilver</h3>
+            <p class="p-price">1.255.000đ</p>
+            <div class="p-buttons">
+              <button
+                class="btn-add-cart"
+                onclick="
+                  addToCart(
+                    'Lắc tay Bạc PNJSilver',
+                    1255000,
+                    './assets/img/ItemTrangChu(1)/spnb8.png',
+                  )
+                "
+              >
+                THÊM GIỎ HÀNG
+              </button>
+              <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
             </div>
-            <div class="product-info">
-                <h3 class="p-name">Lắc tay Bạc PNJSilver</h3>
-                <p class="p-price">1.255.000đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('Lắc tay Bạc PNJSilver', 1255000, './assets/img/ItemTrangChu(1)/spnb8.png')">THÊM GIỎ HÀNG</button>
-                    <a href="detail.html" class="btn-buy-now">MUA NGAY</a>
-                </div>
-            </div>
+          </div>
         </div>
-    
-</div> </section> <section class="gemstone-carousel container-custom">
-    <div class="divider-header">
+      </div>
+    </section>
+    <section class="gemstone-carousel container-custom">
+      <div class="divider-header">
         <span class="ornament-line"></span>
         <h2 class="title-main">CÁC LOẠI ĐÁ QUÝ THIÊN NHIÊN GỐC</h2>
         <span class="ornament-line"></span>
-    </div>
+      </div>
 
-    <div class="carousel-wrapper">
+      <div class="carousel-wrapper">
         <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
 
         <div class="carousel-container">
-            <div class="carousel-track" id="track">
-                <div class="gem-card">
-                    <img src="./assets/img/ItemTrangChu(1)/topaz.webp" alt="Đá Topaz">
-                    <h3>Đá Topaz tên gọi khác là Hoàng Ngọc</h3>
-                    <p>Topaz là viên đá của hy vọng và thịnh vượng — ánh sáng trong veo như nắng sớm, tượng trưng cho niềm vui, may mắn và sự tự tin tỏa rạng.</p>
-                </div>
-                <div class="gem-card">
-                    <img src="./assets/img/ItemTrangChu(1)/Tourmaline.jpg" alt="Tourmaline">
-                    <h3>Tourmaline - Đá cầu vồng</h3>
-                    <p>Tourmaline là viên đá của chữa lành và cân bằng — dải màu như cầu vồng sau mưa, tượng trưng cho sự bảo hộ, bình an và nguồn năng lượng dịu dàng nuôi dưỡng tâm hồn.</p>
-                </div>
-                <div class="gem-card active">
-                    <img src="./assets/img/ItemTrangChu(1)/Sapphire.webp" alt="Sapphire">
-                    <h3>Sapphire - Viên đá của sự huyền bí</h3>
-                    <p>Sapphire là viên đá của trí tuệ và thủy chung — sắc xanh sâu thẳm như bầu trời, tượng trưng cho niềm tin, bình an và lời hứa vĩnh cửu.</p>
-                </div>
-                <div class="gem-card">
-                    <img src="./assets/img/ItemTrangChu(1)/ruby.webp" alt="Ruby">
-                    <h3>Ruby - Vua của các loại đá quý</h3>
-                    <p>Ruby là viên đá của đam mê và quyền lực — sắc đỏ rực như ngọn lửa, tượng trưng cho tình yêu mãnh liệt, dũng khí và khát vọng cháy bỏng.</p>
-                </div>
-                <div class="gem-card">
-                    <img src="./assets/img/ItemTrangChu(1)/Spinel.jpg" alt="Spinel">
-                    <h3>Spinel - “Vị vua” bị lịch sử chôn vùi</h3>
-                    <p>Spinel là viên đá của hồi sinh và cảm hứng — sắc màu rực rỡ như bình minh, tượng trưng cho sức mạnh nội tâm, hy vọng và nguồn năng lượng tươi mới.</p>
-                </div>
+          <div class="carousel-track" id="track">
+            <div class="gem-card">
+              <img
+                src="./assets/img/ItemTrangChu(1)/topaz.webp"
+                alt="Đá Topaz"
+              />
+              <h3>Đá Topaz tên gọi khác là Hoàng Ngọc</h3>
+              <p>
+                Topaz là viên đá của hy vọng và thịnh vượng — ánh sáng trong veo
+                như nắng sớm, tượng trưng cho niềm vui, may mắn và sự tự tin tỏa
+                rạng.
+              </p>
             </div>
+            <div class="gem-card">
+              <img
+                src="./assets/img/ItemTrangChu(1)/Tourmaline.jpg"
+                alt="Tourmaline"
+              />
+              <h3>Tourmaline - Đá cầu vồng</h3>
+              <p>
+                Tourmaline là viên đá của chữa lành và cân bằng — dải màu như
+                cầu vồng sau mưa, tượng trưng cho sự bảo hộ, bình an và nguồn
+                năng lượng dịu dàng nuôi dưỡng tâm hồn.
+              </p>
+            </div>
+            <div class="gem-card active">
+              <img
+                src="./assets/img/ItemTrangChu(1)/Sapphire.webp"
+                alt="Sapphire"
+              />
+              <h3>Sapphire - Viên đá của sự huyền bí</h3>
+              <p>
+                Sapphire là viên đá của trí tuệ và thủy chung — sắc xanh sâu
+                thẳm như bầu trời, tượng trưng cho niềm tin, bình an và lời hứa
+                vĩnh cửu.
+              </p>
+            </div>
+            <div class="gem-card">
+              <img src="./assets/img/ItemTrangChu(1)/ruby.webp" alt="Ruby" />
+              <h3>Ruby - Vua của các loại đá quý</h3>
+              <p>
+                Ruby là viên đá của đam mê và quyền lực — sắc đỏ rực như ngọn
+                lửa, tượng trưng cho tình yêu mãnh liệt, dũng khí và khát vọng
+                cháy bỏng.
+              </p>
+            </div>
+            <div class="gem-card">
+              <img src="./assets/img/ItemTrangChu(1)/Spinel.jpg" alt="Spinel" />
+              <h3>Spinel - “Vị vua” bị lịch sử chôn vùi</h3>
+              <p>
+                Spinel là viên đá của hồi sinh và cảm hứng — sắc màu rực rỡ như
+                bình minh, tượng trưng cho sức mạnh nội tâm, hy vọng và nguồn
+                năng lượng tươi mới.
+              </p>
+            </div>
+          </div>
         </div>
 
         <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
-    </div>
-</section>
+      </div>
+    </section>
 
-<script>
-    const track = document.getElementById('track');
-    let cards = Array.from(track.children);
-    const displayCount = 5; 
-    let currentIndex = displayCount;
+    <script>
+      const track = document.getElementById("track");
+      let cards = Array.from(track.children);
+      const displayCount = 5;
+      let currentIndex = displayCount;
 
-    const firstClones = cards.slice(0, displayCount).map(card => card.cloneNode(true));
-    const lastClones = cards.slice(-displayCount).map(card => card.cloneNode(true));
-    firstClones.forEach(clone => track.appendChild(clone));
-    lastClones.reverse().forEach(clone => track.insertBefore(clone, track.firstChild));
-    const allCards = Array.from(track.children);
+      const firstClones = cards
+        .slice(0, displayCount)
+        .map((card) => card.cloneNode(true));
+      const lastClones = cards
+        .slice(-displayCount)
+        .map((card) => card.cloneNode(true));
+      firstClones.forEach((clone) => track.appendChild(clone));
+      lastClones
+        .reverse()
+        .forEach((clone) => track.insertBefore(clone, track.firstChild));
+      const allCards = Array.from(track.children);
 
-    function moveSlide(direction) {
+      function moveSlide(direction) {
         track.style.transition = "transform 0.5s ease-in-out";
         currentIndex += direction;
-        const slideStep = 20.62; 
+        const slideStep = 20.62;
         track.style.transform = `translateX(-${currentIndex * slideStep}%)`;
 
         updateActiveCard();
 
-        track.addEventListener('transitionend', function handleTransition() {
-            if (currentIndex >= cards.length + displayCount) {
-                track.style.transition = "none";
-                currentIndex = displayCount;
-                track.style.transform = `translateX(-${currentIndex * slideStep}%)`;
-            }
-            if (currentIndex <= 0) {
-                track.style.transition = "none";
-                currentIndex = cards.length;
-                track.style.transform = `translateX(-${currentIndex * slideStep}%)`;
-            }
-            updateActiveCard();
-            track.removeEventListener('transitionend', handleTransition);
+        track.addEventListener("transitionend", function handleTransition() {
+          if (currentIndex >= cards.length + displayCount) {
+            track.style.transition = "none";
+            currentIndex = displayCount;
+            track.style.transform = `translateX(-${currentIndex * slideStep}%)`;
+          }
+          if (currentIndex <= 0) {
+            track.style.transition = "none";
+            currentIndex = cards.length;
+            track.style.transform = `translateX(-${currentIndex * slideStep}%)`;
+          }
+          updateActiveCard();
+          track.removeEventListener("transitionend", handleTransition);
         });
-    }
+      }
 
-    // 4. HÀM LÀM SÁNG ẢNH GIỮA (currentIndex + 2)
-    function updateActiveCard() {
+      // 4. HÀM LÀM SÁNG ẢNH GIỮA (currentIndex + 2)
+      function updateActiveCard() {
         const currentAllCards = Array.from(track.children);
-        currentAllCards.forEach(card => card.classList.remove('active'));
-        const centerIndex = currentIndex + 2; 
+        currentAllCards.forEach((card) => card.classList.remove("active"));
+        const centerIndex = currentIndex + 2;
         if (currentAllCards[centerIndex]) {
-            currentAllCards[centerIndex].classList.add('active');
+          currentAllCards[centerIndex].classList.add("active");
         }
-    }
+      }
 
-    // Khởi tạo vị trí đầu tiên
-    track.style.transform = `translateX(-${currentIndex * 20.62}%)`;
-    updateActiveCard();
-</script>
+      // Khởi tạo vị trí đầu tiên
+      track.style.transform = `translateX(-${currentIndex * 20.62}%)`;
+      updateActiveCard();
+    </script>
 
-<section class="news-section">
-    <div class="container-custom">
+    <section class="news-section">
+      <div class="container-custom">
         <div class="premium-header-box">
-            <div class="premium-line"></div>
-            <div class="premium-title-wrapper">
-                <span class="premium-icon">✦</span>
-                <h2 class="premium-title">Tin Tức</h2>
-                <span class="premium-icon">✦</span>
-            </div>
-            <div class="premium-line"></div>
+          <div class="premium-line"></div>
+          <div class="premium-title-wrapper">
+            <span class="premium-icon">✦</span>
+            <h2 class="premium-title">Tin Tức</h2>
+            <span class="premium-icon">✦</span>
+          </div>
+          <div class="premium-line"></div>
         </div>
-    </div>
+      </div>
 
-    <div class="news-full-width-navy">
-        <div class="container-custom"> 
-            <div class="news-container">
-                <a href="https://vnexpress.net/chu-de/gia-vang-1403" class="news-big-card-pure">
-                    <div class="news-img-pure ">
-                        <img src="./assets/img/ItemTrangChu(1)/thong-tin-gia-vang.png" alt="Tin tức lớn">
-                        <div class="news-hover-overlay">
-                            <span>XEM CHI TIẾT</span>
-                        </div>
-                    </div>
-                </a>
-
-                <div class="news-right-column">
-                    <a href="https://vnexpress.net/chu-de/gia-bac-8465" class="news-small-card">
-                        <div class="news-small-img">
-                            <img src="./assets/img/ItemTrangChu(1)/bac.webp" alt="Tin nhỏ">
-                        </div>
-                        <div class="news-small-info">
-                            <h4>GIÁ BẠC HÔM NAY</h4>
-                            <p>Cập nhật nhanh, chính xác biến động thị trường bạc mỗi ngày.</p>
-                            <span class="read-more-gold">Xem thêm <i class="fas fa-chevron-right"></i></span>
-                        </div>
-                    </a>
-
-                    <a href="https://vnexpress.net/tag/da-quy-743934" class="news-small-card">
-                        <div class="news-small-img">
-                            <img src="./assets/img/ItemTrangChu(1)/TINTUCDAQUY.webp" alt="Tin nhỏ">
-                        </div>
-                        <div class="news-small-info">
-                            <h4>TIN TỨC ĐÁ QUÝ</h4>
-                            <p>Khám phá xu hướng, kiến thức và những câu chuyện hấp dẫn về thế giới đá quý.</p>
-                            <span class="read-more-gold">Xem thêm <i class="fas fa-chevron-right"></i></span>
-                        </div>
-                    </a>
-
-                    <a href="https://vnexpress.net/tag/trang-suc-740266" class="news-small-card">
-                        <div class="news-small-img">
-                            <img src="./assets/img/ItemTrangChu(1)/TINTUCTRANGSUC.webp" alt="Tin nhỏ">
-                        </div>
-                        <div class="news-small-info">
-                            <h4>TRANG SỨC HÔM NAY</h4>
-                            <p>Những thông tin mới nhất về xu hướng, thiết kế và thị trường trang sức.</p>
-                            <span class="read-more-gold">Xem thêm <i class="fas fa-chevron-right"></i></span>
-                        </div>
-                    </a>
-
-                     <div class="news-footer-btn">
-                    <a href="https://vnexpress.net/" class="btn-view-all-white">XEM TẤT CẢ</a>
+      <div class="news-full-width-navy">
+        <div class="container-custom">
+          <div class="news-container">
+            <a
+              href="https://vnexpress.net/chu-de/gia-vang-1403"
+              class="news-big-card-pure"
+            >
+              <div class="news-img-pure">
+                <img
+                  src="./assets/img/ItemTrangChu(1)/thong-tin-gia-vang.png"
+                  alt="Tin tức lớn"
+                />
+                <div class="news-hover-overlay">
+                  <span>XEM CHI TIẾT</span>
                 </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="main-footer">
-    <div class="footer-container">
-        <div class="footer-column branding">
-            <a href="#" class="footer-logo">
-                <img src="/assets/img/ItemTrangChu(1)/DreamCloud (10).png" alt="Logo" class="footer-logo-img">
-                JADE<span>CHAMBER</span>
+              </div>
             </a>
-            <p><i class="fas fa-phone"></i> 0336.xxx.xxx (Chính)</p>
-            <p><i class="fas fa-phone"></i> 0318.xxx.xxx (Phụ)</p>
-            <p><i class="fas fa-envelope"></i> Contact@jadechamber.vn</p>
-            <p><i class="fas fa-map-marker-alt"></i> 120 Yên Lãng, Đống Đa, Hà Nội</p>
+
+            <div class="news-right-column">
+              <a
+                href="https://vnexpress.net/chu-de/gia-bac-8465"
+                class="news-small-card"
+              >
+                <div class="news-small-img">
+                  <img
+                    src="./assets/img/ItemTrangChu(1)/bac.webp"
+                    alt="Tin nhỏ"
+                  />
+                </div>
+                <div class="news-small-info">
+                  <h4>GIÁ BẠC HÔM NAY</h4>
+                  <p>
+                    Cập nhật nhanh, chính xác biến động thị trường bạc mỗi ngày.
+                  </p>
+                  <span class="read-more-gold"
+                    >Xem thêm <i class="fas fa-chevron-right"></i
+                  ></span>
+                </div>
+              </a>
+
+              <a
+                href="https://vnexpress.net/tag/da-quy-743934"
+                class="news-small-card"
+              >
+                <div class="news-small-img">
+                  <img
+                    src="./assets/img/ItemTrangChu(1)/TINTUCDAQUY.webp"
+                    alt="Tin nhỏ"
+                  />
+                </div>
+                <div class="news-small-info">
+                  <h4>TIN TỨC ĐÁ QUÝ</h4>
+                  <p>
+                    Khám phá xu hướng, kiến thức và những câu chuyện hấp dẫn về
+                    thế giới đá quý.
+                  </p>
+                  <span class="read-more-gold"
+                    >Xem thêm <i class="fas fa-chevron-right"></i
+                  ></span>
+                </div>
+              </a>
+
+              <a
+                href="https://vnexpress.net/tag/trang-suc-740266"
+                class="news-small-card"
+              >
+                <div class="news-small-img">
+                  <img
+                    src="./assets/img/ItemTrangChu(1)/TINTUCTRANGSUC.webp"
+                    alt="Tin nhỏ"
+                  />
+                </div>
+                <div class="news-small-info">
+                  <h4>TRANG SỨC HÔM NAY</h4>
+                  <p>
+                    Những thông tin mới nhất về xu hướng, thiết kế và thị trường
+                    trang sức.
+                  </p>
+                  <span class="read-more-gold"
+                    >Xem thêm <i class="fas fa-chevron-right"></i
+                  ></span>
+                </div>
+              </a>
+
+              <div class="news-footer-btn">
+                <a href="https://vnexpress.net/" class="btn-view-all-white"
+                  >XEM TẤT CẢ</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-column branding">
+          <a href="#" class="footer-logo">
+            <img
+              src="/assets/img/ItemTrangChu(1)/DreamCloud (10).png"
+              alt="Logo"
+              class="footer-logo-img"
+            />
+            JADE<span>CHAMBER</span>
+          </a>
+          <p><i class="fas fa-phone"></i> 0336.xxx.xxx (Chính)</p>
+          <p><i class="fas fa-phone"></i> 0318.xxx.xxx (Phụ)</p>
+          <p><i class="fas fa-envelope"></i> Contact@jadechamber.vn</p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 120 Yên Lãng, Đống Đa, Hà Nội
+          </p>
         </div>
 
         <div class="footer-column">
-            <h3>DỊCH VỤ KHÁCH HÀNG</h3>
-            <ul>
-                <li><a href="#">Điều khoản và điều kiện</a></li>
-                <li><a href="#">Chính sách trả hàng</a></li>
-                <li><a href="#">Chính sách giao hàng</a></li>
-                <li><a href="#">Chính sách quyền riêng tư</a></li>
-            </ul>
+          <h3>DỊCH VỤ KHÁCH HÀNG</h3>
+          <ul>
+            <li><a href="#">Điều khoản và điều kiện</a></li>
+            <li><a href="#">Chính sách trả hàng</a></li>
+            <li><a href="#">Chính sách giao hàng</a></li>
+            <li><a href="#">Chính sách quyền riêng tư</a></li>
+          </ul>
         </div>
 
         <div class="footer-column">
-            <h3>CẨM NANG SỬ DỤNG</h3>
-            <ul>
-                <li><a href="#">Tại sao nên chọn đá quý?</a></li>
-                <li><a href="#">Cách làm trắng bạc tại nhà</a></li>
-                <li><a href="#">Phân biệt các loại đá S925</a></li>
-                <li><a href="#">Bảo quản trang sức bền lâu</a></li>
-            </ul>
+          <h3>CẨM NANG SỬ DỤNG</h3>
+          <ul>
+            <li><a href="#">Tại sao nên chọn đá quý?</a></li>
+            <li><a href="#">Cách làm trắng bạc tại nhà</a></li>
+            <li><a href="#">Phân biệt các loại đá S925</a></li>
+            <li><a href="#">Bảo quản trang sức bền lâu</a></li>
+          </ul>
         </div>
 
-    <div class="footer-column feedback">
-        <h3>Ý KIẾN ĐÓNG GÓP</h3>
-        <p>Jade Chamber luôn mong nhận được ý kiến từ bạn để nâng cao dịch vụ.</p>
-        <button class="btn-feedback">GỬI Ý KIẾN</button>
+        <div class="footer-column feedback">
+          <h3>Ý KIẾN ĐÓNG GÓP</h3>
+          <p>
+            Jade Chamber luôn mong nhận được ý kiến từ bạn để nâng cao dịch vụ.
+          </p>
+          <button class="btn-feedback">GỬI Ý KIẾN</button>
         </div>
-    </div>
-        
-    <div class="footer-bottom">
-        <p>&copy; 2026 JADE CHAMBER. All rights reserved. Hệ thống quản lý nội bộ - CMC University.</p>
-    </div>
-</footer>
+      </div>
 
-<a href="https://m.me/yourprofile" target="_blank" class="contact-messenger-wrapper" aria-label="Chat with us">
-    <button class="messenger-btn">
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 JADE CHAMBER. All rights reserved. Hệ thống quản lý nội bộ
+          - CMC University.
+        </p>
+      </div>
+    </footer>
+
+    <a
+      href="https://m.me/yourprofile"
+      target="_blank"
+      class="contact-messenger-wrapper"
+      aria-label="Chat with us"
+    >
+      <button class="messenger-btn">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
-            <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.896 1.428 5.48 3.663 7.19V22l3.449-1.893c.92.256 1.895.393 2.888.393 5.523 0 10-4.145 10-9.257C22 6.145 17.523 2 12 2zm1.076 12.476l-2.614-2.79-5.101 2.79 5.614-5.952 2.676 2.79 5.039-2.79-5.614 5.952z"/>
+          <path
+            d="M12 2C6.477 2 2 6.145 2 11.243c0 2.896 1.428 5.48 3.663 7.19V22l3.449-1.893c.92.256 1.895.393 2.888.393 5.523 0 10-4.145 10-9.257C22 6.145 17.523 2 12 2zm1.076 12.476l-2.614-2.79-5.101 2.79 5.614-5.952 2.676 2.79 5.039-2.79-5.614 5.952z"
+          />
         </svg>
-    </button>
-</a>
-<!-- Giỏ hàng bên phải -->
- <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
-    <div class="offcanvas-header border-bottom">
-        <h5 id="cartOffcanvasLabel" class="fw-bold"><i class="fas fa-shopping-bag me-2"></i>GIỎ HÀNG</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
+      </button>
+    </a>
+    <!-- Giỏ hàng bên phải -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="cartOffcanvas"
+      aria-labelledby="cartOffcanvasLabel"
+    >
+      <div class="offcanvas-header border-bottom">
+        <h5 id="cartOffcanvasLabel" class="fw-bold">
+          <i class="fas fa-shopping-bag me-2"></i>GIỎ HÀNG
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
         <div id="cart-items-container">
-            <p class="text-center text-muted py-5">Giỏ hàng đang trống</p>
+          <p class="text-center text-muted py-5">Giỏ hàng đang trống</p>
         </div>
-    </div>
-    <div class="offcanvas-footer p-3 border-top">
+      </div>
+      <div class="offcanvas-footer p-3 border-top">
         <div class="d-flex justify-content-between mb-3">
-            <span class="fw-bold">TỔNG CỘNG:</span>
-            <span id="cart-total-price" class="fw-bold text-danger">0đ</span>
+          <span class="fw-bold">TỔNG CỘNG:</span>
+          <span id="cart-total-price" class="fw-bold text-danger">0đ</span>
         </div>
         <button class="btn btn-dark w-100 py-2 fw-bold">THANH TOÁN NGAY</button>
+      </div>
     </div>
-</div>
 
-<script src="./assets/js/cart.js"></script>
-</body>
+    <script src="./assets/js/cart.js"></script>
+  </body>
 </html>
