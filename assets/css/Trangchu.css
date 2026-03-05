@@ -1225,6 +1225,48 @@ html, body {
     100% { box-shadow: 0 0 0 0 rgba(0, 132, 255, 0); }
 }
 
+/* Hiệu ứng cho nút đăng nhập/đăng ký */
+#authModal .btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#authModal .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#authModal .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+#authModal .btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Hiệu ứng ripple khi click */
+#authModal .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.6s, height 0.6s;
+    transform: translate(-50%, -50%);
+}
+
+#authModal .btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
 /* Responsive cho mobile */
 @media (max-width: 768px) {
     .contact-messenger-wrapper {

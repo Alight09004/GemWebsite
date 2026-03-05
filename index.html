@@ -515,13 +515,36 @@
     <script>
       // Kiểm tra trạng thái đăng nhập khi tải trang
       document.addEventListener('DOMContentLoaded', function() {
-        checkLoginStatus();
-      });
+            console.log('=== PAGE LOADED ===');
+            console.log('registerForm:', document.getElementById('registerForm'));
+            console.log('loginForm:', document.getElementById('loginForm'));
+            console.log('registerBtn:', document.getElementById('registerBtn'));
+            console.log('loginBtn:', document.getElementById('loginBtn'));
+            
+            checkLoginStatus();
+            
+            // Attach event listeners
+            const registerForm = document.getElementById('registerForm');
+            const loginForm = document.getElementById('loginForm');
+            
+            if (registerForm) {
+               console.log('Attaching registerForm listener...');
+               registerForm.addEventListener('submit', handleRegister);
+            } else {
+               console.error('registerForm NOT FOUND!');
+            }
+            
+            if (loginForm) {
+               console.log('Attaching loginForm listener...');
+               loginForm.addEventListener('submit', handleLogin);
+            } else {
+               console.error('loginForm NOT FOUND!');
+            }
+         });
 
-      // Hàm kiểm tra trạng thái đăng nhập
-      function checkLoginStatus() {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const userIcon = document.getElementById('userIcon');
+         function checkLoginStatus() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const userIcon = document.getElementById('userIcon');
 
         if (currentUser) {
           // Nếu đã đăng nhập, thay icon bằng tên user và nút đăng xuất
@@ -538,16 +561,26 @@
         }
       }
 
-      // Hàm đăng xuất
       function logout() {
         localStorage.removeItem('currentUser');
         alert('Đã đăng xuất thành công!');
         checkLoginStatus();
       }
 
-      // Xử lý form đăng ký
-      document.getElementById('registerForm').addEventListener('submit', function(e) {
+      function handleRegister(e) {
         e.preventDefault();
+        console.log('=== REGISTER SUBMIT ===');
+        
+        const registerBtn = document.getElementById('registerBtn');
+        const spinner = registerBtn ? registerBtn.querySelector('.spinner-border') : null;
+        
+        if (!registerBtn || !spinner) {
+          alert('Lỗi: Không tìm thấy nút hoặc spinner!');
+          return;
+        }
+        
+        registerBtn.disabled = true;
+        spinner.classList.remove('d-none');
         
         const username = document.getElementById('registerUsername').value.trim();
         const password = document.getElementById('registerPassword').value;
@@ -555,67 +588,88 @@
 
         if (!username || !password || !confirmPassword) {
           alert('Vui lòng điền đầy đủ thông tin!');
+          registerBtn.disabled = false;
+          spinner.classList.add('d-none');
           return;
         }
 
         if (password !== confirmPassword) {
           alert('Mật khẩu xác nhận không khớp!');
+          registerBtn.disabled = false;
+          spinner.classList.add('d-none');
           return;
         }
 
-        // Lấy danh sách user từ LocalStorage
         let users = JSON.parse(localStorage.getItem('users')) || [];
-
-        // Kiểm tra username đã tồn tại
         const existingUser = users.find(user => user.username === username);
         if (existingUser) {
           alert('Tên đăng nhập đã tồn tại!');
+          registerBtn.disabled = false;
+          spinner.classList.add('d-none');
           return;
         }
 
-        // Thêm user mới
-        users.push({ username, password });
+        const role = username === 'admin' ? 'admin' : 'user';
+        users.push({ username, password, role });
         localStorage.setItem('users', JSON.stringify(users));
+        console.log('User registered:', { username, role });
 
-        alert('Đăng ký thành công! Vui lòng đăng nhập.');
+        registerBtn.disabled = false;
+        spinner.classList.add('d-none');
         
-        // Chuyển sang tab đăng nhập
+        alert('Đăng ký thành công! Vui lòng đăng nhập.');
         const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
         loginTab.show();
-      });
+      }
 
-      // Xử lý form đăng nhập
-      document.getElementById('loginForm').addEventListener('submit', function(e) {
+      function handleLogin(e) {
         e.preventDefault();
+        console.log('=== LOGIN SUBMIT ===');
+        
+        const loginBtn = document.getElementById('loginBtn');
+        const spinner = loginBtn ? loginBtn.querySelector('.spinner-border') : null;
+        
+        if (!loginBtn || !spinner) {
+          alert('Lỗi: Không tìm thấy nút hoặc spinner!');
+          return;
+        }
+        
+        loginBtn.disabled = true;
+        spinner.classList.remove('d-none');
         
         const username = document.getElementById('loginUsername').value.trim();
         const password = document.getElementById('loginPassword').value;
 
         if (!username || !password) {
           alert('Vui lòng điền đầy đủ thông tin!');
+          loginBtn.disabled = false;
+          spinner.classList.add('d-none');
           return;
         }
 
-        // Lấy danh sách user từ LocalStorage
         const users = JSON.parse(localStorage.getItem('users')) || [];
-
-        // Tìm user khớp
         const user = users.find(u => u.username === username && u.password === password);
 
+        loginBtn.disabled = false;
+        spinner.classList.add('d-none');
+        
         if (user) {
-          // Lưu currentUser
           localStorage.setItem('currentUser', JSON.stringify(user));
+          console.log('Login successful for:', user.username);
           
-          // Đóng modal
           const modal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
-          modal.hide();
+          if (modal) modal.hide();
           
-          alert('Đăng nhập thành công!');
-          checkLoginStatus();
+          if (user.role === 'admin') {
+            window.location.href = 'tasks.html';
+          } else {
+            alert('Đăng nhập thành công!');
+            checkLoginStatus();
+          }
         } else {
           alert('Tên đăng nhập hoặc mật khẩu không đúng!');
         }
-      });
+      }
     </script>
 
     <section class="news-section">
@@ -835,7 +889,10 @@
                     <label for="loginPassword" class="form-label">Mật khẩu</label>
                     <input type="password" class="form-control" id="loginPassword" required>
                   </div>
-                  <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+                  <button type="submit" class="btn w-100" style="background-color: navy; border-color: navy; color: white;" id="loginBtn">
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                    Đăng nhập
+                  </button>
                 </form>
               </div>
               <!-- Đăng ký Tab -->
@@ -853,7 +910,10 @@
                     <label for="registerConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
                     <input type="password" class="form-control" id="registerConfirmPassword" required>
                   </div>
-                  <button type="submit" class="btn btn-success w-100">Đăng ký</button>
+                  <button type="submit" class="btn w-100" style="background-color: #d4af37; border-color: #d4af37; color: white;" id="registerBtn">
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                    Đăng ký
+                  </button>
                 </form>
               </div>
             </div>
