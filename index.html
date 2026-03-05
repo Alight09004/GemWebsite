@@ -120,22 +120,9 @@
           </div>
 
           <div class="nav-icons d-flex align-items-center">
-            <a href="#" class="icon-link">
-              <div class="nav-item dropdown">
-                <a href="#" class="icon-link dropdown-toggle no-arrow" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fas fa-user"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
-                  <li>
-                    <a class="dropdown-item py-2" href="index.html"><i class="fas fa-user-circle me-2"></i> Khách hàng</a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item py-2" href="index_admin.html"><i class="fas fa-user-shield me-2"></i> Admin</a>
-                  </li>
-                </ul>
-              </div>
-            </a>
+            <button class="icon-link" id="userIcon" data-bs-toggle="modal" data-bs-target="#authModal" style="background: none; border: none; color: inherit; cursor: pointer;">
+              <i class="fas fa-user"></i>
+            </button>
             <button class="icon-link position-relative ms-4" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" style="background: none; border: none; color: inherit; cursor: pointer;">
               <i class="fas fa-shopping-cart"></i>
               <span class="badge-cart" id="cart-count">0</span>
@@ -525,6 +512,112 @@
       updateActiveCard();
     </script>
 
+    <script>
+      // Kiểm tra trạng thái đăng nhập khi tải trang
+      document.addEventListener('DOMContentLoaded', function() {
+        checkLoginStatus();
+      });
+
+      // Hàm kiểm tra trạng thái đăng nhập
+      function checkLoginStatus() {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const userIcon = document.getElementById('userIcon');
+
+        if (currentUser) {
+          // Nếu đã đăng nhập, thay icon bằng tên user và nút đăng xuất
+          userIcon.innerHTML = `<span>${currentUser.username}</span> <i class="fas fa-sign-out-alt ms-1"></i>`;
+          userIcon.setAttribute('data-bs-toggle', '');
+          userIcon.setAttribute('data-bs-target', '');
+          userIcon.onclick = logout;
+        } else {
+          // Nếu chưa đăng nhập, giữ nguyên
+          userIcon.innerHTML = '<i class="fas fa-user"></i>';
+          userIcon.setAttribute('data-bs-toggle', 'modal');
+          userIcon.setAttribute('data-bs-target', '#authModal');
+          userIcon.onclick = null;
+        }
+      }
+
+      // Hàm đăng xuất
+      function logout() {
+        localStorage.removeItem('currentUser');
+        alert('Đã đăng xuất thành công!');
+        checkLoginStatus();
+      }
+
+      // Xử lý form đăng ký
+      document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('registerUsername').value.trim();
+        const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+        if (!username || !password || !confirmPassword) {
+          alert('Vui lòng điền đầy đủ thông tin!');
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert('Mật khẩu xác nhận không khớp!');
+          return;
+        }
+
+        // Lấy danh sách user từ LocalStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Kiểm tra username đã tồn tại
+        const existingUser = users.find(user => user.username === username);
+        if (existingUser) {
+          alert('Tên đăng nhập đã tồn tại!');
+          return;
+        }
+
+        // Thêm user mới
+        users.push({ username, password });
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert('Đăng ký thành công! Vui lòng đăng nhập.');
+        
+        // Chuyển sang tab đăng nhập
+        const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
+        loginTab.show();
+      });
+
+      // Xử lý form đăng nhập
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('loginUsername').value.trim();
+        const password = document.getElementById('loginPassword').value;
+
+        if (!username || !password) {
+          alert('Vui lòng điền đầy đủ thông tin!');
+          return;
+        }
+
+        // Lấy danh sách user từ LocalStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Tìm user khớp
+        const user = users.find(u => u.username === username && u.password === password);
+
+        if (user) {
+          // Lưu currentUser
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          
+          // Đóng modal
+          const modal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
+          modal.hide();
+          
+          alert('Đăng nhập thành công!');
+          checkLoginStatus();
+        } else {
+          alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+        }
+      });
+    </script>
+
     <section class="news-section">
       <div class="container-custom">
         <div class="premium-header-box">
@@ -710,6 +803,62 @@
           <span id="cart-total-price" class="fw-bold text-danger">0đ</span>
         </div>
         <button class="btn btn-dark w-100 py-2 fw-bold">THANH TOÁN NGAY</button>
+      </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="authModalLabel">Đăng nhập / Đăng ký</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs" id="authTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Đăng nhập</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Đăng ký</button>
+              </li>
+            </ul>
+            <div class="tab-content mt-3" id="authTabsContent">
+              <!-- Đăng nhập Tab -->
+              <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                <form id="loginForm">
+                  <div class="mb-3">
+                    <label for="loginUsername" class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="loginUsername" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="loginPassword" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="loginPassword" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+                </form>
+              </div>
+              <!-- Đăng ký Tab -->
+              <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                <form id="registerForm">
+                  <div class="mb-3">
+                    <label for="registerUsername" class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="registerUsername" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="registerPassword" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="registerPassword" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="registerConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                    <input type="password" class="form-control" id="registerConfirmPassword" required>
+                  </div>
+                  <button type="submit" class="btn btn-success w-100">Đăng ký</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
