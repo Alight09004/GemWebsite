@@ -97,9 +97,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">About Us</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active fw-bold" href="tasks.html" style="color: #D4AF37 !important;">Vào hệ thống</a>
-                        </li>
+                        
                     </ul>
 
                     <form class="d-flex search-box-nav" role="search">
@@ -149,13 +147,96 @@
                             <i class="fas fa-home me-1"></i> Trang chủ
                         </a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                    <!-- <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li> -->
                     
                     </ol>
             </nav>
         </div>
     </div>
-    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const breadcrumbList = document.getElementById('dynamic-breadcrumb');
+        
+        // 1. Lấy thông tin danh mục từ URL (Ví dụ: shop.html?category=DayChuyen)
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+
+        // 2. Bảng đối chiếu tên hiển thị
+        const categoryNames = {
+            'KimCuong': 'Kim cương',
+            'DayChuyen': 'Dây chuyền',
+            'Nhan': 'Nhẫn đơn',
+            'Vang24K': 'Vàng 24K',
+            'PhongThuy': 'Trang sức Phong thủy'
+        };
+
+        if (category && categoryNames[category]) {
+            // Tạo thêm thẻ <li> cho danh mục
+            const newLi = document.createElement('li');
+            newLi.className = 'breadcrumb-item active text-gold fw-bold';
+            newLi.setAttribute('aria-current', 'page');
+            newLi.style.color = '#D4AF37'; // Màu vàng của JADE CHAMBER
+            newLi.innerText = categoryNames[category];
+            
+            breadcrumbList.appendChild(newLi);
+        } else {
+            // Nếu không có danh mục cụ thể, mặc định là "Tất cả sản phẩm"
+            const defaultLi = document.createElement('li');
+            defaultLi.className = 'breadcrumb-item active';
+            defaultLi.innerText = 'Tất cả sản phẩm';
+            breadcrumbList.appendChild(defaultLi);
+        }
+    });
+    </script>
+    <!-- Hero Section -->
+    <div id="heroCarousel" class="carousel slide hero-section" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./assets/img/ItemTrungBaySP/anh_banner_herosec_bstnhan.jpg" class="d-block w-100" alt="Bộ Sưu Tập Mới 1">
+                <div class="carousel-caption d-none d-md-block text-start">
+                    <h1 class="display-4 fw-bold text-uppercase">BST Aidan</h1>
+                    <p class="lead italic">Biểu tượng của sự tinh khiết và đẳng cấp.</p>
+                    <a href="#" class="btn btn-gold btn-lg mt-3">Khám phá ngay</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="./assets/img/ItemTrungBaySP/trang_suc_kim_cương.jpg" class="d-block w-100" alt="Bộ Sưu Tập Mới 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display- display-4 fw-bold">Trang Sức Kim Cương</h1>
+                    <p class="lead">Lấp lánh mọi ánh nhìn, tôn vinh vẻ đẹp vĩnh cửu.</p>
+                    <a href="#" class="btn btn-outline-light btn-lg mt-3">Xem chi tiết</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="./assets/img/ItemTrungBaySP/00_vang_24k_banner_15cccb0e15.jpg" class="d-block w-100" alt="Bộ Sưu Tập Mới 3">
+                <div class="carousel-caption d-none d-md-block text-end">
+                    <h1 class="display-4 fw-bold text-dark">Ưu Đãi Đặc Biệt</h1>
+                    <p class="lead text-muted">Giảm ngay 15% cho các dòng sản phẩm vàng 24K.</p>
+                    <a href="#" class="btn btn-dark btn-lg mt-3">Mua sắm ngay</a>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Trước</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Sau</span>
+        </button>
+    </div>
+
+
 </body>
 
 </html>

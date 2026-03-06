@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JADE CHAMBER | Đá quý</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/DaQuy.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top custom-nav">
+        <div class="container-fluid px-lg-5">
+            <a class="navbar-brand logo" href="#">
+                <img src="/assets/img/ItemTrangChu(1)/DreamCloud (7).png" alt="Logo" class="logo-img">
+                JADE<span> CHAMBER</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="mx-auto d-lg-flex align-items-center">
+                    <ul class="navbar-nav nav-links">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Trang chủ</a>
+                        </li>
+                        <li class="nav-item dropdown has-megamenu">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="TrungBaySP.html" data-bs-toggle="dropdown">Sản phẩm</a>
+                            <div class="dropdown-menu megamenu" role="menu">
+                                <div class="container-fluid">
+                                    <div class="row g-3">
+                                        <div class="col-megamenu col-md-2">
+                                            <h6 class="title"><i class="fas fa-gem me-2"></i>ĐÁ QUÝ</h6>
+                                            <ul class="list-unstyled">
+                                                <li><a href="DaQuy.html?category=KimCuong" onclick="filterCat('KimCuong')">Kim cương</a></li>
+                                                <li><a href="DaQuy.html?category=Sapphire" onclick="filterCat('Sapphire')">Sapphire</a></li>
+                                                <li><a href="DaQuy.html?category=Ruby" onclick="filterCat('Ruby')">Ruby</a></li>
+                                                <li><a href="DaQuy.html?category=Emerald" onclick="filterCat('Emerald')">Emerald</a></li>
+                                                <li><a href="DaQuy.html?category=Topaz" onclick="filterCat('Topaz')">Topaz</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-megamenu col-md-2">
+                                            <h6 class="title"><i class="fas fa-coins me-2"></i>VÀNG BẠC</h6>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">Vàng 24K</a></li>
+                                                <li><a href="#">Vàng Ý 18K</a></li>
+                                                <li><a href="#">Bạc S925</a></li>
+                                                <li><a href="#">Vàng trắng</a></li>
+                                                <li><a href="#">Vàng hồng</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-megamenu col-md-2">
+                                            <h6 class="title"><i class="fas fa-ring me-2"></i>TRANG SỨC</h6>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">Nhẫn đơn</a></li>
+                                                <li><a href="#">Dây chuyền</a></li>
+                                                <li><a href="#">Bông tai</a></li>
+                                                <li><a href="#">Lắc tay</a></li>
+                                                <li><a href="#">Nhẫn cưới</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-megamenu col-md-2">
+                                            <h6 class="title"><i class="fas fa-yin-yang me-2"></i>PHONG THỦY</h6>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">Vòng tay tỳ hưu</a></li>
+                                                <li><a href="#">Mặt dây Phật</a></li>
+                                                <li><a href="#">Đá theo mệnh</a></li>
+                                                <li><a href="#">Charm vàng</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-megamenu col-md-2">
+                                            <h6 class="title"><i class="fas fa-magic me-2"></i>PHỤ KIỆN</h6>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">Hộp trang sức</a></li>
+                                                <li><a href="#">Dụng cụ làm sạch</a></li>
+                                                <li><a href="#">Khăn lau bạc</a></li>
+                                                <li><a href="#">Dây đeo thay thế</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-megamenu col-md-2 d-none d-md-block news-promo">
+                                            <div class="promo-box">
+                                                <img src="/assets/img/ItemTrangChu(1)/spnb2.jpg" alt="Promo" class="img-fluid rounded">
+                                                <p class="mt-2 small text-muted italic">BST Aidan - Biểu tượng của sự tinh khiết</p>
+                                                <a href="#" class="btn-promo">Khám phá ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        
+                    </ul>
+
+                    <form class="d-flex search-box-nav" role="search">
+                        <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search">
+                        <button class="btn btn-search" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="nav-icons d-flex align-items-center">
+                    <a href="#" class="icon-link">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="icon-link dropdown-toggle no-arrow" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
+                                <li>
+                                    <a class="dropdown-item py-2" href="index.html">
+                                        <i class="fas fa-user-circle me-2"></i> Khách hàng
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item py-2" href="index_admin.html">
+                                        <i class="fas fa-user-shield me-2"></i> Admin
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                    <a href="#" class="icon-link position-relative ms-4">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge-cart">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrum -->
+    <div class="breadcrumb-wrapper">
+        <div class="container-fluid px-lg-5">
+            <nav aria-label="breadcrumb" class="py-3">
+                <ol class="breadcrumb mb-0" id="dynamic-breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html" class="text-decoration-none text-muted">
+                            <i class="fas fa-home me-1"></i> Trang chủ
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const breadcrumbList = document.getElementById('dynamic-breadcrumb');
+        
+        // 1. Lấy thông tin danh mục từ URL (Ví dụ: shop.html?category=DayChuyen)
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+
+        // 2. Bảng đối chiếu tên hiển thị
+        const categoryNames = {
+            'KimCuong': 'Kim cương',
+            'DayChuyen': 'Dây chuyền',
+            'Nhan': 'Nhẫn đơn',
+            'Vang24K': 'Vàng 24K',
+            'PhongThuy': 'Trang sức Phong thủy'
+        };
+
+        if (category && categoryNames[category]) {
+            // Tạo thêm thẻ <li> cho danh mục
+            const newLi = document.createElement('li');
+            newLi.className = 'breadcrumb-item active text-gold fw-bold';
+            newLi.setAttribute('aria-current', 'page');
+            newLi.style.color = '#D4AF37'; // Màu vàng của JADE CHAMBER
+            newLi.innerText = categoryNames[category];
+            
+            breadcrumbList.appendChild(newLi);
+        } else {
+            // Nếu không có danh mục cụ thể, mặc định là "Tất cả sản phẩm"
+            const defaultLi = document.createElement('li');
+            defaultLi.className = 'breadcrumb-item active';
+            defaultLi.innerText = 'Tất cả sản phẩm';
+            breadcrumbList.appendChild(defaultLi);
+        }
+    });
+    </script>
+
+    <!-- Side bar and Sort Bar -->
+    <div class="container-fluid px-lg-5 my-5">
+        <div class="row">
+            <aside class="col-lg-3">
+                <div class="sidebar-filter shadow-sm">
+                    <h5 class="filter-title"><i class="fas fa-th-list me-2"></i> DANH MỤC</h5>
+                    <ul class="list-unstyled category-list">
+                        <li><a href="#" onclick="filterCat('KimCuong')">Kim cương</a></li>
+                        <li><a href="#" onclick="filterCat('Sapphire')">Sapphire</a></li>
+                        <li><a href="#" onclick="filterCat('Ruby')">Ruby</a></li>
+                        <li><a href="#" onclick="filterCat('Emerald')">Emerald</a></li>
+                        <li><a href="#" onclick="filterCat('Topaz')">Topaz</a></li>
+                        <hr>
+                        <li><a href="#" onclick="renderProducts(gemProducts)">Tất cả sản phẩm</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="col-lg-9">
+                <div class="sort-bar d-flex align-items-center justify-content-between mb-4 shadow-sm p-3 bg-white">
+                    <div class="d-flex align-items-center">
+                        <span class="me-3 fw-bold">Sắp xếp theo:</span>
+                        <button class="btn btn-sort active">Phổ biến</button>
+                        <button class="btn btn-sort">Mới nhất</button>
+                        <button class="btn btn-sort">Bán chạy</button>
+                    </div>
+                    <div class="price-filter">
+                        <select class="form-select form-select-sm">
+                            <option>Giá: Thấp đến Cao</option>
+                            <option>Giá: Cao đến Thấp</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="product-display-grid">
+                    </div>
+            </main>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
