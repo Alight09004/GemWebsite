@@ -4,6 +4,21 @@ let cart = JSON.parse(localStorage.getItem('jade_chamber_cart')) || [];
 // Initialize cart UI when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
+    
+    // Hide messenger button when cart offcanvas opens
+    const cartOffcanvas = document.getElementById('cartOffcanvas');
+    const messengerBtn = document.querySelector('.contact-messenger-wrapper');
+    
+    if (cartOffcanvas && messengerBtn) {
+        // Using Bootstrap's offcanvas events
+        cartOffcanvas.addEventListener('show.bs.offcanvas', () => {
+            messengerBtn.style.display = 'none';
+        });
+        
+        cartOffcanvas.addEventListener('hide.bs.offcanvas', () => {
+            messengerBtn.style.display = 'block';
+        });
+    }
 });
 
 function addToCart(name, price, img) {
