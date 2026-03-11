@@ -1,3 +1,24 @@
+// Xử lý click link Sản phẩm - vừa dropdown vừa navigate
+let sanphamDropdownClicked = false;
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sanphamLink = document.querySelector('a[href="./TrungBaySP.html"][data-bs-toggle="dropdown"]');
+    
+    if (sanphamLink) {
+        sanphamLink.addEventListener('click', function(e) {
+            const dropdown = this.nextElementSibling;
+            
+            // Nếu dropdown đã mở, cho navigate
+            if (dropdown && dropdown.classList.contains('show')) {
+                window.location.href = './TrungBaySP.html';
+            } else {
+                // Dropdown chưa mở, ngăn navigate để cho dropdown mở
+                e.preventDefault();
+            }
+        });
+    }
+});
+
 // Khởi tạo dữ liệu mẫu
 if (!localStorage.getItem('gems')) {
     const defaultData = [
