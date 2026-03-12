@@ -77,7 +77,7 @@ nav-link.dropdown-toggle {
     margin-top: 0 !important;
     vertical-align: middle !important;
 }
-/* selection role(icon user) */
+
 .no-arrow::after {
     display: none !important;
 }
