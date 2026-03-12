@@ -286,38 +286,49 @@ nav-link.dropdown-toggle {
 
 /* Breadcrumb */
 .breadcrumb-wrapper {
-    background-color: #fcfcfc; /* Màu nền xám cực nhẹ */
-    border-bottom: 1px solid #eee;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    border-bottom: 2px solid #D4AF37;
+    padding: 1px 0;
 }
 
 .breadcrumb {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* Màu cho các mục liên kết */
 .breadcrumb-item a {
-    color: #666;
+    color: #555;
     transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 500;
 }
 
 .breadcrumb-item a:hover {
     color: #D4AF37; /* Màu vàng gold khi di chuột */
+    text-decoration: underline;
+}
+
+.breadcrumb-item a i {
+    color: #D4AF37;
 }
 
 /* Màu cho mục hiện tại (Active) */
 .breadcrumb-item.active {
     color: #D4AF37;
     font-weight: 700;
+    font-size: 1.05rem;
 }
 
 /* Thay đổi biểu tượng ngăn cách (dấu gạch chéo sang dấu mũi tên nhỏ) */
 .breadcrumb-item + .breadcrumb-item::before {
-    content: "\f105"; /* Font Awesome icon '>' */
+    content: "\f054"; /* Font Awesome icon '>' */
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
-    padding: 0 10px;
-    color: #ccc;
+    margin: 0 12px;
+    color: #D4AF37;
 }
 
 

@@ -145,53 +145,21 @@
     <div class="breadcrumb-wrapper">
         <div class="container-fluid px-lg-5">
             <nav aria-label="breadcrumb" class="py-3">
-                <ol class="breadcrumb mb-0">
+                <ol class="breadcrumb mb-0" id="dynamic-breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="index.html">
+                        <a href="index.html" class="text-decoration-none text-muted">
                             <i class="fas fa-home me-1"></i> Trang chủ
                         </a>
                     </li>
-                    <!-- <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li> -->
-                    
-                    </ol>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span class="text-dark fw-bold">Sản phẩm</span>
+                    </li>
+                </ol>
             </nav>
         </div>
     </div>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const breadcrumbList = document.getElementById('dynamic-breadcrumb');
-        
-        // 1. Lấy thông tin danh mục từ URL (Ví dụ: shop.html?category=DayChuyen)
-        const urlParams = new URLSearchParams(window.location.search);
-        const category = urlParams.get('category');
-
-        // 2. Bảng đối chiếu tên hiển thị
-        const categoryNames = {
-            'KimCuong': 'Kim cương',
-            'DayChuyen': 'Dây chuyền',
-            'Nhan': 'Nhẫn đơn',
-            'Vang24K': 'Vàng 24K',
-            'PhongThuy': 'Trang sức Phong thủy'
-        };
-
-        if (category && categoryNames[category]) {
-            // Tạo thêm thẻ <li> cho danh mục
-            const newLi = document.createElement('li');
-            newLi.className = 'breadcrumb-item active text-gold fw-bold';
-            newLi.setAttribute('aria-current', 'page');
-            newLi.style.color = '#D4AF37'; // Màu vàng của JADE CHAMBER
-            newLi.innerText = categoryNames[category];
-            
-            breadcrumbList.appendChild(newLi);
-        } else {
-            // Nếu không có danh mục cụ thể, mặc định là "Tất cả sản phẩm"
-            const defaultLi = document.createElement('li');
-            defaultLi.className = 'breadcrumb-item active';
-            defaultLi.innerText = 'Tất cả sản phẩm';
-            breadcrumbList.appendChild(defaultLi);
-        }
-    });
-    </script>
+    <script src="./assets/js/breadcrumb.js"></script>
+     
     <!-- Hero Section -->
     <div id="heroCarousel" class="carousel slide hero-section" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -288,36 +256,24 @@
           <img src="/assets/img/ItemTrangChu(1)/1.png" alt="Đá quý" />
           <span>Đá quý</span>
         </a>
-        <a href="#vang-bac" class="cat-card">
+        <a href="./VangBac.html" class="cat-card">
           <img src="/assets/img/ItemTrangChu(1)/2.png" alt="Vàng bạc" />
           <span>Vàng bạc</span>
         </a>
-        <a href="#trang-suc" class="cat-card">
+        <a href="./TrangSuc.html" class="cat-card">
           <img src="/assets/img/ItemTrangChu(1)/3.png" alt="Trang sức" />
           <span>Trang sức</span>
         </a>
-        <a href="#phong-thuy" class="cat-card">
+        <a href="./PhongThuy.html" class="cat-card">
           <img src="/assets/img/ItemTrangChu(1)/4.png" alt="Phong thủy" />
           <span>Phong thủy</span>
         </a>
-        <a href="#phu-kien" class="cat-card">
+        <a href="./PhuKien.html" class="cat-card">
           <img src="/assets/img/ItemTrangChu(1)/5.png" alt="Phụ kiện" />
           <span>Phụ kiện</span>
         </a>
       </div>
 
-      <div class="handwriting-container">
-        <div class="hw-left">
-          <p class="hw-text">
-            Bạn đang tìm gì hôm nay? <i class="fas fa-gem gem-icon"></i>
-          </p>
-        </div>
-        <div class="hw-right">
-          <a href="https://m.me/yourprofile" target="_blank" class="btn-consult">Nhờ tư vấn</a>
-        </div>
-        <div class="hw-full-line"></div>
-      </div>
-    </section>
     <!-- SP mới & bán chạy -->
     <section class="product-tabs-section py-5">
         <div class="container bg-light-blue p-5 rounded-4 position-relative">

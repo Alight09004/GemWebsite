@@ -152,41 +152,7 @@
             </nav>
         </div>
     </div>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const breadcrumbList = document.getElementById('dynamic-breadcrumb');
-        
-        // 1. Lấy thông tin danh mục từ URL (Ví dụ: shop.html?category=DayChuyen)
-        const urlParams = new URLSearchParams(window.location.search);
-        const category = urlParams.get('category');
-
-        // 2. Bảng đối chiếu tên hiển thị
-        const categoryNames = {
-            'KimCuong': 'Kim cương',
-            'DayChuyen': 'Dây chuyền',
-            'Nhan': 'Nhẫn đơn',
-            'Vang24K': 'Vàng 24K',
-            'PhongThuy': 'Trang sức Phong thủy'
-        };
-
-        if (category && categoryNames[category]) {
-            // Tạo thêm thẻ <li> cho danh mục
-            const newLi = document.createElement('li');
-            newLi.className = 'breadcrumb-item active text-gold fw-bold';
-            newLi.setAttribute('aria-current', 'page');
-            newLi.style.color = '#D4AF37'; // Màu vàng của JADE CHAMBER
-            newLi.innerText = categoryNames[category];
-            
-            breadcrumbList.appendChild(newLi);
-        } else {
-            // Nếu không có danh mục cụ thể, mặc định là "Tất cả sản phẩm"
-            const defaultLi = document.createElement('li');
-            defaultLi.className = 'breadcrumb-item active';
-            defaultLi.innerText = 'Tất cả sản phẩm';
-            breadcrumbList.appendChild(defaultLi);
-        }
-    });
-    </script>
+    <script src="./assets/js/breadcrumb.js"></script>
 
     <!-- Side bar and Sort Bar -->
     <div class="container-fluid px-lg-5 my-5">
