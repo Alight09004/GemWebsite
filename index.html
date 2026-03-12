@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibe&family=Allura&family=Parisienne&family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top custom-nav">
@@ -109,7 +110,24 @@
 
           <div class="nav-icons d-flex align-items-center">
             <button class="icon-link" id="userIcon" data-bs-toggle="modal" data-bs-target="#authModal" style="background: none; border: none; color: inherit; cursor: pointer;"><i class="fas fa-user"></i></button>
-            <button class="icon-link position-relative ms-4" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" style="background: none; border: none; color: inherit; cursor: pointer;"><i class="fas fa-shopping-cart"></i><span class="badge-cart" id="cart-count">0</span></button>
+            <div class="cart-dropdown-wrapper ms-4">
+              <button class="icon-link position-relative" id="cartBtn" style="background: none; border: none; color: inherit; cursor: pointer;"><i class="fas fa-shopping-cart"></i><span class="badge-cart" id="cart-count">0</span></button>
+              <div class="cart-dropdown-menu" id="cartDropdown">
+                <div class="cart-dropdown-header">
+                  <h6 class="fw-bold mb-0"><i class="fas fa-shopping-bag me-2"></i>GIỎ HÀNG</h6>
+                </div>
+                <div class="cart-dropdown-body" id="cart-dropdown-items">
+                  <p class="text-center text-muted py-3 small">Giỏ hàng đang trống</p>
+                </div>
+                <div class="cart-dropdown-footer">
+                  <div class="d-flex justify-content-between mb-3">
+                    <span class="fw-bold">TỔNG:</span>
+                    <span id="cart-dropdown-total" class="fw-bold text-danger">0đ</span>
+                  </div>
+                  <button class="btn btn-dark w-100 py-2 fw-bold btn-sm">THANH TOÁN</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -795,27 +813,9 @@
         </svg>
       </button>
     </a>
-    <!-- Giỏ hàng bên phải -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
-      <div class="offcanvas-header border-bottom">
-        <h5 id="cartOffcanvasLabel" class="fw-bold">
-          <i class="fas fa-shopping-bag me-2"></i>GIỎ HÀNG
-        </h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <div id="cart-items-container">
-          <p class="text-center text-muted py-5">Giỏ hàng đang trống</p>
-        </div>
-      </div>
-      <div class="offcanvas-footer p-3 border-top">
-        <div class="d-flex justify-content-between mb-3">
-          <span class="fw-bold">TỔNG CỘNG:</span>
-          <span id="cart-total-price" class="fw-bold text-danger">0đ</span>
-        </div>
-        <button class="btn btn-dark w-100 py-2 fw-bold">THANH TOÁN NGAY</button>
-      </div>
-    </div>
+    
+    <!-- Cart Dropdown (now hidden and shown on hover) -->
+    <!-- Content is handled by cart.js -->
 
     <!-- Auth Modal -->
     <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">

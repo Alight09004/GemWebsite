@@ -4,21 +4,7 @@ let cart = JSON.parse(localStorage.getItem('jade_chamber_cart')) || [];
 // Initialize cart UI when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
-    
-    // Hide messenger button when cart offcanvas opens
-    const cartOffcanvas = document.getElementById('cartOffcanvas');
-    const messengerBtn = document.querySelector('.contact-messenger-wrapper');
-    
-    if (cartOffcanvas && messengerBtn) {
-        // Using Bootstrap's offcanvas events
-        cartOffcanvas.addEventListener('show.bs.offcanvas', () => {
-            messengerBtn.style.display = 'none';
-        });
-        
-        cartOffcanvas.addEventListener('hide.bs.offcanvas', () => {
-            messengerBtn.style.display = 'block';
-        });
-    }
+    updateCartDropdownUI();
 });
 
 function addToCart(name, price, img) {
@@ -33,13 +19,6 @@ function addToCart(name, price, img) {
     
     // Save to localStorage and update UI
     saveAndUpdate();
-
-    // Open cart offcanvas
-    const cartEl = document.getElementById('cartOffcanvas');
-    if (cartEl && typeof bootstrap !== 'undefined') {
-        const bsOffcanvas = new bootstrap.Offcanvas(cartEl);
-        bsOffcanvas.show();
-    }
 }
 
 function removeFromCart(index) {
@@ -64,6 +43,7 @@ function changeQuantity(index, delta) {
 function saveAndUpdate() {
     localStorage.setItem('jade_chamber_cart', JSON.stringify(cart));
     updateCartUI();
+    updateCartDropdownUI();
 }
 
 function updateCartUI() {
@@ -119,6 +99,64 @@ function updateCartUI() {
     });
 
     // Set all HTML at once (better performance)
+    container.innerHTML = html;
+
+    // Update cart badge count
+    if (countBadge) {
+        countBadge.innerText = count;
+        countBadge.style.display = count > 0 ? 'block' : 'none';
+    }
+
+    // Update total price
+    if (totalPriceElem) {
+        totalPriceElem.innerText = total.toLocaleString() + 'đ';
+    }
+}
+
+// Update cart dropdown UI
+function updateCartDropdownUI() {
+    const container = document.getElementById('cart-dropdown-items');
+    const countBadge = document.getElementById('cart-count');
+    const totalPriceElem = document.getElementById('cart-dropdown-total');
+    
+    if (!container) return;
+
+    let total = 0;
+    let count = 0;
+    let html = '';
+
+    if (cart.length === 0) {
+        html = `<p class="text-center text-muted py-3 small">Giỏ hàng đang trống</p>`;
+        container.innerHTML = html;
+        if (countBadge) {
+            countBadge.innerText = '0';
+            countBadge.style.display = 'none';
+        }
+        if (totalPriceElem) {
+            totalPriceElem.innerText = '0đ';
+        }
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        count += item.quantity;
+
+        html += `
+            <div class="cart-dropdown-item">
+                <img src="${item.img}" alt="${item.name}" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'">
+                <div class="cart-dropdown-item-info">
+                    <div class="cart-dropdown-item-name">${item.name}</div>
+                    <div class="cart-dropdown-item-price">${item.price.toLocaleString()}đ</div>
+                    <div class="cart-dropdown-item-qty">Số lượng: ${item.quantity}</div>
+                </div>
+                <button class="cart-dropdown-item-remove" onclick="removeFromCart(${index})" title="Xóa">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        `;
+    });
+
     container.innerHTML = html;
 
     // Update cart badge count

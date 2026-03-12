@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - JADE CHAMBER</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibe&family=Allura&family=Parisienne&family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -171,13 +171,29 @@
 
             <button
               class="icon-link position-relative ms-4"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#cartOffcanvas"
               style="background: none; border: none"
             >
-              <i class="fas fa-shopping-cart"></i>
-              <span class="badge-cart" id="cart-count">0</span>
+              <i class="fas fa-user"></i>
             </button>
+
+            <div class="cart-dropdown-wrapper ms-4">
+              <button class="icon-link position-relative" id="cartBtn" style="background: none; border: none; color: inherit; cursor: pointer;"><i class="fas fa-shopping-cart"></i><span class="badge-cart" id="cart-count">0</span></button>
+              <div class="cart-dropdown-menu" id="cartDropdown">
+                <div class="cart-dropdown-header">
+                  <h6 class="fw-bold mb-0"><i class="fas fa-shopping-bag me-2"></i>GIỎ HÀNG</h6>
+                </div>
+                <div class="cart-dropdown-body" id="cart-dropdown-items">
+                  <p class="text-center text-muted py-3 small">Giỏ hàng đang trống</p>
+                </div>
+                <div class="cart-dropdown-footer">
+                  <div class="d-flex justify-content-between mb-3">
+                    <span class="fw-bold">TỔNG:</span>
+                    <span id="cart-dropdown-total" class="fw-bold text-danger">0đ</span>
+                  </div>
+                  <button class="btn btn-dark w-100 py-2 fw-bold btn-sm">THANH TOÁN</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -839,38 +855,8 @@
       </button>
     </a>
 
-    <div
-      class="offcanvas offcanvas-end"
-      tabindex="-1"
-      id="cartOffcanvas"
-      aria-labelledby="cartOffcanvasLabel"
-    >
-      <div class="offcanvas-header border-bottom">
-        <h5 id="cartOffcanvasLabel" class="fw-bold">
-          <i class="fas fa-shopping-bag me-2"></i>GIỎ HÀNG
-        </h5>
-        <button
-          type="button"
-          class="btn-close text-reset"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <div id="cart-items-container"></div>
-      </div>
-      <div class="offcanvas-footer p-3 border-top">
-        <div class="d-flex justify-content-between mb-3">
-          <span class="fw-bold">TỔNG CỘNG:</span>
-          <span id="cart-total-price" class="fw-bold text-danger">0đ</span>
-        </div>
-        <a
-          href="checkout.html"
-          class="btn btn-dark w-100 py-2 fw-bold text-decoration-none text-center d-block"
-          >THANH TOÁN NGAY</a
-        >
-      </div>
-    </div>
+    <!-- Cart Dropdown (now hidden and shown on hover) -->
+    <!-- Content is handled by cart.js -->
 
     <script src="./assets/js/cart.js"></script>
 
