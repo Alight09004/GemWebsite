@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body>
     <!-- Nav bar -->
@@ -36,7 +40,7 @@
                                 <div class="container-fluid">
                                     <div class="row g-3">
                                         <div class="col-megamenu col-md-2">
-                                            <h6 class="title"><i class="fas fa-gem me-2"></i>ĐÁ QUÝ</h6>
+                                            <a href="./DaQuy.html"><h6 class="title"><i class="fas fa-gem me-2"></i>ĐÁ QUÝ</h6></a>
                                             <ul class="list-unstyled">
                                                 <li><a href="#">Kim cương</a></li>
                                                 <li><a href="#">Sapphire</a></li>
@@ -46,7 +50,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-megamenu col-md-2">
-                                            <h6 class="title"><i class="fas fa-coins me-2"></i>VÀNG BẠC</h6>
+                                            <a href="./VangBac.html"><h6 class="title"><i class="fas fa-coins me-2"></i>VÀNG BẠC</h6></a>
                                             <ul class="list-unstyled">
                                                 <li><a href="#">Vàng 24K</a></li>
                                                 <li><a href="#">Vàng Ý 18K</a></li>
@@ -56,7 +60,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-megamenu col-md-2">
-                                            <h6 class="title"><i class="fas fa-ring me-2"></i>TRANG SỨC</h6>
+                                            <a href="./TrangSuc.html"><h6 class="title"><i class="fas fa-ring me-2"></i>TRANG SỨC</h6></a>
                                             <ul class="list-unstyled">
                                                 <li><a href="#">Nhẫn đơn</a></li>
                                                 <li><a href="#">Dây chuyền</a></li>
@@ -66,7 +70,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-megamenu col-md-2">
-                                            <h6 class="title"><i class="fas fa-yin-yang me-2"></i>PHONG THỦY</h6>
+                                            <a href="./PhongThuy.html"><h6 class="title"><i class="fas fa-yin-yang me-2"></i>PHONG THỦY</h6></a>
                                             <ul class="list-unstyled">
                                                 <li><a href="#">Vòng tay tỳ hưu</a></li>
                                                 <li><a href="#">Mặt dây Phật</a></li>
@@ -75,7 +79,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-megamenu col-md-2">
-                                            <h6 class="title"><i class="fas fa-magic me-2"></i>PHỤ KIỆN</h6>
+                                            <a href="./PhuKien.html"><h6 class="title"><i class="fas fa-magic me-2"></i>PHỤ KIỆN</h6></a>
                                             <ul class="list-unstyled">
                                                 <li><a href="#">Hộp trang sức</a></li>
                                                 <li><a href="#">Dụng cụ làm sạch</a></li>
@@ -218,8 +222,8 @@
             <div class="carousel-item">
                 <img src="./assets/img/ItemTrungBaySP/00_vang_24k_banner_15cccb0e15.jpg" class="d-block w-100" alt="Bộ Sưu Tập Mới 3">
                 <div class="carousel-caption d-none d-md-block text-end">
-                    <h1 class="display-4 fw-bold text-dark">Ưu Đãi Đặc Biệt</h1>
-                    <p class="lead text-muted">Giảm ngay 15% cho các dòng sản phẩm vàng 24K.</p>
+                    <h1 class="display-4 fw-bold">Ưu Đãi Đặc Biệt</h1>
+                    <p class="lead">Giảm ngay 15% cho các dòng sản phẩm vàng 24K.</p>
                     <a href="#" class="btn btn-dark btn-lg mt-3">Mua sắm ngay</a>
                 </div>
             </div>
@@ -235,7 +239,114 @@
             <span class="visually-hidden">Sau</span>
         </button>
     </div>
+    <!-- Service Info -->
+    <section class="service-highlights">
+        <div class="container-fluid px-lg-5">
+            <div class="highlight-wrapper">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <span class="highlight-title">MIỄN PHÍ</span>
+                        <span class="highlight-desc">Giao hàng toàn quốc</span>
+                    </div>
+                </div>
 
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <span class="highlight-title">PHỤC VỤ 24/7</span>
+                        <span class="highlight-desc">Hỗ trợ khách hàng tận tâm</span>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <span class="highlight-title">THU ĐỔI 48H</span>
+                        <span class="highlight-desc">Chính sách linh hoạt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Danh mục sản phẩm -->
+    <section id="danh-muc" class="container-custom">
+      <div class="divider-header">
+        <span class="ornament-line"></span>
+        <h2 class="title-main">Danh mục sản phẩm</h2>
+        <span class="ornament-line"></span>
+      </div>
+
+      <div class="category-grid-simple">
+        <a href="./DaQuy.html" class="cat-card">
+          <img src="/assets/img/ItemTrangChu(1)/1.png" alt="Đá quý" />
+          <span>Đá quý</span>
+        </a>
+        <a href="#vang-bac" class="cat-card">
+          <img src="/assets/img/ItemTrangChu(1)/2.png" alt="Vàng bạc" />
+          <span>Vàng bạc</span>
+        </a>
+        <a href="#trang-suc" class="cat-card">
+          <img src="/assets/img/ItemTrangChu(1)/3.png" alt="Trang sức" />
+          <span>Trang sức</span>
+        </a>
+        <a href="#phong-thuy" class="cat-card">
+          <img src="/assets/img/ItemTrangChu(1)/4.png" alt="Phong thủy" />
+          <span>Phong thủy</span>
+        </a>
+        <a href="#phu-kien" class="cat-card">
+          <img src="/assets/img/ItemTrangChu(1)/5.png" alt="Phụ kiện" />
+          <span>Phụ kiện</span>
+        </a>
+      </div>
+
+      <div class="handwriting-container">
+        <div class="hw-left">
+          <p class="hw-text">
+            Bạn đang tìm gì hôm nay? <i class="fas fa-gem gem-icon"></i>
+          </p>
+        </div>
+        <div class="hw-right">
+          <a href="https://m.me/yourprofile" target="_blank" class="btn-consult">Nhờ tư vấn</a>
+        </div>
+        <div class="hw-full-line"></div>
+      </div>
+    </section>
+    <!-- SP mới & bán chạy -->
+    <section class="product-tabs-section py-5">
+        <div class="container bg-light-blue p-5 rounded-4 position-relative">
+            <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab">
+                <li class="nav-item">
+                    <button class="nav-link active" data-type="new">Sản phẩm mới</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-type="best_seller">Sản phẩm bán chạy</button>
+                </li>
+            </ul>
+
+            <div class="product-slider" id="product-container">
+                </div>
+
+            <div class="text-center mt-5">
+                <button class="btn-view-more">Xem thêm</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-bottom">
+        <p>
+          &copy; 2026 JADE CHAMBER. All rights reserved. Hệ thống quản lý nội bộ
+          - CMC University.
+        </p>
+      </div>
+    </footer>
 
 </body>
 

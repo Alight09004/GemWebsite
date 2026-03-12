@@ -229,6 +229,24 @@ nav-link.dropdown-toggle {
     padding-bottom: 8px;
     display: inline-block;
 }
+.col-megamenu a h6.title {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.col-megamenu a:hover h6.title {
+    color: #D4AF37 !important; 
+    border-bottom-color: #D4AF37; 
+    transform: translateX(5px); /* nhích nhẹ sang phải*/
+}
+
+.col-megamenu a:hover h6.title i {
+    color: #D4AF37;
+}
+
+.col-megamenu a {
+    text-decoration: none !important;
+}
 
 .col-megamenu ul li a {
     text-decoration: none;
