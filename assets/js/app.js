@@ -36,7 +36,7 @@ function saveGems(data) {
     localStorage.setItem('gems', JSON.stringify(data));
 }
 
-// Hàm Export JSON (Bonus điểm)
+// Hàm Export JSON
 function exportJSON() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(getGems()));
     const downloadAnchorNode = document.createElement('a');
