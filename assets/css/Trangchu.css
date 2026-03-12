@@ -714,13 +714,19 @@ nav-link.dropdown-toggle {
     background: #fff;
     transition: all 0.3s ease;
     border: 1px solid #f0f0f0;
+    border-radius: 10px;
 }
-
+.product-card-v2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(30, 81, 176, 0.3);
+}
 /* Hiệu ứng đổi ảnh */
 .product-img-box {
     position: relative;
     overflow: hidden;
     aspect-ratio: 1 / 1;
+    border-radius: 10px;
+
 }
 
 .product-img-box img {
@@ -745,8 +751,6 @@ nav-link.dropdown-toggle {
     opacity: 1;
     transform: scale(1.05);
 }
-
-
 
 .product-info {
     display: flex;
