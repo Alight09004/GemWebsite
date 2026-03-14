@@ -58,7 +58,7 @@ function renderUsers() {
     table += `
 <tr>
 <td>${u.id}</td>
-<td>${u.name}</td>
+<td>${u.username}</td>
 <td>${u.password}</td>
 <td>${u.email}</td>
 <td>${u.role}</td>  
