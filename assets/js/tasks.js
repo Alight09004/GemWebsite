@@ -38,10 +38,10 @@ function addUser() {
   if (username == "" || email == "") return;
 
   users.push({
-    id: Date.now(),
+    id: "user_" + Date.now(),
     username: username,
-    password: password,
     email: email,
+    password: password,
     role: role || "user",
   });
 
