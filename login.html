@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JADE CHAMBER | Đăng nhập & Đăng ký</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/Trangchu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="./assets/js/layout.js"></script>
+    <style>
+        .back-btn {
+            color: #001f3f !important;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-size: 16px;
+        }
+        .back-btn:hover {
+            color: #D4AF37 !important;
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./assets/img/ItemTrangChu(1)/odRS0bRA.jpeg') center/cover no-repeat fixed; height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0;">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg border-0 rounded-4 position-relative" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+                    <div class="card-header bg-transparent border-0 pt-4 pb-0 text-center d-flex align-items-center justify-content-center">
+                        <img src="./assets/img/ItemAboutUs/JadeChamber.png" alt="Logo" style="height: 40px; margin-right: 12px; object-fit: contain;">
+                        <h3 class="mb-0" style="font-family: 'Playfair Display', serif; color: #001f3f; font-weight: bold;">
+                            JADE <span style="color: #D4AF37;">CHAMBER</span>
+                        </h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- Tabs -->
+                        <ul class="nav nav-tabs nav-justified mb-4" id="authTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active fw-bold" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" style="color: #001f3f;">Đăng nhập</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link fw-bold" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" style="color: #001f3f;">Đăng ký</button>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content" id="authTabsContent">
+                            <!-- FORM ĐĂNG NHẬP -->
+                            <div class="tab-pane fade show active" id="login" role="tabpanel">
+                                <form id="loginForm">
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted small fw-bold">Email đăng nhập</label>
+                                        <input type="email" class="form-control form-control-lg" id="loginEmail" placeholder="admin@gmail.com" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label text-muted small fw-bold">Mật khẩu</label>
+                                        <input type="password" class="form-control form-control-lg" id="loginPassword" placeholder="******" required>
+                                    </div>
+                                    <button type="submit" class="btn w-100 btn-lg fw-bold" style="background-color: #001f3f; color: white;">ĐĂNG NHẬP</button>
+                                </form>
+                            </div>
+
+                            <!-- FORM ĐĂNG KÝ -->
+                            <div class="tab-pane fade" id="register" role="tabpanel">
+                                <form id="registerForm">
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted small fw-bold">Tên hiển thị (Username)</label>
+                                        <input type="text" class="form-control form-control-lg" id="regUsername" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted small fw-bold">Email</label>
+                                        <input type="email" class="form-control form-control-lg" id="regEmail" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted small fw-bold">Mật khẩu</label>
+                                        <input type="password" class="form-control form-control-lg" id="regPassword" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label text-muted small fw-bold">Xác nhận mật khẩu</label>
+                                        <input type="password" class="form-control form-control-lg" id="regConfirm" required>
+                                    </div>
+                                    <button type="submit" class="btn w-100 btn-lg fw-bold" style="background-color: #D4AF37; color: white;">ĐĂNG KÝ</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Nút Back -->
+                        <div class="text-center mt-4">
+                            <a href="index.html" class="text-decoration-none fw-bold back-btn d-inline-block">
+                                <i class="fas fa-arrow-left me-1"></i> Trở về trang chủ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. KHỞI TẠO DỮ LIỆU & TÀI KHOẢN ADMIN MẶC ĐỊNH
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Nếu chưa có tài khoản admin@gmail.com thì tạo mặc định
+            if (!users.find(u => u.email === 'admin@gmail.com')) {
+                users.push({
+                    id: 'usr_' + Date.now(),
+                    username: 'Administrator',
+                    email: 'admin@gmail.com',
+                    password: '123456',
+                    role: 'admin'
+                });
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+
+            // 2. XỬ LÝ ĐĂNG KÝ
+            const registerForm = document.getElementById('registerForm');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const username = document.getElementById('regUsername').value.trim();
+                    const email = document.getElementById('regEmail').value.trim();
+                    const password = document.getElementById('regPassword').value;
+                    const confirm = document.getElementById('regConfirm').value;
+
+                    if (password !== confirm) {
+                        alert('Mật khẩu xác nhận không khớp!');
+                        return;
+                    }
+
+                    let currentUsers = JSON.parse(localStorage.getItem('users')) || [];
+                    if (currentUsers.find(u => u.email === email)) {
+                        alert('Email này đã được sử dụng!');
+                        return;
+                    }
+
+                    // Thêm user mới
+                    const newUser = {
+                        id: 'usr_' + Date.now(),
+                        username: username,
+                        email: email,
+                        password: password,
+                        role: 'user' // Mặc định là user thường
+                    };
+                    
+                    currentUsers.push(newUser);
+                    localStorage.setItem('users', JSON.stringify(currentUsers));
+                    
+                    alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                    
+                    // Chuyển sang tab đăng nhập
+                    const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
+                    loginTab.show();
+                    registerForm.reset();
+                });
+            }
+
+            // 3. XỬ LÝ ĐĂNG NHẬP
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value.trim();
+                    const password = document.getElementById('loginPassword').value;
+
+                    let currentUsers = JSON.parse(localStorage.getItem('users')) || [];
+                    const user = currentUsers.find(u => u.email === email && u.password === password);
+
+                    if (user) {
+                        // Lưu trạng thái đăng nhập
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        
+                        alert('Đăng nhập thành công!');
+                        
+                        // Phân quyền chuyển hướng
+                        if (user.role === 'admin') {
+                            window.location.href = 'tasks.html';
+                        } else {
+                            window.location.href = 'index.html';
+                        }
+                    } else {
+                        alert('Email hoặc mật khẩu không chính xác!');
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="./assets/js/cart.js"></script>
+</body>
+</html>
