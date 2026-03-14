@@ -94,7 +94,7 @@ class AppHeader extends HTMLElement {
               </div>
     
               <div class="nav-icons d-flex align-items-center">
-                <button class="icon-link" id="userIcon" data-bs-toggle="modal" data-bs-target="#authModal" style="background: none; border: none; color: inherit; cursor: pointer;"><i class="fas fa-user"></i></button>
+                <a href="login.html" class="icon-link" id="userIcon" style="text-decoration: none; color: inherit; cursor: pointer;"><i class="fas fa-user"></i></a>
                 <div class="cart-dropdown-wrapper ms-4">
                   <button class="icon-link position-relative" id="cartBtn" style="background: none; border: none; color: inherit; cursor: pointer;"><i class="fas fa-shopping-cart"></i><span class="badge-cart" id="cart-count">0</span></button>
                   <div class="cart-dropdown-menu" id="cartDropdown">
@@ -136,6 +136,21 @@ class AppHeader extends HTMLElement {
             if (productNav) {
                 productNav.classList.add('active');
             }
+        }
+
+        // Kiểm tra và hiển thị tên User nếu đã đăng nhập
+        const userIcon = this.querySelector('#userIcon');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && userIcon) {
+            userIcon.innerHTML = `<span style="font-size: 0.9rem; font-weight: bold; text-transform: none;">${currentUser.username}</span> <i class="fas fa-sign-out-alt ms-1" title="Đăng xuất"></i>`;
+            userIcon.href = "javascript:void(0)";
+            userIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (confirm('Bạn chắc chắn muốn đăng xuất?')) {
+                    localStorage.removeItem('currentUser');
+                    window.location.reload(); // Reload lại trang hiện tại sau khi đăng xuất
+                }
+            });
         }
     }
 }
@@ -197,59 +212,6 @@ class AppGlobals extends HTMLElement {
             </svg>
           </button>
         </a>
-        
-        <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="authModalLabel">Đăng nhập / Đăng ký</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <ul class="nav nav-tabs" id="authTabs" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Đăng nhập</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Đăng ký</button>
-                  </li>
-                </ul>
-                <div class="tab-content mt-3" id="authTabsContent">
-                  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                    <form id="loginForm">
-                      <div class="mb-3">
-                        <label for="loginUsername" class="form-label">Tên đăng nhập</label>
-                        <input type="text" class="form-control" id="loginUsername" required>
-                      </div>
-                      <div class="mb-3">
-                        <label for="loginPassword" class="form-label">Mật khẩu</label>
-                        <input type="password" class="form-control" id="loginPassword" required>
-                      </div>
-                      <button type="submit" class="btn w-100" style="background-color: navy; border-color: navy; color: white;" id="loginBtn"><span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> Đăng nhập</button>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                    <form id="registerForm">
-                      <div class="mb-3">
-                        <label for="registerUsername" class="form-label">Tên đăng nhập</label>
-                        <input type="text" class="form-control" id="registerUsername" required>
-                      </div>
-                      <div class="mb-3">
-                        <label for="registerPassword" class="form-label">Mật khẩu</label>
-                        <input type="password" class="form-control" id="registerPassword" required>
-                      </div>
-                      <div class="mb-3">
-                        <label for="registerConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
-                        <input type="password" class="form-control" id="registerConfirmPassword" required>
-                      </div>
-                      <button type="submit" class="btn w-100" style="background-color: #d4af37; border-color: #d4af37; color: white;" id="registerBtn"><span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> Đăng ký</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         `;
     }
 }
