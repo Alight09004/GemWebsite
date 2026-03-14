@@ -1,20 +1,13 @@
 const gemProducts = [
     {
         id: 1,
-        name: "Nhẫn Kim Cương Moissanite Aidan",
+        name: "Nhẫn bạc nữ đính kim cương Moissanite Aidan",
         price: 2181000,
         imgMain: "./assets/img/ItemTrangChu(1)/spnb2.jpg",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb2-2.jpg.webp",
         category: "KimCuong"
     },
-    {
-        id: 2,
-        name: "Mặt Dây Chuyền Sapphire Xanh",
-        price: 5500000,
-        imgMain: "./assets/img/Sapphire1.jpg",
-        imgHover: "./assets/img/Sapphire1-hover.jpg",
-        category: "Sapphire"
-    },
+
     {
         id: 3,
         name: "Bông tai Vàng trắng 41,6% (10K) đính đá",
@@ -83,22 +76,25 @@ const gemProducts = [
 ];
 
 
+const categoryNames = { 'All': 'Tất cả sản phẩm', 'KimCuong': 'Kim cương', 'VangTrang': 'Vàng trắng', 'Vang18K': 'Vàng 18K', 'Sapphire': 'Sapphire', 'Ruby': 'Ruby', 'Emerald': 'Emerald', 'Topaz': 'Topaz' };
+
 function renderProducts(data) {
     const container = document.getElementById('product-display-grid');
+    if (!container) return;
     container.innerHTML = data.map(product => `
-        <div class="product-card-v2">
-            <div class="product-img-box">
-                <img src="${product.imgMain}" class="img-main" />
-                <img src="${product.imgHover}" class="img-hover"/>
-            </div>
-            <div class="product-info text-center">
-                <h3 class="p-name">${product.name}</h3>
-                <p class="p-price">${product.price.toLocaleString()}đ</p>
-                <div class="p-buttons">
-                    <button class="btn-add-cart" onclick="addToCart('${product.name}', ${product.price}, '${product.imgMain}')">
-                        <i class="fas fa-cart-plus"></i>
-                    </button>
-                    <a href="detail.html?id=${product.id}" class="btn-buy-now">CHI TIẾT</a>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="product-card-v2">
+                <div class="product-img-box">
+                    <img src="${product.imgMain}" class="img-main" />
+                    <img src="${product.imgHover}" class="img-hover"/>
+                </div>
+                <div class="product-info">
+                    <h3 class="p-name">${product.name}</h3>
+                    <p class="p-price">${product.price.toLocaleString()}đ</p>
+                    <div class="p-buttons">
+                        <button class="btn-add-cart" onclick="addToCart('${product.name}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
+                        <a href="detail.html?id=${product.id}" class="btn-buy-now">MUA NGAY</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -40,13 +40,13 @@
                 <div class="sidebar-filter shadow-sm">
                     <h5 class="filter-title"><i class="fas fa-th-list me-2"></i> DANH MỤC</h5>
                     <ul class="list-unstyled category-list">
-                        <li><a href="#" onclick="filterCat('KimCuong')">Kim cương</a></li>
-                        <li><a href="#" onclick="filterCat('Sapphire')">Sapphire</a></li>
-                        <li><a href="#" onclick="filterCat('Ruby')">Ruby</a></li>
-                        <li><a href="#" onclick="filterCat('Emerald')">Emerald</a></li>
-                        <li><a href="#" onclick="filterCat('Topaz')">Topaz</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('KimCuong')">Kim cương</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('Sapphire')">Sapphire</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('Ruby')">Ruby</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('Emerald')">Emerald</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('Topaz')">Topaz</a></li>
                         <hr>
-                        <li><a href="#" onclick="renderProducts(gemProducts)">Tất cả sản phẩm</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('All')">Tất cả sản phẩm</a></li>
                     </ul>
                 </div>
             </aside>
@@ -55,7 +55,7 @@
                 <div class="sort-bar d-flex align-items-center justify-content-between mb-4 shadow-sm p-3 bg-white">
                     <div class="d-flex align-items-center">
                         <span class="me-3 fw-bold">Sắp xếp theo:</span>
-                        <button class="btn btn-sort active">Phổ biến</button>
+                        <button class="btn btn-sort">Phổ biến</button>
                         <button class="btn btn-sort">Mới nhất</button>
                         <button class="btn btn-sort">Bán chạy</button>
                     </div>
@@ -75,6 +75,8 @@
 
     <app-footer></app-footer>
     <app-globals></app-globals>
+    <script src="./assets/js/cart.js"></script>
+    <script src="./assets/js/products.js"></script>
     <script src="./assets/js/app.js"></script>
 
 </body>
