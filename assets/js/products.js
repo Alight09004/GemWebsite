@@ -7,13 +7,20 @@ const gemProducts = [
         imgHover: "./assets/img/ItemTrangChu(1)/spnb2-2.jpg.webp",
         category: "KimCuong"
     },
-
+    {
+        id: 2,
+        name: "Dây chuyền bạc nữ đính đá CZ cá tiên",
+        price: 1824000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb1.jpg",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb1-2.jpg.webp",
+        category: "Bac"
+    },
     {
         id: 3,
         name: "Bông tai Vàng trắng 41,6% (10K) đính đá",
         price: 13070000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gbxmxmw060874-bong-tai-vang-10k-dinh-da-ecz-pnj-1.png",
-        imgHover: "#",
+        imgHover: "./assets/img/ItemTrungBaySP/id3-hover.jpg",
         category: "VangTrang"
     },
     {
@@ -21,7 +28,7 @@ const gemProducts = [
         name: "Lắc tay Vàng 58,5% (14K)",
         price: 15370000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gl0000y060888-lac-tay-vang-14k-pnj-1.png",
-        imgHover: "#",
+        imgHover: "./assets/img/ItemTrungBaySP/id4-hover.jpg",
         category: "Vang18K"
     },
     {
@@ -29,7 +36,7 @@ const gemProducts = [
         name: "Lắc tay Vàng trắng Ý 75% (18K)",
         price: 15892000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gl0000w001534-lac-tay-vang-trang-y-18k-pnj-1.png",
-        imgHover: "#",
+        imgHover: "./assets/img/ItemTrungBaySP/id5-hover.jpg",
         category: "VangTrang"
     },
     {
@@ -37,23 +44,23 @@ const gemProducts = [
         name: "Bông tai Kim cương Vàng trắng 58,5% (14K)",
         price: 46200000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gbdd00w060198-bong-tai-kim-cuong-vang-trang-14k-pnj-1.png",
-        imgHover: "#",
-        category: "VangTrang"
+        imgHover: "./assets/img/ItemTrungBaySP/id6-hover.jpg",
+        category: "KimCuong"
     },
     {
         id: 7,
         name: "Nhẫn Kim cương Vàng trắng 58,5% (14K)",
         price: 34620000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gndd00w060464-nhan-kim-cuong-vang-trang-14k-pnj-1.png",
-        imgHover: "#",
-        category: "VangTrang"
+        imgHover: "./assets/img/ItemTrungBaySP/id7-hover.jpg",
+        category: "KimCuong"
     },
     {
         id: 8,
         name: "Mặt dây chuyền Vàng trắng 58,5% (14K) đính đá Sapphire",
         price: 8740000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gmsp00w000028-mat-day-chuyen-vang-14k-dinh-da-sapphire-pnj-1.png",
-        imgHover: "#",
+        imgHover: "./assets/img/ItemTrungBaySP/id8-hover.jpg",
         category: "Sapphire"
     },
     {
@@ -61,7 +68,7 @@ const gemProducts = [
         name: "Mặt dây chuyền Vàng 75% (18K) đính Ngọc trai Southsea",
         price: 24610000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gmpsddc060001-mat-day-chuyen-vang-dinh-ngoc-trai-southsea-pnj-1.png",
-        imgHover: "#",
+        imgHover: "./assets/img/ItemTrungBaySP/id9-hover.jpg",
         category: "Vang18K"
     },
     {
@@ -69,9 +76,57 @@ const gemProducts = [
         name: "Nhẫn Vàng trắng 58,5% (14K) đính đá",
         price: 10551000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gnxmxmw005643-nhan-vang-14k-dinh-da-ecz-pnj-1.png",
-        imgHover: "#",
+        imgHover: "./assets/img/ItemTrungBaySP/id10-hover.jpg",
         category: "VangTrang"
-    }
+    },
+    {
+        id: 11,
+        name: "Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá",
+        price: 7615000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb3.jpg",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb3-2.jpg.webp",
+        category: "Bac"
+    },
+    {
+        id: 12,
+        name: "Bông tai bạc Ý S925 nữ mạ bạch kim đính đá CZ hình trái tim",
+        price: 1619000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb4.jpeg",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb4-2.jpg.webp",
+        category: "Bac"
+    },
+    {
+        id: 13,
+        name: "Lắc tay bạc nữ đính pha lê Swarovski trái tim của biển",
+        price: 1967000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb5.jpg",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb5-2.jpg",
+        category: "Bac"
+    },
+    {
+        id: 14,
+        name: "Nhẫn nam Vàng trắng 41,6% (10K) đính đá ECZ MANCODE by PNJ",
+        price: 20754000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb6.png",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb6-2.jpg",
+        category: "VangTrang"
+    },
+    {
+        id: 15,
+        name: "Nhẫn Vàng 75% (18K) PNJ",
+        price: 4656000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb7.png",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb7-2.jpg",
+        category: "Vang18K"
+    },
+    {
+        id: 16,
+        name: "Lắc tay Bạc PNJSilver",
+        price: 1255000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb8.png",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb8-2.jpg",
+        category: "Bac"
+    },
     
 ];
 
