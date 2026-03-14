@@ -140,3 +140,7 @@ $(document).ready(function() {
         initProductSlider(type);
     });
 });
+
+
+
+// Bộ sưu tập mới

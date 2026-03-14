@@ -31,16 +31,16 @@ function saveData() {
 }
 
 function addUser() {
-  let name = document.getElementById("username").value;
+  let username = document.getElementById("username").value;
   let email = document.getElementById("email").value;
   let role = document.getElementById("role").value;
   let password = document.getElementById("password").value;
 
-  if (name == "" || email == "") return;
+  if (username == "" || email == "") return;
 
   users.push({
     id: Date.now(),
-    name: name,
+    username: username,
     password: password,
     email: email,
     role: role || "user"

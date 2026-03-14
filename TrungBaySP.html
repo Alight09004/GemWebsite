@@ -7,14 +7,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./assets/css/TrungBaySP.css">    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibe&family=Allura&family=Parisienne&family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibe&family=Allura&family=Parisienne&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Nav bar -->
@@ -252,27 +252,29 @@
         <span class="ornament-line"></span>
       </div>
 
-      <div class="category-grid-simple">
-        <a href="./DaQuy.html" class="cat-card">
-          <img src="/assets/img/ItemTrangChu(1)/1.png" alt="Đá quý" />
-          <span>Đá quý</span>
-        </a>
-        <a href="./VangBac.html" class="cat-card">
-          <img src="/assets/img/ItemTrangChu(1)/2.png" alt="Vàng bạc" />
-          <span>Vàng bạc</span>
-        </a>
-        <a href="./TrangSuc.html" class="cat-card">
-          <img src="/assets/img/ItemTrangChu(1)/3.png" alt="Trang sức" />
-          <span>Trang sức</span>
-        </a>
-        <a href="./PhongThuy.html" class="cat-card">
-          <img src="/assets/img/ItemTrangChu(1)/4.png" alt="Phong thủy" />
-          <span>Phong thủy</span>
-        </a>
-        <a href="./PhuKien.html" class="cat-card">
-          <img src="/assets/img/ItemTrangChu(1)/5.png" alt="Phụ kiện" />
-          <span>Phụ kiện</span>
-        </a>
+      <div class="container">
+        <div class="category-grid-simple">
+            <a href="./DaQuy.html" class="cat-card">
+            <img src="/assets/img/ItemTrangChu(1)/1.png" alt="Đá quý" />
+            <span>Đá quý</span>
+            </a>
+            <a href="./VangBac.html" class="cat-card">
+            <img src="/assets/img/ItemTrangChu(1)/2.png" alt="Vàng bạc" />
+            <span>Vàng bạc</span>
+            </a>
+            <a href="./TrangSuc.html" class="cat-card">
+            <img src="/assets/img/ItemTrangChu(1)/3.png" alt="Trang sức" />
+            <span>Trang sức</span>
+            </a>
+            <a href="./PhongThuy.html" class="cat-card">
+            <img src="/assets/img/ItemTrangChu(1)/4.png" alt="Phong thủy" />
+            <span>Phong thủy</span>
+            </a>
+            <a href="./PhuKien.html" class="cat-card">
+            <img src="/assets/img/ItemTrangChu(1)/5.png" alt="Phụ kiện" />
+            <span>Phụ kiện</span>
+            </a>
+        </div>
       </div>
 
     <!-- SP mới & bán chạy -->
@@ -295,6 +297,53 @@
             </div>
         </div>
     </section>
+
+    <section class="container-custom">
+        <div class="premium-header-box">
+            <div class="premium-line"></div>
+            <div class="premium-title-wrapper">
+                <span class="premium-icon">✦</span>
+                <h2 class="premium-title">Bộ sưu tập mới</h2>
+                <span class="premium-icon">✦</span>
+            </div>
+            <div class="premium-line"></div>
+        </div>
+    </section>
+<!-- Dòng hàng nổi bật -->
+    <section class="dynamic-tabs-section py-5">
+        <div class="divider-header">
+            <span class="ornament-line"></span>
+            <h2 class="title-main">Dòng hàng nổi bật</h2>
+            <span class="ornament-line"></span>
+        </div>
+        <div class="container mt-4">
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-5 d-flex justify-content-center">
+                    <div class="tab-image-container shadow-lg rounded-4 overflow-hidden position-relative" style="width: 397px; height: 397px;">
+                        <img id="dynamic-tab-img" src="./assets/img/ItemTrungBaySP/dhnb-trang-suc-kim-cuong.jpg" style="width: 100%; height: 100%; object-fit: cover;" class="img-fluid" alt="Trang Sức Kim Cương">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="tab-buttons-grid mb-4">
+                        <button class="btn btn-tab-item active" onclick="switchContent('kim-cuong')">Trang Sức Kim Cương</button>
+                        <button class="btn btn-tab-item" onclick="switchContent('ngoc-trai')">Trang Sức Ngọc Trai</button>
+                        <button class="btn btn-tab-item" onclick="switchContent('day-chuyen')">Trang Sức Dây Chuyền</button>
+                        <button class="btn btn-tab-item" onclick="switchContent('da-mau')">Trang Sức Đá Màu</button>
+                        <button class="btn btn-tab-item" onclick="switchContent('bac')">Trang Sức Bạc</button>
+                        <button class="btn btn-tab-item" onclick="switchContent('y')">Trang Sức Ý</button>
+                        <button class="btn btn-tab-item" onclick="switchContent('vo')">Trang Sức Vỏ</button>
+                    </div>
+
+                    <div class="tab-description-box p-4 rounded-3 border-start border-gold border-4">
+                        <h3 id="dynamic-tab-title" class="fw-bold mb-3 text-uppercase" style="color: #001f3f;">Trang Sức Kim Cương</h3>
+                        <p id="dynamic-tab-desc" style="text-align: justify; line-height: 1.8; font-family: 'Playfair Display', serif; font-weight: normal; font-style: italic; color: #001f3f; font-size: 0.9rem;">Xuân rạng rỡ sắc xuân mới hàng mẫu kim cương mới khắc họa tinh hoa mùa mới qua đường nét hoa – lá mềm mại. Với đa dạng mẫu mã và khung giá từ tối giản đến cầu kỳ, mỗi sản phẩm đều được chế tác tỉ mỉ, mang đến trải nghiệm đẳng cấp khách hàng yêu thích sự sang trọng ngày đầu năm. Thần Tài – Đón lộc tài với thiết kế mới dòng sản phẩm kim cương cho ngày Thần Tài nổi bật với họa tiết kim tiền tròn đầy, sắc sảo. Từng sản phẩm được chế tác tỉ mỉ giúp khách hàng dễ dàng sở hữu món trang sức đẳng cấp để khởi đầu năm mới thuận lợi, vạn sự như ý.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <footer>
         <div class="footer-bottom">
@@ -304,7 +353,7 @@
         </p>
       </div>
     </footer>
-
+    <script src="./assets/js/products.js"></script>
 </body>
 
 </html>
