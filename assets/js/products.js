@@ -82,21 +82,19 @@ function renderProducts(data) {
     const container = document.getElementById('product-display-grid');
     if (!container) return;
     container.innerHTML = data.map(product => `
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="product-card-v2">
-                <div class="product-img-box">
-                    <img src="${product.imgMain}" class="img-main" />
-                    <img src="${product.imgHover}" class="img-hover"/>
-                </div>
-                <div class="product-info">
-                    <h3 class="p-name">${product.name}</h3>
-                    <p class="p-price">${product.price.toLocaleString()}đ</p>
-                    <div class="p-buttons">
-                        <button class="btn-add-cart" onclick="addToCart('${product.name}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
-                        <a href="detail.html?id=${product.id}" class="btn-buy-now">MUA NGAY</a>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="detail.html?id=${product.id}" class="product-card-v2-link">
+                <div class="product-card-v2">
+                    <div class="product-img-box">
+                        <img src="${product.imgMain}" class="img-main" />
+                        <img src="${product.imgHover}" class="img-hover"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="p-name">${product.name}</h3>
+                        <p class="p-price">${product.price.toLocaleString()}đ</p>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     `).join('');
 }

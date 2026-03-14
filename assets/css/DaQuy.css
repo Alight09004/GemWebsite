@@ -376,6 +376,14 @@ nav-link.dropdown-toggle {
     color: #fff;
 }
 
+/* Link wrapper for product card */
+.product-card-v2-link, .product-card-v2-link:hover {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
 /* Product Card V2 */
 .product-card-v2 {
     background: #fff;
@@ -386,7 +394,7 @@ nav-link.dropdown-toggle {
     flex-direction: column;
     height: 100%;
 }
-.product-card-v2:hover {
+.product-card-v2-link:hover .product-card-v2 {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 31, 63, 0.15);
 }
@@ -409,26 +417,26 @@ nav-link.dropdown-toggle {
     left: 0;
     opacity: 0; 
 }
-.product-card-v2:hover .img-main {
+.product-card-v2-link:hover .img-main {
     opacity: 0;
 }
-.product-card-v2:hover .img-hover {
+.product-card-v2-link:hover .img-hover {
     opacity: 1;
     transform: scale(1.05);
 }
 .product-info {
     display: flex;
     flex-direction: column;         
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     flex-grow: 1;
 }
 .p-name {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #333;
-    min-height: 2.8rem; 
+    min-height: 2.4rem; 
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -438,40 +446,6 @@ nav-link.dropdown-toggle {
 .p-price {
     color: #D4AF37;
     font-weight: bold;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-.p-buttons {
-    display: flex;
-    flex-direction: column; 
-    gap: 8px;
-    width: 100%;
-    margin-top: auto;
-}
-.btn-add-cart, .btn-buy-now {
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: bold;
-    padding: 10px;
-    transition: 0.3s;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.btn-add-cart {
-    border: 1px solid #001f3f;
-    color: #001f3f;
-    background: transparent;
-}
-.btn-buy-now {
-    background: #001f3f;
-    color: #fff;
-    border: 1px solid #001f3f;
-}
-.btn-add-cart:hover {
-    background: #001f3f;
-    color: #fff;
-}
-.btn-buy-now:hover {
-    background: #D4AF37; 
-    border-color: #D4AF37;
+    margin-bottom: 0;
+    font-size: 1rem;
 }
