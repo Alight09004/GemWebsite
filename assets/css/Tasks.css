@@ -3,19 +3,23 @@ background:#f5f5f5;
 }
 
 .sidebar{
-background:#555;
+background: #001f3f;
 height:100vh;
 color:white;
 }
 
 .logo{
-color:#D4AF37;
-margin-bottom:20px;
+color:#ffffff;
+margin-bottom:30px;
+margin-top: 30px;
+text-align: center;
+font-weight: bold;
 }
 
 .nav-link{
 color:white;
 cursor:pointer;
+font-size: 22px;
 }
 
 .nav-link:hover{
@@ -34,4 +38,34 @@ color:white;
 
 .stat-card{
 border-left:5px solid #D4AF37;
+}
+
+th{
+    font-size: 20px;
+}
+
+td{
+    font-size: 18px;
+}
+
+.pagination button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#b8962e;
+color:white;
+}
+
+.pagination button:hover{
+background:#D4AF37;
+color:white;
+}
+
+.btn {
+    background-color: #b8962e;
+}
+
+.btn:hover {
+    background-color: #D4AF37;
+    color: white;
 }

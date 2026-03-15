@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (!currentUser || currentUser.role !== "admin") {
-        alert("Bạn không có quyền truy cập trang này!");
-        window.location.href = "index.html";
-    }
-    
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (!currentUser || currentUser.role !== "admin") {
+    alert("Bạn không có quyền truy cập trang này!");
+    window.location.href = "index.html";
+  }
 }); //huỷ đăng nhập khi phát hiện sai quyền truy cập
 
 function updateStats() {
@@ -39,11 +38,11 @@ function addUser() {
   if (username == "" || email == "") return;
 
   users.push({
-    id: Date.now(),
+    id: "user_" + Date.now(),
     username: username,
-    password: password,
     email: email,
-    role: role || "user"
+    password: password,
+    role: role || "user",
   });
 
   saveData();
@@ -51,17 +50,29 @@ function addUser() {
   renderUsers();
 }
 
-function renderUsers() {
-  let table = "";
+let currentPage = 1;
+let rowsPerPage = 10;
+let countUser = 1;
 
-  users.forEach((u) => {
-    table += `
+function renderUsers() {
+  const table = document.getElementById("userTable");
+  table.innerHTML = "";
+
+  let start = (currentPage - 1) * rowsPerPage;
+  let end = start + rowsPerPage;
+
+  let pageData = users.slice(start, end);
+
+  pageData.forEach((u, index) => {
+    let stt = start + index + 1;
+    table.innerHTML += `
 <tr>
+<td>${stt}</td>
 <td>${u.id}</td>
-<td>${u.name}</td>
-<td>${u.password}</td>
+<td>${u.username}</td>
 <td>${u.email}</td>
-<td>${u.role}</td>  
+<td>${u.password}</td>
+<td>${u.role}</td>
 <td>
 <button class="btn btn-danger btn-sm" onclick="deleteUser(${u.id})">Xóa</button>
 </td>
@@ -69,16 +80,31 @@ function renderUsers() {
 `;
   });
 
-  document.getElementById("userTable").innerHTML = table;
-
+  renderPagination();
   updateStats();
+}
+
+function renderPagination() {
+  const pageCount = Math.ceil(users.length / rowsPerPage);
+  const pagination = document.getElementById("pagination");
+
+  pagination.innerHTML = "";
+
+  for (let i = 1; i <= pageCount; i++) {
+    pagination.innerHTML += `
+        <button onclick="changePage(${i})">${i}</button>
+        `;
+  }
+}
+
+function changePage(page) {
+  currentPage = page;
+  renderUsers();
 }
 
 function deleteUser(id) {
   users = users.filter((u) => u.id != id);
-
   saveData();
-
   renderUsers();
 }
 
@@ -142,10 +168,9 @@ function saveSetting() {
   setting.phoneNumber = document.getElementById("phoneNumber").value;
   setting.address = document.getElementById("address").value;
 
-
   localStorage.setItem("setting", JSON.stringify(setting));
   alert("Cài đặt đã được lưu!");
-};
+}
 
 function loadSetting() {
   document.getElementById("siteName").value = setting.siteName;
@@ -154,6 +179,27 @@ function loadSetting() {
   document.getElementById("address").value = setting.address;
 }
 
+function changeAdminPassword() {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  let newPassword = document.getElementById("newPassword").value;
+  let confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (newPassword !== confirmPassword) {
+    alert("Mật khẩu xác nhận không khớp!");
+    return;
+  }
+
+  // Update the admin user's password
+  users = users.map((user) => {
+    if (user.role === currentUser.role) {
+      return { ...user, password: newPassword };
+    }
+    return user;
+  });
+
+  saveData();
+  alert("Mật khẩu đã được đổi!");
+}
 
 renderUsers();
 renderOrders();
