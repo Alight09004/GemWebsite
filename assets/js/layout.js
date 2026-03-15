@@ -36,21 +36,21 @@ class AppHeader extends HTMLElement {
                           <div class="col-megamenu col-md-2">
                             <a href="./VangBac.html"><h6 class="title"><i class="fas fa-coins me-2"></i>VÀNG BẠC</h6></a>
                             <ul class="list-unstyled">
-                              <li><a href="#">Vàng 24K</a></li>
-                              <li><a href="#">Vàng Ý 18K</a></li>
-                              <li><a href="#">Bạc S925</a></li>
-                              <li><a href="#">Vàng trắng</a></li>
-                              <li><a href="#">Vàng hồng</a></li>
+                              <li><a href="VangBac.html?category=Vang24K">Vàng 24K</a></li>
+                              <li><a href="VangBac.html?category=Vang18K">Vàng Ý 18K</a></li>
+                              <li><a href="VangBac.html?category=Bac">Bạc S925</a></li>
+                              <li><a href="VangBac.html?category=VangTrang">Vàng trắng</a></li>
+                              <li><a href="VangBac.html?category=VangHong">Vàng hồng</a></li>
                             </ul>
                           </div>
                           <div class="col-megamenu col-md-2">
                             <a href="./TrangSuc.html"><h6 class="title"><i class="fas fa-ring me-2"></i>TRANG SỨC</h6></a>
                             <ul class="list-unstyled">
-                              <li><a href="#">Nhẫn đơn</a></li>
-                              <li><a href="#">Dây chuyền</a></li>
-                              <li><a href="#">Bông tai</a></li>
-                              <li><a href="#">Lắc tay</a></li>
-                              <li><a href="#">Nhẫn cưới</a></li>
+                              <li><a href="TrangSuc.html?category=NhanDon">Nhẫn đơn</a></li>
+                              <li><a href="TrangSuc.html?category=DayChuyen">Dây chuyền</a></li>
+                              <li><a href="TrangSuc.html?category=BongTai">Bông tai</a></li>
+                              <li><a href="TrangSuc.html?category=LacTay">Lắc tay</a></li>
+                              <li><a href="TrangSuc.html?category=NhanCuoi">Nhẫn cưới</a></li>
                             </ul>
                           </div>
                           <div class="col-megamenu col-md-2">

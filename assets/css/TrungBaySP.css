@@ -568,9 +568,9 @@ nav-link.dropdown-toggle {
     font-weight: bold;
 }
 
-.product-tabs-section .nav-pills .nav-link.active {
-    background-color: #001f3f !important; /* Màu Navy khi active */
-    color: #D4AF37 !important; /* Chữ vàng Jade Chamber */
+.product-tabs-section .nav-pills .nav-link.active{
+    background-color: #001f3f !important; 
+    color: #D4AF37 !important; 
     border-color: #001f3f;
 }
 
@@ -844,7 +844,7 @@ nav-link.dropdown-toggle {
     transition: all 0.3s;
 }
 
-/* Hiệu ứng Active màu Jade Chamber */
+/* Hiệu ứng Active */
 .btn-tab-item.active, .btn-tab-item.active:hover {
     background-color: #001f3f !important;
     color: #D4AF37 !important;
@@ -852,10 +852,10 @@ nav-link.dropdown-toggle {
     box-shadow: 0 4px 10px rgba(0, 31, 63, 0.2);
 }
 
-/* Bỏ hiệu ứng hover ở nút bình thường */
+/* Hiệu ứng hover ở nút bình thường */
 .btn-tab-item:hover {
     background-color: #e3f2fd !important;
-    color: #001f3f !important;
+    color: #D4AF37 !important;
     box-shadow: none;
 }
 
