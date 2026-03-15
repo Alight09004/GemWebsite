@@ -1,32 +1,160 @@
-function renderGems(data = null) {
-    const list = data || getGems();
-    const container = document.getElementById('gemContainer');
-    container.innerHTML = '';
+document.addEventListener("DOMContentLoaded", function () {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser || currentUser.role !== "admin") {
+        alert("Bạn không có quyền truy cập trang này!");
+        window.location.href = "index.html";
+    }
+    
+}); //huỷ đăng nhập khi phát hiện sai quyền truy cập
 
-    list.forEach(item => {
-        container.innerHTML += `
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="task-card priority-${item.priority} ${item.status === 'Done' ? 'status-done' : ''}">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <small class="text-muted">#${item.id.toString().slice(-4)}</small>
-                        <span class="badge ${item.status === 'Done' ? 'bg-success' : 'bg-warning'} text-dark">
-                            ${item.status === 'Done' ? 'Hết hàng' : 'Còn hàng'}
-                        </span>
-                    </div>
-                    <h3 class="mt-2" style="font-family: 'Playfair Display', serif;">${item.title}</h3>
-                    <p class="small text-muted mb-3">${item.desc}</p>
-                    <div class="border-top pt-3 d-flex justify-content-between align-items-center">
-                        <div>
-                            <p class="mb-0 small fw-bold text-gold">Hạn: ${item.deadline}</p>
-                        </div>
-                        <div>
-                            <button onclick="toggleDone(${item.id})" class="btn-custom btn-dark" style="padding: 5px 10px; font-size: 0.7rem;">Trạng thái</button>
-                            <button onclick="openEditModal(${item.id})" class="btn-custom btn-gold" style="padding: 5px 10px; font-size: 0.7rem;">Sửa</button>
-                            <button onclick="deleteGem(${item.id})" class="btn-custom btn-dark" style="background: #dc3545; padding: 5px 10px; font-size: 0.7rem;">Xóa</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
+function updateStats() {
+  document.getElementById("totalUsers").innerText = users.length;
+  document.getElementById("totalOrders").innerText = orders.length;
 }
+
+function showPage(page) {
+  document.querySelectorAll(".page").forEach((p) => {
+    p.classList.add("d-none");
+  });
+
+  document.getElementById(page).classList.remove("d-none");
+
+  updateStats();
+}
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+function saveData() {
+  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("orders", JSON.stringify(orders));
+}
+
+function addUser() {
+  let username = document.getElementById("username").value;
+  let email = document.getElementById("email").value;
+  let role = document.getElementById("role").value;
+  let password = document.getElementById("password").value;
+
+  if (username == "" || email == "") return;
+
+  users.push({
+    id: Date.now(),
+    username: username,
+    password: password,
+    email: email,
+    role: role || "user"
+  });
+
+  saveData();
+
+  renderUsers();
+}
+
+function renderUsers() {
+  let table = "";
+
+  users.forEach((u) => {
+    table += `
+<tr>
+<td>${u.id}</td>
+<td>${u.name}</td>
+<td>${u.password}</td>
+<td>${u.email}</td>
+<td>${u.role}</td>  
+<td>
+<button class="btn btn-danger btn-sm" onclick="deleteUser(${u.id})">Xóa</button>
+</td>
+</tr>
+`;
+  });
+
+  document.getElementById("userTable").innerHTML = table;
+
+  updateStats();
+}
+
+function deleteUser(id) {
+  users = users.filter((u) => u.id != id);
+
+  saveData();
+
+  renderUsers();
+}
+
+function addOrder() {
+  let product = document.getElementById("product").value;
+  let price = document.getElementById("price").value;
+
+  if (product == "" || price == "") return;
+
+  orders.push({
+    id: Date.now(),
+    product: product,
+    price: price,
+  });
+
+  saveData();
+
+  renderOrders();
+}
+
+function renderOrders() {
+  let table = "";
+
+  orders.forEach((o) => {
+    table += `
+<tr>
+<td>${o.id}</td>
+<td>${o.product}</td>
+<td>${o.price}</td>
+<td>
+<button class="btn btn-danger btn-sm" onclick="deleteOrder(${o.id})">Xóa</button>
+</td>
+</tr>
+`;
+  });
+
+  document.getElementById("orderTable").innerHTML = table;
+
+  updateStats();
+}
+
+function deleteOrder(id) {
+  orders = orders.filter((o) => o.id != id);
+
+  saveData();
+
+  renderOrders();
+}
+
+//thông tin cài đặt
+let setting = JSON.parse(localStorage.getItem("setting")) || {
+  siteName: "JADE CHAMBER",
+  contactEmail: "contact@jadechamber.com",
+  phoneNumber: "0123456789",
+  address: "123 Main St, City, Country",
+};
+
+function saveSetting() {
+  setting.siteName = document.getElementById("siteName").value;
+  setting.contactEmail = document.getElementById("contactEmail").value;
+  setting.phoneNumber = document.getElementById("phoneNumber").value;
+  setting.address = document.getElementById("address").value;
+
+
+  localStorage.setItem("setting", JSON.stringify(setting));
+  alert("Cài đặt đã được lưu!");
+};
+
+function loadSetting() {
+  document.getElementById("siteName").value = setting.siteName;
+  document.getElementById("contactEmail").value = setting.contactEmail;
+  document.getElementById("phoneNumber").value = setting.phoneNumber;
+  document.getElementById("address").value = setting.address;
+}
+
+
+renderUsers();
+renderOrders();
+updateStats();
