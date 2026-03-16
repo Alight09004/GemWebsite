@@ -568,9 +568,9 @@ html {
     font-weight: bold;
 }
 
-.product-tabs-section .nav-pills .nav-link.active {
-    background-color: #001f3f !important; /* Màu Navy khi active */
-    color: #D4AF37 !important; /* Chữ vàng Jade Chamber */
+.product-tabs-section .nav-pills .nav-link.active{
+    background-color: #001f3f !important; 
+    color: #D4AF37 !important; 
     border-color: #001f3f;
 }
 
@@ -645,4 +645,118 @@ html {
 
 .slick-prev:hover:before, .slick-next:hover:before {
     color: #D4AF37 !important; /* Đổi icon sang vàng khi di chuột vào mũi tên */
+}
+
+
+
+
+
+
+/* BST mới */
+.premium-header-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 60px 0 40px 0;
+    width: 100%;
+    margin-top: -25px;
+}
+
+.premium-line {
+    height: 2px;
+    flex: 1;
+    background: linear-gradient(to right, transparent, #D4AF37, #D4AF37, transparent);
+    opacity: 0.6;
+}
+
+.premium-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 30px;
+    border: 2px solid rgba(212, 175, 55, 0.3); 
+    position: relative;
+}
+
+.premium-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #001f3f;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.premium-icon {
+    color: #D4AF37;
+    font-size: 1.2rem;
+    animation: gold-glow 2s infinite alternate;
+}
+
+@keyframes gold-glow {
+    from { opacity: 0.5; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+@media (max-width: 768px) {
+    .premium-title { font-size: 1.5rem; letter-spacing: 2px; }
+    .premium-line { display: none; } 
+}
+
+
+/* Danh mục sản phẩm */
+/* Container ảnh */
+.tab-image-container img {
+    transition: 0s ease-in-out;
+    object-fit: cover;
+}
+
+/* Hệ thống Nút Tab giống ảnh mẫu */
+.tab-buttons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-tab-item {
+    background-color: #e3f2fd;
+    border: 1px solid #e3f2fd;
+    color: #001f3f;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+/* Hiệu ứng Active */
+.btn-tab-item.active, .btn-tab-item.active:hover {
+    background-color: #001f3f !important;
+    color: #D4AF37 !important;
+    border-color: #001f3f;
+    box-shadow: 0 4px 10px rgba(0, 31, 63, 0.2);
+}
+
+/* Hiệu ứng hover ở nút bình thường */
+.btn-tab-item:hover {
+    background-color: #e3f2fd !important;
+    color: #D4AF37 !important;
+    box-shadow: none;
+}
+
+/* Khung nội dung */
+.border-gold {
+    border-color: var(--gold-color) !important;
+}
+
+.tab-description-box {
+    background-color: #fff;
+    min-height: 200px;
+}
+
+.italic {
+    font-style: italic;
+    line-height: 1.8;
 }

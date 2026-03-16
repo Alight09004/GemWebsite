@@ -34,17 +34,48 @@
 
     <div class="container-fluid px-lg-5 my-5">
         <div class="row">
-            <main class="col-12">
-                <div class="text-center py-5">
-                    <h2 class="mb-3">Trang sức</h2>
-                    <p class="text-muted">Danh mục trang sức đang được phát triển. Vui lòng quay lại sau!</p>
+            <aside class="col-lg-3">
+                <div class="sidebar-filter shadow-sm">
+                    <h5 class="filter-title"><i class="fas fa-th-list me-2"></i> DANH MỤC</h5>
+                    <ul class="list-unstyled category-list">
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('NhanDon')">Nhẫn đơn</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('DayChuyen')">Dây chuyền</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('BongTai')">Bông tai</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('LacTay')">Lắc tay</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('NhanCuoi')">Nhẫn cưới</a></li>
+                        <hr>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('All')">Tất cả sản phẩm</a></li>
+                    </ul>
                 </div>
+            </aside>
+
+            <main class="col-lg-9">
+                <div class="sort-bar d-flex align-items-center justify-content-between mb-4 shadow-sm p-3 bg-white">
+                    <div class="d-flex align-items-center">
+                        <span class="me-3 fw-bold">Sắp xếp theo:</span>
+                        <button class="btn btn-sort">Phổ biến</button>
+                        <button class="btn btn-sort">Mới nhất</button>
+                        <button class="btn btn-sort">Bán chạy</button>
+                    </div>
+                    <div class="price-filter">
+                        <select class="form-select form-select-sm" id="price-sort-select" onchange="applySortAndRender()">
+                            <option value="default">Sắp xếp: Mặc định</option>
+                            <option value="asc">Giá: Thấp đến Cao</option>
+                            <option value="desc">Giá: Cao đến Thấp</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="product-display-grid">
+                    </div>
             </main>
         </div>
     </div>
 
     <app-footer></app-footer>
     <app-globals></app-globals>
+    <script src="./assets/js/cart.js"></script>
+    <script src="./assets/js/products.js"></script>
     <script src="./assets/js/app.js"></script>
 </body>
 </html>

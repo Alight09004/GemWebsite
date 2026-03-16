@@ -13,6 +13,10 @@
 
     <link rel="stylesheet" href="./assets/css/Trangchu.css" />
     <link rel="stylesheet" href="./assets/css/Tasks.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -20,36 +24,57 @@
       <div class="row">
         <!-- SIDEBAR -->
 
-        <div class="col-md-2 sidebar p-3">
+        <div
+          class="col-md-2 sidebar p-3 d-flex flex-column vh-100"
+          style="width: 280px"
+        >
           <h4 class="logo">ADMIN</h4>
 
+          <hr />
+          <br />
+
           <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" onclick="showPage('dashboard')"
-                >Dashboard</a
-              >
+            <li class="nav-item my-3">
+              <a class="nav-link" onclick="showPage('dashboard')">
+                <i class="fa fa-home fa-fw me-4" aria-hidden="true"></i>
+                Dashboard
+              </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" onclick="showPage('users')">Người dùng</a>
+            <li class="nav-item my-3">
+              <a class="nav-link" onclick="showPage('users')">
+                <i class="fa fa-users fa-fw me-4" aria-hidden="true"></i>
+                Người dùng
+              </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" onclick="showPage('orders')">Đơn hàng</a>
+            <li class="nav-item my-3">
+              <a class="nav-link" onclick="showPage('orders')">
+                <i
+                  class="fa fa-shopping-cart fa-fw me-4"
+                  aria-hidden="true"
+                ></i>
+                Đơn hàng
+              </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" onclick="showPage('settings')">Cài đặt</a>
+            <li class="nav-item my-3">
+              <a class="nav-link" onclick="showPage('settings')">
+                <i class="fa fa-cog fa-fw me-4" aria-hidden="true"></i>
+                Cài đặt
+              </a>
             </li>
           </ul>
 
-          <li class="nav-item">
-            <button class="btn btn-secondary" onclick="logout()">
+          <div class="mt-auto">
+            <button class="btn btn-secondary w-100" onclick="logout()">
               <i class="fas fa-sign-out-alt me-2"></i>Đăng Xuất
             </button>
-          </li>
+          </div>
+
           <script>
             function logout() {
+              if (!confirm("Bạn có chắc muốn đăng xuất?")) return;
               localStorage.removeItem("currentUser");
               window.location.href = "index.html";
             }
@@ -62,7 +87,7 @@
           <!-- DASHBOARD -->
 
           <div id="dashboard" class="page">
-            <h2>Dashboard</h2>
+            <h1><b>Dashboard</b></h1>
 
             <div class="row mt-4">
               <div class="col-md-4">
@@ -88,7 +113,7 @@
           <!-- USERS -->
 
           <div id="users" class="page d-none">
-            <h2>Quản lý người dùng</h2>
+            <h1><b>Quản lý người dùng</b></h1>
 
             <div class="row mb-3">
               <div class="col">
@@ -119,23 +144,25 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Tên</th>
-                  <th>Mật khẩu</th>
-                  <th>Email</th>
-                  <th>Vai trò</th>
+                  <th style="width: 50px">STT</th>
+                  <th style="width: 220px">ID</th>
+                  <th style="width: 310px">Tên</th>
+                  <th style="width: 250px">Mật khẩu</th>
+                  <th style="width: 450px">Email</th>
+                  <th style="width: 130px">Vai trò</th>
                   <th>Hành động</th>
                 </tr>
               </thead>
 
               <tbody id="userTable"></tbody>
             </table>
+            <div class="pagination" id="pagination"></div>
           </div>
 
           <!-- ORDERS -->
 
           <div id="orders" class="page d-none">
-            <h2>Quản lý đơn hàng</h2>
+            <h1><b>Quản lý đơn hàng</b></h1>
 
             <div class="row mb-3">
               <div class="col">
@@ -172,42 +199,114 @@
           <!-- SETTINGS -->
 
           <div id="settings" class="page d-none">
-            <h2>Cài đặt</h2>
-            <div class="mb-3">
-              <label class="form-label">Tên Website</label>
-              <input
-                type="name"
-                class="form-control"
-                id="siteName"
-                placeholder="Tên website"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="contactEmail" class="form-label">Email liên hệ</label>
-              <input
-                type="email"
-                class="form-control"
-                id="contactEmail"
-                placeholder="Email liên hệ"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="phoneNumber" class="form-label">Số điện thoại</label>
-              <input
-                type="text"
-                class="form-control"
-                id="phoneNumber"
-                placeholder="Số điện thoại"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="address" class="form-label">Địa chỉ</label>
-              <textarea class="form-control" id="address" rows="3"></textarea>
-            </div>
-            <div class="mb-3">
-              <button class="btn btn-gold" onclick="saveSetting()">
-                Lưu cài đặt
-              </button>
+            <h1><b>Cài đặt</b></h1>
+
+            <div class="row g-4">
+              <!-- FORM 1 -->
+
+              <div class="col-md-6">
+                <div class="card p-4">
+                  <div class="mb-3">
+                    <label class="form-label">Tên Website</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="siteName"
+                      placeholder="Tên website"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Email liên hệ</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="contactEmail"
+                      placeholder="Email liên hệ"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="phoneNumber"
+                      placeholder="Số điện thoại"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <textarea
+                      class="form-control"
+                      id="address"
+                      rows="3"
+                    ></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                    <button class="btn btn-gold" onclick="saveSetting()">
+                      Lưu cài đặt
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FORM 2 -->
+
+              <div class="col-md-6">
+                <div class="card p-4">
+                  <div class="mb-3">
+                    <label class="form-label">Tên người dùng admin</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="adminUsserName"
+                      placeholder="Tên người dùng admin"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Mật khẩu hiện tại</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="currentPassword"
+                      placeholder="Mật khẩu hiện tại"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Mật khẩu mới</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="newPassword"
+                      placeholder="Mật khẩu mới"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Xác nhận mật khẩu mới</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="confirmPassword"
+                      placeholder="Xác nhận mật khẩu mới"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <button
+                      class="btn btn-gold"
+                      onclick="changeAdminPassword()"
+                    >
+                      Đổi mật khẩu admin
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
