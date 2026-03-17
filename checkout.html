@@ -9,6 +9,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./assets/css/Trangchu.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap"
@@ -23,83 +24,11 @@
       type="image/x-icon"
       href="assets/img/ItemAboutUs/JadeChamber.ico"
     />
+
+    <script src="./assets/js/layout.js"></script>
   </head>
   <body class="bg-light">
-    <nav
-      class="navbar navbar-expand-lg navbar-light bg-white sticky-top custom-nav"
-    >
-      <div class="container-fluid px-lg-5">
-        <a class="navbar-brand logo" href="index.html">
-          <img
-            src="assets/img/ItemTrangChu(1)/DreamCloud (7).png"
-            alt="Logo"
-            class="logo-img"
-          />
-          JADE<span> CHAMBER</span>
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="mx-auto d-lg-flex align-items-center">
-            <ul class="navbar-nav nav-links">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Trang chủ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Sản phẩm</a>
-              </li>
-              <li class="nav-item me-lg-3">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-            </ul>
-            <form class="d-flex search-box-nav" role="search">
-              <input
-                class="form-control search-input"
-                type="search"
-                placeholder="Tìm sản phẩm..."
-              />
-              <button class="btn btn-search" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
-          </div>
-
-          <div class="nav-icons d-flex align-items-center">
-            <button
-              class="icon-link"
-              id="userIcon"
-              data-bs-toggle="modal"
-              data-bs-target="#authModal"
-              style="
-                background: none;
-                border: none;
-                color: inherit;
-                cursor: pointer;
-              "
-            >
-              <i class="fas fa-user"></i>
-            </button>
-            <button
-              class="icon-link position-relative ms-4"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#cartOffcanvas"
-              style="background: none; border: none"
-            >
-              <i class="fas fa-shopping-cart"></i>
-              <span class="badge-cart" id="cart-count">0</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <app-header></app-header>
 
     <main class="container py-5">
       <div class="text-center mb-5">
@@ -131,14 +60,56 @@
             >
           </h4>
           <ul class="list-group mb-3 shadow-sm" id="checkout-item-list"></ul>
+          <div class="card shadow-sm border-0 mb-3">
+            <div class="card-body">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="discountCode"
+                  placeholder="Nhập mã giảm giá (VD: JADE15)"
+                />
+                <button
+                  type="button"
+                  class="btn text-white fw-bold"
+                  onclick="applyDiscount()"
+                  style="background-color: #000c1d"
+                >
+                  ÁP DỤNG
+                </button>
+              </div>
+              <small id="discountMessage" class="mt-2 d-none"></small>
+            </div>
+          </div>
+
           <div class="card shadow-sm border-0">
-            <div
-              class="card-body d-flex justify-content-between align-items-center"
-            >
-              <h5 class="mb-0 fw-bold">Tổng cộng:</h5>
-              <h5 class="mb-0 fw-bold text-danger" id="checkout-total-price">
-                0đ
-              </h5>
+            <div class="card-body">
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <span class="text-muted">Tạm tính:</span>
+                <span class="text-muted fw-bold" id="checkout-subtotal"
+                  >0đ</span
+                >
+              </div>
+
+              <div
+                class="d-flex justify-content-between align-items-center mb-2 d-none"
+                id="discount-row"
+              >
+                <span class="text-success">Giảm giá:</span>
+                <span class="text-success fw-bold" id="checkout-discount-amount"
+                  >-0đ</span
+                >
+              </div>
+
+              <hr />
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 fw-bold">Tổng cộng:</h5>
+                <h5 class="mb-0 fw-bold text-danger" id="checkout-total-price">
+                  0đ
+                </h5>
+              </div>
             </div>
           </div>
         </div>
@@ -146,7 +117,12 @@
         <div class="col-md-7 col-lg-8">
           <div class="card shadow-sm border-0 p-4">
             <h4 class="mb-3 fw-bold">Thông tin giao hàng</h4>
-            <form class="needs-validation" id="checkoutForm">
+
+            <form
+              class="needs-validation"
+              id="checkoutForm"
+              onsubmit="return placeOrder(event);"
+            >
               <div class="row g-3">
                 <div class="col-12">
                   <label for="fullName" class="form-label"
@@ -193,8 +169,6 @@
                     <option value="Hà Nội">Hà Nội</option>
                     <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
                     <option value="Đà Nẵng">Đà Nẵng</option>
-                    <option value="Hải Phòng">Hải Phòng</option>
-                    <option value="Cần Thơ">Cần Thơ</option>
                   </select>
                 </div>
 
@@ -252,15 +226,14 @@
                   class="form-control"
                   id="note"
                   rows="2"
-                  placeholder="Ví dụ: Giao hàng vào giờ hành chính, gọi trước khi giao..."
+                  placeholder="Ví dụ: Giao hàng vào giờ hành chính..."
                 ></textarea>
               </div>
 
               <hr class="my-4" />
               <button
                 class="w-100 btn btn-lg py-3 fw-bold text-white"
-                type="button"
-                onclick="placeOrder()"
+                type="submit"
                 style="background-color: #000c1d"
               >
                 XÁC NHẬN ĐẶT HÀNG
@@ -271,117 +244,126 @@
       </div>
     </main>
 
-    <footer class="main-footer pt-5">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-3 col-md-6 footer-column branding">
-            <a href="#" class="footer-logo mb-3 d-block">
-              <img
-                src="assets/img/ItemAboutUs/JadeChamber.png"
-                alt="Logo"
-                class="footer-logo-img"
-              />
-              JADE<span> CHAMBER</span>
-            </a>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <i class="fas fa-phone me-2 text-warning"></i> 0336.xxx.xxx
-                (Chính)
-              </li>
-              <li class="mb-2">
-                <i class="fas fa-phone me-2 text-warning"></i> 0318.xxx.xxx
-                (Phụ)
-              </li>
-              <li class="mb-2">
-                <i class="fas fa-envelope me-2 text-warning"></i>
-                Contact@jadechamber.vn
-              </li>
-              <li class="mb-2">
-                <i class="fas fa-map-marker-alt me-2 text-warning"></i> 120 Yên
-                Lãng, Đống Đa, Hà Nội
-              </li>
-            </ul>
-          </div>
+    <app-footer></app-footer>
+    <app-globals></app-globals>
 
-          <div class="col-lg-3 col-md-6 footer-column">
-            <h3 class="h5 mb-4 text-warning fw-bold">DỊCH VỤ KHÁCH HÀNG</h3>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted"
-                  >• Điều khoản và điều kiện</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted"
-                  >• Chính sách trả hàng</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted"
-                  >• Chính sách giao hàng</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted"
-                  >• Chính sách quyền riêng tư</a
-                >
-              </li>
-            </ul>
-          </div>
+    <script src="./assets/js/cart.js"></script>
 
-          <div class="col-lg-3 col-md-6 footer-column">
-            <h3 class="h5 mb-4 text-warning fw-bold">CẨM NANG SỬ DỤNG</h3>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted"
-                  >• Tại sao nên chọn đá quý?</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted"
-                  >• Cách làm trắng bạc tại nhà</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted"
-                  >• Phân biệt các loại đá S925</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted"
-                  >• Bảo quản trang sức bền lâu</a
-                >
-              </li>
-            </ul>
-          </div>
+    <script>
+      // Biến toàn cục để lưu tiền và mức giảm giá
+      let globalSubtotal = 0;
+      let appliedDiscount = 0;
 
-          <div
-            class="col-lg-3 col-md-6 footer-column feedback text-md-start text-center"
-          >
-            <h3 class="h5 mb-4 text-warning fw-bold">Ý KIẾN ĐÓNG GÓP</h3>
-            <p class="small text-muted mb-3">
-              Jade Chamber luôn mong nhận được ý kiến từ bạn để nâng cao dịch
-              vụ.
-            </p>
-            <button
-              class="btn btn-outline-warning btn-feedback px-4 py-2 text-uppercase fw-bold"
-              style="border-width: 2px"
-            >
-              Gửi ý kiến
-            </button>
-          </div>
-        </div>
-      </div>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cart =
+          JSON.parse(localStorage.getItem("jade_chamber_cart")) || [];
+        const checkoutList = document.getElementById("checkout-item-list");
+        const checkoutCount = document.getElementById("checkout-cart-count");
 
-      <div
-        class="footer-bottom mt-5 py-3 text-center text-white"
-        style="background-color: #000c1d"
-      >
-        <p class="mb-0 small">
-          &copy; 2026 JADE CHAMBER. All rights reserved. Hệ thống quản lý nội bộ
-          - CMC University.
-        </p>
-      </div>
-    </footer>
+        let count = 0;
+
+        if (cart.length === 0) {
+          checkoutList.innerHTML =
+            '<li class="list-group-item text-center">Giỏ hàng đang trống</li>';
+          updateTotalUI();
+          return;
+        }
+
+        checkoutList.innerHTML = cart
+          .map((item) => {
+            let itemTotal = item.price * item.quantity;
+            globalSubtotal += itemTotal; // Cộng dồn vào tạm tính
+            count += item.quantity;
+            return `
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+                <h6 class="my-0">${item.name}</h6>
+                <small class="text-muted">Số lượng: ${item.quantity}</small>
+            </div>
+            <span class="text-muted">${itemTotal.toLocaleString("vi-VN")}đ</span>
+        </li>`;
+          })
+          .join("");
+
+        if (checkoutCount) checkoutCount.innerText = count;
+        updateTotalUI(); // Cập nhật giao diện tiền
+      });
+
+      // HÀM MỚI 1: CẬP NHẬT GIAO DIỆN TỔNG TIỀN
+      function updateTotalUI() {
+        const subtotalEl = document.getElementById("checkout-subtotal");
+        const totalEl = document.getElementById("checkout-total-price");
+        const discountRow = document.getElementById("discount-row");
+        const discountAmountEl = document.getElementById(
+          "checkout-discount-amount",
+        );
+
+        // Hiện Tạm tính
+        if (subtotalEl)
+          subtotalEl.innerText = globalSubtotal.toLocaleString("vi-VN") + "đ";
+
+        // Tính tổng tiền cuối cùng
+        let finalTotal = globalSubtotal - appliedDiscount;
+        if (finalTotal < 0) finalTotal = 0; // Tránh trường hợp tiền bị âm
+
+        // Hiện/Ẩn dòng Giảm giá
+        if (appliedDiscount > 0) {
+          discountRow.classList.remove("d-none");
+          discountAmountEl.innerText =
+            "-" + appliedDiscount.toLocaleString("vi-VN") + "đ";
+        } else {
+          discountRow.classList.add("d-none");
+        }
+
+        // Hiện Tổng cộng
+        if (totalEl)
+          totalEl.innerText = finalTotal.toLocaleString("vi-VN") + "đ";
+      }
+
+      // HÀM MỚI 2: XỬ LÝ KHI BẤM NÚT "ÁP DỤNG"
+      function applyDiscount() {
+        // Lấy mã khách nhập và in hoa toàn bộ để dễ so sánh
+        const codeInput = document
+          .getElementById("discountCode")
+          .value.trim()
+          .toUpperCase();
+        const msgEl = document.getElementById("discountMessage");
+
+        if (!codeInput) {
+          msgEl.innerText = "Vui lòng nhập mã giảm giá.";
+          msgEl.className = "text-danger mt-2 d-block small";
+          appliedDiscount = 0;
+          updateTotalUI();
+          return;
+        }
+
+        // Kho mã giảm giá (Bạn có thể thêm bớt ở đây)
+        if (codeInput === "JADE15") {
+          appliedDiscount = globalSubtotal * 0.15; // Giảm 15%
+          msgEl.innerText = "Áp dụng mã thành công! Giảm 15% tổng đơn.";
+          msgEl.className = "text-success mt-2 d-block fw-bold small";
+        } else if (codeInput === "VIP200") {
+          appliedDiscount = 200000; // Giảm 200.000đ
+          msgEl.innerText = "Áp dụng mã thành công! Giảm trực tiếp 200.000đ.";
+          msgEl.className = "text-success mt-2 d-block fw-bold small";
+        } else {
+          appliedDiscount = 0;
+          msgEl.innerText = "Mã giảm giá không hợp lệ hoặc đã hết hạn.";
+          msgEl.className = "text-danger mt-2 d-block small";
+        }
+
+        // Tính lại tiền sau khi áp mã
+        updateTotalUI();
+      }
+
+      // Hàm xử lý đặt hàng giữ nguyên
+      function placeOrder(event) {
+        event.preventDefault();
+        const name = document.getElementById("fullName").value;
+        alert("Cảm ơn " + name + "! Đơn hàng của bạn đã được đặt thành công.");
+        localStorage.removeItem("jade_chamber_cart");
+        window.location.href = "index.html";
+      }
+    </script>
   </body>
 </html>
