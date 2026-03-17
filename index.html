@@ -14,41 +14,6 @@
   </head>
   <body>
     <app-header></app-header>
-    <script>
-      window.addEventListener("scroll", () => {
-        localStorage.setItem("jade-chamber-scroll", window.scrollY);
-      });
-
-      function saveSliderState() {
-        localStorage.setItem("jade-chamber-slider-index", currentIndex);
-      }
-
-      const originalMoveSlide = moveSlide;
-      moveSlide = function (direction) {
-        originalMoveSlide(direction);
-        saveSliderState();
-      };
-
-      window.addEventListener("load", () => {
-        const savedScroll = localStorage.getItem("jade-chamber-scroll");
-        if (savedScroll) {
-          window.scrollTo({
-            top: parseInt(savedScroll),
-            behavior: "auto",
-          });
-        }
-
-        const savedSliderIndex = localStorage.getItem(
-          "jade-chamber-slider-index",
-        );
-        if (savedSliderIndex) {
-          currentIndex = parseInt(savedSliderIndex);
-          track.style.transition = "none";
-          track.style.transform = `translateX(-${currentIndex * 20.62}%)`;
-          updateActiveCard();
-        }
-      });
-    </script>
     
     <section class="hero">
       <div class="hero-content">
@@ -390,6 +355,39 @@
       // Khởi tạo vị trí đầu tiên
       track.style.transform = `translateX(-${currentIndex * 20.62}%)`;
       updateActiveCard();
+    </script>
+
+    <script>
+      // This script block should be after the moveSlide function is defined.
+      window.addEventListener("scroll", () => {
+        localStorage.setItem("jade-chamber-scroll", window.scrollY);
+      });
+
+      function saveSliderState() {
+        localStorage.setItem("jade-chamber-slider-index", currentIndex);
+      }
+
+      // Ensure moveSlide is defined before trying to wrap it
+      if (typeof moveSlide !== 'undefined') {
+          const originalMoveSlide = moveSlide;
+          moveSlide = function (direction) {
+            originalMoveSlide(direction);
+            saveSliderState();
+          };
+      }
+
+      window.addEventListener("load", () => {
+        const savedScroll = localStorage.getItem("jade-chamber-scroll");
+        if (savedScroll) {
+          window.scrollTo({
+            top: parseInt(savedScroll),
+            behavior: "auto",
+          });
+        }
+
+        // Slider state restoration is already handled by the main slider script's DOMContentLoaded
+        // No need to duplicate here, as currentIndex is already initialized by the main slider script.
+      });
     </script>
 
     <section class="news-section">

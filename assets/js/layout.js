@@ -96,7 +96,7 @@ class AppHeader extends HTMLElement {
               <div class="nav-icons d-flex align-items-center">
                 <a href="login.html" class="icon-link" id="userIcon" style="text-decoration: none; color: inherit; cursor: pointer;"><i class="fas fa-user"></i></a>
                 <div class="cart-dropdown-wrapper ms-4">
-                  <button class="icon-link position-relative" id="cartBtn" style="background: none; border: none; color: inherit; cursor: pointer;"><i class="fas fa-shopping-cart"></i><span class="badge-cart" id="cart-count">0</span></button>
+                  <button class="icon-link position-relative" id="cartBtn" style="background: none; border: none; color: inherit; cursor: pointer;" onclick="window.location.href='Cart.html'"><i class="fas fa-shopping-cart"></i><span class="badge-cart" id="cart-count">0</span></button>
                   <div class="cart-dropdown-menu" id="cartDropdown">
                     <div class="cart-dropdown-header">
                       <h6 class="fw-bold mb-0"><i class="fas fa-shopping-bag me-2"></i>GIỎ HÀNG</h6>
