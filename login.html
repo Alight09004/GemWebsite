@@ -53,11 +53,11 @@
                                 <form id="loginForm">
                                     <div class="mb-3">
                                         <label class="form-label text-muted small fw-bold">Email đăng nhập</label>
-                                        <input type="email" class="form-control form-control-lg" id="loginEmail" placeholder="admin@gmail.com" required>
+                                        <input type="email" class="form-control" id="loginEmail" placeholder="admin@gmail.com" required>
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label text-muted small fw-bold">Mật khẩu</label>
-                                        <input type="password" class="form-control form-control-lg" id="loginPassword" placeholder="******" required>
+                                        <input type="password" class="form-control" id="loginPassword" placeholder="******" required>
                                     </div>
                                     <button type="submit" class="btn w-100 btn-lg fw-bold" style="background-color: #001f3f; color: white;">ĐĂNG NHẬP</button>
                                 </form>
@@ -68,19 +68,19 @@
                                 <form id="registerForm">
                                     <div class="mb-3">
                                         <label class="form-label text-muted small fw-bold">Tên hiển thị (Username)</label>
-                                        <input type="text" class="form-control form-control-lg" id="regUsername" required>
+                                        <input type="text" class="form-control" id="regUsername" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label text-muted small fw-bold">Email</label>
-                                        <input type="email" class="form-control form-control-lg" id="regEmail" required>
+                                        <input type="email" class="form-control" id="regEmail" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label text-muted small fw-bold">Mật khẩu</label>
-                                        <input type="password" class="form-control form-control-lg" id="regPassword" required>
+                                        <input type="password" class="form-control" id="regPassword" required>
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label text-muted small fw-bold">Xác nhận mật khẩu</label>
-                                        <input type="password" class="form-control form-control-lg" id="regConfirm" required>
+                                        <input type="password" class="form-control" id="regConfirm" required>
                                     </div>
                                     <button type="submit" class="btn w-100 btn-lg fw-bold" style="background-color: #D4AF37; color: white;">ĐĂNG KÝ</button>
                                 </form>
@@ -102,17 +102,24 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // 1. KHỞI TẠO DỮ LIỆU & TÀI KHOẢN ADMIN MẶC ĐỊNH
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            
-            // Nếu chưa có tài khoản admin@gmail.com thì tạo mặc định
-            if (!users.find(u => u.email === 'admin@gmail.com')) {
-                users.push({
-                    id: 'usr_' + Date.now(),
+            let adminAccount = JSON.parse(localStorage.getItem('adminAccount'));
+            if (!adminAccount) {
+                adminAccount = {
+                    id: 'admin_0',
                     username: 'Administrator',
                     email: 'admin@gmail.com',
                     password: '123456',
                     role: 'admin'
-                });
+                };
+                localStorage.setItem('adminAccount', JSON.stringify(adminAccount));
+            }
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Lọc bỏ tài khoản admin mặc định khỏi mảng users để không hiển thị trong bảng
+            const initialLength = users.length;
+            users = users.filter(u => u.email !== 'admin@gmail.com' && u.id !== 'admin_0');
+            if (users.length !== initialLength) {
                 localStorage.setItem('users', JSON.stringify(users));
             }
 
@@ -149,12 +156,10 @@
                     currentUsers.push(newUser);
                     localStorage.setItem('users', JSON.stringify(currentUsers));
                     
-                    alert('Đăng ký thành công! Vui lòng đăng nhập.');
-                    
-                    // Chuyển sang tab đăng nhập
-                    const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
-                    loginTab.show();
-                    registerForm.reset();
+                    // Tự động đăng nhập và chuyển hướng
+                    alert('Đăng ký thành công! Hệ thống đang chuyển hướng...');
+                    localStorage.setItem('currentUser', JSON.stringify(newUser));
+                    window.location.href = 'index.html';
                 });
             }
 
@@ -167,7 +172,14 @@
                     const password = document.getElementById('loginPassword').value;
 
                     let currentUsers = JSON.parse(localStorage.getItem('users')) || [];
-                    const user = currentUsers.find(u => u.email === email && u.password === password);
+                    let currentAdmin = JSON.parse(localStorage.getItem('adminAccount'));
+
+                    let user = null;
+                    if (currentAdmin && currentAdmin.email === email && currentAdmin.password === password) {
+                        user = currentAdmin;
+                    } else {
+                        user = currentUsers.find(u => u.email === email && u.password === password);
+                    }
 
                     if (user) {
                         // Lưu trạng thái đăng nhập

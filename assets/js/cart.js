@@ -5,6 +5,7 @@ let cart = JSON.parse(localStorage.getItem('jade_chamber_cart')) || [];
 document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
     updateCartDropdownUI();
+    updateCheckoutUI();
 });
 
 function addToCart(name, price, img) {
@@ -44,6 +45,7 @@ function saveAndUpdate() {
     localStorage.setItem('jade_chamber_cart', JSON.stringify(cart));
     updateCartUI();
     updateCartDropdownUI();
+    updateCheckoutUI();
 }
 
 function updateCartUI() {
@@ -177,4 +179,77 @@ function clearCart() {
         cart = [];
         saveAndUpdate();
     }
+}
+
+// Cập nhật UI cho trang Thanh toán
+function updateCheckoutUI() {
+    const list = document.getElementById('checkout-item-list');
+    const countBadge = document.getElementById('checkout-cart-count');
+    const totalPriceElem = document.getElementById('checkout-total-price');
+    
+    if (!list) return;
+
+    let total = 0;
+    let count = 0;
+    let html = '';
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+        count += item.quantity;
+
+        html += `
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0 text-truncate" style="max-width: 200px;" title="${item.name}">${item.name}</h6>
+                    <small class="text-muted">Số lượng: ${item.quantity}</small>
+                </div>
+                <span class="text-muted text-nowrap ms-3">${(item.price * item.quantity).toLocaleString()}đ</span>
+            </li>
+        `;
+    });
+
+    list.innerHTML = html;
+
+    if (countBadge) countBadge.innerText = count;
+    if (totalPriceElem) totalPriceElem.innerText = total.toLocaleString() + 'đ';
+}
+
+// Chức năng Xác nhận thanh toán
+function placeOrder() {
+    const fullName = document.getElementById('fullName').value;
+    const phone = document.getElementById('phone').value;
+    const city = document.getElementById('city').value;
+    const address = document.getElementById('address').value;
+
+    if (!fullName || !phone || !city || !address) {
+        alert("Vui lòng điền đầy đủ thông tin giao hàng bắt buộc!");
+        return;
+    }
+
+    if (cart.length === 0) {
+        alert("Giỏ hàng của bạn đang trống!");
+        return;
+    }
+
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+    let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let productDesc = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
+
+    orders.push({
+        id: 'ORD' + Date.now().toString().slice(-6),
+        product: productDesc,
+        price: total,
+        customerName: fullName,
+        phone: phone,
+        address: address + ', ' + city,
+        date: new Date().toLocaleDateString('vi-VN')
+    });
+
+    localStorage.setItem('orders', JSON.stringify(orders));
+    
+    cart = [];
+    saveAndUpdate();
+    
+    alert("Đặt hàng thành công! Hệ thống sẽ chuyển về trang chủ.");
+    window.location.href = "index.html";
 }
