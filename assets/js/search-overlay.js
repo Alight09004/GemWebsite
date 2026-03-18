@@ -287,10 +287,6 @@ function initSearchOverlay() {
                         </a>
                     `).join('');
                     
-                    if (filtered.length > 4) {
-                        html += `<a href="#" onclick="document.getElementById('fullscreen-search-form').dispatchEvent(new Event('submit', {cancelable: true, bubbles: true})); return false;" class="overlay-result-view-all">Xem tất cả ${filtered.length} kết quả <i class="fas fa-arrow-right ms-1"></i></a>`;
-                    }
-                    
                     resultsContainer.innerHTML = html;
                     resultsContainer.classList.add('show');
                 } else {
