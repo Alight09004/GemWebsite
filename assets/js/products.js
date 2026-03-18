@@ -5,72 +5,89 @@ const gemProducts = [
         price: 2181000,
         imgMain: "./assets/img/ItemTrangChu(1)/spnb2.jpg",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb2-2.jpg.webp",
-        category: "KimCuong"
+        category: ["DaQuy", "TrangSuc"],
+        subCategory: ["KimCuong", "NhanDon"]
     },
-
+    {
+        id: 2,
+        name: "Dây chuyền bạc nữ đính đá CZ cá tiên",
+        price: 1824000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb1.jpg",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb1-2.jpg.webp",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Bac", "DayChuyen"]
+    },
     {
         id: 3,
         name: "Bông tai Vàng trắng 41,6% (10K) đính đá",
         price: 13070000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gbxmxmw060874-bong-tai-vang-10k-dinh-da-ecz-pnj-1.png",
-        imgHover: "#",
-        category: "VangTrang"
+        imgHover: "./assets/img/ItemTrungBaySP/id3-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["VangTrang", "BongTai"]
     },
     {
         id: 4,
         name: "Lắc tay Vàng 58,5% (14K)",
         price: 15370000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gl0000y060888-lac-tay-vang-14k-pnj-1.png",
-        imgHover: "#",
-        category: "Vang18K"
+        imgHover: "./assets/img/ItemTrungBaySP/id4-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Vang18K", "LacTay"]
     },
     {
         id: 5,
         name: "Lắc tay Vàng trắng Ý 75% (18K)",
         price: 15892000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gl0000w001534-lac-tay-vang-trang-y-18k-pnj-1.png",
-        imgHover: "#",
-        category: "VangTrang"
+        imgHover: "./assets/img/ItemTrungBaySP/id5-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["VangTrang", "LacTay", "Vang18K"]
     },
     {
         id: 6,
         name: "Bông tai Kim cương Vàng trắng 58,5% (14K)",
         price: 46200000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gbdd00w060198-bong-tai-kim-cuong-vang-trang-14k-pnj-1.png",
-        imgHover: "#",
-        category: "VangTrang"
+        imgHover: "./assets/img/ItemTrungBaySP/id6-hover.jpg",
+        category: ["DaQuy", "TrangSuc"],
+        subCategory: ["KimCuong", "BongTai"]
     },
     {
         id: 7,
         name: "Nhẫn Kim cương Vàng trắng 58,5% (14K)",
         price: 34620000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gndd00w060464-nhan-kim-cuong-vang-trang-14k-pnj-1.png",
-        imgHover: "#",
-        category: "VangTrang"
+        imgHover: "./assets/img/ItemTrungBaySP/id7-hover.jpg",
+        category: ["DaQuy", "TrangSuc"],
+        subCategory: ["KimCuong", "NhanDon"]
     },
     {
         id: 8,
         name: "Mặt dây chuyền Vàng trắng 58,5% (14K) đính đá Sapphire",
         price: 8740000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gmsp00w000028-mat-day-chuyen-vang-14k-dinh-da-sapphire-pnj-1.png",
-        imgHover: "#",
-        category: "Sapphire"
+        imgHover: "./assets/img/ItemTrungBaySP/id8-hover.jpg",
+        category: ["DaQuy", "TrangSuc"],
+        subCategory: ["Sapphire", "DayChuyen"]
     },
     {
         id: 9,
         name: "Mặt dây chuyền Vàng 75% (18K) đính Ngọc trai Southsea",
         price: 24610000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gmpsddc060001-mat-day-chuyen-vang-dinh-ngoc-trai-southsea-pnj-1.png",
-        imgHover: "#",
-        category: "Vang18K"
+        imgHover: "./assets/img/ItemTrungBaySP/id9-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Vang18K", "DayChuyen"]
     },
     {
         id: 10,
         name: "Nhẫn Vàng trắng 58,5% (14K) đính đá",
         price: 10551000,
         imgMain: "./assets/img/ItemTrungBaySP/sp-gnxmxmw005643-nhan-vang-14k-dinh-da-ecz-pnj-1.png",
-        imgHover: "#",
-        category: "VangTrang"
+        imgHover: "./assets/img/ItemTrungBaySP/id10-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["VangTrang", "NhanDon"]
     },
     {
         id: 11,
@@ -302,27 +319,27 @@ const gemProducts = [
 ];
 
 
-const categoryNames = { 'All': 'Tất cả sản phẩm', 'KimCuong': 'Kim cương', 'VangTrang': 'Vàng trắng', 'Vang18K': 'Vàng 18K', 'Sapphire': 'Sapphire', 'Ruby': 'Ruby', 'Emerald': 'Emerald', 'Topaz': 'Topaz' };
+const categoryNames = { 'All': 'Tất cả sản phẩm', 'KimCuong': 'Kim cương', 'VangTrang': 'Vàng trắng', 'Vang18K': 'Vàng Ý 18K', 'Vang24K': 'Vàng 24K', 'VangHong': 'Vàng hồng', 'Sapphire': 'Sapphire', 'Ruby': 'Ruby', 'Emerald': 'Emerald', 'Topaz': 'Topaz', 'Bac': 'Bạc S925', 'NhanDon': 'Nhẫn đơn', 'DayChuyen': 'Dây chuyền', 'BongTai': 'Bông tai', 'LacTay': 'Lắc tay', 'VongTay': 'Vòng tay', 'NhanCuoi': 'Nhẫn cưới' };
+
+let currentDisplayList = [];
 
 function renderProducts(data) {
     const container = document.getElementById('product-display-grid');
     if (!container) return;
     container.innerHTML = data.map(product => `
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="product-card-v2">
-                <div class="product-img-box">
-                    <img src="${product.imgMain}" class="img-main" />
-                    <img src="${product.imgHover}" class="img-hover"/>
-                </div>
-                <div class="product-info">
-                    <h3 class="p-name">${product.name}</h3>
-                    <p class="p-price">${product.price.toLocaleString()}đ</p>
-                    <div class="p-buttons">
-                        <button class="btn-add-cart" onclick="addToCart('${product.name}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
-                        <a href="checkout.html" class="btn-buy-now" onclick="addToCart('${product.name}', ${product.price}, '${product.imgMain}')">MUA NGAY</a>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="detail.html?id=${product.id}" class="product-card-v2-link">
+                <div class="product-card-v2">
+                    <div class="product-img-box">
+                        <img src="${product.imgMain}" class="img-main" />
+                        <img src="${product.imgHover}" class="img-hover"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="p-name">${product.name}</h3>
+                        <p class="p-price">${product.price ? product.price.toLocaleString() + 'đ' : '<i style="font-weight: normal;">Liên hệ cửa hàng</i>'}</p>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     `).join('');
 }
@@ -333,30 +350,127 @@ function updateBreadcrumb(label) {
     const breadcrumbList = document.getElementById('dynamic-breadcrumb');
     if (!breadcrumbList) return;
 
-    // Giữ lại mục "Trang chủ", xóa các mục sau nó
-    while (breadcrumbList.children.length > 1) {
-        breadcrumbList.removeChild(breadcrumbList.lastChild);
-    }
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    breadcrumbList.innerHTML = '';
+    
+    const createItem = (text, href, isActive, icon = null) => {
+        const li = document.createElement('li');
+        li.className = `breadcrumb-item ${isActive ? 'active' : ''}`;
+        if (isActive) li.setAttribute('aria-current', 'page');
+        
+        let content = '';
+        if (icon) content += `<i class="fas ${icon} me-1"></i>`;
+        
+        if (isActive) {
+            content += `<span class="text-dark fw-bold">${text}</span>`;
+            li.innerHTML = content;
+        } else {
+            li.innerHTML = `<a href="${href}" class="text-decoration-none text-muted">${content}${text}</a>`;
+        }
+        return li;
+    };
 
-    const newLi = document.createElement('li');
-    newLi.className = 'breadcrumb-item active text-gold fw-bold';
-    newLi.innerText = label;
-    breadcrumbList.appendChild(newLi);
+    breadcrumbList.appendChild(createItem('Trang chủ', 'index.html', false, 'fa-home'));
+
+    const pageConfig = {
+        'DaQuy.html': { title: 'Đá quý', href: 'DaQuy.html' },
+        'VangBac.html': { title: 'Vàng bạc', href: 'VangBac.html' },
+        'TrangSuc.html': { title: 'Trang sức', href: 'TrangSuc.html' },
+        'PhongThuy.html': { title: 'Phong thủy', href: 'PhongThuy.html' },
+        'PhuKien.html': { title: 'Phụ kiện', href: 'PhuKien.html' }
+    };
+
+    const currentConfig = pageConfig[currentPage];
+
+    if (currentConfig) {
+        breadcrumbList.appendChild(createItem('Sản phẩm', 'TrungBaySP.html', false));
+        if (label === 'Tất cả sản phẩm' || label === currentConfig.title) {
+            breadcrumbList.appendChild(createItem(currentConfig.title, currentConfig.href, true));
+        } else {
+            breadcrumbList.appendChild(createItem(currentConfig.title, currentConfig.href, false));
+            breadcrumbList.appendChild(createItem(label, '#', true));
+        }
+    } else {
+        if (label === 'Tất cả sản phẩm' || label === 'Sản phẩm') {
+            breadcrumbList.appendChild(createItem('Sản phẩm', 'TrungBaySP.html', true));
+        } else {
+            breadcrumbList.appendChild(createItem('Sản phẩm', 'TrungBaySP.html', false));
+            breadcrumbList.appendChild(createItem(label, '#', true));
+        }
+    }
 }
 
 // --- HÀM 3: LỌC THEO DANH MỤC ---
 function filterCat(catKey) {
-    const filtered = catKey === 'All' ? gemProducts : gemProducts.filter(p => p.category === catKey);
-    renderProducts(filtered);
-    updateBreadcrumb(categoryNames[catKey] || 'Sản phẩm');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    let filtered = gemProducts;
+
+    const pageCategoryMap = {
+        'DaQuy.html': 'DaQuy',
+        'VangBac.html': 'VangBac',
+        'TrangSuc.html': 'TrangSuc',
+        'PhongThuy.html': 'PhongThuy',
+        'PhuKien.html': 'PhuKien'
+    };
+
+    const mainCategory = pageCategoryMap[currentPage];
+
+    if (mainCategory) {
+        // Lọc sản phẩm theo danh mục lớn của trang hiện tại
+        filtered = gemProducts.filter(p => p.category && p.category.includes(mainCategory));
+        // Nếu có chọn subCategory thì lọc tiếp
+        if (catKey !== 'All') {
+            filtered = filtered.filter(p => p.subCategory && p.subCategory.includes(catKey));
+        }
+    } else {
+        // Mặc định ở trang Sản phẩm chung
+        filtered = catKey === 'All' ? gemProducts : gemProducts.filter(p => (p.category && p.category.includes(catKey)) || (p.subCategory && p.subCategory.includes(catKey)));
+    }
+
+    currentDisplayList = filtered;
+    applySortAndRender();
+    updateBreadcrumb(categoryNames[catKey] || 'Tất cả sản phẩm');
+}
+
+// --- HÀM XỬ LÝ SẮP XẾP ---
+function applySortAndRender() {
+    const sortSelect = document.getElementById('price-sort-select');
+    const sortValue = sortSelect ? sortSelect.value : 'default';
+    
+    let sorted = [...currentDisplayList];
+    if (sortValue === 'asc') {
+        sorted.sort((a, b) => (a.price || Infinity) - (b.price || Infinity));
+    } else if (sortValue === 'desc') {
+        sorted.sort((a, b) => (b.price || 0) - (a.price || 0));
+    }
+    
+    renderProducts(sorted);
 }
 
 // --- HÀM 4: TÌM KIẾM NHANH ---
 function searchProducts(query) {
-    const filtered = gemProducts.filter(p => 
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const pageCategoryMap = {
+        'DaQuy.html': 'DaQuy',
+        'VangBac.html': 'VangBac',
+        'TrangSuc.html': 'TrangSuc',
+        'PhongThuy.html': 'PhongThuy',
+        'PhuKien.html': 'PhuKien'
+    };
+    
+    const mainCategory = pageCategoryMap[currentPage];
+    
+    let filtered = gemProducts.filter(p => 
         p.name.toLowerCase().includes(query.toLowerCase())
     );
-    renderProducts(filtered);
+    
+    if (mainCategory) {
+        filtered = filtered.filter(p => p.category && p.category.includes(mainCategory));
+    }
+    
+    currentDisplayList = filtered;
+    applySortAndRender();
     updateBreadcrumb(`Kết quả cho: "${query}"`);
 }
 
@@ -364,12 +478,20 @@ function searchProducts(query) {
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+    const validPages = ['DaQuy.html', 'VangBac.html', 'TrangSuc.html', 'PhongThuy.html', 'PhuKien.html'];
 
     if (category && categoryNames[category]) {
         filterCat(category);
     } else {
-        renderProducts(gemProducts);
-        updateBreadcrumb('Tất cả sản phẩm');
+        if (validPages.includes(currentPage)) {
+            filterCat('All');
+        } else {
+            currentDisplayList = gemProducts;
+            applySortAndRender();
+            updateBreadcrumb('Tất cả sản phẩm');
+        }
     }
 
     // Gắn sự kiện cho ô tìm kiếm trong Navbar
