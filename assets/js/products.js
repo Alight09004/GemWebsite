@@ -71,7 +71,233 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gnxmxmw005643-nhan-vang-14k-dinh-da-ecz-pnj-1.png",
         imgHover: "#",
         category: "VangTrang"
-    }
+    },
+    {
+        id: 11,
+        name: "Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá",
+        price: 7615000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb3.jpg",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb3-2.jpg.webp",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Bac", "LacTay"]
+    },
+    {
+        id: 12,
+        name: "Bông tai bạc Ý S925 nữ mạ bạch kim đính đá CZ hình trái tim",
+        price: 1619000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb4.jpeg",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb4-2.jpg.webp",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Bac", "BongTai"]
+    },
+    {
+        id: 13,
+        name: "Lắc tay bạc nữ đính pha lê Swarovski trái tim của biển",
+        price: 1967000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb5.jpg",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb5-2.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Bac", "LacTay"]
+    },
+    {
+        id: 14,
+        name: "Nhẫn nam Vàng trắng 41,6% (10K) đính đá ECZ MANCODE",
+        price: 20754000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb6.png",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb6-2.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["VangTrang", "NhanDon"]
+    },
+    {
+        id: 15,
+        name: "Nhẫn Vàng 75% (18K) PNJ",
+        price: 4656000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb7.png",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb7-2.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Vang18K", "NhanDon"]
+    },
+    {
+        id: 16,
+        name: "Lắc tay Bạc PNJSilver",
+        price: 1255000,
+        imgMain: "./assets/img/ItemTrangChu(1)/spnb8.png",
+        imgHover: "./assets/img/ItemTrangChu(1)/spnb8-2.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Bac", "LacTay"]
+    },
+    {
+        id: 17,
+        name: "Vòng tay Vàng hồng 58,5% (14K) Đính đá Sapphire",
+        price: 43785000,
+        imgMain: "./assets/img/ItemTrungBaySP/id17.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id17-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Sapphire", "VangHong", "LacTay"]
+    },
+    {
+        id: 18,
+        name: "Nhẫn Vàng trắng 58,5% (14K) Đính đá Sapphire ",
+        price: 40623000,
+        imgMain: "./assets/img/ItemTrungBaySP/id18.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id18-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Sapphire", "VangTrang", "NhanDon"]
+    },
+    {
+        id: 19,
+        name: "Lắc tay bạc nữ đính đá Ruby hoa mặt trời Mia",
+        price: 4033000,
+        imgMain: "./assets/img/ItemTrungBaySP/id19.jpg",
+        imgHover: "./assets/img/ItemTrungBaySP/id19-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Ruby", "Bac", "LacTay"]
+    },
+    {
+        id: 20,
+        name: "Bông tai Vàng 75% (18K) đính đá Ruby ",
+        price: 11884000,
+        imgMain: "./assets/img/ItemTrungBaySP/id20.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id20-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Ruby", "Vang18K", "BongTai"]
+    },
+    {
+        id: 21,
+        name: "Nhẫn Vàng 75% (18K) Đính đá Emerald",
+        price: 90410000,
+        imgMain: "./assets/img/ItemTrungBaySP/id21.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id21-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Emerald", "Vang18K", "NhanDon"]
+    },
+    {
+        id: 22,
+        name: "Nhẫn Vàng trắng 58,5% (14K) đính đá Emerald",
+        price: 149916000,
+        imgMain: "./assets/img/ItemTrungBaySP/id22.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id22-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Emerald", "VangTrang", "NhanDon"]
+    },
+    {
+        id: 23,
+        name: "Nhẫn Vàng trắng 58,5% (14K) đính đá Emerald Disney",
+        price: 276699000,
+        imgMain: "./assets/img/ItemTrungBaySP/id23.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id23-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Emerald", "VangTrang", "NhanDon"]
+    },
+    {
+        id: 24,
+        name: "Bông tai Vàng trắng 58,5% (14K) Đính đá Topaz",
+        price: 7992000,
+        imgMain: "./assets/img/ItemTrungBaySP/id24.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id24-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Topaz", "VangTrang", "BongTai"]
+    },
+    {
+        id: 25,
+        name: "Nhẫn Vàng trắng 58,5% (14K) đính đá Topaz ",
+        price: 11489000,
+        imgMain: "./assets/img/ItemTrungBaySP/id25.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id25-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Topaz", "VangTrang", "NhanDon"]
+    },
+    {
+        id: 26,
+        name: "Cài áo Vàng trắng 58,5% (14K) Đính đá Topaz Masterpiece",
+        price: 70480000,
+        imgMain: "./assets/img/ItemTrungBaySP/id26.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id26-hover.jpg",
+        category: ["DaQuy", "VangBac"],
+        subCategory: ["Topaz", "VangTrang"]
+    },
+    {
+        id: 27,
+        name: "Nhẫn Vàng trắng 58,5% (14K) Đính đá Topaz",
+        price: 7865000,
+        imgMain: "./assets/img/ItemTrungBaySP/id27.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id27-hover.jpg",
+        category: ["DaQuy", "VangBac", "TrangSuc"],
+        subCategory: ["Topaz", "VangTrang", "NhanDon"]
+    },
+    {
+        id: 28,
+        name: "Cặp nhẫn cưới Bạch kim đính Kim Cương PNJ True Love",
+        price: 40185574,
+        imgMain: "./assets/img/ItemTrungBaySP/id28.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id28-hover.jpg",
+        category: "TrangSuc",
+        subCategory: "NhanCuoi"
+    },
+    {
+        id: 29,
+        name: "Tượng Thiên Mã Đăng Hoa Vàng 99,9% (24K)",
+        price: 199000000,
+        imgMain: "./assets/img/ItemTrungBaySP/id29.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id29-hover.jpg",
+        category: "VangBac",
+        subCategory: "Vang24K"
+    },
+    {
+        id: 30,
+        name: "Vàng mini Thỏi Vàng 0.5 chỉ 99,99% PNJ Tiểu Lộc Đại Phát",
+        price: null,
+        imgMain: "./assets/img/ItemTrungBaySP/id30.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id30-hover.jpg",
+        category: "VangBac",
+        subCategory: "Vang24K"
+    },
+    {
+        id: 31,
+        name: "Bộ Tượng Long Phụng Giao Hòa Vàng 99,9% (24K) ~ 9.9 chỉ",
+        price: 239000000,
+        imgMain: "./assets/img/ItemTrungBaySP/id31.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id31-hover.jpg",
+        category: "VangBac",
+        subCategory: "Vang24K"
+    },
+    {
+        id: 32,
+        name: "Bông tai cưới Vàng 99,9% (24K) Trầu Cau",
+        price: 35276000,
+        imgMain: "./assets/img/ItemTrungBaySP/id32.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id32-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Vang24K", "BongTai"]
+    },
+    {
+        id: 33,
+        name: "Nhẫn cưới Vàng 99,9% (24K)",
+        price: 17439000,
+        imgMain: "./assets/img/ItemTrungBaySP/ìd33.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id33-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["Vang24K", "NhanCuoi"]
+    },
+    {
+        id: 34,
+        name: "Nhẫn Vàng hồng 58,5% (14K) đính đá Sapphire Disney Sleeping Beauty",
+        price: 23852000,
+        imgMain: "./assets/img/ItemTrungBaySP/id34.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id34-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["VangHong", "NhanDon"]
+    },
+    {
+        id: 35,
+        name: "Cặp nhẫn cưới Kim cương Vàng hồng 75% (18K) Tình Hồng",
+        price: 34816000,
+        imgMain: "./assets/img/ItemTrungBaySP/id35.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id35-hover.jpg",
+        category: ["VangBac", "TrangSuc"],
+        subCategory: ["VangHong", "NhanCuoi"]
+    },
+
     
 ];
 
