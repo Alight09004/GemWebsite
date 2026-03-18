@@ -35,77 +35,120 @@
             border-left: 4px solid #D4AF37;
             background: #fcfcfc;
         }
+        /* Tùy chỉnh Tab */
+        .cart-tabs .nav-link {
+            color: #001f3f;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border: none;
+            border-bottom: 3px solid transparent;
+            padding: 10px 30px;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .cart-tabs .nav-link:hover {
+            color: #D4AF37;
+        }
+        .cart-tabs .nav-link.active {
+            color: #D4AF37;
+            border-bottom: 3px solid #D4AF37;
+            background: transparent;
+        }
+        .cart-tabs {
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body class="bg-light" style="display: flex; flex-direction: column; min-height: 100vh;">
     <app-header></app-header>
 
     <div class="container my-5 flex-grow-1">
-        <h2 class="mb-4" style="font-family: 'Playfair Display', serif; color: #001f3f;">Giỏ hàng của bạn</h2>
+        <!-- Tabs -->
+        <ul class="nav nav-tabs cart-tabs" id="cartTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="cart-tab" data-bs-toggle="tab" data-bs-target="#cart-content" type="button" role="tab" aria-controls="cart-content" aria-selected="true">
+                    <i class="fas fa-shopping-cart me-2 fs-5"></i>Giỏ hàng
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history-content" type="button" role="tab" aria-controls="history-content" aria-selected="false">
+                    <i class="fas fa-history me-2 fs-5"></i>Lịch sử mua hàng
+                </button>
+            </li>
+        </ul>
         
-        <div class="row g-4">
-            <div class="col-lg-8">
-                <div class="card shadow-sm border-0 mb-4">
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table cart-table mb-0">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th scope="col" class="ps-4"><input type="checkbox" id="selectAll" class="form-check-input" checked onchange="toggleAll()"></th>
-                                        <th scope="col">Sản phẩm</th>
-                                        <th scope="col">Đơn giá</th>
-                                        <th scope="col">Số lượng</th>
-                                        <th scope="col">Thành tiền</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="cart-page-items">
-                                    <!-- Sản phẩm giỏ hàng hiển thị ở đây -->
-                                </tbody>
-                            </table>
+        <!-- Tab Content -->
+        <div class="tab-content" id="cartTabsContent">
+            
+            <!-- Tab: Giỏ hàng -->
+            <div class="tab-pane fade show active" id="cart-content" role="tabpanel" aria-labelledby="cart-tab">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm border-0 mb-4">
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table cart-table mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col" class="ps-4"><input type="checkbox" id="selectAll" class="form-check-input" checked onchange="toggleAll()"></th>
+                                                <th scope="col">Sản phẩm</th>
+                                                <th scope="col">Đơn giá</th>
+                                                <th scope="col">Số lượng</th>
+                                                <th scope="col">Thành tiền</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="cart-page-items">
+                                            <!-- Sản phẩm giỏ hàng hiển thị ở đây -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-4" style="color: #001f3f;">Tổng đơn hàng</h5>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span class="text-muted">Tạm tính:</span>
+                                    <span class="fw-bold" id="cart-subtotal">0đ</span>
+                                </div>
+                                <div class="mb-3 border-bottom pb-3">
+                                    <label class="form-label small text-muted">Mã giảm giá</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="discountCode" placeholder="Nhập mã (VD: JADE10)">
+                                        <button class="btn btn-outline-dark" type="button" onclick="applyDiscount()">Áp dụng</button>
+                                    </div>
+                                    <div id="discount-message" class="small mt-1 d-none text-success"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-4 pt-1">
+                                    <span class="fw-bold fs-5" style="color: #001f3f;">Tổng cộng:</span>
+                                    <span class="fw-bold fs-5 text-danger" id="cart-total">0đ</span>
+                                </div>
+                                <button class="btn btn-dark w-100 py-3 fw-bold shadow-sm" style="background-color: #001f3f;" onclick="proceedToCheckout()">TIẾN HÀNH THANH TOÁN</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Lịch sử mua hàng -->
+            <!-- Tab: Lịch sử mua hàng -->
+            <div class="tab-pane fade" id="history-content" role="tabpanel" aria-labelledby="history-tab">
+                <div class="alert alert-warning d-none shadow-sm" id="login-prompt">
+                    <i class="fas fa-info-circle me-2"></i> Vui lòng <a href="login.html" class="alert-link">đăng nhập</a> để xem lịch sử mua hàng của bạn.
+                </div>
+
                 <div class="card shadow-sm border-0 d-none" id="history-section">
-                    <div class="card-header bg-white border-bottom">
-                        <h5 class="mb-0 py-2" style="color: #001f3f; font-weight: bold;"><i class="fas fa-history me-2" style="color: #D4AF37;"></i>Lịch sử mua hàng</h5>
-                    </div>
                     <div class="card-body p-4" id="history-list">
                         <!-- Đơn hàng lịch sử hiển thị ở đây -->
                     </div>
                 </div>
-
-                <div class="alert alert-warning d-none shadow-sm mt-3" id="login-prompt">
-                    <i class="fas fa-info-circle me-2"></i> Vui lòng <a href="login.html" class="alert-link">đăng nhập</a> để xem lịch sử mua hàng của bạn.
-                </div>
             </div>
 
-            <div class="col-lg-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h5 class="fw-bold mb-4" style="color: #001f3f;">Tổng đơn hàng</h5>
-                        <div class="d-flex justify-content-between mb-3">
-                            <span class="text-muted">Tạm tính:</span>
-                            <span class="fw-bold" id="cart-subtotal">0đ</span>
-                        </div>
-                        <div class="mb-3 border-bottom pb-3">
-                            <label class="form-label small text-muted">Mã giảm giá</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="discountCode" placeholder="Nhập mã (VD: JADE10)">
-                                <button class="btn btn-outline-dark" type="button" onclick="applyDiscount()">Áp dụng</button>
-                            </div>
-                            <div id="discount-message" class="small mt-1 d-none text-success"></div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-4 pt-1">
-                            <span class="fw-bold fs-5" style="color: #001f3f;">Tổng cộng:</span>
-                            <span class="fw-bold fs-5 text-danger" id="cart-total">0đ</span>
-                        </div>
-                        <button class="btn btn-dark w-100 py-3 fw-bold shadow-sm" style="background-color: #001f3f;" onclick="proceedToCheckout()">TIẾN HÀNH THANH TOÁN</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <app-footer></app-footer>
