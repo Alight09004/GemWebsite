@@ -235,11 +235,11 @@ function initSearchOverlay() {
                 <div class="suggestion-col">
                     <h4><i class="fas fa-fire text-danger"></i> Top tìm kiếm</h4>
                     <div class="suggestion-tags">
-                        <span onclick="window.setSearchValue('Nhẫn kim cương')">Nhẫn kim cương</span>
-                        <span onclick="window.setSearchValue('Dây chuyền vàng')">Dây chuyền vàng</span>
-                        <span onclick="window.setSearchValue('Bông tai')">Bông tai</span>
-                        <span onclick="window.setSearchValue('Đá Sapphire')">Đá Sapphire</span>
-                        <span onclick="window.setSearchValue('Lắc tay bạc')">Lắc tay bạc</span>
+                        <span onclick="window.setSearchValue('Nhẫn kim cương', event)">Nhẫn kim cương</span>
+                        <span onclick="window.setSearchValue('Dây chuyền vàng', event)">Dây chuyền vàng</span>
+                        <span onclick="window.setSearchValue('Bông tai', event)">Bông tai</span>
+                        <span onclick="window.setSearchValue('Đá Sapphire', event)">Đá Sapphire</span>
+                        <span onclick="window.setSearchValue('Lắc tay bạc', event)">Lắc tay bạc</span>
                     </div>
                 </div>
                 <div class="suggestion-col">
@@ -347,7 +347,11 @@ function initSearchOverlay() {
 }
 
 // Hàm thiết lập giá trị tìm kiếm từ tag gợi ý
-window.setSearchValue = function(val) {
+window.setSearchValue = function(val, event) {
+    // Ngăn chặn sự kiện click lan ra ngoài (tới document) để tránh việc bảng kết quả bị ẩn đi ngay lập tức
+    if (event) {
+        event.stopPropagation();
+    }
     const input = document.getElementById('fullscreen-search-input');
     if(input) {
         input.value = val;
