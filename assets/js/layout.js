@@ -154,6 +154,8 @@ class AppHeader extends HTMLElement {
     }
 }
 
+const setting = JSON.parse(localStorage.getItem('setting'));
+
 class AppFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -164,10 +166,9 @@ class AppFooter extends HTMLElement {
                 <img src="./assets/img/ItemTrangChu(1)/DreamCloud (10).png" alt="Logo" class="footer-logo-img" />
                 JADE<span>CHAMBER</span>
               </a>
-              <p><i class="fas fa-phone"></i> 0336.xxx.xxx (Chính)</p>
-              <p><i class="fas fa-phone"></i> 0318.xxx.xxx (Phụ)</p>
-              <p><i class="fas fa-envelope"></i> Contact@jadechamber.vn</p>
-              <p><i class="fas fa-map-marker-alt"></i> 120 Yên Lãng, Đống Đa, Hà Nội</p>
+              <p><i class="fas fa-phone"></i> ${setting?.phoneNumber || '0336.xxx.xxx'} (Chính)</p>
+              <p><i class="fas fa-envelope"></i> ${setting?.contactEmail || 'Contact@jadechamber.vn'}</p>
+              <p><i class="fas fa-map-marker-alt"></i> ${setting?.address || '120 Yên Lãng, Đống Đa, Hà Nội'}</p>
             </div>
             <div class="footer-column">
               <h3>DỊCH VỤ KHÁCH HÀNG</h3>
