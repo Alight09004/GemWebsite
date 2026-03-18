@@ -290,10 +290,14 @@
             <li class="list-group-item d-flex justify-content-between lh-sm py-3">
                 <div class="flex-grow-1 me-3">
                     <h6 class="my-0 mb-2" style="font-size: 14px; line-height: 1.4; color: #000c1d;">${item.name}</h6>
-                    
-                    <div class="d-flex align-items-center gap-2 mt-2">
+                      <div class="d-flex align-items-center gap-2 mt-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2" onclick="changeCheckoutQty(${index}, -1)">-</button>
-                        <span class="small fw-bold" style="min-width: 20px; text-align: center;">${item.quantity}</span>
+                        
+                        <input type="number" class="form-control form-control-sm text-center fw-bold px-1" 
+                               style="width: 50px; height: 28px; hide-arrows" 
+                               value="${item.quantity}" min="1" 
+                               onchange="inputCheckoutQty(${index}, this.value)">
+                        
                         <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2" onclick="changeCheckoutQty(${index}, 1)">+</button>
                         
                         <button type="button" class="btn btn-sm text-danger p-0 ms-3 border-0 bg-transparent" onclick="removeCheckoutItem(${index})" title="Xóa">
@@ -338,6 +342,37 @@
         }
       }
 
+      // 3.5. HÀM XỬ LÝ KHI KHÁCH HÀNG NHẬP SỐ TRỰC TIẾP
+      function inputCheckoutQty(index, newQty) {
+        let currentCart =
+          JSON.parse(localStorage.getItem("jade_chamber_cart")) || [];
+
+        if (currentCart[index]) {
+          // Ép kiểu chữ người dùng nhập thành số nguyên
+          let qty = parseInt(newQty);
+
+          // Bắt lỗi: Nếu khách nhập số 0, số âm, hoặc cố tình xóa sạch ô nhập
+          if (isNaN(qty) || qty <= 0) {
+            if (confirm("Bạn có muốn xóa sản phẩm này khỏi đơn hàng?")) {
+              currentCart.splice(index, 1);
+            } else {
+              currentCart[index].quantity = 1; // Khách hủy xóa thì tự động reset về 1
+            }
+          } else {
+            // Nếu khách nhập số hợp lệ (VD: 100), cập nhật vào giỏ
+            currentCart[index].quantity = qty;
+          }
+
+          // Lưu dữ liệu mới và vẽ lại toàn bộ giao diện tiền
+          localStorage.setItem(
+            "jade_chamber_cart",
+            JSON.stringify(currentCart),
+          );
+          loadCheckoutCart();
+          syncHeaderCart(currentCart);
+        }
+      }
+
       // 4. HÀM XỬ LÝ NÚT XÓA (THÙNG RÁC)
       function removeCheckoutItem(index) {
         let currentCart =
@@ -353,7 +388,7 @@
         }
       }
 
-      // 5. ĐỒNG BỘ GIỎ HÀNG TRÊN NAVBAR (Tránh việc bên dưới xóa mà bên trên Menu vẫn còn số)
+      // 5. ĐỒNG BỘ GIỎ HÀNG TRÊN NAVBAR
       function syncHeaderCart(updatedCart) {
         if (typeof window.cart !== "undefined") {
           window.cart = updatedCart;
@@ -363,7 +398,7 @@
         }
       }
 
-      // 6. CÁC HÀM TÍNH TIỀN (Đã tối ưu lại)
+      // 6. CÁC HÀM TÍNH TIỀN
       function updateTotalUI() {
         const subtotalEl = document.getElementById("checkout-subtotal");
         const totalEl = document.getElementById("checkout-total-price");
@@ -390,7 +425,7 @@
           totalEl.innerText = finalTotal.toLocaleString("vi-VN") + "đ";
       }
 
-      // Hàm tính lại tiền giảm nếu khách đổi số lượng sản phẩm (Tránh lỗi giảm 15% của số tiền cũ)
+      // Hàm tính lại tiền giảm nếu khách đổi số lượng sản phẩm
       function recalculateDiscount() {
         const codeInput = document.getElementById("discountCode");
         if (!codeInput || !codeInput.value) {
