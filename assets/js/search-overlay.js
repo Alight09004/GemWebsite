@@ -97,16 +97,6 @@ function initSearchOverlay() {
         .search-input-wrapper input::placeholder {
             color: #aaa;
         }
-        .search-category-select {
-            border: none;
-            background: #f8f9fa;
-            color: #001f3f;
-            padding: 15px 25px;
-            font-weight: bold;
-            outline: none;
-            cursor: pointer;
-            border-left: 1px solid #eee;
-        }
         
         /* Suggestions */
         .search-suggestions-container {
@@ -222,7 +212,6 @@ function initSearchOverlay() {
                 font-size: 30px;
             }
             .search-suggestions-container { flex-direction: column; gap: 20px; }
-            .search-category-select { display: none; }
             .search-overlay-box { padding: 20px; }
         }
     `;
@@ -239,14 +228,6 @@ function initSearchOverlay() {
                 <div class="search-input-wrapper">
                     <button type="submit" class="btn-search-icon"><i class="fa fa-search"></i></button>
                     <input type="text" id="fullscreen-search-input" placeholder="Tìm kiếm đá quý, vàng bạc, trang sức..." name="q" autocomplete="off">
-                    <select id="fullscreen-search-category" class="search-category-select">
-                        <option value="All">Tất cả danh mục</option>
-                        <option value="DaQuy">Đá quý</option>
-                        <option value="VangBac">Vàng bạc</option>
-                        <option value="TrangSuc">Trang sức</option>
-                        <option value="PhongThuy">Phong Thủy</option>
-                        <option value="PhuKien">Phụ kiện</option>
-                    </select>
                 </div>
             </form>
 
@@ -281,14 +262,12 @@ function initSearchOverlay() {
     // 3. Logic xử lý tìm kiếm
     const form = document.getElementById('fullscreen-search-form');
     const input = document.getElementById('fullscreen-search-input');
-    const categorySelect = document.getElementById('fullscreen-search-category');
     const resultsContainer = document.getElementById('overlay-search-results');
     const suggestionsContainer = document.getElementById('search-suggestions-container');
 
     // Hàm xử lý Live Search (Tìm kiếm thời gian thực)
     function performLiveSearch() {
         const query = input.value.trim().toLowerCase();
-        const category = categorySelect.value;
         
         if (query.length > 0) {
             suggestionsContainer.style.display = 'none'; // Ẩn gợi ý mặc định
@@ -296,15 +275,6 @@ function initSearchOverlay() {
             if (typeof gemProducts !== 'undefined') {
                 let filtered = gemProducts.filter(p => p.name.toLowerCase().includes(query));
                 
-                if (category !== 'All') {
-                    filtered = filtered.filter(p => 
-                        (Array.isArray(p.category) && p.category.includes(category)) || 
-                        (Array.isArray(p.subCategory) && p.subCategory.includes(category)) ||
-                        p.category === category || 
-                        p.subCategory === category
-                    );
-                }
-
                 if (filtered.length > 0) {
                     const topResults = filtered.slice(0, 4); // Lấy 4 kết quả đầu tiên
                     let html = topResults.map(p => `
@@ -340,11 +310,10 @@ function initSearchOverlay() {
 
     // Gắn sự kiện khi gõ phím và khi thay đổi Danh mục
     input.addEventListener('input', performLiveSearch);
-    categorySelect.addEventListener('change', performLiveSearch);
 
     // Ẩn kết quả khi click ra ngoài input
     document.addEventListener('click', function(e) {
-        if (!input.contains(e.target) && !resultsContainer.contains(e.target) && !categorySelect.contains(e.target)) {
+        if (!input.contains(e.target) && !resultsContainer.contains(e.target)) {
             resultsContainer.classList.remove('show');
         }
     });
@@ -353,21 +322,14 @@ function initSearchOverlay() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const query = input.value.trim();
-        const category = categorySelect.value;
         
         if (query.trim() !== '') {
             closeFullscreenSearch(); // Đóng overlay
             
             if (typeof searchProducts === 'function' && document.getElementById('product-display-grid') && !window.location.pathname.includes('detail.html')) {
-                if(typeof filterCat === 'function' && category !== 'All') {
-                    filterCat(category);
-                }
                 searchProducts(query);
             } else {
                 let url = `TrungBaySP.html?search=${encodeURIComponent(query)}`;
-                if (category !== 'All') {
-                    url += `&category=${encodeURIComponent(category)}`;
-                }
                 window.location.href = url;
             }
         }
