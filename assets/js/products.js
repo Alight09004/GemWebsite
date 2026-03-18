@@ -478,11 +478,14 @@ function searchProducts(query) {
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
+    const searchQuery = urlParams.get('search');
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
     const validPages = ['DaQuy.html', 'VangBac.html', 'TrangSuc.html', 'PhongThuy.html', 'PhuKien.html'];
 
-    if (category && categoryNames[category]) {
+    if (searchQuery) {
+        searchProducts(searchQuery);
+    } else if (category && categoryNames[category]) {
         filterCat(category);
     } else {
         if (validPages.includes(currentPage)) {
