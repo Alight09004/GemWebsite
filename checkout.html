@@ -143,7 +143,7 @@
                     type="email"
                     class="form-control"
                     id="email"
-                    placeholder="you@example.com"
+                    placeholder="name@gmail.com"
                   />
                 </div>
 
@@ -250,46 +250,119 @@
     <script src="./assets/js/cart.js"></script>
 
     <script>
-      // Biến toàn cục để lưu tiền và mức giảm giá
       let globalSubtotal = 0;
       let appliedDiscount = 0;
 
+      // 1. Chạy ngay khi trang vừa tải xong
       document.addEventListener("DOMContentLoaded", () => {
+        loadCheckoutCart();
+      });
+
+      // 2. HÀM VẼ LẠI GIỎ HÀNG (Có thêm nút + / - / Xóa)
+      function loadCheckoutCart() {
         const cart =
           JSON.parse(localStorage.getItem("jade_chamber_cart")) || [];
         const checkoutList = document.getElementById("checkout-item-list");
         const checkoutCount = document.getElementById("checkout-cart-count");
 
+        globalSubtotal = 0;
         let count = 0;
 
+        // Nếu giỏ hàng trống
         if (cart.length === 0) {
           checkoutList.innerHTML =
-            '<li class="list-group-item text-center">Giỏ hàng đang trống</li>';
+            '<li class="list-group-item text-center py-4 text-muted">Giỏ hàng đang trống</li>';
+          if (checkoutCount) checkoutCount.innerText = "0";
+          recalculateDiscount();
           updateTotalUI();
           return;
         }
 
+        // Vẽ danh sách sản phẩm
         checkoutList.innerHTML = cart
-          .map((item) => {
+          .map((item, index) => {
             let itemTotal = item.price * item.quantity;
-            globalSubtotal += itemTotal; // Cộng dồn vào tạm tính
+            globalSubtotal += itemTotal;
             count += item.quantity;
+
             return `
-        <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-                <h6 class="my-0">${item.name}</h6>
-                <small class="text-muted">Số lượng: ${item.quantity}</small>
-            </div>
-            <span class="text-muted">${itemTotal.toLocaleString("vi-VN")}đ</span>
-        </li>`;
+            <li class="list-group-item d-flex justify-content-between lh-sm py-3">
+                <div class="flex-grow-1 me-3">
+                    <h6 class="my-0 mb-2" style="font-size: 14px; line-height: 1.4; color: #000c1d;">${item.name}</h6>
+                    
+                    <div class="d-flex align-items-center gap-2 mt-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2" onclick="changeCheckoutQty(${index}, -1)">-</button>
+                        <span class="small fw-bold" style="min-width: 20px; text-align: center;">${item.quantity}</span>
+                        <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2" onclick="changeCheckoutQty(${index}, 1)">+</button>
+                        
+                        <button type="button" class="btn btn-sm text-danger p-0 ms-3 border-0 bg-transparent" onclick="removeCheckoutItem(${index})" title="Xóa">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <span class="text-muted fw-bold">${itemTotal.toLocaleString("vi-VN")}đ</span>
+            </li>`;
           })
           .join("");
 
         if (checkoutCount) checkoutCount.innerText = count;
-        updateTotalUI(); // Cập nhật giao diện tiền
-      });
 
-      // HÀM MỚI 1: CẬP NHẬT GIAO DIỆN TỔNG TIỀN
+        recalculateDiscount(); // Tính lại mã giảm giá nếu khách hàng thay đổi số lượng
+        updateTotalUI(); // Cập nhật tổng tiền
+      }
+
+      // 3. HÀM XỬ LÝ NÚT CỘNG / TRỪ
+      function changeCheckoutQty(index, delta) {
+        let currentCart =
+          JSON.parse(localStorage.getItem("jade_chamber_cart")) || [];
+        if (currentCart[index]) {
+          currentCart[index].quantity += delta;
+
+          // Nếu giảm xuống 0 thì hỏi có muốn xóa không
+          if (currentCart[index].quantity <= 0) {
+            if (confirm("Bạn có muốn xóa sản phẩm này khỏi đơn hàng?")) {
+              currentCart.splice(index, 1);
+            } else {
+              currentCart[index].quantity = 1; // Hủy thì giữ nguyên 1
+            }
+          }
+
+          // Lưu dữ liệu và vẽ lại
+          localStorage.setItem(
+            "jade_chamber_cart",
+            JSON.stringify(currentCart),
+          );
+          loadCheckoutCart();
+          syncHeaderCart(currentCart); // Đồng bộ logo giỏ hàng trên thanh Menu
+        }
+      }
+
+      // 4. HÀM XỬ LÝ NÚT XÓA (THÙNG RÁC)
+      function removeCheckoutItem(index) {
+        let currentCart =
+          JSON.parse(localStorage.getItem("jade_chamber_cart")) || [];
+        if (confirm("Bạn chắc chắn muốn xóa sản phẩm này?")) {
+          currentCart.splice(index, 1);
+          localStorage.setItem(
+            "jade_chamber_cart",
+            JSON.stringify(currentCart),
+          );
+          loadCheckoutCart();
+          syncHeaderCart(currentCart);
+        }
+      }
+
+      // 5. ĐỒNG BỘ GIỎ HÀNG TRÊN NAVBAR (Tránh việc bên dưới xóa mà bên trên Menu vẫn còn số)
+      function syncHeaderCart(updatedCart) {
+        if (typeof window.cart !== "undefined") {
+          window.cart = updatedCart;
+          if (typeof updateCartDropdownUI === "function") {
+            updateCartDropdownUI();
+          }
+        }
+      }
+
+      // 6. CÁC HÀM TÍNH TIỀN (Đã tối ưu lại)
       function updateTotalUI() {
         const subtotalEl = document.getElementById("checkout-subtotal");
         const totalEl = document.getElementById("checkout-total-price");
@@ -298,15 +371,12 @@
           "checkout-discount-amount",
         );
 
-        // Hiện Tạm tính
         if (subtotalEl)
           subtotalEl.innerText = globalSubtotal.toLocaleString("vi-VN") + "đ";
 
-        // Tính tổng tiền cuối cùng
         let finalTotal = globalSubtotal - appliedDiscount;
-        if (finalTotal < 0) finalTotal = 0; // Tránh trường hợp tiền bị âm
+        if (finalTotal < 0) finalTotal = 0;
 
-        // Hiện/Ẩn dòng Giảm giá
         if (appliedDiscount > 0) {
           discountRow.classList.remove("d-none");
           discountAmountEl.innerText =
@@ -315,14 +385,28 @@
           discountRow.classList.add("d-none");
         }
 
-        // Hiện Tổng cộng
         if (totalEl)
           totalEl.innerText = finalTotal.toLocaleString("vi-VN") + "đ";
       }
 
-      // HÀM MỚI 2: XỬ LÝ KHI BẤM NÚT "ÁP DỤNG"
+      // Hàm tính lại tiền giảm nếu khách đổi số lượng sản phẩm (Tránh lỗi giảm 15% của số tiền cũ)
+      function recalculateDiscount() {
+        const codeInput = document.getElementById("discountCode");
+        if (!codeInput || !codeInput.value) {
+          appliedDiscount = 0;
+          return;
+        }
+
+        const code = codeInput.value.trim().toUpperCase();
+        if (code === "JADE15") appliedDiscount = globalSubtotal * 0.15;
+        else if (code === "VIP200") appliedDiscount = 200000;
+        else if (code === "JADE05") appliedDiscount = globalSubtotal * 0.05;
+        else if (code === "LIYUE") appliedDiscount = globalSubtotal * 0.85;
+        else appliedDiscount = 0;
+      }
+
+      // Hàm áp dụng mã khi khách bấm nút ÁP DỤNG
       function applyDiscount() {
-        // Lấy mã khách nhập và in hoa toàn bộ để dễ so sánh
         const codeInput = document
           .getElementById("discountCode")
           .value.trim()
@@ -337,28 +421,28 @@
           return;
         }
 
-        // Kho mã giảm giá (Bạn có thể thêm bớt ở đây)
-        if (codeInput === "JADE15") {
-          appliedDiscount = globalSubtotal * 0.15; // Giảm 15%
-          msgEl.innerText = "Áp dụng mã thành công! Giảm 15% tổng đơn.";
-          msgEl.className = "text-success mt-2 d-block fw-bold small";
-        } else if (codeInput === "VIP200") {
-          appliedDiscount = 200000; // Giảm 200.000đ
-          msgEl.innerText = "Áp dụng mã thành công! Giảm trực tiếp 200.000đ.";
+        recalculateDiscount();
+
+        if (appliedDiscount > 0) {
+          msgEl.innerText = "Áp dụng mã thành công!";
           msgEl.className = "text-success mt-2 d-block fw-bold small";
         } else {
-          appliedDiscount = 0;
-          msgEl.innerText = "Mã giảm giá không hợp lệ hoặc đã hết hạn.";
+          msgEl.innerText = "Mã không hợp lệ hoặc đã hết hạn.";
           msgEl.className = "text-danger mt-2 d-block small";
         }
-
-        // Tính lại tiền sau khi áp mã
         updateTotalUI();
       }
 
-      // Hàm xử lý đặt hàng giữ nguyên
+      // 7. XÁC NHẬN ĐẶT HÀNG
       function placeOrder(event) {
         event.preventDefault();
+
+        // Chặn không cho đặt nếu giỏ hàng trống
+        if (globalSubtotal === 0) {
+          alert("Giỏ hàng đang trống! Vui lòng chọn sản phẩm trước khi đặt.");
+          return;
+        }
+
         const name = document.getElementById("fullName").value;
         alert("Cảm ơn " + name + "! Đơn hàng của bạn đã được đặt thành công.");
         localStorage.removeItem("jade_chamber_cart");
