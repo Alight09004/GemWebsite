@@ -314,6 +314,150 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["VangHong", "NhanCuoi"]
     },
+    {
+        id: 36,
+        name: "Vòng tay charm Vàng 24K Tỳ Hưu Thiên Lộc dây màu đỏ",
+        price: 800000,
+        imgMain: "./assets/img/ItemTrungBaySP/id36.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id36-hover.jpg",
+        category: ["VangBac", "PhongThuy"],
+        subCategory: ["Vang24K", "VongTayTyHuu"]
+    },
+    {
+        id: 37,
+        name: "Lắc tay bạc nam dây bện dù sáp tỳ hưu may mắn Henry",
+        price: 2896000,
+        imgMain: "./assets/img/ItemTrungBaySP/id37.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id37-hover.jpg",
+        category: ["VangBac", "PhongThuy"],
+        subCategory: ["Bac", "VongTayTyHuu"]
+    },
+    {
+        id: 38,
+        name: "Lắc tay bạc đính đá Trịnh Collection",
+        price: 1575000,
+        imgMain: "./assets/img/ItemTrungBaySP/id38.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id38-hover.jpg",
+        category: ["VangBac", "PhongThuy"],
+        subCategory: ["Bac", "VongTayTyHuu"]
+    },
+    {
+        id: 39,
+        name: "Mặt dây chuyền Vàng 75% (18K) đính đá CZ",
+        price: 11764000,
+        imgMain: "./assets/img/ItemTrungBaySP/id39.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id39-hover.jpg",
+        category: ["VangBac", "PhongThuy"],
+        subCategory: ["Vang18K", "MatDayPhat"]
+    },
+    {
+        id: 40,
+        name: "Mặt dây chuyền Vàng trắng Ý 75% (18K) đính đá CZ hình Phật",
+        price: 11892000,
+        imgMain: "./assets/img/ItemTrungBaySP/id40.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id40-hover.jpg",
+        category: ["VangBac", "PhongThuy"],
+        subCategory: ["VangTrang","Vang18K", "MatDayPhat"]
+    },
+    {
+        id: 41,
+        name: "Mặt dây chuyền Vàng trắng Ý 75% (18K) đính đá CZ hình Phật ",
+        price: 20176000,
+        imgMain: "./assets/img/ItemTrungBaySP/id41.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id41-hover.jpg",
+        category: ["VangBac", "PhongThuy"],
+        subCategory: ["VangTrang","Vang18K", "MatDayPhat"]
+    },
+    {
+        id: 42,
+        name: "Vòng Tay Swarovski Pha lê Gema Bracelet",
+        price: 5.500000,
+        imgMain: "./assets/img/ItemTrungBaySP/id42.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id42-hover.jpg",
+        category: ["TrangSuc", "PhongThuy"],
+        subCategory: ["LacTay", "DaTheoMenh"]
+    },
+    {
+        id: 43,
+        name: "Lắc tay Bạc đính đá STYLE Collection",
+        price: 1195000,
+        imgMain: "./assets/img/ItemTrungBaySP/id43.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id43-hover.jpg",
+        category: ["TrangSuc", "PhongThuy"],
+        subCategory: ["LacTay", "DaTheoMenh"]
+    },
+    {
+        id: 44,
+        name: "Nhẫn Bạc đính đá Ruby",
+        price: 545000,
+        imgMain: "./assets/img/ItemTrungBaySP/id44.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id44-hover.jpg",
+        category: ["DaQuy","TrangSuc" ,"PhongThuy"],
+        subCategory: ["Ruby", "NhanDon","DaTheoMenh"]
+    },
+    {
+        id: 45,
+        name: "Cây Đào Đá Thạch Anh Hồng 3A 68 Quả ",
+        price: 49500000,
+        imgMain: "./assets/img/ItemTrungBaySP/id45.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id45-hover.jpg",
+        category: ["PhongThuy"],
+        subCategory: ["DaTheoMenh"]
+    },
+    {
+        id: 46,
+        name: "Hạt Charm Bạc đính đá",
+        price: 695000,
+        imgMain: "./assets/img/ItemTrungBaySP/id46.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id46-hover.jpg",
+        category: ["PhongThuy"],
+        subCategory: ["DaTheoMenh"]
+    },
+    {
+        id: 47,
+        name: "Hạt Charm Bạc đính đá STYLE Collection",
+        price: 495000,
+        imgMain: "./assets/img/ItemTrungBaySP/id47.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id47-hover.jpg",
+        category: ["PhongThuy"],
+        subCategory: ["DaTheoMenh"]
+    },
+    {
+        id: 48,
+        name: "Hạt Charm Túi vàng",
+        price: 445000,
+        imgMain: "./assets/img/ItemTrungBaySP/id48.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id48-hover.jpg",
+        category: ["PhongThuy"],
+        subCategory: ["CharmVang"]
+    },
+    {
+        id: 49,
+        name: "Hạt Charm Bình trà vàng",
+        price: 14160000,
+        imgMain: "./assets/img/ItemTrungBaySP/id49.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id49-hover.jpg",
+        category: ["PhongThuy"],
+        subCategory: ["CharmVang"]
+    },
+    {
+        id: 50,
+        name: "Hạt Charm vàng Nón lá",
+        price: 755000,
+        imgMain: "./assets/img/ItemTrungBaySP/id50.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id50-hover.jpg",
+        category: ["PhongThuy"],
+        subCategory: ["CharmVang"]
+    },
+    {
+        id: 51,
+        name: "Charm Pandora Moments Mạ Vàng Hình Chú Ong",
+        price: 3790000,
+        imgMain: "./assets/img/ItemTrungBaySP/id51.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id51-hover.jpg",
+        category: ["PhongThuy"],
+        subCategory: ["CharmVang"]
+    },
 
     
 ];
