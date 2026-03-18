@@ -65,16 +65,27 @@ document.addEventListener("DOMContentLoaded", () => {
           subCategories.join(", ") || "Không có"
         }</p>
 
-        <div class="d-flex gap-2 mt-3">
-          <button class="btn btn-danger px-4"
-                  onclick="addToCartById(${product.id})">
-            Mua ngay
-          </button>
+        <div class="mt-4">
 
-          <button class="btn btn-outline-dark px-4"
-                  onclick="addToCartById(${product.id})">
-            Thêm vào giỏ
-          </button>
+            <!-- SỐ LƯỢNG -->
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <label class="fw-bold">Số lượng:</label>
+                <input type="number" id="quantity" value="1" min="1"
+                    class="form-control"
+                    style="width: 80px;">
+            </div>
+
+            <!-- MUA NGAY -->
+            <button class="btn btn-danger w-100 py-3 fs-5 fw-bold"
+                onclick="buyNow(${product.id})">
+                Mua ngay
+             </button>
+
+            <!-- THÊM VÀO GIỎ -->
+            <button class="btn btn-outline-dark w-100 mt-3 py-2"
+                onclick="addToCartById(${product.id})">
+                Thêm vào giỏ
+            </button>
         </div>
       </div>
     </div>
@@ -129,5 +140,16 @@ function addToCartById(productId) {
   const product = gemProducts.find((p) => p.id === productId);
   if (product) {
     addToCart(product.name, product.price, product.imgMain);
+  }
+}
+function buyNow(productId) {
+  const product = gemProducts.find((p) => p.id === productId);
+  const quantity = parseInt(document.getElementById("quantity").value) || 1;
+
+  if (product) {
+    for (let i = 0; i < quantity; i++) {
+      addToCart(product.name, product.price, product.imgMain);
+    }
+    window.location.href = "checkout.html";
   }
 }
