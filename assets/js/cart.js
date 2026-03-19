@@ -255,7 +255,7 @@ const getStock = (name) => {
 function renderCartPage() {
     console.log('renderCartPage() called.'); // Crucial log for debugging
     const container = document.getElementById('cart-page-items');
-    if (!container) { console.error('Error: #cart-page-items container not found!'); return; } // Ensure we are on Cart.html
+    if (!container) { console.error('Error: #cart-page-items container not found!'); return; } 
 
     // Use the global 'cart' variable
     console.log('Cart length for renderCartPage:', cart.length, 'Cart content:', cart); // Crucial log
@@ -328,7 +328,7 @@ function setQtyPage(index, maxStock, element) {
         if (isNaN(newQty) || newQty <= 0) {
             if (newQty === 0) {
                 removePageItem(index);
-                // Nếu người dùng ấn "Hủy" khi được hỏi xóa, ta render lại để số trên ô input phục hồi về cũ
+                // Nếu người dùng ấn "Hủy" khi được hỏi xóa,render lại để số trên ô input phục hồi về cũ
                 renderCartPage(); 
                 return;
             }
