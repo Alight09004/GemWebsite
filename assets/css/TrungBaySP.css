@@ -468,6 +468,7 @@ html {
     text-transform: uppercase;
     letter-spacing: 1px;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 .ornament-line {
