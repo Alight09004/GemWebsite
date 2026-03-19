@@ -7,6 +7,33 @@ document.addEventListener("DOMContentLoaded", function() {
     // Lấy tên file HTML hiện tại
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const urlParams = new URLSearchParams(window.location.search);
+
+    const categoryNames = {
+        'KimCuong': 'Kim cương',
+        'Sapphire': 'Sapphire',
+        'Ruby': 'Ruby',
+        'Emerald': 'Emerald',
+        'Topaz': 'Topaz',
+        'Vang24K': 'Vàng 24K',
+        'Vang': 'Vàng',
+        'Vang18K': 'Vàng Ý 18K',
+        'Bac': 'Bạc S925',
+        'VangTrang': 'Vàng trắng',
+        'VangHong': 'Vàng hồng',
+        'NhanDon': 'Nhẫn đơn',
+        'DayChuyen': 'Dây chuyền',
+        'BongTai': 'Bông tai',
+        'LacTay': 'Lắc tay',
+        'NhanCuoi': 'Nhẫn cưới',
+        'VongTayTyHuu': 'Vòng tay tỳ hưu',
+        'MatDayPhat': 'Mặt dây Phật',
+        'DaTheoMenh': 'Đá theo mệnh',
+        'CharmVang': 'Charm vàng',
+        'HopTrangSuc': 'Hộp trang sức',
+        'DungCuLamSach': 'Dụng cụ làm sạch',
+        'KhanLauBac': 'Khăn lau bạc',
+        'DayDeoThayThe': 'Dây đeo thay thế'
+    };
     
     // Bảng ánh xạ: tên file -> breadcrumb path
     const pageMap = {
@@ -80,6 +107,39 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
+    // Xử lý động cho trang detail.html
+    if (currentPage === 'detail.html') {
+        const productId = urlParams.get('id');
+        if (productId && typeof gemProducts !== 'undefined') {
+            const product = gemProducts.find(p => p.id == productId);
+            if (product) {
+                const pageCategoryMap = {
+                    'DaQuy': { label: 'Đá quý', href: 'DaQuy.html' },
+                    'VangBac': { label: 'Vàng bạc', href: 'VangBac.html' },
+                    'TrangSuc': { label: 'Trang sức', href: 'TrangSuc.html' },
+                    'PhongThuy': { label: 'Phong thủy', href: 'PhongThuy.html' },
+                    'PhuKien': { label: 'Phụ kiện', href: 'PhuKien.html' }
+                };
+
+                let mainCat = Array.isArray(product.category) ? product.category[0] : product.category;
+                let subCat = Array.isArray(product.subCategory) ? product.subCategory[0] : product.subCategory;
+
+                // Bỏ đi mục "Chi tiết sản phẩm" mặc định
+                pageMap['detail.html'].breadcrumbs.pop();
+
+                if (mainCat && pageCategoryMap[mainCat]) {
+                    pageMap['detail.html'].breadcrumbs.push({ label: pageCategoryMap[mainCat].label, href: pageCategoryMap[mainCat].href, active: false, icon: null });
+                }
+                if (subCat && categoryNames[subCat]) {
+                    pageMap['detail.html'].breadcrumbs.push({ label: categoryNames[subCat], href: `${mainCat && pageCategoryMap[mainCat] ? pageCategoryMap[mainCat].href : 'TrungBaySP.html'}?category=${subCat}`, active: false, icon: null });
+                }
+                
+                pageMap['detail.html'].breadcrumbs.push({ label: product.name, href: `detail.html?id=${product.id}`, active: true, icon: null });
+                pageMap['detail.html'].title = product.name;
+            }
+        }
+    }
+
     // Lấy breadcrumb của trang hiện tại
     const pageConfig = pageMap[currentPage];
     
@@ -142,32 +202,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Xử lý breadcrumb động từ URL parameters (ví dụ: ?category=KimCuong)
     const category = urlParams.get('category');
-    if (category) {
-        const categoryNames = {
-            'KimCuong': 'Kim cương',
-            'Sapphire': 'Sapphire',
-            'Ruby': 'Ruby',
-            'Emerald': 'Emerald',
-            'Topaz': 'Topaz',
-            'Vang24K': 'Vàng 24K',
-            'Vang18K': 'Vàng Ý 18K',
-            'Bac': 'Bạc S925',
-            'VangTrang': 'Vàng trắng',
-            'VangHong': 'Vàng hồng',
-            'NhanDon': 'Nhẫn đơn',
-            'DayChuyen': 'Dây chuyền',
-            'BongTai': 'Bông tai',
-            'LacTay': 'Lắc tay',
-            'NhanCuoi': 'Nhẫn cưới',
-            'VongTayTyHuu': 'Vòng tay tỳ hưu',
-            'MatDayPhat': 'Mặt dây Phật',
-            'DaTheoMenh': 'Đá theo mệnh',
-            'CharmVang': 'Charm vàng',
-            'HopTrangSuc': 'Hộp trang sức',
-            'DungCuLamSach': 'Dụng cụ làm sạch',
-            'KhanLauBac': 'Khăn lau bạc',
-            'DayDeoThayThe': 'Dây đeo thay thế'
-        };
+    if (category && currentPage !== 'detail.html') {
         
         if (categoryNames[category]) {
             const breadcrumbList = document.getElementById('dynamic-breadcrumb');

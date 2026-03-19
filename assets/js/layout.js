@@ -36,7 +36,7 @@ class AppHeader extends HTMLElement {
                           <div class="col-megamenu col-md-2">
                             <a href="./VangBac.html"><h6 class="title"><i class="fas fa-coins me-2"></i>VÀNG BẠC</h6></a>
                             <ul class="list-unstyled">
-                              <li><a href="VangBac.html?category=Vang24K">Vàng 24K</a></li>
+                              <li><a href="VangBac.html?category=Vang">Vàng</a></li>
                               <li><a href="VangBac.html?category=Vang18K">Vàng Ý 18K</a></li>
                               <li><a href="VangBac.html?category=Bac">Bạc S925</a></li>
                               <li><a href="VangBac.html?category=VangTrang">Vàng trắng</a></li>
@@ -87,9 +87,9 @@ class AppHeader extends HTMLElement {
                   </li>
                 </ul>
     
-                <form class="d-flex search-box-nav" role="search" onsubmit="event.preventDefault(); window.openFullscreenSearch();">
-                  <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search" onclick="window.openFullscreenSearch(); this.blur();" />
-                  <button class="btn btn-search" type="button" onclick="window.openFullscreenSearch();"><i class="fas fa-search"></i></button>
+                <form class="d-flex search-box-nav" role="search">
+                  <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search" />
+                  <button class="btn btn-search" type="submit"><i class="fas fa-search"></i></button>
                 </form>
               </div>
     

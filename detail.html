@@ -22,19 +22,25 @@
   <body>
     <app-header></app-header>
 
+    <!-- Breadcrum -->
+    <div class="breadcrumb-wrapper">
+        <div class="container-fluid px-lg-5">
+            <nav aria-label="breadcrumb" class="py-3">
+                <ol class="breadcrumb mb-0" id="dynamic-breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html" class="text-decoration-none text-muted">
+                            <i class="fas fa-home me-1"></i> Trang chủ
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <script src="./assets/js/breadcrumb.js"></script>
+
     <main class="container my-5">
       <div id="product-detail-container"></div>
     </main>
-    <div class="container-custom py-0 mb-5 mt-2">
-      <div class="divider-header m-0">
-        <span class="ornament-line"></span>
-        <i
-          class="fas fa-gem mx-2"
-          style="color: #d4af37; font-size: 1.2rem"
-        ></i>
-        <span class="ornament-line"></span>
-      </div>
-    </div>
 
     <app-footer></app-footer>
     <app-globals></app-globals>

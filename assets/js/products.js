@@ -314,7 +314,7 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id29.png",
         imgHover: "./assets/img/ItemTrungBaySP/id29-hover.jpg",
         category: "VangBac",
-        subCategory: "Vang24K",
+        subCategory: "Vang",
         detail: "Tượng vàng 24K đúc đặc tinh xảo mang ý nghĩa phong thủy mã đáo thành công. Kiệt tác phong thủy quyền uy dành riêng cho không gian làm việc của giới tinh hoa.",
         sold: 5
     },
@@ -325,7 +325,7 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id30.png",
         imgHover: "./assets/img/ItemTrungBaySP/id30-hover.jpg",
         category: "VangBac",
-        subCategory: "Vang24K",
+        subCategory: "Vang",
         detail: "Thỏi vàng mini 0.5 chỉ 99,99% thiết kế sắc nét mang thông điệp Tiểu Lộc Đại Phát. Của để dành giàu giá trị tích lũy và là món quà mừng tuổi đầy ý nghĩa may mắn.",
         sold: 450
     },
@@ -336,7 +336,7 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id31.png",
         imgHover: "./assets/img/ItemTrungBaySP/id31-hover.jpg",
         category: "VangBac",
-        subCategory: "Vang24K",
+        subCategory: "Vang",
         detail: "Bộ tượng Long Phụng chế tác từ ~9.9 chỉ Vàng 24K nguyên chất, biểu trưng cho sự hòa hợp, hạnh phúc viên mãn. Tuyệt tác nghệ thuật đỉnh cao, là sính lễ và món quà cưới giá trị khủng.",
         sold: 2
     },
@@ -347,7 +347,7 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id32.png",
         imgHover: "./assets/img/ItemTrungBaySP/id32-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Vang24K", "BongTai"],
+        subCategory: ["Vang", "BongTai"],
         detail: "Mang đậm bản sắc văn hóa Việt Nam với họa tiết Trầu Cau đúc từ Vàng 24K. Đôi bông tai lộng lẫy là món sính lễ hoàn mỹ, thay cho ngàn lời chúc phúc trong ngày vu quy.",
         sold: 47
     },
@@ -358,7 +358,7 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/ìd33.png",
         imgHover: "./assets/img/ItemTrungBaySP/id33-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Vang24K", "NhanCuoi"],
+        subCategory: ["Vang", "NhanCuoi"],
         detail: "Nhẫn cưới Vàng 24K thiết kế trơn truyền thống nhưng không kém phần sắc sảo. Tín vật tình yêu bền chặt, mang giá trị trường tồn cùng thời gian cho hạnh phúc lứa đôi.",
         sold: 135
     },
@@ -391,7 +391,7 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id36.png",
         imgHover: "./assets/img/ItemTrungBaySP/id36-hover.jpg",
         category: ["VangBac", "PhongThuy"],
-        subCategory: ["Vang24K", "VongTayTyHuu"],
+        subCategory: ["Vang", "VongTayTyHuu"],
         detail: "Charm Tỳ Hưu Vàng 24K tết dây đỏ mang đậm phong thủy chiêu tài lộc, giữ bình an. Vòng tay may mắn nhỏ gọn, mang nguồn năng lượng tích cực luôn kề bên người đeo.",
         sold: 1342
     },
@@ -691,6 +691,50 @@ const gemProducts = [
         subCategory: ["DayDeoThayThe"],
         detail: "Dạng mắt xích chữ nhật sành điệu, trẻ trung mạ vàng 14K từ thương hiệu Pandora đình đám. Sợi dây tạo nên điểm nhấn thời thượng khó rời mắt cho những outfit năng động.",
         sold: 188
+    },
+    {
+        id: 64,
+        name: "VÀNG MIẾNG SJC 1 LƯỢNG",
+        price: null,
+        imgMain: "./assets/img/ItemTrungBaySP/id64.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id64-hover.jpg",
+        category: ["VangBac"],
+        subCategory: ["Vang"],
+        detail: "Vàng miếng SJC 1 lượng (10 chỉ) nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
+        sold: 64
+    },
+    {
+        id: 65,
+        name: "VÀNG MIẾNG SJC 5 CHỈ",
+        price: null,
+        imgMain: "./assets/img/ItemTrungBaySP/id65.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id65-hover.jpg",
+        category: ["VangBac"],
+        subCategory: ["Vang"],
+        detail: "Vàng miếng SJC 5 chỉ nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
+        sold: 107
+    },
+    {
+        id: 66,
+        name: "VÀNG MIẾNG SJC 2 CHỈ",
+        price: null,
+        imgMain: "./assets/img/ItemTrungBaySP/id66.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id66-hover.jpg",
+        category: ["VangBac"],
+        subCategory: ["Vang"],
+        detail: "Vàng miếng SJC 2 chỉ nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
+        sold: 368
+    },
+    {
+        id: 67,
+        name: "VÀNG MIẾNG SJC 1 CHỈ",
+        price: null,
+        imgMain: "./assets/img/ItemTrungBaySP/id67.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id67-hover.jpg",
+        category: ["VangBac"],
+        subCategory: ["Vang"],
+        detail: "Vàng miếng SJC 1 chỉ nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
+        sold: 386
     },
 ];
 
@@ -1025,7 +1069,9 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             currentDisplayList = gemProducts;
             applySortAndRender();
-            updateBreadcrumb('Tất cả sản phẩm');
+            if (currentPage !== 'detail.html') {
+                updateBreadcrumb('Tất cả sản phẩm');
+            }
         }
     }
 
