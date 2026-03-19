@@ -288,7 +288,7 @@ function renderCartPage() {
                 <td>
                     <div class="d-flex align-items-center">
                         <button class="btn btn-outline-secondary btn-qty" onclick="updateQtyPage(${index}, -1, ${stock})">-</button>
-                        <input type="number" class="form-control qty-input mx-1" value="${item.quantity}" readonly>
+                        <input type="number" class="form-control qty-input mx-1" value="${item.quantity}" onchange="setQtyPage(${index}, ${stock}, this)" min="1" max="${stock}">
                         <button class="btn btn-outline-secondary btn-qty" onclick="updateQtyPage(${index}, 1, ${stock})">+</button>
                     </div>
                 </td>
@@ -318,6 +318,28 @@ function updateQtyPage(index, delta, maxStock) {
             cart[index].quantity = newQty;
             saveAndUpdate(); // This will re-render Cart.html if on that page
         }
+    }
+}
+
+// Xử lý khi người dùng gõ trực tiếp số lượng vào ô input
+function setQtyPage(index, maxStock, element) {
+    if (cart[index]) {
+        let newQty = parseInt(element.value);
+        if (isNaN(newQty) || newQty <= 0) {
+            if (newQty === 0) {
+                removePageItem(index);
+                // Nếu người dùng ấn "Hủy" khi được hỏi xóa, ta render lại để số trên ô input phục hồi về cũ
+                renderCartPage(); 
+                return;
+            }
+            newQty = 1;
+        }
+        if (newQty > maxStock) {
+            alert(`Sản phẩm này hiện chỉ còn ${maxStock} chiếc trong kho!`);
+            newQty = maxStock;
+        }
+        cart[index].quantity = newQty;
+        saveAndUpdate();
     }
 }
 

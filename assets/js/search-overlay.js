@@ -97,6 +97,16 @@ function initSearchOverlay() {
         .search-input-wrapper input::placeholder {
             color: #aaa;
         }
+        .btn-clear-icon {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.2rem;
+            padding: 15px 25px 15px 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-clear-icon:hover { color: #d42222; }
         
         /* Suggestions */
         .search-suggestions-container {
@@ -228,6 +238,7 @@ function initSearchOverlay() {
                 <div class="search-input-wrapper">
                     <button type="submit" class="btn-search-icon"><i class="fa fa-search"></i></button>
                     <input type="text" id="fullscreen-search-input" placeholder="Tìm kiếm đá quý, vàng bạc, trang sức..." name="q" autocomplete="off">
+                    <button type="button" class="btn-clear-icon" id="fullscreen-search-clear" style="display: none;" title="Xóa tìm kiếm"><i class="fas fa-times-circle"></i></button>
                 </div>
             </form>
 
@@ -235,11 +246,11 @@ function initSearchOverlay() {
                 <div class="suggestion-col">
                     <h4><i class="fas fa-fire text-danger"></i> Top tìm kiếm</h4>
                     <div class="suggestion-tags">
-                        <span onclick="window.setSearchValue('Nhẫn kim cương')">Nhẫn kim cương</span>
-                        <span onclick="window.setSearchValue('Dây chuyền vàng')">Dây chuyền vàng</span>
-                        <span onclick="window.setSearchValue('Bông tai')">Bông tai</span>
-                        <span onclick="window.setSearchValue('Đá Sapphire')">Đá Sapphire</span>
-                        <span onclick="window.setSearchValue('Lắc tay bạc')">Lắc tay bạc</span>
+                        <span onclick="window.setSearchValue('Nhẫn kim cương', event)">Nhẫn kim cương</span>
+                        <span onclick="window.setSearchValue('Dây chuyền vàng', event)">Dây chuyền vàng</span>
+                        <span onclick="window.setSearchValue('Bông tai', event)">Bông tai</span>
+                        <span onclick="window.setSearchValue('Đá Sapphire', event)">Đá Sapphire</span>
+                        <span onclick="window.setSearchValue('Lắc tay bạc', event)">Lắc tay bạc</span>
                     </div>
                 </div>
                 <div class="suggestion-col">
@@ -264,12 +275,14 @@ function initSearchOverlay() {
     const input = document.getElementById('fullscreen-search-input');
     const resultsContainer = document.getElementById('overlay-search-results');
     const suggestionsContainer = document.getElementById('search-suggestions-container');
+    const clearBtn = document.getElementById('fullscreen-search-clear');
 
     // Hàm xử lý Live Search (Tìm kiếm thời gian thực)
     function performLiveSearch() {
         const query = input.value.trim().toLowerCase();
         
         if (query.length > 0) {
+            if (clearBtn) clearBtn.style.display = 'block'; // Hiện nút xóa khi có chữ
             suggestionsContainer.style.display = 'none'; // Ẩn gợi ý mặc định
 
             if (typeof gemProducts !== 'undefined') {
@@ -287,10 +300,6 @@ function initSearchOverlay() {
                         </a>
                     `).join('');
                     
-                    if (filtered.length > 4) {
-                        html += `<a href="#" onclick="document.getElementById('fullscreen-search-form').dispatchEvent(new Event('submit', {cancelable: true, bubbles: true})); return false;" class="overlay-result-view-all">Xem tất cả ${filtered.length} kết quả <i class="fas fa-arrow-right ms-1"></i></a>`;
-                    }
-                    
                     resultsContainer.innerHTML = html;
                     resultsContainer.classList.add('show');
                 } else {
@@ -303,6 +312,7 @@ function initSearchOverlay() {
                 resultsContainer.classList.add('show');
             }
         } else {
+            if (clearBtn) clearBtn.style.display = 'none'; // Ẩn nút xóa khi không có chữ
             resultsContainer.classList.remove('show');
             suggestionsContainer.style.display = 'flex'; // Hiện lại gợi ý mặc định
         }
@@ -335,6 +345,15 @@ function initSearchOverlay() {
         }
     });
 
+    // Xử lý sự kiện click vào nút xóa
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            input.value = '';
+            input.dispatchEvent(new Event('input')); // Cập nhật lại khung kết quả về trạng thái ban đầu
+            input.focus(); // Tự động focus lại vào ô input để gõ tiếp
+        });
+    }
+
     // 4. Cho phép đóng khi nhấn phím ESC
     document.addEventListener('keydown', function(event) {
         if (event.key === "Escape") {
@@ -351,7 +370,11 @@ function initSearchOverlay() {
 }
 
 // Hàm thiết lập giá trị tìm kiếm từ tag gợi ý
-window.setSearchValue = function(val) {
+window.setSearchValue = function(val, event) {
+    // Ngăn chặn sự kiện click lan ra ngoài (tới document) để tránh việc bảng kết quả bị ẩn đi ngay lập tức
+    if (event) {
+        event.stopPropagation();
+    }
     const input = document.getElementById('fullscreen-search-input');
     if(input) {
         input.value = val;
