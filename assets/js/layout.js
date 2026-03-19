@@ -87,9 +87,9 @@ class AppHeader extends HTMLElement {
                   </li>
                 </ul>
     
-                <form class="d-flex search-box-nav" role="search">
-                  <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search" />
-                  <button class="btn btn-search" type="submit"><i class="fas fa-search"></i></button>
+                <form class="d-flex search-box-nav" role="search" onsubmit="event.preventDefault(); window.openFullscreenSearch();">
+                  <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search" onclick="window.openFullscreenSearch(); this.blur();" />
+                  <button class="btn btn-search" type="button" onclick="window.openFullscreenSearch();"><i class="fas fa-search"></i></button>
                 </form>
               </div>
     
