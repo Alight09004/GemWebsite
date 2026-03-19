@@ -247,6 +247,12 @@ function updateCheckoutUI() {
 
 // Generate a mock stock quantity based on product name hash
 const getStock = (name) => {
+    if (typeof gemProducts !== 'undefined') {
+        const product = gemProducts.find(item => item.name === name);
+        if (product && product.stock !== undefined) {
+            return product.stock;
+        }
+    }
     let hash = 0;
     for (let i = 0; i < name.length; i++) hash += name.charCodeAt(i);
     return (hash % 20) + 5;
