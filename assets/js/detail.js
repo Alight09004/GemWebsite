@@ -53,9 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="col-md-6">
         <h3 class="fw-bold">${product.name}</h3>
 
-        <p class="text-danger fs-4 fw-bold">
-          ${product.price ? product.price.toLocaleString() + "đ" : "Giá liên hệ"}
-        </p>
+        <div class="d-flex align-items-center gap-3">
+          <p class="text-danger fs-4 fw-bold mb-0">
+            ${product.price ? product.price.toLocaleString() + "đ" : "Giá liên hệ"}
+          </p>
+
+          <span class="text-muted">
+            | Đã bán: ${product.sold ?? 0}
+          </span>
+        </div>
 
         <p><strong>Loại sản phẩm:</strong> ${
           categories.join(", ") || "Không có"
@@ -91,6 +97,28 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <hr class="my-5">
+
+    <div class="row">
+  
+      <!-- LEFT: CHI TIẾT -->
+      <div class="col-md-6">
+        <h4 class="mb-3">Chi tiết sản phẩm</h4>
+        <p class="text-muted" style="line-height: 1.8;">
+          ${product.detail || "Chưa có mô tả sản phẩm"}
+        </p>
+      </div>
+
+      <!-- RIGHT: GIỮ CHỖ (cân layout) -->
+      <div class="col-md-6">
+        <img src="assets/img/ItemAboutUs/service.png" 
+          class="img-fluid rounded shadow-sm"
+          style="max-height: 800px; object-fit: cover;">
+      </div>
+
+    </div>
+
+    <hr class="my-5">
+
 
     <!-- RELATED -->
     <h4 class="mb-4">Sản phẩm liên quan</h4>
