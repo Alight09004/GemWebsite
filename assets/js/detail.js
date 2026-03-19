@@ -44,56 +44,72 @@ document.addEventListener("DOMContentLoaded", () => {
       
       <!-- IMAGE -->
       <div class="col-md-6">
-        <img src="${product.imgMain}" 
-             class="img-fluid rounded shadow-sm w-100"
-             style="max-height: 500px; object-fit: cover;">
+        <!-- ẢNH CHÍNH -->
+        <img id="mainImage"
+          src="${product.imgMain}" 
+          class="img-fluid rounded shadow-sm w-100"
+          style="max-height: 500px; object-fit: cover;">
       </div>
 
       <!-- INFO -->
-      <div class="col-md-6">
-        <h3 class="fw-bold">${product.name}</h3>
+      <div class="col-md-6 d-flex flex-column">
 
-        <div class="d-flex align-items-center gap-3">
-          <p class="text-danger fs-4 fw-bold mb-0">
-            ${product.price ? product.price.toLocaleString() + "đ" : "Giá liên hệ"}
-          </p>
+  <h3 class="fw-bold">${product.name}</h3>
 
-          <span class="text-muted">
-            | Đã bán: ${product.sold ?? 0}
-          </span>
-        </div>
+  <!-- GIÁ + ĐÃ BÁN -->
+  <div class="d-flex align-items-center gap-3">
+    <p class="text-danger fs-4 fw-bold mb-0">
+      ${product.price ? product.price.toLocaleString() + "đ" : "Giá liên hệ"}
+    </p>
+    <span class="text-muted">
+      | Đã bán: ${product.sold ?? 0}
+    </span>
+  </div>
 
-        <p><strong>Loại sản phẩm:</strong> ${
-          categories.join(", ") || "Không có"
-        }</p>
+  <p class="mt-2"><strong>Loại sản phẩm:</strong> ${categories.join(", ") || "Không có"}</p>
+  <p><strong>Danh mục phụ:</strong> ${subCategories.join(", ") || "Không có"}</p>
 
-        <p><strong>Danh mục phụ:</strong> ${
-          subCategories.join(", ") || "Không có"
-        }</p>
+  <!-- SỐ LƯỢNG -->
+  <div class="d-flex align-items-center gap-3 mb-3">
+    <label class="fw-bold">Số lượng:</label>
+    <input type="number" id="quantity" value="1" min="1"
+           class="form-control"
+           style="width: 80px;">
+  </div>
 
-        <div class="mt-4">
+  <!-- BUTTON -->
+  <button class="btn btn-danger w-100 py-3 fs-5 fw-bold"
+          onclick="buyNow(${product.id})">
+    Mua ngay
+  </button>
 
-            <!-- SỐ LƯỢNG -->
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <label class="fw-bold">Số lượng:</label>
-                <input type="number" id="quantity" value="1" min="1"
-                    class="form-control"
-                    style="width: 80px;">
-            </div>
+  <button class="btn btn-outline-dark w-100 mt-3 py-2"
+          onclick="addToCartById(${product.id})">
+    Thêm vào giỏ
+  </button>
 
-            <!-- MUA NGAY -->
-            <button class="btn btn-danger w-100 py-3 fs-5 fw-bold"
-                onclick="buyNow(${product.id})">
-                Mua ngay
-             </button>
+  <!-- ẢNH NHỎ -->
+  <div class="d-flex gap-2 mt-4 justify-content-start">
+    
+    <img src="${product.imgMain}" 
+         class="img-thumbnail"
+         style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
+         onclick="changeImage('${product.imgMain}')">
 
-            <!-- THÊM VÀO GIỎ -->
-            <button class="btn btn-outline-dark w-100 mt-3 py-2"
-                onclick="addToCartById(${product.id})">
-                Thêm vào giỏ
-            </button>
-        </div>
-      </div>
+    ${
+      product.imgHover
+        ? `
+      <img src="${product.imgHover}" 
+           class="img-thumbnail"
+           style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
+           onclick="changeImage('${product.imgHover}')">
+      `
+        : ""
+    }
+
+  </div>
+
+</div>
     </div>
 
     <hr class="my-5">
@@ -162,7 +178,12 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 });
-
+function changeImage(src) {
+  const mainImg = document.getElementById("mainImage");
+  if (mainImg) {
+    mainImg.src = src;
+  }
+}
 // CART
 function addToCartById(productId) {
   const product = gemProducts.find((p) => p.id === productId);
