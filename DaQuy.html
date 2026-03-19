@@ -60,7 +60,7 @@
                         <button class="btn btn-sort">Bán chạy</button>
                     </div>
                     <div class="price-filter">
-                        <select class="form-select form-select-sm" id="price-sort-select" onchange="applySortAndRender()">
+                        <select class="form-select form-select-sm" id="price-sort-select" onchange="currentPageIndex=1; applySortAndRender()">
                             <option value="default">Sắp xếp: Mặc định</option>
                             <option value="asc">Giá: Thấp đến Cao</option>
                             <option value="desc">Giá: Cao đến Thấp</option>
@@ -70,7 +70,19 @@
 
                 <div class="row g-4" id="product-display-grid">
                     </div>
+                    
+                <!-- Pagination Container -->
+                <div class="d-flex justify-content-center mt-5" id="pagination-container"></div>
             </main>
+        </div>
+    </div>
+
+    <!-- Đường kẻ màu vàng ngăn cách nội dung với Footer -->
+    <div class="container-custom py-0 mb-5 mt-2">
+        <div class="divider-header m-0">
+            <span class="ornament-line"></span>
+            <i class="fas fa-gem mx-2" style="color: #D4AF37; font-size: 1.2rem;"></i>
+            <span class="ornament-line"></span>
         </div>
     </div>
 

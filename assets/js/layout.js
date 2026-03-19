@@ -56,19 +56,19 @@ class AppHeader extends HTMLElement {
                           <div class="col-megamenu col-md-2">
                             <a href="./PhongThuy.html"><h6 class="title"><i class="fas fa-yin-yang me-2"></i>PHONG THỦY</h6></a>
                             <ul class="list-unstyled">
-                              <li><a href="#">Vòng tay tỳ hưu</a></li>
-                              <li><a href="#">Mặt dây Phật</a></li>
-                              <li><a href="#">Đá theo mệnh</a></li>
-                              <li><a href="#">Charm vàng</a></li>
+                              <li><a href="PhongThuy.html?category=VongTayTyHuu">Vòng tay tỳ hưu</a></li>
+                              <li><a href="PhongThuy.html?category=MatDayPhat">Mặt dây Phật</a></li>
+                              <li><a href="PhongThuy.html?category=DaTheoMenh">Đá theo mệnh</a></li>
+                              <li><a href="PhongThuy.html?category=CharmVang">Charm vàng</a></li>
                             </ul>
                           </div>
                           <div class="col-megamenu col-md-2">
                             <a href="./PhuKien.html"><h6 class="title"><i class="fas fa-magic me-2"></i>PHỤ KIỆN</h6></a>
                             <ul class="list-unstyled">
-                              <li><a href="#">Hộp trang sức</a></li>
-                              <li><a href="#">Dụng cụ làm sạch</a></li>
-                              <li><a href="#">Khăn lau bạc</a></li>
-                              <li><a href="#">Dây đeo thay thế</a></li>
+                              <li><a href="PhuKien.html?category=HopTrangSuc">Hộp trang sức</a></li>
+                              <li><a href="PhuKien.html?category=DungCuLamSach">Dụng cụ làm sạch</a></li>
+                              <li><a href="PhuKien.html?category=KhanLauBac">Khăn lau bạc</a></li>
+                              <li><a href="PhuKien.html?category=DayDeoThayThe">Dây đeo thay thế</a></li>
                             </ul>
                           </div>
                           <div class="col-megamenu col-md-2 d-none d-md-block news-promo">
@@ -87,9 +87,10 @@ class AppHeader extends HTMLElement {
                   </li>
                 </ul>
     
-                <button class="btn btn-search ms-lg-3 me-lg-2" type="button" onclick="openFullscreenSearch()" style="background: none; border: none; font-size: 1.2rem; color: #001f3f; cursor: pointer;" title="Tìm kiếm">
-                  <i class="fas fa-search"></i>
-                </button>
+                <form class="d-flex search-box-nav" role="search">
+                  <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search" />
+                  <button class="btn btn-search" type="submit"><i class="fas fa-search"></i></button>
+                </form>
               </div>
     
               <div class="nav-icons d-flex align-items-center">

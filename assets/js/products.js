@@ -6,7 +6,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrangChu(1)/spnb2.jpg",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb2-2.jpg.webp",
         category: ["DaQuy", "TrangSuc"],
-        subCategory: ["KimCuong", "NhanDon"]
+        subCategory: ["KimCuong", "NhanDon"],
+        detail: "Nhẫn bạc nữ đính kim cương Moissanite Aidan mang vẻ đẹp thanh lịch, hiện đại. Sự lựa chọn hoàn hảo giúp phái đẹp tỏa sáng rạng rỡ với ánh sáng tinh khiết của kim cương.",
+        sold: 432
     },
     {
         id: 2,
@@ -15,7 +17,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrangChu(1)/spnb1.jpg",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb1-2.jpg.webp",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Bac", "DayChuyen"]
+        subCategory: ["Bac", "DayChuyen"],
+        detail: "Dây chuyền bạc nữ đính đá CZ cá tiên tinh tế, điểm xuyết viên đá lấp lánh mang lại sự duyên dáng. Một thiết kế tinh giản, rất phù hợp làm món quà tặng ý nghĩa.",
+        sold: 915
     },
     {
         id: 3,
@@ -24,7 +28,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gbxmxmw060874-bong-tai-vang-10k-dinh-da-ecz-pnj-1.png",
         imgHover: "./assets/img/ItemTrungBaySP/id3-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["VangTrang", "BongTai"]
+        subCategory: ["VangTrang", "BongTai"],
+        detail: "Bông tai Vàng trắng 41,6% (10K) đính đá sở hữu thiết kế thời thượng, bắt sáng rực rỡ, tôn lên khuôn mặt thanh tú của phái đẹp. Sự đầu tư xứng đáng cho một thiết kế vàng đẳng cấp.",
+        sold: 124
     },
     {
         id: 4,
@@ -33,7 +39,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gl0000y060888-lac-tay-vang-14k-pnj-1.png",
         imgHover: "./assets/img/ItemTrungBaySP/id4-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Vang18K", "LacTay"]
+        subCategory: ["Vang18K", "LacTay"],
+        detail: "Lắc tay Vàng 58,5% (14K) điệu đà uốn lượn trên cổ tay ngọc ngà, khẳng định gu thẩm mỹ tinh tế. Một món trang sức cao cấp mang giá trị vượt thời gian.",
+        sold: 86
     },
     {
         id: 5,
@@ -42,7 +50,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gl0000w001534-lac-tay-vang-trang-y-18k-pnj-1.png",
         imgHover: "./assets/img/ItemTrungBaySP/id5-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["VangTrang", "LacTay", "Vang18K"]
+        subCategory: ["VangTrang", "LacTay", "Vang18K"],
+        detail: "Trang sức Ý nổi tiếng với độ tinh xảo. Lắc tay Vàng trắng Ý 75% (18K) mang đến diện mạo sang trọng, kiêu sa cho những quý cô hiện đại trong bất kỳ buổi tiệc nào.",
+        sold: 72
     },
     {
         id: 6,
@@ -51,7 +61,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gbdd00w060198-bong-tai-kim-cuong-vang-trang-14k-pnj-1.png",
         imgHover: "./assets/img/ItemTrungBaySP/id6-hover.jpg",
         category: ["DaQuy", "TrangSuc"],
-        subCategory: ["KimCuong", "BongTai"]
+        subCategory: ["KimCuong", "BongTai"],
+        detail: "Tuyệt tác Bông tai Kim cương Vàng trắng 58,5% (14K) lộng lẫy. Kim cương lấp lánh kết hợp vàng trắng mang đến sự quyền quý và đẳng cấp tuyệt đối cho người sở hữu.",
+        sold: 23
     },
     {
         id: 7,
@@ -60,7 +72,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gndd00w060464-nhan-kim-cuong-vang-trang-14k-pnj-1.png",
         imgHover: "./assets/img/ItemTrungBaySP/id7-hover.jpg",
         category: ["DaQuy", "TrangSuc"],
-        subCategory: ["KimCuong", "NhanDon"]
+        subCategory: ["KimCuong", "NhanDon"],
+        detail: "Mẫu Nhẫn Kim cương Vàng trắng 58,5% (14K) với viên chủ nổi bật. Chế tác tinh xảo khiến sản phẩm trở thành biểu tượng của tình yêu và sự vĩnh cửu hoàn mỹ.",
+        sold: 45
     },
     {
         id: 8,
@@ -69,7 +83,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gmsp00w000028-mat-day-chuyen-vang-14k-dinh-da-sapphire-pnj-1.png",
         imgHover: "./assets/img/ItemTrungBaySP/id8-hover.jpg",
         category: ["DaQuy", "TrangSuc"],
-        subCategory: ["Sapphire", "DayChuyen"]
+        subCategory: ["Sapphire", "DayChuyen"],
+        detail: "Mặt dây chuyền Vàng trắng đính đá Sapphire mang sắc xanh đại dương sâu thẳm. Món trang sức mang đến sự bình an, nét cuốn hút huyền bí và phong thái tự tin.",
+        sold: 185
     },
     {
         id: 9,
@@ -78,7 +94,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gmpsddc060001-mat-day-chuyen-vang-dinh-ngoc-trai-southsea-pnj-1.png",
         imgHover: "./assets/img/ItemTrungBaySP/id9-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Vang18K", "DayChuyen"]
+        subCategory: ["Vang18K", "DayChuyen"],
+        detail: "Ngọc trai Southsea quý hiếm kết hợp cùng vàng 18K tạo nên cực phẩm nữ trang đầy kiêu sa. Sự lựa chọn tuyệt vời để phái đẹp diện trong những dịp trang trọng nhất.",
+        sold: 38
     },
     {
         id: 10,
@@ -87,7 +105,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/sp-gnxmxmw005643-nhan-vang-14k-dinh-da-ecz-pnj-1.png",
         imgHover: "./assets/img/ItemTrungBaySP/id10-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["VangTrang", "NhanDon"]
+        subCategory: ["VangTrang", "NhanDon"],
+        detail: "Nhẫn Vàng trắng 14K đính đá tinh xảo dọc đai nhẫn, tôn vinh nét thanh lịch. Điểm nhấn lấp lánh mang đến diện mạo sang trọng, rạng ngời cho bạn mỗi ngày.",
+        sold: 211
     },
     {
         id: 11,
@@ -96,7 +116,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrangChu(1)/spnb3.jpg",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb3-2.jpg.webp",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Bac", "LacTay"]
+        subCategory: ["Bac", "LacTay"],
+        detail: "Thiết kế cỏ 4 lá may mắn kết hợp đá Chalcedony Chrysoprase xanh mướt. Chiếc vòng tay tựa như bùa hộ mệnh ngọt ngào, điểm tô thêm nét duyên dáng cho chủ nhân.",
+        sold: 310
     },
     {
         id: 12,
@@ -105,7 +127,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrangChu(1)/spnb4.jpeg",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb4-2.jpg.webp",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Bac", "BongTai"]
+        subCategory: ["Bac", "BongTai"],
+        detail: "Hình trái tim lãng mạn cùng chất liệu bạc Ý S925 mạ bạch kim cao cấp. Món trang sức nhỏ xinh này luôn nằm trong danh sách những item được phái đẹp yêu thích nhất.",
+        sold: 1045
     },
     {
         id: 13,
@@ -114,7 +138,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrangChu(1)/spnb5.jpg",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb5-2.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Bac", "LacTay"]
+        subCategory: ["Bac", "LacTay"],
+        detail: "Sở hữu viên pha lê Swarovski lấp lánh tựa đại dương thu nhỏ. Lắc tay nữ thiết kế tinh tế là điểm nhấn hoàn hảo, nữ tính cho những cô nàng mộng mơ.",
+        sold: 890
     },
     {
         id: 14,
@@ -123,7 +149,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrangChu(1)/spnb6.png",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb6-2.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["VangTrang", "NhanDon"]
+        subCategory: ["VangTrang", "NhanDon"],
+        detail: "Bản đai lớn nam tính, mạnh mẽ cùng giác cắt ECZ tinh xảo. Nhẫn nam MANCODE cao cấp thể hiện trọn vẹn phong độ, sự lịch lãm và bản lĩnh của phái mạnh.",
+        sold: 65
     },
     {
         id: 15,
@@ -132,7 +160,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrangChu(1)/spnb7.png",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb7-2.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Vang18K", "NhanDon"]
+        subCategory: ["Vang18K", "NhanDon"],
+        detail: "Thiết kế nhẫn Vàng 18K cổ điển, tinh giản nhưng đầy sắc sảo từ PNJ. Một sự lựa chọn thông minh, bền bỉ và dễ dàng kết hợp cùng nhiều phong cách thời trang.",
+        sold: 412
     },
     {
         id: 16,
@@ -141,7 +171,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrangChu(1)/spnb8.png",
         imgHover: "./assets/img/ItemTrangChu(1)/spnb8-2.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Bac", "LacTay"]
+        subCategory: ["Bac", "LacTay"],
+        detail: "Sự nhẹ nhàng, thanh thoát của Lắc tay Bạc PNJSilver cực hợp với những trang phục dạo phố năng động. Điểm nhấn cuốn hút giúp đôi tay thêm phần ngọc ngà.",
+        sold: 1105
     },
     {
         id: 17,
@@ -150,7 +182,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id17.png",
         imgHover: "./assets/img/ItemTrungBaySP/id17-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Sapphire", "VangHong", "LacTay"]
+        subCategory: ["Sapphire", "VangHong", "LacTay"],
+        detail: "Sự hòa quyện tuyệt vời giữa Vàng hồng ấm áp và đá Sapphire quý giá. Vòng tay cao cấp được thiết kế riêng cho những quý cô yêu kiều, hướng đến vẻ đẹp sang trọng đỉnh cao.",
+        sold: 18
     },
     {
         id: 18,
@@ -159,7 +193,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id18.png",
         imgHover: "./assets/img/ItemTrungBaySP/id18-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Sapphire", "VangTrang", "NhanDon"]
+        subCategory: ["Sapphire", "VangTrang", "NhanDon"],
+        detail: "Viên Sapphire chủ rực rỡ ngự trị trên ổ nhẫn Vàng trắng 14K đính kết tỉ mỉ. Tác phẩm nghệ thuật đỉnh cao này chính là tuyên ngôn tôn vinh quyền lực và sự quyến rũ của nữ giới.",
+        sold: 21
     },
     {
         id: 19,
@@ -168,7 +204,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id19.jpg",
         imgHover: "./assets/img/ItemTrungBaySP/id19-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Ruby", "Bac", "LacTay"]
+        subCategory: ["Ruby", "Bac", "LacTay"],
+        detail: "Họa tiết hoa mặt trời đính đá Ruby đỏ thẫm mang năng lượng tích cực rực rỡ. Thiết kế trang nhã thể hiện trọn vẹn sự tươi trẻ, rạng rỡ của phái đẹp trong mọi khoảnh khắc.",
+        sold: 388
     },
     {
         id: 20,
@@ -177,7 +215,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id20.png",
         imgHover: "./assets/img/ItemTrungBaySP/id20-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Ruby", "Vang18K", "BongTai"]
+        subCategory: ["Ruby", "Vang18K", "BongTai"],
+        detail: "Bông tai đính đá Ruby nổi bật trên nền vàng 18K cổ điển. Chế tác tinh xảo giúp món trang sức mang đến ánh nhìn thu hút, tôn lên nét kiêu sa mọi lúc mọi nơi.",
+        sold: 146
     },
     {
         id: 21,
@@ -186,7 +226,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id21.png",
         imgHover: "./assets/img/ItemTrungBaySP/id21-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Emerald", "Vang18K", "NhanDon"]
+        subCategory: ["Emerald", "Vang18K", "NhanDon"],
+        detail: "Sắc xanh ngọc lục bảo Emerald xa xỉ kết hợp vàng 18K tạo nên đẳng cấp vương giả. Chiếc nhẫn cực phẩm này là tuyên ngôn mạnh mẽ khẳng định vị thế đỉnh cao của người đeo.",
+        sold: 8
     },
     {
         id: 22,
@@ -195,7 +237,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id22.png",
         imgHover: "./assets/img/ItemTrungBaySP/id22-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Emerald", "VangTrang", "NhanDon"]
+        subCategory: ["Emerald", "VangTrang", "NhanDon"],
+        detail: "Thiết kế siêu phẩm xứng tầm với viên đá Emerald kích thước lớn rực rỡ, bao quanh là dải kim cương thiên nhiên lấp lánh trên nền vàng trắng 14K thượng hạng.",
+        sold: 3
     },
     {
         id: 23,
@@ -204,7 +248,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id23.png",
         imgHover: "./assets/img/ItemTrungBaySP/id23-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Emerald", "VangTrang", "NhanDon"]
+        subCategory: ["Emerald", "VangTrang", "NhanDon"],
+        detail: "Tuyệt tác phiên bản giới hạn Disney đính đá Emerald cỡ đại. Mang vẻ đẹp lộng lẫy hiếm có, chiếc nhẫn này như một báu vật rực rỡ bước ra từ câu chuyện cổ tích kỳ diệu.",
+        sold: 2
     },
     {
         id: 24,
@@ -213,7 +259,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id24.png",
         imgHover: "./assets/img/ItemTrungBaySP/id24-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Topaz", "VangTrang", "BongTai"]
+        subCategory: ["Topaz", "VangTrang", "BongTai"],
+        detail: "Đá Topaz xanh trong trẻo kết hợp với Vàng trắng 14K thanh tao. Đôi bông tai đem lại cảm giác bình yên, tươi mát cùng phong cách quý phái cho những ngày rạng rỡ.",
+        sold: 284
     },
     {
         id: 25,
@@ -222,7 +270,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id25.png",
         imgHover: "./assets/img/ItemTrungBaySP/id25-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Topaz", "VangTrang", "NhanDon"]
+        subCategory: ["Topaz", "VangTrang", "NhanDon"],
+        detail: "Viên Topaz cắt giác hoàn hảo nằm gọn trong ổ nhẫn Vàng trắng tinh xảo. Một tuyệt tác lấp lánh, là sự lựa chọn tuyệt vời cho các quý cô lộng lẫy trong những buổi tiệc dạ hội.",
+        sold: 156
     },
     {
         id: 26,
@@ -231,7 +281,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id26.png",
         imgHover: "./assets/img/ItemTrungBaySP/id26-hover.jpg",
         category: ["DaQuy", "VangBac"],
-        subCategory: ["Topaz", "VangTrang"]
+        subCategory: ["Topaz", "VangTrang"],
+        detail: "Phụ kiện Cài áo Masterpiece đỉnh cao đính đá Topaz và viền đá quý rực rỡ. Kiệt tác nghệ thuật thủ công tinh xảo giúp tạo điểm nhấn quyền lực cho bộ âu phục sang trọng.",
+        sold: 11
     },
     {
         id: 27,
@@ -240,7 +292,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id27.png",
         imgHover: "./assets/img/ItemTrungBaySP/id27-hover.jpg",
         category: ["DaQuy", "VangBac", "TrangSuc"],
-        subCategory: ["Topaz", "VangTrang", "NhanDon"]
+        subCategory: ["Topaz", "VangTrang", "NhanDon"],
+        detail: "Thiết kế nhẫn Topaz thanh lịch, mỏng nhẹ phù hợp đeo hàng ngày. Từng chi tiết nhỏ toát lên vẻ đẹp tinh tế, đáp ứng tiêu chí sang trọng nhưng vẫn vô cùng trẻ trung.",
+        sold: 312
     },
     {
         id: 28,
@@ -249,7 +303,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id28.png",
         imgHover: "./assets/img/ItemTrungBaySP/id28-hover.jpg",
         category: "TrangSuc",
-        subCategory: "NhanCuoi"
+        subCategory: "NhanCuoi",
+        detail: "Bạch kim nguyên chất kết hợp kim cương thiên nhiên là minh chứng cho tình yêu vĩnh cửu. Cặp nhẫn cao cấp PNJ True Love sẽ lưu giữ lại khoảnh khắc thiêng liêng nhất của đôi lứa.",
+        sold: 84
     },
     {
         id: 29,
@@ -258,7 +314,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id29.png",
         imgHover: "./assets/img/ItemTrungBaySP/id29-hover.jpg",
         category: "VangBac",
-        subCategory: "Vang24K"
+        subCategory: "Vang24K",
+        detail: "Tượng vàng 24K đúc đặc tinh xảo mang ý nghĩa phong thủy mã đáo thành công. Kiệt tác phong thủy quyền uy dành riêng cho không gian làm việc của giới tinh hoa.",
+        sold: 5
     },
     {
         id: 30,
@@ -267,7 +325,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id30.png",
         imgHover: "./assets/img/ItemTrungBaySP/id30-hover.jpg",
         category: "VangBac",
-        subCategory: "Vang24K"
+        subCategory: "Vang24K",
+        detail: "Thỏi vàng mini 0.5 chỉ 99,99% thiết kế sắc nét mang thông điệp Tiểu Lộc Đại Phát. Của để dành giàu giá trị tích lũy và là món quà mừng tuổi đầy ý nghĩa may mắn.",
+        sold: 450
     },
     {
         id: 31,
@@ -276,7 +336,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id31.png",
         imgHover: "./assets/img/ItemTrungBaySP/id31-hover.jpg",
         category: "VangBac",
-        subCategory: "Vang24K"
+        subCategory: "Vang24K",
+        detail: "Bộ tượng Long Phụng chế tác từ ~9.9 chỉ Vàng 24K nguyên chất, biểu trưng cho sự hòa hợp, hạnh phúc viên mãn. Tuyệt tác nghệ thuật đỉnh cao, là sính lễ và món quà cưới giá trị khủng.",
+        sold: 2
     },
     {
         id: 32,
@@ -285,7 +347,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id32.png",
         imgHover: "./assets/img/ItemTrungBaySP/id32-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Vang24K", "BongTai"]
+        subCategory: ["Vang24K", "BongTai"],
+        detail: "Mang đậm bản sắc văn hóa Việt Nam với họa tiết Trầu Cau đúc từ Vàng 24K. Đôi bông tai lộng lẫy là món sính lễ hoàn mỹ, thay cho ngàn lời chúc phúc trong ngày vu quy.",
+        sold: 47
     },
     {
         id: 33,
@@ -294,7 +358,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/ìd33.png",
         imgHover: "./assets/img/ItemTrungBaySP/id33-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["Vang24K", "NhanCuoi"]
+        subCategory: ["Vang24K", "NhanCuoi"],
+        detail: "Nhẫn cưới Vàng 24K thiết kế trơn truyền thống nhưng không kém phần sắc sảo. Tín vật tình yêu bền chặt, mang giá trị trường tồn cùng thời gian cho hạnh phúc lứa đôi.",
+        sold: 135
     },
     {
         id: 34,
@@ -303,7 +369,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id34.png",
         imgHover: "./assets/img/ItemTrungBaySP/id34-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["VangHong", "NhanDon"]
+        subCategory: ["VangHong", "NhanDon"],
+        detail: "Lấy cảm hứng từ công chúa ngủ trong rừng, nhẫn Vàng hồng đính Sapphire toát lên vẻ lãng mạn. Từng đường nét được chăm chút tỉ mỉ, đánh thức vẻ đẹp kiêu kì, duyên dáng.",
+        sold: 62
     },
     {
         id: 35,
@@ -312,7 +380,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id35.png",
         imgHover: "./assets/img/ItemTrungBaySP/id35-hover.jpg",
         category: ["VangBac", "TrangSuc"],
-        subCategory: ["VangHong", "NhanCuoi"]
+        subCategory: ["VangHong", "NhanCuoi"],
+        detail: "Vàng hồng 18K ấm áp nâng đỡ viên kim cương thuần khiết lấp lánh. Cặp nhẫn cưới Tình Hồng mang thiết kế đương đại sẽ viết tiếp câu chuyện tình yêu lãng mạn của lứa đôi.",
+        sold: 76
     },
     {
         id: 36,
@@ -321,7 +391,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id36.png",
         imgHover: "./assets/img/ItemTrungBaySP/id36-hover.jpg",
         category: ["VangBac", "PhongThuy"],
-        subCategory: ["Vang24K", "VongTayTyHuu"]
+        subCategory: ["Vang24K", "VongTayTyHuu"],
+        detail: "Charm Tỳ Hưu Vàng 24K tết dây đỏ mang đậm phong thủy chiêu tài lộc, giữ bình an. Vòng tay may mắn nhỏ gọn, mang nguồn năng lượng tích cực luôn kề bên người đeo.",
+        sold: 1342
     },
     {
         id: 37,
@@ -330,7 +402,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id37.png",
         imgHover: "./assets/img/ItemTrungBaySP/id37-hover.jpg",
         category: ["VangBac", "PhongThuy"],
-        subCategory: ["Bac", "VongTayTyHuu"]
+        subCategory: ["Bac", "VongTayTyHuu"],
+        detail: "Thiết kế nam tính, dây dù sáp chắc chắn kết hợp Tỳ Hưu Bạc chạm khắc uy dũng. Chiếc lắc tay mạnh mẽ sẽ là vật phẩm đồng hành cùng phái mạnh gặt hái nhiều thành công.",
+        sold: 215
     },
     {
         id: 38,
@@ -339,7 +413,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id38.png",
         imgHover: "./assets/img/ItemTrungBaySP/id38-hover.jpg",
         category: ["VangBac", "PhongThuy"],
-        subCategory: ["Bac", "VongTayTyHuu"]
+        subCategory: ["Bac", "VongTayTyHuu"],
+        detail: "Sự thanh lịch xen lẫn yếu tố phong thủy trong thiết kế Trịnh Collection. Lắc tay bạc đính đá tinh xảo mang nét đẹp tinh tế, luôn nằm trong top trang sức may mắn được ưa chuộng.",
+        sold: 780
     },
     {
         id: 39,
@@ -348,7 +424,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id39.png",
         imgHover: "./assets/img/ItemTrungBaySP/id39-hover.jpg",
         category: ["VangBac", "PhongThuy"],
-        subCategory: ["Vang18K", "MatDayPhat"]
+        subCategory: ["Vang18K", "MatDayPhat"],
+        detail: "Mặt Phật chế tác từ Vàng 18K đính viền đá CZ sáng lấp lánh mang ý nghĩa hộ mệnh sâu sắc. Từng chi tiết chạm khắc đều đạt đến độ tinh xảo tuyệt đối, tỏa ra hào quang bình an.",
+        sold: 142
     },
     {
         id: 40,
@@ -357,7 +435,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id40.png",
         imgHover: "./assets/img/ItemTrungBaySP/id40-hover.jpg",
         category: ["VangBac", "PhongThuy"],
-        subCategory: ["VangTrang","Vang18K", "MatDayPhat"]
+        subCategory: ["VangTrang","Vang18K", "MatDayPhat"],
+        detail: "Thiết kế hình Phật đúc từ Vàng trắng Ý cao cấp mang lại sự tịnh tâm và sang trọng. Vật phẩm phong thủy hoàn hảo giúp chủ nhân luôn thu hút được những phước lành.",
+        sold: 105
     },
     {
         id: 41,
@@ -366,16 +446,20 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id41.png",
         imgHover: "./assets/img/ItemTrungBaySP/id41-hover.jpg",
         category: ["VangBac", "PhongThuy"],
-        subCategory: ["VangTrang","Vang18K", "MatDayPhat"]
+        subCategory: ["VangTrang","Vang18K", "MatDayPhat"],
+        detail: "Bản kích thước lớn, chi tiết mặt Phật uy nghiêm tinh xảo bao quanh bởi hàng đá CZ rực sáng. Đây là món nữ trang tâm linh đẳng cấp, mang đến sự che chở và may mắn thịnh vượng.",
+        sold: 84
     },
     {
         id: 42,
         name: "Vòng Tay Swarovski Pha lê Gema Bracelet",
-        price: 5.500000,
+        price: 5500000,
         imgMain: "./assets/img/ItemTrungBaySP/id42.png",
         imgHover: "./assets/img/ItemTrungBaySP/id42-hover.jpg",
         category: ["TrangSuc", "PhongThuy"],
-        subCategory: ["LacTay", "DaTheoMenh"]
+        subCategory: ["LacTay", "DaTheoMenh"],
+        detail: "Vòng tay pha lê đa sắc Gema Bracelet rực rỡ dưới mọi góc nhìn, dễ dàng phối theo mệnh phong thủy. Tuyệt tác đến từ nhà Swarovski giúp tô điểm phong cách sành điệu, tỏa sáng.",
+        sold: 341
     },
     {
         id: 43,
@@ -384,7 +468,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id43.png",
         imgHover: "./assets/img/ItemTrungBaySP/id43-hover.jpg",
         category: ["TrangSuc", "PhongThuy"],
-        subCategory: ["LacTay", "DaTheoMenh"]
+        subCategory: ["LacTay", "DaTheoMenh"],
+        detail: "BST STYLE mang đến lắc tay bạc đính đá hiện đại, phá cách tôn vinh cá tính năng động. Một item phối đồ hoàn hảo, dễ dàng tỏa sáng rạng rỡ trong mọi hoạt động mỗi ngày.",
+        sold: 965
     },
     {
         id: 44,
@@ -393,7 +479,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id44.png",
         imgHover: "./assets/img/ItemTrungBaySP/id44-hover.jpg",
         category: ["DaQuy","TrangSuc" ,"PhongThuy"],
-        subCategory: ["Ruby", "NhanDon","DaTheoMenh"]
+        subCategory: ["Ruby", "NhanDon","DaTheoMenh"],
+        detail: "Đá Ruby nhân tạo đỏ thắm trên nền bạc sáng bóng cực kỳ phù hợp cho người mệnh Hỏa, Thổ. Chiếc nhẫn phong thủy duyên dáng này là lựa chọn tối ưu và thu hút tài lộc.",
+        sold: 1450
     },
     {
         id: 45,
@@ -402,7 +490,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id45.png",
         imgHover: "./assets/img/ItemTrungBaySP/id45-hover.jpg",
         category: ["PhongThuy"],
-        subCategory: ["DaTheoMenh"]
+        subCategory: ["DaTheoMenh"],
+        detail: "Cây đào phong thủy 68 quả tạc từ thạch anh hồng 3A mang ý nghĩa tình duyên nở rộ, vượng khí dồi dào. Tác phẩm nghệ thuật đỉnh cao, hoàn hảo để trưng bày sang trọng.",
+        sold: 12
     },
     {
         id: 46,
@@ -411,7 +501,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id46.png",
         imgHover: "./assets/img/ItemTrungBaySP/id46-hover.jpg",
         category: ["PhongThuy"],
-        subCategory: ["DaTheoMenh"]
+        subCategory: ["DaTheoMenh"],
+        detail: "Hạt charm bạc đính đá lấp lánh dễ dàng kết hợp cùng các vòng tay sẵn có. Thiết kế nhỏ xinh, tinh tế giúp bạn thỏa sức sáng tạo nên bộ trang sức mang đậm dấu ấn cá nhân.",
+        sold: 840
     },
     {
         id: 47,
@@ -420,7 +512,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id47.png",
         imgHover: "./assets/img/ItemTrungBaySP/id47-hover.jpg",
         category: ["PhongThuy"],
-        subCategory: ["DaTheoMenh"]
+        subCategory: ["DaTheoMenh"],
+        detail: "Charm bạc chạm khắc hoa văn tinh xảo từ BST STYLE Collection hiện đại. Hạt charm mang đến vẻ đẹp cá tính, giúp lưu giữ những khoảnh khắc đáng nhớ trên chiếc vòng tay.",
+        sold: 1120
     },
     {
         id: 48,
@@ -429,7 +523,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id48.png",
         imgHover: "./assets/img/ItemTrungBaySP/id48-hover.jpg",
         category: ["PhongThuy"],
-        subCategory: ["CharmVang"]
+        subCategory: ["CharmVang"],
+        detail: "Charm bạc mạ vàng hình Túi Tiền biểu tượng cho tài lộc dồi dào, sung túc. Chế tác sinh động, tỉ mỉ mang ý nghĩa phong thủy tốt lành cho một năm làm ăn hồng phát.",
+        sold: 1543
     },
     {
         id: 49,
@@ -438,7 +534,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id49.png",
         imgHover: "./assets/img/ItemTrungBaySP/id49-hover.jpg",
         category: ["PhongThuy"],
-        subCategory: ["CharmVang"]
+        subCategory: ["CharmVang"],
+        detail: "Hạt Charm đúc đặc bằng Vàng nguyên khối hình bình trà mang ý nghĩa gia đạo an vui, êm ấm. Sản phẩm trang sức đẳng cấp mang giá trị sưu tầm cao cho dân chơi charm thứ thiệt.",
+        sold: 95
     },
     {
         id: 50,
@@ -447,7 +545,9 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id50.png",
         imgHover: "./assets/img/ItemTrungBaySP/id50-hover.jpg",
         category: ["PhongThuy"],
-        subCategory: ["CharmVang"]
+        subCategory: ["CharmVang"],
+        detail: "Tôn vinh văn hóa Việt với charm hình nón lá mạ vàng độc đáo, tỉ mỉ. Món trang sức dễ thương, tinh xảo này là lựa chọn ngập tràn niềm tự hào và ý nghĩa sâu sắc.",
+        sold: 810
     },
     {
         id: 51,
@@ -456,16 +556,151 @@ const gemProducts = [
         imgMain: "./assets/img/ItemTrungBaySP/id51.png",
         imgHover: "./assets/img/ItemTrungBaySP/id51-hover.jpg",
         category: ["PhongThuy"],
-        subCategory: ["CharmVang"]
+        subCategory: ["CharmVang"],
+        detail: "Charm Pandora chính hãng mạ vàng hình chú ong chăm chỉ, biểu trưng cho sự ngọt ngào. Lựa chọn tuyệt vời để bổ sung vào bộ sưu tập Pandora rực rỡ và thời thượng của bạn.",
+        sold: 412
     },
-
-    
+    {
+        id: 52,
+        name: "Hộp Đựng Trang Sức Pandora",
+        price: 1290000,
+        imgMain: "./assets/img/ItemTrungBaySP/id52.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id52-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["HopTrangSuc"],
+        detail: "Hộp đựng bọc da lót nhung cao cấp bảo vệ tuyệt đối các hạt charm và vòng tay Pandora. Thiết kế trang nhã, cứng cáp xứng tầm thương hiệu quốc tế, điểm tô góc trang điểm.",
+        sold: 520
+    },
+    {
+        id: 53,
+        name: "Hộp trang sức hoạ tiết vẽ tay",
+        price: 1920000,
+        imgMain: "./assets/img/ItemTrungBaySP/id53.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id53-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["HopTrangSuc"],
+        detail: "Chiếc hộp gỗ thủ công với những nét vẽ họa tiết nghệ thuật cổ điển, tinh xảo. Không chỉ để cất giữ trang sức an toàn mà còn là vật phẩm trang trí tinh tế cho bàn trang điểm.",
+        sold: 234
+    },
+    {
+        id: 54,
+        name: "Hộp nhẫn đôi cổ điển - Crystal Engagement Proposal Gift with Velvet Lining",
+        price: 2077000,
+        imgMain: "./assets/img/ItemTrungBaySP/id54.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id54-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["HopTrangSuc"],
+        detail: "Hộp pha lê trong suốt lót nhung đỏ quý phái, thiết kế cực kỳ lãng mạn. Sự lụa chọn hoàn hảo để chứa đựng kỷ vật tình yêu vĩnh cửu trong những khoảnh khắc cầu hôn thiêng liêng.",
+        sold: 185
+    },
+    {
+        id: 55,
+        name: "Máy rung làm sạch trang sức bằng sóng âm Bear",
+        price: 560000,
+        imgMain: "./assets/img/ItemTrungBaySP/id55.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id55-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["DungCuLamSach"],
+        detail: "Máy làm sạch sâu bụi bẩn trong các kẽ hở trang sức bằng công nghệ sóng âm rung tần số cao. Giải pháp chăm sóc trang sức tại nhà vô cùng tiện lợi, nhỏ gọn và nhanh chóng.",
+        sold: 1320
+    },
+    {
+        id: 56,
+        name: "Bộ Vệ Sinh Trang Sức Pandora",
+        price: 590000,
+        imgMain: "./assets/img/ItemTrungBaySP/id56.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id56-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["DungCuLamSach"],
+        detail: "Bộ vệ sinh chuyên dụng gồm dung dịch và cọ siêu mềm giúp trang sức Pandora luôn sáng bóng như mới. Món phụ kiện cực kỳ cần thiết để bảo quản nữ trang hoàn hảo.",
+        sold: 954
+    },
+    {
+        id: 57,
+        name: "Khăn lau bạc Pandora Jewelry Polishing Cloth anti tarnish silver",
+        price: 263000,
+        imgMain: "./assets/img/ItemTrungBaySP/id57.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id57-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["KhanLauBac"],
+        detail: "Khăn chuyên dụng tẩm sẵn hợp chất chống oxy hóa, đánh bay xỉn màu cho trang sức bạc hiệu quả. Giải pháp bảo quản nữ trang nhanh chóng, tiết kiệm giúp món đồ luôn sáng đẹp.",
+        sold: 2150
+    },
+    {
+        id: 58,
+        name: "Khăn lau bạc TIFFANY & CO. 18X18 SILVER POLISHING CLOTH NEW IN ORIGINAL",
+        price: 1576000,
+        imgMain: "./assets/img/ItemTrungBaySP/id58.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id58-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["KhanLauBac"],
+        detail: "Khăn lau cao cấp từ thương hiệu Tiffany & Co. nổi tiếng, kích thước lớn giúp làm sạch tối đa mọi bề mặt trang sức. Phụ kiện khẳng định sự chuyên nghiệp trong việc chăm sóc nữ trang.",
+        sold: 132
+    },
+    {
+        id: 59,
+        name: "Khăn lau bạc Town Talk Anti-Tarnish Silver & Brilliant Gold Polishing Cloth Set - 5 x 7",
+        price: 578000,
+        imgMain: "./assets/img/ItemTrungBaySP/id59.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id59-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["KhanLauBac"],
+        detail: "Set khăn chuyên dụng Town Talk dùng cho cả trang sức Vàng và Bạc, chống xỉn màu hiệu quả vượt trội. Phụ kiện nhập khẩu chất lượng cao đảm bảo độ sáng bóng bền lâu.",
+        sold: 654
+    },
+    {
+        id: 60,
+        name: "Dây chuyền bạc PNJSilver",
+        price: 1075000,
+        imgMain: "./assets/img/ItemTrungBaySP/id60.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id60-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["DayDeoThayThe"],
+        detail: "Sợi dây bạc PNJSilver mang thiết kế cơ bản, thay thế hoàn hảo cho các mặt dây chuyền đa dạng. Sợi xích vô cùng bền chắc, bắt sáng lấp lánh và giữ được nét tinh tế.",
+        sold: 815
+    },
+    {
+        id: 61,
+        name: "Dây Chuyền Pandora Moments Mạ Vàng Hồng 14K Dạng Xích",
+        price: 6990000,
+        imgMain: "./assets/img/ItemTrungBaySP/id61.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id61-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["DayDeoThayThe"],
+        detail: "Dây xích Pandora mạ vàng hồng 14K chắc chắn, có thể tùy biến gắn thêm charm phong cách riêng. Sự đầu tư hoàn hảo cho nét sang trọng, kiêu kỳ độc bản của mỗi cô gái.",
+        sold: 201
+    },
+    {
+        id: 62,
+        name: "Dây Chuyền Pandora Moments Dạng Xích Nút Thắt Dài",
+        price: 2390000,
+        imgMain: "./assets/img/ItemTrungBaySP/id62.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id62-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["DayDeoThayThe"],
+        detail: "Thiết kế xích Pandora nút thắt dài lạ mắt, dễ dàng mix-match hoàn hảo với áo len, váy xẻ sâu. Sợi dây chuyền cá tính, thời thượng luôn được phái đẹp yêu thích cuồng nhiệt.",
+        sold: 462
+    },
+    {
+        id: 63,
+        name: "Dây Chuyền Pandora Mạ Vàng 14K Mắt Xích Dài Chữ Nhật",
+        price: 4790000,
+        imgMain: "./assets/img/ItemTrungBaySP/id63.png",
+        imgHover: "./assets/img/ItemTrungBaySP/id63-hover.jpg",
+        category: ["PhuKien"],
+        subCategory: ["DayDeoThayThe"],
+        detail: "Dạng mắt xích chữ nhật sành điệu, trẻ trung mạ vàng 14K từ thương hiệu Pandora đình đám. Sợi dây tạo nên điểm nhấn thời thượng khó rời mắt cho những outfit năng động.",
+        sold: 188
+    },
 ];
 
 
-const categoryNames = { 'All': 'Tất cả sản phẩm', 'KimCuong': 'Kim cương', 'VangTrang': 'Vàng trắng', 'Vang18K': 'Vàng Ý 18K', 'Vang24K': 'Vàng 24K', 'VangHong': 'Vàng hồng', 'Sapphire': 'Sapphire', 'Ruby': 'Ruby', 'Emerald': 'Emerald', 'Topaz': 'Topaz', 'Bac': 'Bạc S925', 'NhanDon': 'Nhẫn đơn', 'DayChuyen': 'Dây chuyền', 'BongTai': 'Bông tai', 'LacTay': 'Lắc tay', 'VongTay': 'Vòng tay', 'NhanCuoi': 'Nhẫn cưới' };
+const categoryNames = { 'All': 'Tất cả sản phẩm', 'KimCuong': 'Kim cương', 'VangTrang': 'Vàng trắng', 'Vang18K': 'Vàng Ý 18K', 'Vang24K': 'Vàng 24K', 'VangHong': 'Vàng hồng', 'Sapphire': 'Sapphire', 'Ruby': 'Ruby', 'Emerald': 'Emerald', 'Topaz': 'Topaz', 'Bac': 'Bạc S925', 'NhanDon': 'Nhẫn đơn', 'DayChuyen': 'Dây chuyền', 'BongTai': 'Bông tai', 'LacTay': 'Lắc tay', 'VongTay': 'Vòng tay', 'NhanCuoi': 'Nhẫn cưới', 'VongTayTyHuu': 'Vòng tay tỳ hưu', 'MatDayPhat': 'Mặt dây Phật', 'DaTheoMenh': 'Đá theo mệnh', 'CharmVang': 'Charm vàng', 'HopTrangSuc': 'Hộp trang sức', 'DungCuLamSach': 'Dụng cụ làm sạch', 'KhanLauBac': 'Khăn lau bạc', 'DayDeoThayThe': 'Dây đeo thay thế' };
 
 let currentDisplayList = [];
+let currentSortType = 'default';
+let currentPageIndex = 1;
+const itemsPerPage = 12; // Số sản phẩm trên 1 trang
 
 function renderProducts(data) {
     const container = document.getElementById('product-display-grid');
@@ -479,8 +714,11 @@ function renderProducts(data) {
                         <img src="${product.imgHover}" class="img-hover"/>
                     </div>
                     <div class="product-info">
-                        <h3 class="p-name">${product.name}</h3>
-                        <p class="p-price">${product.price ? product.price.toLocaleString() + 'đ' : '<i style="font-weight: normal;">Liên hệ cửa hàng</i>'}</p>
+                        <h3 class="p-name text-center mb-1">${product.name}</h3>
+                        <p class="p-price text-center mb-1">${product.price ? product.price.toLocaleString() + 'đ' : '<i style="font-weight: normal;">Liên hệ</i>'}</p>
+                        <div class="text-end w-100">
+                            <span class="text-muted small" style="font-size: 0.75rem;">Đã bán: ${product.sold || 0}</span>
+                        </div>
                     </div>
                 </div>
             </a>
@@ -573,6 +811,7 @@ function filterCat(catKey) {
     }
 
     currentDisplayList = filtered;
+    currentPageIndex = 1; // Đặt lại về trang 1 khi đổi danh mục
     applySortAndRender();
     updateBreadcrumb(categoryNames[catKey] || 'Tất cả sản phẩm');
 }
@@ -580,16 +819,121 @@ function filterCat(catKey) {
 // --- HÀM XỬ LÝ SẮP XẾP ---
 function applySortAndRender() {
     const sortSelect = document.getElementById('price-sort-select');
-    const sortValue = sortSelect ? sortSelect.value : 'default';
+    const priceSortValue = sortSelect ? sortSelect.value : 'default';
     
     let sorted = [...currentDisplayList];
-    if (sortValue === 'asc') {
+    
+    // Ưu tiên sắp xếp theo giá nếu người dùng chọn
+    if (priceSortValue === 'asc') {
         sorted.sort((a, b) => (a.price || Infinity) - (b.price || Infinity));
-    } else if (sortValue === 'desc') {
+        document.querySelectorAll('.btn-sort').forEach(b => b.classList.remove('active'));
+        currentSortType = 'default';
+    } else if (priceSortValue === 'desc') {
         sorted.sort((a, b) => (b.price || 0) - (a.price || 0));
+        document.querySelectorAll('.btn-sort').forEach(b => b.classList.remove('active'));
+        currentSortType = 'default';
+    } else {
+        // Xử lý các nút sắp xếp (Phổ biến, Mới nhất, Bán chạy)
+        if (currentSortType === 'newest') {
+            sorted.sort((a, b) => b.id - a.id); // ID càng lớn càng mới
+        } else if (currentSortType === 'bestseller') {
+            sorted.sort((a, b) => (b.sold || 0) - (a.sold || 0)); // Lượt bán cao nhất xếp trước
+        } else if (currentSortType === 'popular') {
+            // Điểm phổ biến = Lượt bán kết hợp với độ mới của ID
+            sorted.sort((a, b) => {
+                const scoreA = (a.sold || 0) * 0.7 + a.id * 3;
+                const scoreB = (b.sold || 0) * 0.7 + b.id * 3;
+                return scoreB - scoreA;
+            });
+        }
     }
     
-    renderProducts(sorted);
+    // Logic phân trang
+    const totalItems = sorted.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    if (currentPageIndex < 1) currentPageIndex = 1;
+    if (currentPageIndex > totalPages && totalPages > 0) currentPageIndex = totalPages;
+
+    const startIndex = (currentPageIndex - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedItems = sorted.slice(startIndex, endIndex);
+
+    renderProducts(paginatedItems);
+    renderPagination(totalItems, totalPages);
+}
+
+// --- HÀM RENDER PHÂN TRANG ---
+function renderPagination(totalItems, totalPages) {
+    const container = document.getElementById('pagination-container');
+    if (!container) return;
+
+    if (totalPages < 1) {
+        container.innerHTML = '';
+        return;
+    }
+
+    let html = '<ul class="pagination custom-pagination mb-0">';
+
+    // Nút "Trang trước"
+    html += `<li class="page-item ${currentPageIndex === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#" aria-label="Previous" onclick="event.preventDefault(); changePage(${currentPageIndex - 1})">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+             </li>`;
+
+    // Hiển thị các số trang và dấu ...
+    let startPage = Math.max(1, currentPageIndex - 1);
+    let endPage = Math.min(totalPages, currentPageIndex + 1);
+
+    if (currentPageIndex === 1) {
+        endPage = Math.min(totalPages, 3);
+    } else if (currentPageIndex === totalPages) {
+        startPage = Math.max(1, totalPages - 2);
+    }
+
+    if (startPage > 1) {
+        html += `<li class="page-item"><a class="page-link" href="#" onclick="event.preventDefault(); changePage(1)">1</a></li>`;
+        if (startPage > 2) {
+            html += `<li class="page-item disabled"><span class="page-link border-0 text-muted">...</span></li>`;
+        }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        html += `<li class="page-item ${i === currentPageIndex ? 'active' : ''}">
+                    <a class="page-link" href="#" onclick="event.preventDefault(); changePage(${i})">${i}</a>
+                 </li>`;
+    }
+
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            html += `<li class="page-item disabled"><span class="page-link border-0 text-muted">...</span></li>`;
+        }
+        html += `<li class="page-item"><a class="page-link" href="#" onclick="event.preventDefault(); changePage(${totalPages})">${totalPages}</a></li>`;
+    }
+
+    // Nút "Trang sau"
+    html += `<li class="page-item ${currentPageIndex === totalPages ? 'disabled' : ''}">
+                <a class="page-link" href="#" aria-label="Next" onclick="event.preventDefault(); changePage(${currentPageIndex + 1})">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+             </li>`;
+
+    html += '</ul>';
+    container.innerHTML = html;
+}
+
+// --- HÀM CHUYỂN TRANG ---
+function changePage(page) {
+    currentPageIndex = page;
+    applySortAndRender();
+    
+    // Cuộn nhẹ lên đầu lưới sản phẩm
+    const gridTop = document.getElementById('product-display-grid');
+    if (gridTop) {
+        const y = gridTop.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+    }
 }
 
 // --- HÀM 4: TÌM KIẾM NHANH ---
@@ -614,9 +958,41 @@ function searchProducts(query) {
     }
     
     currentDisplayList = filtered;
+    currentPageIndex = 1; // Đặt lại về trang 1 khi tìm kiếm
     applySortAndRender();
     updateBreadcrumb(`Kết quả cho: "${query}"`);
 }
+
+// --- HÀM TẠO GRID SẢN PHẨM (GIỐNG TRANG CHỦ) ---
+function renderProductGrid4(containerId, products) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    let html = '<div class="product-grid-4">';
+    products.forEach(product => {
+        const safeName = product.name.replace(/'/g, "\\'");
+        html += `
+            <div class="product-card-v2 h-100 d-flex flex-column" style="cursor: pointer;" onclick="window.location.href='detail.html?id=${product.id}'">
+                <div class="product-img-box">
+                    <img src="${product.imgMain}" class="img-main" />
+                    <img src="${product.imgHover}" class="img-hover" />
+                </div>
+                <div class="product-info flex-grow-1 d-flex flex-column">
+                    <h3 class="p-name">${product.name}</h3>
+                    <p class="p-price">${product.price ? product.price.toLocaleString() + 'đ' : '<i style="font-weight: normal;">Liên hệ</i>'}</p>
+                    <div class="p-buttons mt-auto">
+                        <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
+                        <a href="checkout.html" class="btn-buy-now text-decoration-none text-center" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">MUA NGAY</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+
 
 // --- KHỞI CHẠY KHI TRANG TẢI XONG ---
 document.addEventListener("DOMContentLoaded", function() {
@@ -650,6 +1026,48 @@ document.addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
             searchProducts(searchInput.value);
         });
+    }
+
+    // Cài đặt sự kiện cho các nút Sắp xếp (Sort Bar)
+    const sortButtons = document.querySelectorAll('.btn-sort');
+    sortButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Chuyển đổi trạng thái Active
+            sortButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Xác định loại sắp xếp
+            const text = this.innerText.trim();
+            if (text === 'Phổ biến') {
+                currentSortType = 'popular';
+            } else if (text === 'Mới nhất') {
+                currentSortType = 'newest';
+            } else if (text === 'Bán chạy') {
+                currentSortType = 'bestseller';
+            }
+            
+            // Khi bấm vào nút thì Reset select giá về mặc định để tránh xung đột
+            const priceSelect = document.getElementById('price-sort-select');
+            if (priceSelect) priceSelect.value = 'default';
+            
+            currentPageIndex = 1; // Đặt lại về trang 1 khi bấm nút sắp xếp
+            applySortAndRender();
+        });
+    });
+    
+    // --- KHỞI TẠO GRID SẢN PHẨM TRONG TRUNGBAYSP ---
+    const newProductsContainer = document.getElementById('grid-new-products');
+    const bestsellerProductsContainer = document.getElementById('grid-bestseller-products');
+
+    if (newProductsContainer) {
+        const newProducts = [...gemProducts].sort((a, b) => b.id - a.id).slice(0, 8);
+        renderProductGrid4('grid-new-products', newProducts);
+    }
+    
+    if (bestsellerProductsContainer) {
+        const bestSellerProducts = [...gemProducts].sort((a, b) => (b.sold || 0) - (a.sold || 0)).slice(0, 8);
+        renderProductGrid4('grid-bestseller-products', bestSellerProducts);
     }
 });
 

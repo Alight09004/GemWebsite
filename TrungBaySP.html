@@ -159,20 +159,26 @@
     <!-- SP mới & bán chạy -->
     <section class="product-tabs-section py-5">
         <div class="container bg-light-blue p-5 rounded-4 position-relative">
-            <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab">
-                <li class="nav-item">
-                    <button class="nav-link" data-type="new">Sản phẩm mới</button>
+            <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="new-tab" data-bs-toggle="pill" data-bs-target="#new-products" type="button" role="tab" aria-controls="new-products" aria-selected="true">Sản phẩm mới</button>
                 </li>
-                <li class="nav-item">
-                    <button class="nav-link" data-type="best_seller">Sản phẩm bán chạy</button>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bestseller-tab" data-bs-toggle="pill" data-bs-target="#bestseller-products" type="button" role="tab" aria-controls="bestseller-products" aria-selected="false">Sản phẩm bán chạy</button>
                 </li>
             </ul>
 
-            <div class="product-slider" id="product-container">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="new-products" role="tabpanel" aria-labelledby="new-tab">
+                    <div id="grid-new-products"></div>
                 </div>
+                <div class="tab-pane fade" id="bestseller-products" role="tabpanel" aria-labelledby="bestseller-tab">
+                    <div id="grid-bestseller-products"></div>
+                </div>
+            </div>
 
             <div class="text-center mt-5">
-                <button class="btn-view-more">Xem thêm</button>
+                <a href="DaQuy.html" class="btn-view-more text-decoration-none">Xem thêm</a>
             </div>
         </div>
     </section>
@@ -224,6 +230,15 @@
         </div>
     </section>
     
+    
+    <div class="container-custom py-0 mb-5 mt-2">
+        <div class="divider-header m-0">
+            <span class="ornament-line"></span>
+            <i class="fas fa-gem mx-2" style="color: #D4AF37; font-size: 1.2rem;"></i>
+            <span class="ornament-line"></span>
+        </div>
+    </div>
+
     <app-footer></app-footer>
     <app-globals></app-globals>
     <script src="./assets/js/cart.js"></script>

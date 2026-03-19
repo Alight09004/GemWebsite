@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="./assets/css/DaQuy.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibe&family=Allura&family=Parisienne&family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <script src="./assets/js/layout.js"></script>
 </head>
 <body>
     <app-header></app-header>
 
-    <!-- Breadcrum -->
+    <!-- Breadcrumb -->
     <div class="breadcrumb-wrapper">
         <div class="container-fluid px-lg-5">
             <nav aria-label="breadcrumb" class="py-3">
@@ -32,21 +32,63 @@
     </div>
     <script src="./assets/js/breadcrumb.js"></script>
 
+    <!-- Side bar and Sort Bar -->
     <div class="container-fluid px-lg-5 my-5">
         <div class="row">
-            <main class="col-12">
-                <div class="text-center py-5">
-                    <h2 class="mb-3">Phụ kiện</h2>
-                    <p class="text-muted">Danh mục phụ kiện đang được phát triển. Vui lòng quay lại sau!</p>
+            <aside class="col-lg-3">
+                <div class="sidebar-filter shadow-sm">
+                    <h5 class="filter-title"><i class="fas fa-th-list me-2"></i> DANH MỤC</h5>
+                    <ul class="list-unstyled category-list">
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('HopTrangSuc')">Hộp trang sức</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('DungCuLamSach')">Dụng cụ làm sạch</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('KhanLauBac')">Khăn lau bạc</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('DayDeoThayThe')">Dây đeo thay thế</a></li>
+                        <hr>
+                        <li><a href="#" onclick="event.preventDefault(); filterCat('All')">Tất cả sản phẩm</a></li>
+                    </ul>
                 </div>
+            </aside>
+
+            <main class="col-lg-9">
+                <div class="sort-bar d-flex align-items-center justify-content-between mb-4 shadow-sm p-3 bg-white">
+                    <div class="d-flex align-items-center">
+                        <span class="me-3 fw-bold">Sắp xếp theo:</span>
+                        <button class="btn btn-sort">Phổ biến</button>
+                        <button class="btn btn-sort">Mới nhất</button>
+                        <button class="btn btn-sort">Bán chạy</button>
+                    </div>
+                    <div class="price-filter">
+                        <select class="form-select form-select-sm" id="price-sort-select" onchange="currentPageIndex=1; applySortAndRender()">
+                            <option value="default">Sắp xếp: Mặc định</option>
+                            <option value="asc">Giá: Thấp đến Cao</option>
+                            <option value="desc">Giá: Cao đến Thấp</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="product-display-grid"></div>
+                
+                <!-- Pagination Container -->
+                <div class="d-flex justify-content-center mt-5" id="pagination-container"></div>
             </main>
+        </div>
+    </div>
+
+    <!-- Đường kẻ màu vàng ngăn cách nội dung với Footer -->
+    <div class="container-custom py-0 mb-5 mt-2">
+        <div class="divider-header m-0">
+            <span class="ornament-line"></span>
+            <i class="fas fa-gem mx-2" style="color: #D4AF37; font-size: 1.2rem;"></i>
+            <span class="ornament-line"></span>
         </div>
     </div>
 
     <app-footer></app-footer>
     <app-globals></app-globals>
+    <script src="./assets/js/cart.js"></script>
     <script src="./assets/js/products.js"></script>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/search-overlay.js"></script>
+
 </body>
 </html>

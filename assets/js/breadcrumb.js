@@ -142,24 +142,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Xử lý breadcrumb động từ URL parameters (ví dụ: ?category=KimCuong)
     const category = urlParams.get('category');
-    if (category && currentPage === 'DaQuy.html') {
+    if (category) {
         const categoryNames = {
             'KimCuong': 'Kim cương',
             'Sapphire': 'Sapphire',
             'Ruby': 'Ruby',
             'Emerald': 'Emerald',
-            'Topaz': 'Topaz'
+            'Topaz': 'Topaz',
+            'Vang24K': 'Vàng 24K',
+            'Vang18K': 'Vàng Ý 18K',
+            'Bac': 'Bạc S925',
+            'VangTrang': 'Vàng trắng',
+            'VangHong': 'Vàng hồng',
+            'NhanDon': 'Nhẫn đơn',
+            'DayChuyen': 'Dây chuyền',
+            'BongTai': 'Bông tai',
+            'LacTay': 'Lắc tay',
+            'NhanCuoi': 'Nhẫn cưới',
+            'VongTayTyHuu': 'Vòng tay tỳ hưu',
+            'MatDayPhat': 'Mặt dây Phật',
+            'DaTheoMenh': 'Đá theo mệnh',
+            'CharmVang': 'Charm vàng',
+            'HopTrangSuc': 'Hộp trang sức',
+            'DungCuLamSach': 'Dụng cụ làm sạch',
+            'KhanLauBac': 'Khăn lau bạc',
+            'DayDeoThayThe': 'Dây đeo thay thế'
         };
         
         if (categoryNames[category]) {
             const breadcrumbList = document.getElementById('dynamic-breadcrumb');
             if (breadcrumbList) {
-                // Thay đổi item active cuối cùng thành "Đá quý"
+                // Thay đổi item active cuối cùng thành link về trang danh mục lớn
                 const items = breadcrumbList.querySelectorAll('.breadcrumb-item.active');
                 if (items.length > 0) {
                     const lastItem = items[items.length - 1];
+                    const pageTitle = pageConfig ? pageConfig.title : lastItem.innerText.trim();
                     lastItem.classList.remove('active');
-                    lastItem.innerHTML = `<a href="DaQuy.html" class="text-decoration-none text-muted">Đá quý</a>`;
+                    lastItem.innerHTML = `<a href="${currentPage}" class="text-decoration-none text-muted">${pageTitle}</a>`;
                 }
                 
                 // Thêm category mới

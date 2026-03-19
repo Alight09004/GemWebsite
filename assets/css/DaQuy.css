@@ -450,3 +450,40 @@ html {
     margin-bottom: 0;
     font-size: 1rem;
 }
+
+/* Pagination Styles */
+#pagination-container .custom-pagination .page-link {
+    color: #001f3f;
+    border: none;
+    margin: 0 4px;
+    border-radius: 50% !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+#pagination-container .custom-pagination .page-link:hover:not(.text-muted) {
+    background-color: #f0f0f0;
+    color: #D4AF37;
+}
+
+#pagination-container .custom-pagination .page-item.active .page-link {
+    background-color: #D4AF37;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+}
+
+#pagination-container .custom-pagination .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+#pagination-container .custom-pagination .page-link i {
+    font-size: 0.8rem;
+}
