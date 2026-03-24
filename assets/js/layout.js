@@ -87,10 +87,11 @@ class AppHeader extends HTMLElement {
                   </li>
                 </ul>
     
-                <form class="d-flex search-box-nav" role="search">
-                  <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search" />
-                  <button class="btn btn-search" type="submit"><i class="fas fa-search"></i></button>
-                </form>
+                <!-- Search box that triggers the overlay -->
+                <div class="d-flex search-box-nav" role="search" onclick="openFullscreenSearch()" style="cursor: pointer;">
+                  <input class="form-control search-input" type="search" placeholder="Tìm sản phẩm..." aria-label="Search" readonly>
+                  <button class="btn btn-search" type="button" aria-label="Mở tìm kiếm"><i class="fas fa-search"></i></button>
+                </div>
               </div>
     
               <div class="nav-icons d-flex align-items-center">
