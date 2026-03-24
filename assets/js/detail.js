@@ -1,283 +1,204 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = parseInt(urlParams.get("id"));
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Lấy ID sản phẩm từ URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
 
-  const product = gemProducts.find((p) => p.id === productId);
-  const container = document.getElementById("product-detail-container");
+    // 2. Tìm sản phẩm trong mảng gemProducts (từ file products.js)
+    const product = gemProducts.find(p => p.id == productId);
 
-  if (!product) {
-    container.innerHTML = "<p>Sản phẩm không tồn tại.</p>";
-    return;
-  }
+    // 3. Lấy vùng chứa nội dung chi tiết
+    const container = document.getElementById('product-detail-container');
+    if (!container) return;
 
-  // FIX CATEGORY
-  const categories = Array.isArray(product.category)
-    ? product.category
-    : product.category
-    ? [product.category]
-    : [];
+    // 4. Xử lý nếu không tìm thấy sản phẩm
+    if (!product) {
+        container.innerHTML = `
+            <div class="text-center py-5">
+                <h2 class="fw-bold">404</h2>
+                <p class="lead">Không tìm thấy sản phẩm.</p>
+                <a href="index.html" class="btn btn-dark">Quay về trang chủ</a>
+            </div>
+        `;
+        return;
+    }
 
-  const subCategories = Array.isArray(product.subCategory)
-    ? product.subCategory
-    : product.subCategory
-    ? [product.subCategory]
-    : [];
+    // 5. Tạo HTML và hiển thị chi tiết sản phẩm
 
-  // RELATED PRODUCTS
-  const relatedProducts = gemProducts
-    .filter((p) => {
-      if (p.id === product.id) return false;
+    // Helper function để tạo HTML cho thông số kỹ thuật (dưới dạng bảng)
+    let specsHtml = '';
+    if (product.specs && Object.keys(product.specs).length > 0) {
+        const specLabels = {
+            weight: 'Trọng lượng',
+            purity: 'Độ tinh khiết',
+            color: 'Màu sắc',
+            cut: 'Giác cắt'
+        };
+        specsHtml = `
+            <div class="product-specs-container mt-5 pt-5 border-top">
+                <h3 class="mb-4 fw-bold" style="font-family: 'Playfair Display', serif; color: #001f3f; border-left: 4px solid #D4AF37; padding-left: 15px;">Thông số kỹ thuật</h3>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        ${Object.entries(product.specs).map(([key, value]) => `
+                            <tr>
+                                <td class="fw-bold" style="width: 30%; background-color: #f8f9fa;">${specLabels[key] || key}</td>
+                                <td>${value}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+    }
 
-      const pCategories = Array.isArray(p.category)
-        ? p.category
-        : p.category
-        ? [p.category]
-        : [];
+    // Helper function để tạo HTML cho các kích thước (size)
+    let sizesHtml = '';
+    if (product.sizes && product.sizes.length > 0) {
+        sizesHtml = `
+            <div class="size-selection mt-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="mb-0 fw-bold">Chọn kích thước (Size)</h6>
+                    <a href="#" class="small text-decoration-none" data-bs-toggle="modal" data-bs-target="#sizeGuideModal">
+                        <i class="fas fa-ruler-horizontal me-1"></i>Hướng dẫn đo size
+                    </a>
+                </div>
+                <div class="size-buttons">
+                    ${product.sizes.map(size => `<button class="size-btn" onclick="selectSize(this)">${size}</button>`).join('')}
+                </div>
+            </div>
+        `;
+    }
 
-      return pCategories.some((c) => categories.includes(c));
-    })
-    .slice(0, 2);
+    // Hình ảnh chính và các ảnh thumbnail
+    const mainImage = product.imgMain;
+    const galleryImages = [mainImage, ...(product.gallery || [])];
 
-  // Create a unified gallery for thumbnails
-  const allImages = [product.imgMain];
-  if (product.imgHover) {
-    allImages.push(product.imgHover);
-  }
-  if (product.gallery && Array.isArray(product.gallery)) {
-    allImages.push(...product.gallery);
-  }
+    const productHtml = `
+        <div class="row g-5">
+            <!-- Image Gallery -->
+            <div class="col-lg-1 d-none d-lg-block">
+                <div class="thumbnail-vertical-container">
+                    <button id="thumb-up" class="thumb-nav-btn mb-2"><i class="fas fa-chevron-up"></i></button>
+                    <div class="thumbnail-track-wrapper">
+                        <div class="thumbnail-track">
+                            ${galleryImages.map((img, index) => `
+                                <img src="${img}" class="thumbnail-selector ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">
+                            `).join('')}
+                        </div>
+                    </div>
+                    <button id="thumb-down" class="thumb-nav-btn mt-2"><i class="fas fa-chevron-down"></i></button>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <img id="main-product-image" src="${mainImage}" class="img-fluid rounded shadow-sm w-100" style="aspect-ratio: 1/1; object-fit: cover;">
+            </div>
 
-  // RENDER UI
-  container.innerHTML = `
-    <div class="row g-4">
-      
-      <!-- IMAGE -->
-      <div class="col-md-7">
-        <div class="d-flex gap-3">
-            <!-- Vertical Thumbnails -->
-            <div class="thumbnail-vertical-container">
-                <button class="thumb-nav-btn thumb-prev"><i class="fas fa-chevron-up"></i></button>
-                <div class="thumbnail-track-wrapper">
-                    <div class="thumbnail-track">
-                        ${allImages.map((img, index) => `<img src="${img}" class="thumbnail-selector ${index === 0 ? 'active' : ''}" onclick="changeImage(this, '${img}')">`).join('')}
+            <!-- Product Info -->
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-2" style="font-family: 'Playfair Display', serif; color: #001f3f;">${product.name}</h2>
+                <div class="d-flex align-items-center mb-3 text-muted small">
+                    <span>Đã bán: ${product.sold || 0}</span>
+                    <span class="mx-2">|</span>
+                    <span>Tồn kho: ${product.stock || 'Hết hàng'}</span>
+                </div>
+                <p class="display-6 fw-bold text-danger mb-3">${product.price ? product.price.toLocaleString() + 'đ' : 'Giá liên hệ'}</p>
+                
+                ${sizesHtml}
+
+                <!-- Quantity & Actions -->
+                <div class="d-flex align-items-center my-4">
+                    <label class="me-3 fw-bold">Số lượng:</label>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-outline-secondary btn-qty" onclick="changeDetailQty(-1)">-</button>
+                        <input type="number" id="quantity-input" class="form-control qty-input mx-1" value="1" min="1" max="${product.stock || 1}">
+                        <button class="btn btn-outline-secondary btn-qty" onclick="changeDetailQty(1)">+</button>
                     </div>
                 </div>
-                <button class="thumb-nav-btn thumb-next"><i class="fas fa-chevron-down"></i></button>
-            </div>
 
-            <!-- Main Image -->
-            <div class="main-image-wrapper flex-grow-1">
-                <img id="mainImage" src="${product.imgMain}" class="img-fluid rounded shadow-sm w-100" style="height: 100%; min-height: 356px; object-fit: cover;">
-            </div>
-        </div>
-      </div>
-
-      <!-- INFO -->
-      <div class="col-md-5 d-flex flex-column">
-
-  <h3 class="fw-bold">${product.name}</h3>
-
-  <!-- GIÁ + ĐÃ BÁN -->
-  <div class="d-flex align-items-center gap-3">
-    <p class="text-danger fs-4 fw-bold mb-0">
-      ${product.price ? product.price.toLocaleString() + "đ" : "Giá liên hệ"}
-    </p>
-    <span class="text-muted">
-      | Đã bán: ${product.sold ?? 0}
-    </span>
-  </div>
-
-  <p class="mt-2"><strong>Loại sản phẩm:</strong> ${categories.join(", ") || "Không có"}</p>
-  <p><strong>Danh mục phụ:</strong> ${subCategories.join(", ") || "Không có"}</p>
-
-  ${
-    product.specs
-      ? `
-      <div class="product-specs">
-        <h6 class="spec-title">Thông số chi tiết:</h6>
-        <ul>
-          ${product.specs.weight ? `<li><strong>Trọng lượng:</strong> ${product.specs.weight}</li>` : ''}
-          ${product.specs.purity ? `<li><strong>Độ tinh khiết:</strong> ${product.specs.purity}</li>` : ''}
-          ${product.specs.color ? `<li><strong>Màu sắc:</strong> ${product.specs.color}</li>` : ''}
-          ${product.specs.cut ? `<li><strong>Giác cắt:</strong> ${product.specs.cut}</li>` : ''}
-        </ul>
-      </div>
-      `
-      : ""
-  }
-
-  ${
-    categories.includes("TrangSuc") && product.sizes
-      ? `
-      <div class="size-selection mb-3">
-        <div class="d-flex justify-content-between align-items-center mb-2">
-            <label class="fw-bold mb-0">Chọn kích cỡ (cm):</label>
-            <a href="#" class="text-decoration-none small" data-bs-toggle="modal" data-bs-target="#sizeGuideModal"><i class="fas fa-ruler-horizontal me-1"></i> Hướng dẫn đo size</a>
-        </div>
-        <div class="size-buttons">
-          ${product.sizes.map((size, index) => `<button class="size-btn ${index === 0 ? 'active' : ''}">${size}</button>`).join('')}
-        </div>
-      </div>
-      `
-      : ""
-  }
-
-  <!-- SỐ LƯỢNG -->
-  <div class="d-flex align-items-center gap-3 mb-3">
-    <label class="fw-bold">Số lượng:</label>
-    <input type="number" id="quantity" value="1" min="1"
-           class="form-control"
-           style="width: 80px;">
-  </div>
-
-  <div class="product-benefits my-3">
-    <div class="benefit-tag">🚚 Miễn phí giao hàng</div>
-    <div class="benefit-tag">📦 Phục vụ 24/7</div>
-    <div class="benefit-tag">🔄 Thu đổi 48h</div>
-  </div>
-
-  <!-- BUTTON -->
-  <button class="btn btn-danger w-100 py-3 fs-5 fw-bold mt-auto"
-          onclick="buyNow(${product.id})" ${!product.price ? 'disabled' : ''}>
-    <i class="fas fa-shopping-bag me-2"></i> ${product.price ? 'Mua ngay' : 'Sản phẩm chưa mở bán'}
-  </button>
-
-  <button class="btn btn-outline-dark w-100 mt-3 py-3 fs-5 fw-bold"
-          onclick="addToCartById(${product.id})" ${!product.price ? 'disabled' : ''}>
-    <i class="fas fa-cart-plus me-2"></i> ${product.price ? 'Thêm vào giỏ hàng' : 'Sản phẩm chưa mở bán'}
-  </button>
-
-</div>
-    </div>
-
-    <hr class="my-5">
-
-    <div class="row">
-  
-      <!-- LEFT: CHI TIẾT -->
-      <div class="col-md-6">
-        <h4 class="mb-3">Chi tiết sản phẩm</h4>
-        <p class="text-muted" style="line-height: 1.8;">
-          ${product.detail || "Chưa có mô tả sản phẩm"}
-        </p>
-      </div>
-
-      <!-- RIGHT: GIỮ CHỖ (cân layout) -->
-      <div class="col-md-6">
-        <img src="assets/img/ItemAboutUs/service.png" 
-          class="img-fluid rounded shadow-sm"
-          style="max-height: 800px; object-fit: cover;">
-      </div>
-
-    </div>
-
-    <hr class="my-5">
-
-
-    <!-- RELATED PRODUCTS -->
-    <h4 class="mb-4">Sản phẩm liên quan</h4>
-
-    <div class="row g-4">
-      ${
-        relatedProducts.length > 0
-          ? relatedProducts.map((p) => {
-              const safeName = p.name.replace(/'/g, "\\'");
-              const pButtons = p.price
-                ? `
-                <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('${safeName}', ${p.price}, '${p.imgMain}')">THÊM GIỎ HÀNG</button>
-                <a href="checkout.html" class="btn-buy-now text-decoration-none text-center" onclick="event.stopPropagation(); addToCart('${safeName}', ${p.price}, '${p.imgMain}')">MUA NGAY</a>
-                `
-                : `
-                <button class="btn-add-cart" disabled>LIÊN HỆ</button>
-                <a href="#" class="btn-buy-now text-decoration-none text-center disabled" onclick="event.stopPropagation(); alert('Vui lòng liên hệ cửa hàng để biết giá sản phẩm này.');">LIÊN HỆ</a>
-                `;
-              return `
-          <div class="col-6 col-md-4">
-            <div class="product-card-v2 h-100 d-flex flex-column" style="cursor: pointer;" onclick="window.location.href='detail.html?id=${p.id}'">
-                <div class="product-img-box">
-                    <img src="${p.imgMain}" class="img-main" alt="${p.name}" />
-                    <img src="${p.imgHover}" class="img-hover" alt="${p.name}" />
+                <div class="d-grid gap-2">
+                    <button class="btn btn-dark btn-lg fw-bold" onclick="addToCart('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.imgMain}')">
+                        <i class="fas fa-cart-plus me-2"></i> Thêm vào giỏ hàng
+                    </button>
+                    <button class="btn btn-warning btn-lg fw-bold" onclick="buyNow('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.imgMain}')">
+                        Mua ngay
+                    </button>
                 </div>
-                <div class="product-info flex-grow-1 d-flex flex-column">
-                    <h3 class="p-name">${p.name}</h3>
-                    <p class="p-price">${p.price ? p.price.toLocaleString() + 'đ' : '<i style="font-weight: normal;">Liên hệ</i>'}</p>
-                    <div class="p-buttons mt-auto">${pButtons}</div>
+
+                <div class="product-benefits mt-4">
+                    <span class="benefit-tag"><i class="fas fa-check-circle text-success"></i> Miễn phí giao hàng</span>
+                    <span class="benefit-tag"><i class="fas fa-check-circle text-success"></i> Bảo hành 12 tháng</span>
+                    <span class="benefit-tag"><i class="fas fa-check-circle text-success"></i> Thu đổi 48h</span>
                 </div>
             </div>
-          </div>
-        `}).join("")
-          : "<p>Không có sản phẩm liên quan</p>"
-      }
-    </div>
-  `;
+        </div>
 
-  // Add event listeners for size buttons
-  document.querySelectorAll('.size-btn').forEach(button => {
-      button.addEventListener('click', function() {
-          document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
-          this.classList.add('active');
-      });
-  });
+        <!-- Product Description -->
+        <div class="mt-5 pt-5 border-top">
+            <h3 class="mb-4 fw-bold" style="font-family: 'Playfair Display', serif; color: #001f3f; border-left: 4px solid #D4AF37; padding-left: 15px;">Chi tiết sản phẩm</h3>
+            <p class="text-muted" style="line-height: 1.8;">${product.detail}</p>
+        </div>
 
-  // Vertical thumbnail slider logic
-  const track = document.querySelector('.thumbnail-track');
-  if (track) {
-      const prevBtn = document.querySelector('.thumb-prev');
-      const nextBtn = document.querySelector('.thumb-next');
-      const thumbnails = track.querySelectorAll('.thumbnail-selector');
-      const thumbHeight = thumbnails.length > 0 ? thumbnails[0].offsetHeight + 10 : 90; // 80px height + 10px gap
-      const wrapperHeight = document.querySelector('.thumbnail-track-wrapper').offsetHeight;
-      const visibleThumbs = Math.floor(wrapperHeight / thumbHeight);
-      const maxScroll = Math.max(0, (thumbnails.length - visibleThumbs) * thumbHeight);
-      let currentPosition = 0;
+        <!-- Product Specs -->
+        ${specsHtml}
+    `;
 
-      function updateButtons() {
-          prevBtn.disabled = currentPosition >= 0;
-          nextBtn.disabled = currentPosition <= -maxScroll || thumbnails.length <= visibleThumbs;
-      }
-
-      prevBtn.addEventListener('click', () => {
-          currentPosition = Math.min(0, currentPosition + thumbHeight);
-          track.style.transform = `translateY(${currentPosition}px)`;
-          updateButtons();
-      });
-
-      nextBtn.addEventListener('click', () => {
-          currentPosition = Math.max(-maxScroll, currentPosition - thumbHeight);
-          track.style.transform = `translateY(${currentPosition}px)`;
-          updateButtons();
-      });
-      
-      updateButtons();
-  }
+    container.innerHTML = productHtml;
+    initThumbnailSlider();
 });
-function changeImage(element, src) {
-  const mainImg = document.getElementById("mainImage");
-  if (mainImg) {
-    mainImg.src = src;
-  }
-  // Xử lý trạng thái active cho ảnh thumbnail
-  const thumbnails = document.querySelectorAll('.thumbnail-vertical-container .thumbnail-selector');
-  thumbnails.forEach(thumb => thumb.classList.remove('active'));
-  if (element) {
-    element.classList.add('active');
-  }
-}
-// CART
-function addToCartById(productId) {
-  const product = gemProducts.find((p) => p.id === productId);
-  if (product) {
-    addToCart(product.name, product.price, product.imgMain);
-  }
-}
-function buyNow(productId) {
-  const product = gemProducts.find((p) => p.id === productId);
-  const quantity = parseInt(document.getElementById("quantity").value) || 1;
 
-  if (product) {
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product.name, product.price, product.imgMain);
+function changeMainImage(src, thumbElement) {
+    document.getElementById('main-product-image').src = src;
+    document.querySelectorAll('.thumbnail-selector').forEach(el => el.classList.remove('active'));
+    thumbElement.classList.add('active');
+}
+
+function selectSize(btn) {
+    document.querySelectorAll('.size-btn').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+function changeDetailQty(delta) {
+    const input = document.getElementById('quantity-input');
+    let currentValue = parseInt(input.value);
+    const max = parseInt(input.max);
+    currentValue += delta;
+    if (currentValue < 1) currentValue = 1;
+    if (currentValue > max) currentValue = max;
+    input.value = currentValue;
+}
+
+function buyNow(name, price, img) {
+    addToCart(name, price, img);
+    window.location.href = 'checkout.html';
+}
+
+function initThumbnailSlider() {
+    const track = document.querySelector('.thumbnail-track');
+    if (!track) return;
+    const upBtn = document.getElementById('thumb-up');
+    const downBtn = document.getElementById('thumb-down');
+    const wrapperHeight = document.querySelector('.thumbnail-track-wrapper').clientHeight;
+    const itemHeight = 80 + 10; // height + gap
+    let currentPosition = 0;
+    const maxPosition = track.scrollHeight - wrapperHeight;
+
+    function updateButtons() {
+        upBtn.disabled = currentPosition <= 0;
+        downBtn.disabled = currentPosition >= maxPosition;
     }
-    window.location.href = "checkout.html";
-  }
+
+    upBtn.addEventListener('click', () => {
+        currentPosition -= itemHeight;
+        if (currentPosition < 0) currentPosition = 0;
+        track.style.transform = `translateY(-${currentPosition}px)`;
+        updateButtons();
+    });
+
+    downBtn.addEventListener('click', () => {
+        currentPosition += itemHeight;
+        if (currentPosition > maxPosition) currentPosition = maxPosition;
+        track.style.transform = `translateY(-${currentPosition}px)`;
+        updateButtons();
+    });
+
+    updateButtons();
 }

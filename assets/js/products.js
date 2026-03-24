@@ -11,12 +11,8 @@ const gemProducts = [
         sold: 432,
         sizes: [10, 11, 12, 13, 14],
         specs: { weight: '0.8 chỉ (3.0g)', purity: 'VVS1', color: 'D', cut: 'Round Brilliant' },
-        gallery: [
-            './assets/img/ItemTrungBaySP/id18.png',
-            './assets/img/ItemTrungBaySP/id19.jpg',
-            './assets/img/ItemTrungBaySP/id20.png',
-            './assets/img/ItemTrungBaySP/id21.png'
-        ]
+        // Sử dụng ảnh hover làm ảnh gallery để đảm bảo đúng sản phẩm
+        gallery: [ './assets/img/ItemTrangChu(1)/spnb2-2.jpg.webp' ]
     },
     {
         id: 2,
@@ -27,7 +23,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Bac", "DayChuyen"],
         detail: "Dây chuyền bạc nữ đính đá CZ cá tiên tinh tế, điểm xuyết viên đá lấp lánh mang lại sự duyên dáng. Một thiết kế tinh giản, rất phù hợp làm món quà tặng ý nghĩa.",
-        sold: 915
+        sold: 915,
+        specs: { weight: '0.5 chỉ', material: 'Bạc S925, đá CZ' },
+        gallery: [ './assets/img/ItemTrangChu(1)/spnb1-2.jpg.webp' ]
     },
     {
         id: 3,
@@ -38,7 +36,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["VangTrang", "BongTai"],
         detail: "Bông tai Vàng trắng 41,6% (10K) đính đá sở hữu thiết kế thời thượng, bắt sáng rực rỡ, tôn lên khuôn mặt thanh tú của phái đẹp. Sự đầu tư xứng đáng cho một thiết kế vàng đẳng cấp.",
-        sold: 124
+        sold: 124,
+        specs: { weight: '0.4 chỉ', material: 'Vàng trắng 10K, đá ECZ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id3-hover.jpg' ]
     },
     {
         id: 4,
@@ -50,6 +50,7 @@ const gemProducts = [
         subCategory: ["Vang18K", "LacTay"],
         detail: "Lắc tay Vàng 58,5% (14K) điệu đà uốn lượn trên cổ tay ngọc ngà, khẳng định gu thẩm mỹ tinh tế. Một món trang sức cao cấp mang giá trị vượt thời gian.",
         sold: 86,
+        gallery: [ './assets/img/ItemTrungBaySP/id4-hover.jpg' ],
         specs: { weight: '11.6g' }
     },
     {
@@ -62,6 +63,7 @@ const gemProducts = [
         subCategory: ["VangTrang", "LacTay", "Vang18K"],
         detail: "Trang sức Ý nổi tiếng với độ tinh xảo. Lắc tay Vàng trắng Ý 75% (18K) mang đến diện mạo sang trọng, kiêu sa cho những quý cô hiện đại trong bất kỳ buổi tiệc nào.",
         sold: 72,
+        gallery: [ './assets/img/ItemTrungBaySP/id5-hover.jpg' ],
         specs: { weight: '10.5g' }
     },
     {
@@ -74,6 +76,7 @@ const gemProducts = [
         subCategory: ["KimCuong", "BongTai"],
         detail: "Tuyệt tác Bông tai Kim cương Vàng trắng 58,5% (14K) lộng lẫy. Kim cương lấp lánh kết hợp vàng trắng mang đến sự quyền quý và đẳng cấp tuyệt đối cho người sở hữu.",
         sold: 23,
+        gallery: [ './assets/img/ItemTrungBaySP/id6-hover.jpg' ],
         specs: { weight: '2.5g', purity: 'VVS1', color: 'D', cut: 'Excellent' }
     },
     {
@@ -86,6 +89,7 @@ const gemProducts = [
         subCategory: ["KimCuong", "NhanDon"],
         detail: "Mẫu Nhẫn Kim cương Vàng trắng 58,5% (14K) với viên chủ nổi bật. Chế tác tinh xảo khiến sản phẩm trở thành biểu tượng của tình yêu và sự vĩnh cửu hoàn mỹ.",
         sold: 45,
+        gallery: [ './assets/img/ItemTrungBaySP/id7-hover.jpg' ],
         specs: { weight: '1.5 chỉ (5.6g)', purity: 'VVS2', color: 'F', cut: 'Excellent' }
     },
     {
@@ -97,7 +101,9 @@ const gemProducts = [
         category: ["DaQuy", "TrangSuc"],
         subCategory: ["Sapphire", "DayChuyen"],
         detail: "Mặt dây chuyền Vàng trắng đính đá Sapphire mang sắc xanh đại dương sâu thẳm. Món trang sức mang đến sự bình an, nét cuốn hút huyền bí và phong thái tự tin.",
-        sold: 185
+        sold: 185,
+        specs: { weight: '0.4 chỉ', stone: 'Sapphire', material: 'Vàng trắng 14K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id8-hover.jpg' ]
     },
     {
         id: 9,
@@ -108,7 +114,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Vang18K", "DayChuyen"],
         detail: "Ngọc trai Southsea quý hiếm kết hợp cùng vàng 18K tạo nên cực phẩm nữ trang đầy kiêu sa. Sự lựa chọn tuyệt vời để phái đẹp diện trong những dịp trang trọng nhất.",
-        sold: 38
+        sold: 38,
+        specs: { weight: '0.6 chỉ', stone: 'Ngọc trai Southsea', material: 'Vàng 18K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id9-hover.jpg' ]
     },
     {
         id: 10,
@@ -119,7 +127,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["VangTrang", "NhanDon"],
         detail: "Nhẫn Vàng trắng 14K đính đá tinh xảo dọc đai nhẫn, tôn vinh nét thanh lịch. Điểm nhấn lấp lánh mang đến diện mạo sang trọng, rạng ngời cho bạn mỗi ngày.",
-        sold: 211
+        sold: 211,
+        specs: { weight: '0.9 chỉ', material: 'Vàng trắng 14K, đá ECZ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id10-hover.jpg' ]
     },
     {
         id: 11,
@@ -130,7 +140,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Bac", "LacTay"],
         detail: "Thiết kế cỏ 4 lá may mắn kết hợp đá Chalcedony Chrysoprase xanh mướt. Chiếc vòng tay tựa như bùa hộ mệnh ngọt ngào, điểm tô thêm nét duyên dáng cho chủ nhân.",
-        sold: 310
+        sold: 310,
+        specs: { weight: '1.2 chỉ', stone: 'Chalcedony Chrysoprase', material: 'Bạc S925' },
+        gallery: [ './assets/img/ItemTrangChu(1)/spnb3-2.jpg.webp' ]
     },
     {
         id: 12,
@@ -141,7 +153,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Bac", "BongTai"],
         detail: "Hình trái tim lãng mạn cùng chất liệu bạc Ý S925 mạ bạch kim cao cấp. Món trang sức nhỏ xinh này luôn nằm trong danh sách những item được phái đẹp yêu thích nhất.",
-        sold: 1045
+        sold: 1045,
+        specs: { weight: '0.4 chỉ', material: 'Bạc Ý S925 mạ bạch kim, đá CZ' },
+        gallery: [ './assets/img/ItemTrangChu(1)/spnb4-2.jpg.webp' ]
     },
     {
         id: 13,
@@ -152,7 +166,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Bac", "LacTay"],
         detail: "Sở hữu viên pha lê Swarovski lấp lánh tựa đại dương thu nhỏ. Lắc tay nữ thiết kế tinh tế là điểm nhấn hoàn hảo, nữ tính cho những cô nàng mộng mơ.",
-        sold: 890
+        sold: 890,
+        specs: { weight: '0.7 chỉ', stone: 'Pha lê Swarovski', material: 'Bạc S925' },
+        gallery: [ './assets/img/ItemTrangChu(1)/spnb5-2.jpg' ]
     },
     {
         id: 14,
@@ -163,7 +179,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["VangTrang", "NhanDon"],
         detail: "Mô phỏng nét tin yêu cùng vẻ đẹp tinh tế, thanh tú của nàng, PNJ mang đến hơi thở mới mẻ từ những chi tiết giản đơn cho thiết kế trang sức mới của mình. Chiếc mặt dây chuyền vàng được chế tác từ sắc vàng Ý 18K trên thiết kế đậm chất phóng khoáng và hiện đại. Sản phẩm chính là sự hội tụ của phong cách thiết kế hiện đại kết hợp đỉnh cao của trình độ chế tác và sẽ trở thành xu hướng trang sức Ý mới, mang đến cho phái đẹp thêm nhiều sự lựa chọn cho bộ sưu tập của mình.",
-        sold: 65
+        sold: 65,
+        specs: { weight: '1.5 chỉ', material: 'Vàng trắng 10K, đá ECZ' },
+        gallery: [ './assets/img/ItemTrangChu(1)/spnb6-2.jpg' ]
     },
     {
         id: 15,
@@ -175,6 +193,7 @@ const gemProducts = [
         subCategory: ["Vang18K", "NhanDon"],
         detail: "Thiết kế nhẫn Vàng 18K cổ điển, tinh giản nhưng đầy sắc sảo từ PNJ. Một sự lựa chọn thông minh, bền bỉ và dễ dàng kết hợp cùng nhiều phong cách thời trang.",
         sold: 412,
+        gallery: [ './assets/img/ItemTrangChu(1)/spnb7-2.jpg' ],
         specs: { weight: '1.2 chỉ (4.5g)' }
     },
     {
@@ -186,7 +205,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Bac", "LacTay"],
         detail: "Sự nhẹ nhàng, thanh thoát của Lắc tay Bạc PNJSilver cực hợp với những trang phục dạo phố năng động. Điểm nhấn cuốn hút giúp đôi tay thêm phần ngọc ngà.",
-        sold: 1105
+        sold: 1105,
+        specs: { weight: '0.8 chỉ', material: 'Bạc S925' },
+        gallery: [ './assets/img/ItemTrangChu(1)/spnb8-2.jpg' ]
     },
     {
         id: 17,
@@ -197,7 +218,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Sapphire", "VangHong", "LacTay"],
         detail: "Sự hòa quyện tuyệt vời giữa Vàng hồng ấm áp và đá Sapphire quý giá. Vòng tay cao cấp được thiết kế riêng cho những quý cô yêu kiều, hướng đến vẻ đẹp sang trọng đỉnh cao.",
-        sold: 18
+        sold: 18,
+        specs: { weight: '1.1 chỉ', stone: 'Sapphire', material: 'Vàng hồng 14K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id17-hover.jpg' ]
     },
     {
         id: 18,
@@ -208,7 +231,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Sapphire", "VangTrang", "NhanDon"],
         detail: "Viên Sapphire chủ rực rỡ ngự trị trên ổ nhẫn Vàng trắng 14K đính kết tỉ mỉ. Tác phẩm nghệ thuật đỉnh cao này chính là tuyên ngôn tôn vinh quyền lực và sự quyến rũ của nữ giới.",
-        sold: 21
+        sold: 21,
+        specs: { weight: '1.3 chỉ', stone: 'Sapphire', purity: 'VVS', color: 'Blue' },
+        gallery: [ './assets/img/ItemTrungBaySP/id18-hover.jpg' ]
     },
     {
         id: 19,
@@ -219,7 +244,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Ruby", "Bac", "LacTay"],
         detail: "Họa tiết hoa mặt trời đính đá Ruby đỏ thẫm mang năng lượng tích cực rực rỡ. Thiết kế trang nhã thể hiện trọn vẹn sự tươi trẻ, rạng rỡ của phái đẹp trong mọi khoảnh khắc.",
-        sold: 388
+        sold: 388,
+        specs: { weight: '0.9 chỉ', stone: 'Ruby', material: 'Bạc S925' },
+        gallery: [ './assets/img/ItemTrungBaySP/id19-hover.jpg' ]
     },
     {
         id: 20,
@@ -230,7 +257,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Ruby", "Vang18K", "BongTai"],
         detail: "Bông tai đính đá Ruby nổi bật trên nền vàng 18K cổ điển. Chế tác tinh xảo giúp món trang sức mang đến ánh nhìn thu hút, tôn lên nét kiêu sa mọi lúc mọi nơi.",
-        sold: 146
+        sold: 146,
+        specs: { weight: '0.5 chỉ', stone: 'Ruby', material: 'Vàng 18K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id20-hover.jpg' ]
     },
     {
         id: 21,
@@ -241,7 +270,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Emerald", "Vang18K", "NhanDon"],
         detail: "Sắc xanh ngọc lục bảo Emerald xa xỉ kết hợp vàng 18K tạo nên đẳng cấp vương giả. Chiếc nhẫn cực phẩm này là tuyên ngôn mạnh mẽ khẳng định vị thế đỉnh cao của người đeo.",
-        sold: 8
+        sold: 8,
+        specs: { weight: '1.8 chỉ', stone: 'Emerald', purity: 'SI', color: 'Green' },
+        gallery: [ './assets/img/ItemTrungBaySP/id21-hover.jpg' ]
     },
     {
         id: 22,
@@ -252,7 +283,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Emerald", "VangTrang", "NhanDon"],
         detail: "Thiết kế siêu phẩm xứng tầm với viên đá Emerald kích thước lớn rực rỡ, bao quanh là dải kim cương thiên nhiên lấp lánh trên nền vàng trắng 14K thượng hạng.",
-        sold: 3
+        sold: 3,
+        specs: { weight: '2.1 chỉ', stone: 'Emerald', purity: 'VS', color: 'Green' },
+        gallery: [ './assets/img/ItemTrungBaySP/id22-hover.jpg' ]
     },
     {
         id: 23,
@@ -263,7 +296,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Emerald", "VangTrang", "NhanDon"],
         detail: "Tuyệt tác phiên bản giới hạn Disney đính đá Emerald cỡ đại. Mang vẻ đẹp lộng lẫy hiếm có, chiếc nhẫn này như một báu vật rực rỡ bước ra từ câu chuyện cổ tích kỳ diệu.",
-        sold: 2
+        sold: 2,
+        specs: { weight: '2.5 chỉ', stone: 'Emerald', purity: 'VVS', color: 'Vivid Green' },
+        gallery: [ './assets/img/ItemTrungBaySP/id23-hover.jpg' ]
     },
     {
         id: 24,
@@ -274,7 +309,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Topaz", "VangTrang", "BongTai"],
         detail: "Đá Topaz xanh trong trẻo kết hợp với Vàng trắng 14K thanh tao. Đôi bông tai đem lại cảm giác bình yên, tươi mát cùng phong cách quý phái cho những ngày rạng rỡ.",
-        sold: 284
+        sold: 284,
+        specs: { weight: '0.6 chỉ', stone: 'Topaz', material: 'Vàng trắng 14K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id24-hover.jpg' ]
     },
     {
         id: 25,
@@ -285,7 +322,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Topaz", "VangTrang", "NhanDon"],
         detail: "Viên Topaz cắt giác hoàn hảo nằm gọn trong ổ nhẫn Vàng trắng tinh xảo. Một tuyệt tác lấp lánh, là sự lựa chọn tuyệt vời cho các quý cô lộng lẫy trong những buổi tiệc dạ hội.",
-        sold: 156
+        sold: 156,
+        specs: { weight: '1.0 chỉ', stone: 'Topaz', material: 'Vàng trắng 14K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id25-hover.jpg' ]
     },
     {
         id: 26,
@@ -296,7 +335,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac"],
         subCategory: ["Topaz", "VangTrang"],
         detail: "Phụ kiện Cài áo Masterpiece đỉnh cao đính đá Topaz và viền đá quý rực rỡ. Kiệt tác nghệ thuật thủ công tinh xảo giúp tạo điểm nhấn quyền lực cho bộ âu phục sang trọng.",
-        sold: 11
+        sold: 11,
+        specs: { weight: '3.0 chỉ', stone: 'Topaz', material: 'Vàng trắng 14K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id26-hover.jpg' ]
     },
     {
         id: 27,
@@ -307,7 +348,9 @@ const gemProducts = [
         category: ["DaQuy", "VangBac", "TrangSuc"],
         subCategory: ["Topaz", "VangTrang", "NhanDon"],
         detail: "Thiết kế nhẫn Topaz thanh lịch, mỏng nhẹ phù hợp đeo hàng ngày. Từng chi tiết nhỏ toát lên vẻ đẹp tinh tế, đáp ứng tiêu chí sang trọng nhưng vẫn vô cùng trẻ trung.",
-        sold: 312
+        sold: 312,
+        specs: { weight: '0.8 chỉ', stone: 'Topaz', material: 'Vàng trắng 14K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id27-hover.jpg' ]
     },
     {
         id: 28,
@@ -318,7 +361,9 @@ const gemProducts = [
         category: "TrangSuc",
         subCategory: "NhanCuoi",
         detail: "Bạch kim nguyên chất kết hợp kim cương thiên nhiên là minh chứng cho tình yêu vĩnh cửu. Cặp nhẫn cao cấp PNJ True Love sẽ lưu giữ lại khoảnh khắc thiêng liêng nhất của đôi lứa.",
-        sold: 84
+        sold: 84,
+        specs: { material: 'Bạch kim (Platinum)', stone: 'Kim cương', purity: 'VVS1' },
+        gallery: [ './assets/img/ItemTrungBaySP/id28-hover.jpg' ]
     },
     {
         id: 29,
@@ -329,7 +374,9 @@ const gemProducts = [
         category: "VangBac",
         subCategory: "Vang",
         detail: "Tượng vàng 24K đúc đặc tinh xảo mang ý nghĩa phong thủy mã đáo thành công. Kiệt tác phong thủy quyền uy dành riêng cho không gian làm việc của giới tinh hoa.",
-        sold: 5
+        sold: 5,
+        specs: { material: 'Vàng 24K', weight: '26.6 chỉ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id29-hover.jpg' ]
     },
     {
         id: 30,
@@ -340,7 +387,9 @@ const gemProducts = [
         category: "VangBac",
         subCategory: "Vang",
         detail: "Thỏi vàng mini 0.5 chỉ 99,99% thiết kế sắc nét mang thông điệp Tiểu Lộc Đại Phát. Của để dành giàu giá trị tích lũy và là món quà mừng tuổi đầy ý nghĩa may mắn.",
-        sold: 450
+        sold: 450,
+        specs: { material: 'Vàng 99.99%', weight: '0.5 chỉ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id30-hover.jpg' ]
     },
     {
         id: 31,
@@ -351,7 +400,9 @@ const gemProducts = [
         category: "VangBac",
         subCategory: "Vang",
         detail: "Bộ tượng Long Phụng chế tác từ ~9.9 chỉ Vàng 24K nguyên chất, biểu trưng cho sự hòa hợp, hạnh phúc viên mãn. Tuyệt tác nghệ thuật đỉnh cao, là sính lễ và món quà cưới giá trị khủng.",
-        sold: 2
+        sold: 2,
+        specs: { material: 'Vàng 24K', weight: '~9.9 chỉ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id31-hover.jpg' ]
     },
     {
         id: 32,
@@ -362,7 +413,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Vang", "BongTai"],
         detail: "Mang đậm bản sắc văn hóa Việt Nam với họa tiết Trầu Cau đúc từ Vàng 24K. Đôi bông tai lộng lẫy là món sính lễ hoàn mỹ, thay cho ngàn lời chúc phúc trong ngày vu quy.",
-        sold: 47
+        sold: 47,
+        specs: { material: 'Vàng 24K', weight: '2.0 chỉ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id32-hover.jpg' ]
     },
     {
         id: 33,
@@ -373,7 +426,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Vang", "NhanCuoi"],
         detail: "Nhẫn cưới Vàng 24K thiết kế trơn truyền thống nhưng không kém phần sắc sảo. Tín vật tình yêu bền chặt, mang giá trị trường tồn cùng thời gian cho hạnh phúc lứa đôi.",
-        sold: 135
+        sold: 135,
+        specs: { material: 'Vàng 24K', weight: '1.0 chỉ / chiếc' },
+        gallery: [ './assets/img/ItemTrungBaySP/id33-hover.jpg' ]
     },
     {
         id: 34,
@@ -384,7 +439,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["VangHong", "NhanDon"],
         detail: "Lấy cảm hứng từ công chúa ngủ trong rừng, nhẫn Vàng hồng đính Sapphire toát lên vẻ lãng mạn. Từng đường nét được chăm chút tỉ mỉ, đánh thức vẻ đẹp kiêu kì, duyên dáng.",
-        sold: 62
+        sold: 62,
+        specs: { weight: '1.1 chỉ', stone: 'Sapphire', material: 'Vàng hồng 14K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id34-hover.jpg' ]
     },
     {
         id: 35,
@@ -395,7 +452,9 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["VangHong", "NhanCuoi"],
         detail: "Vàng hồng 18K ấm áp nâng đỡ viên kim cương thuần khiết lấp lánh. Cặp nhẫn cưới Tình Hồng mang thiết kế đương đại sẽ viết tiếp câu chuyện tình yêu lãng mạn của lứa đôi.",
-        sold: 76
+        sold: 76,
+        specs: { material: 'Vàng hồng 18K', stone: 'Kim cương', purity: 'VS2' },
+        gallery: [ './assets/img/ItemTrungBaySP/id35-hover.jpg' ]
     },
     {
         id: 36,
@@ -406,7 +465,9 @@ const gemProducts = [
         category: ["VangBac", "PhongThuy"],
         subCategory: ["Vang", "VongTayTyHuu"],
         detail: "Charm Tỳ Hưu Vàng 24K tết dây đỏ mang đậm phong thủy chiêu tài lộc, giữ bình an. Vòng tay may mắn nhỏ gọn, mang nguồn năng lượng tích cực luôn kề bên người đeo.",
-        sold: 1342
+        sold: 1342,
+        specs: { material: 'Vàng 24K, Dây dù', weight: '0.1 chỉ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id36-hover.jpg' ]
     },
     {
         id: 37,
@@ -417,7 +478,9 @@ const gemProducts = [
         category: ["VangBac", "PhongThuy"],
         subCategory: ["Bac", "VongTayTyHuu"],
         detail: "Thiết kế nam tính, dây dù sáp chắc chắn kết hợp Tỳ Hưu Bạc chạm khắc uy dũng. Chiếc lắc tay mạnh mẽ sẽ là vật phẩm đồng hành cùng phái mạnh gặt hái nhiều thành công.",
-        sold: 215
+        sold: 215,
+        specs: { material: 'Bạc S925, Dây dù sáp' },
+        gallery: [ './assets/img/ItemTrungBaySP/id37-hover.jpg' ]
     },
     {
         id: 38,
@@ -428,7 +491,9 @@ const gemProducts = [
         category: ["VangBac", "PhongThuy"],
         subCategory: ["Bac", "VongTayTyHuu"],
         detail: "Sự thanh lịch xen lẫn yếu tố phong thủy trong thiết kế Trịnh Collection. Lắc tay bạc đính đá tinh xảo mang nét đẹp tinh tế, luôn nằm trong top trang sức may mắn được ưa chuộng.",
-        sold: 780
+        sold: 780,
+        specs: { material: 'Bạc S925, Đá CZ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id38-hover.jpg' ]
     },
     {
         id: 39,
@@ -439,7 +504,9 @@ const gemProducts = [
         category: ["VangBac", "PhongThuy"],
         subCategory: ["Vang18K", "MatDayPhat"],
         detail: "Mặt Phật chế tác từ Vàng 18K đính viền đá CZ sáng lấp lánh mang ý nghĩa hộ mệnh sâu sắc. Từng chi tiết chạm khắc đều đạt đến độ tinh xảo tuyệt đối, tỏa ra hào quang bình an.",
-        sold: 142
+        sold: 142,
+        specs: { weight: '0.7 chỉ', material: 'Vàng 18K, Đá CZ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id39-hover.jpg' ]
     },
     {
         id: 40,
@@ -450,7 +517,9 @@ const gemProducts = [
         category: ["VangBac", "PhongThuy"],
         subCategory: ["VangTrang","Vang18K", "MatDayPhat"],
         detail: "Thiết kế hình Phật đúc từ Vàng trắng Ý cao cấp mang lại sự tịnh tâm và sang trọng. Vật phẩm phong thủy hoàn hảo giúp chủ nhân luôn thu hút được những phước lành.",
-        sold: 105
+        sold: 105,
+        specs: { weight: '0.8 chỉ', material: 'Vàng trắng Ý 18K, Đá CZ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id40-hover.jpg' ]
     },
     {
         id: 41,
@@ -461,7 +530,9 @@ const gemProducts = [
         category: ["VangBac", "PhongThuy"],
         subCategory: ["VangTrang","Vang18K", "MatDayPhat"],
         detail: "Bản kích thước lớn, chi tiết mặt Phật uy nghiêm tinh xảo bao quanh bởi hàng đá CZ rực sáng. Đây là món nữ trang tâm linh đẳng cấp, mang đến sự che chở và may mắn thịnh vượng.",
-        sold: 84
+        sold: 84,
+        specs: { weight: '1.2 chỉ', material: 'Vàng trắng Ý 18K, Đá CZ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id41-hover.jpg' ]
     },
     {
         id: 42,
@@ -472,7 +543,9 @@ const gemProducts = [
         category: ["TrangSuc", "PhongThuy"],
         subCategory: ["LacTay", "DaTheoMenh"],
         detail: "Vòng tay pha lê đa sắc Gema Bracelet rực rỡ dưới mọi góc nhìn, dễ dàng phối theo mệnh phong thủy. Tuyệt tác đến từ nhà Swarovski giúp tô điểm phong cách sành điệu, tỏa sáng.",
-        sold: 341
+        sold: 341,
+        specs: { material: 'Pha lê Swarovski, Mạ Rhodium' },
+        gallery: [ './assets/img/ItemTrungBaySP/id42-hover.jpg' ]
     },
     {
         id: 43,
@@ -483,7 +556,9 @@ const gemProducts = [
         category: ["TrangSuc", "PhongThuy"],
         subCategory: ["LacTay", "DaTheoMenh"],
         detail: "BST STYLE mang đến lắc tay bạc đính đá hiện đại, phá cách tôn vinh cá tính năng động. Một item phối đồ hoàn hảo, dễ dàng tỏa sáng rạng rỡ trong mọi hoạt động mỗi ngày.",
-        sold: 965
+        sold: 965,
+        specs: { material: 'Bạc S925, Đá CZ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id43-hover.jpg' ]
     },
     {
         id: 44,
@@ -494,7 +569,9 @@ const gemProducts = [
         category: ["DaQuy","TrangSuc" ,"PhongThuy"],
         subCategory: ["Ruby", "NhanDon","DaTheoMenh"],
         detail: "Đá Ruby nhân tạo đỏ thắm trên nền bạc sáng bóng cực kỳ phù hợp cho người mệnh Hỏa, Thổ. Chiếc nhẫn phong thủy duyên dáng này là lựa chọn tối ưu và thu hút tài lộc.",
-        sold: 1450
+        sold: 1450,
+        specs: { material: 'Bạc S925', stone: 'Ruby (nhân tạo)' },
+        gallery: [ './assets/img/ItemTrungBaySP/id44-hover.jpg' ]
     },
     {
         id: 45,
@@ -505,7 +582,9 @@ const gemProducts = [
         category: ["PhongThuy"],
         subCategory: ["DaTheoMenh"],
         detail: "Cây đào phong thủy 68 quả tạc từ thạch anh hồng 3A mang ý nghĩa tình duyên nở rộ, vượng khí dồi dào. Tác phẩm nghệ thuật đỉnh cao, hoàn hảo để trưng bày sang trọng.",
-        sold: 12
+        sold: 12,
+        specs: { material: 'Thạch anh hồng 3A', type: 'Vật phẩm trưng bày' },
+        gallery: [ './assets/img/ItemTrungBaySP/id45-hover.jpg' ]
     },
     {
         id: 46,
@@ -516,7 +595,9 @@ const gemProducts = [
         category: ["PhongThuy"],
         subCategory: ["DaTheoMenh"],
         detail: "Hạt charm bạc đính đá lấp lánh dễ dàng kết hợp cùng các vòng tay sẵn có. Thiết kế nhỏ xinh, tinh tế giúp bạn thỏa sức sáng tạo nên bộ trang sức mang đậm dấu ấn cá nhân.",
-        sold: 840
+        sold: 840,
+        specs: { material: 'Bạc S925, Đá CZ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id46-hover.jpg' ]
     },
     {
         id: 47,
@@ -527,7 +608,9 @@ const gemProducts = [
         category: ["PhongThuy"],
         subCategory: ["DaTheoMenh"],
         detail: "Charm bạc chạm khắc hoa văn tinh xảo từ BST STYLE Collection hiện đại. Hạt charm mang đến vẻ đẹp cá tính, giúp lưu giữ những khoảnh khắc đáng nhớ trên chiếc vòng tay.",
-        sold: 1120
+        sold: 1120,
+        specs: { material: 'Bạc S925' },
+        gallery: [ './assets/img/ItemTrungBaySP/id47-hover.jpg' ]
     },
     {
         id: 48,
@@ -538,7 +621,9 @@ const gemProducts = [
         category: ["PhongThuy"],
         subCategory: ["CharmVang"],
         detail: "Charm bạc mạ vàng hình Túi Tiền biểu tượng cho tài lộc dồi dào, sung túc. Chế tác sinh động, tỉ mỉ mang ý nghĩa phong thủy tốt lành cho một năm làm ăn hồng phát.",
-        sold: 1543
+        sold: 1543,
+        specs: { material: 'Bạc S925 mạ vàng' },
+        gallery: [ './assets/img/ItemTrungBaySP/id48-hover.jpg' ]
     },
     {
         id: 49,
@@ -549,7 +634,9 @@ const gemProducts = [
         category: ["PhongThuy"],
         subCategory: ["CharmVang"],
         detail: "Hạt Charm đúc đặc bằng Vàng nguyên khối hình bình trà mang ý nghĩa gia đạo an vui, êm ấm. Sản phẩm trang sức đẳng cấp mang giá trị sưu tầm cao cho dân chơi charm thứ thiệt.",
-        sold: 95
+        sold: 95,
+        specs: { material: 'Vàng', weight: '0.8 chỉ' },
+        gallery: [ './assets/img/ItemTrungBaySP/id49-hover.jpg' ]
     },
     {
         id: 50,
@@ -560,7 +647,9 @@ const gemProducts = [
         category: ["PhongThuy"],
         subCategory: ["CharmVang"],
         detail: "Tôn vinh văn hóa Việt với charm hình nón lá mạ vàng độc đáo, tỉ mỉ. Món trang sức dễ thương, tinh xảo này là lựa chọn ngập tràn niềm tự hào và ý nghĩa sâu sắc.",
-        sold: 810
+        sold: 810,
+        specs: { material: 'Bạc S925 mạ vàng' },
+        gallery: [ './assets/img/ItemTrungBaySP/id50-hover.jpg' ]
     },
     {
         id: 51,
@@ -571,7 +660,9 @@ const gemProducts = [
         category: ["PhongThuy"],
         subCategory: ["CharmVang"],
         detail: "Charm Pandora chính hãng mạ vàng hình chú ong chăm chỉ, biểu trưng cho sự ngọt ngào. Lựa chọn tuyệt vời để bổ sung vào bộ sưu tập Pandora rực rỡ và thời thượng của bạn.",
-        sold: 412
+        sold: 412,
+        specs: { material: 'Mạ vàng 14K' },
+        gallery: [ './assets/img/ItemTrungBaySP/id51-hover.jpg' ]
     },
     {
         id: 52,
@@ -582,7 +673,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["HopTrangSuc"],
         detail: "Hộp đựng bọc da lót nhung cao cấp bảo vệ tuyệt đối các hạt charm và vòng tay Pandora. Thiết kế trang nhã, cứng cáp xứng tầm thương hiệu quốc tế, điểm tô góc trang điểm.",
-        sold: 520
+        sold: 520,
+        specs: { material: 'Da PU, lót nỉ', brand: 'Pandora' },
+        gallery: [ './assets/img/ItemTrungBaySP/id52-hover.jpg' ]
     },
     {
         id: 53,
@@ -593,7 +686,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["HopTrangSuc"],
         detail: "Chiếc hộp gỗ thủ công với những nét vẽ họa tiết nghệ thuật cổ điển, tinh xảo. Không chỉ để cất giữ trang sức an toàn mà còn là vật phẩm trang trí tinh tế cho bàn trang điểm.",
-        sold: 234
+        sold: 234,
+        specs: { material: 'Gỗ, vẽ tay' },
+        gallery: [ './assets/img/ItemTrungBaySP/id53-hover.jpg' ]
     },
     {
         id: 54,
@@ -604,7 +699,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["HopTrangSuc"],
         detail: "Hộp pha lê trong suốt lót nhung đỏ quý phái, thiết kế cực kỳ lãng mạn. Sự lụa chọn hoàn hảo để chứa đựng kỷ vật tình yêu vĩnh cửu trong những khoảnh khắc cầu hôn thiêng liêng.",
-        sold: 185
+        sold: 185,
+        specs: { material: 'Pha lê, lót nhung' },
+        gallery: [ './assets/img/ItemTrungBaySP/id54-hover.jpg' ]
     },
     {
         id: 55,
@@ -615,7 +712,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["DungCuLamSach"],
         detail: "Máy làm sạch sâu bụi bẩn trong các kẽ hở trang sức bằng công nghệ sóng âm rung tần số cao. Giải pháp chăm sóc trang sức tại nhà vô cùng tiện lợi, nhỏ gọn và nhanh chóng.",
-        sold: 1320
+        sold: 1320,
+        specs: { technology: 'Sóng âm 45000Hz', brand: 'Bear' },
+        gallery: [ './assets/img/ItemTrungBaySP/id55-hover.jpg' ]
     },
     {
         id: 56,
@@ -626,7 +725,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["DungCuLamSach"],
         detail: "Bộ vệ sinh chuyên dụng gồm dung dịch và cọ siêu mềm giúp trang sức Pandora luôn sáng bóng như mới. Món phụ kiện cực kỳ cần thiết để bảo quản nữ trang hoàn hảo.",
-        sold: 954
+        sold: 954,
+        specs: { includes: 'Dung dịch, bàn chải, khăn lau', brand: 'Pandora' },
+        gallery: [ './assets/img/ItemTrungBaySP/id56-hover.jpg' ]
     },
     {
         id: 57,
@@ -637,7 +738,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["KhanLauBac"],
         detail: "Khăn chuyên dụng tẩm sẵn hợp chất chống oxy hóa, đánh bay xỉn màu cho trang sức bạc hiệu quả. Giải pháp bảo quản nữ trang nhanh chóng, tiết kiệm giúp món đồ luôn sáng đẹp.",
-        sold: 2150
+        sold: 2150,
+        specs: { function: 'Chống xỉn màu', brand: 'Pandora' },
+        gallery: [ './assets/img/ItemTrungBaySP/id57-hover.jpg' ]
     },
     {
         id: 58,
@@ -648,7 +751,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["KhanLauBac"],
         detail: "Khăn lau cao cấp từ thương hiệu Tiffany & Co. nổi tiếng, kích thước lớn giúp làm sạch tối đa mọi bề mặt trang sức. Phụ kiện khẳng định sự chuyên nghiệp trong việc chăm sóc nữ trang.",
-        sold: 132
+        sold: 132,
+        specs: { size: '18x18 cm', brand: 'Tiffany & Co.' },
+        gallery: [ './assets/img/ItemTrungBaySP/id58-hover.jpg' ]
     },
     {
         id: 59,
@@ -659,7 +764,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["KhanLauBac"],
         detail: "Set khăn chuyên dụng Town Talk dùng cho cả trang sức Vàng và Bạc, chống xỉn màu hiệu quả vượt trội. Phụ kiện nhập khẩu chất lượng cao đảm bảo độ sáng bóng bền lâu.",
-        sold: 654
+        sold: 654,
+        specs: { usage: 'Vàng và Bạc', brand: 'Town Talk' },
+        gallery: [ './assets/img/ItemTrungBaySP/id59-hover.jpg' ]
     },
     {
         id: 60,
@@ -670,7 +777,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["DayDeoThayThe"],
         detail: "Sợi dây bạc PNJSilver mang thiết kế cơ bản, thay thế hoàn hảo cho các mặt dây chuyền đa dạng. Sợi xích vô cùng bền chắc, bắt sáng lấp lánh và giữ được nét tinh tế.",
-        sold: 815
+        sold: 815,
+        specs: { material: 'Bạc S925', brand: 'PNJSilver' },
+        gallery: [ './assets/img/ItemTrungBaySP/id60-hover.jpg' ]
     },
     {
         id: 61,
@@ -681,7 +790,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["DayDeoThayThe"],
         detail: "Dây xích Pandora mạ vàng hồng 14K chắc chắn, có thể tùy biến gắn thêm charm phong cách riêng. Sự đầu tư hoàn hảo cho nét sang trọng, kiêu kỳ độc bản của mỗi cô gái.",
-        sold: 201
+        sold: 201,
+        specs: { material: 'Mạ vàng hồng 14K', brand: 'Pandora' },
+        gallery: [ './assets/img/ItemTrungBaySP/id61-hover.jpg' ]
     },
     {
         id: 62,
@@ -692,7 +803,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["DayDeoThayThe"],
         detail: "Thiết kế xích Pandora nút thắt dài lạ mắt, dễ dàng mix-match hoàn hảo với áo len, váy xẻ sâu. Sợi dây chuyền cá tính, thời thượng luôn được phái đẹp yêu thích cuồng nhiệt.",
-        sold: 462
+        sold: 462,
+        specs: { material: 'Bạc S925', brand: 'Pandora' },
+        gallery: [ './assets/img/ItemTrungBaySP/id62-hover.jpg' ]
     },
     {
         id: 63,
@@ -703,7 +816,9 @@ const gemProducts = [
         category: ["PhuKien"],
         subCategory: ["DayDeoThayThe"],
         detail: "Dạng mắt xích chữ nhật sành điệu, trẻ trung mạ vàng 14K từ thương hiệu Pandora đình đám. Sợi dây tạo nên điểm nhấn thời thượng khó rời mắt cho những outfit năng động.",
-        sold: 188
+        sold: 188,
+        specs: { material: 'Mạ vàng 14K', brand: 'Pandora' },
+        gallery: [ './assets/img/ItemTrungBaySP/id63-hover.jpg' ]
     },
     {
         id: 64,
@@ -714,7 +829,9 @@ const gemProducts = [
         category: ["VangBac"],
         subCategory: ["Vang"],
         detail: "Vàng miếng SJC 1 lượng (10 chỉ) nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
-        sold: 64
+        sold: 64,
+        specs: { weight: '1 lượng (10 chỉ)', purity: '99.99%', brand: 'SJC' },
+        gallery: [ './assets/img/ItemTrungBaySP/id64-hover.jpg' ]
     },
     {
         id: 65,
@@ -725,7 +842,9 @@ const gemProducts = [
         category: ["VangBac"],
         subCategory: ["Vang"],
         detail: "Vàng miếng SJC 5 chỉ nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
-        sold: 107
+        sold: 107,
+        specs: { weight: '5 chỉ', purity: '99.99%', brand: 'SJC' },
+        gallery: [ './assets/img/ItemTrungBaySP/id65-hover.jpg' ]
     },
     {
         id: 66,
@@ -736,7 +855,9 @@ const gemProducts = [
         category: ["VangBac"],
         subCategory: ["Vang"],
         detail: "Vàng miếng SJC 2 chỉ nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
-        sold: 368
+        sold: 368,
+        specs: { weight: '2 chỉ', purity: '99.99%', brand: 'SJC' },
+        gallery: [ './assets/img/ItemTrungBaySP/id66-hover.jpg' ]
     },
     {
         id: 67,
@@ -747,7 +868,9 @@ const gemProducts = [
         category: ["VangBac"],
         subCategory: ["Vang"],
         detail: "Vàng miếng SJC 1 chỉ nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
-        sold: 386
+        sold: 386,
+        specs: { weight: '1 chỉ', purity: '99.99%', brand: 'SJC' },
+        gallery: [ './assets/img/ItemTrungBaySP/id67-hover.jpg' ]
     },
     {
         id: 68,
@@ -758,7 +881,9 @@ const gemProducts = [
         category: ["DaQuy"],
         subCategory: ["KimCuong"],
         detail: "Kim cương tự nhiên GIA uy tín hàng đầu Việt Nam.",
-        sold: 12
+        sold: 12,
+        specs: { purity: 'Tùy chọn', color: 'Tùy chọn', cut: 'Tùy chọn', certification: 'GIA' },
+        gallery: [ './assets/img/ItemTrungBaySP/cuc-kim-cuong-hover.png' ]
     },
 ];
 
