@@ -939,6 +939,10 @@ function updateBreadcrumb(label) {
 
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
+    // Ngăn chặn ghi đè breadcrumb của các trang không thuộc danh mục sản phẩm (như about.html, detail.html,...)
+    const productPages = ['TrungBaySP.html', 'DaQuy.html', 'VangBac.html', 'TrangSuc.html', 'PhongThuy.html', 'PhuKien.html'];
+    if (!productPages.includes(currentPage)) return;
+
     breadcrumbList.innerHTML = '';
     
     const createItem = (text, href, isActive, icon = null) => {
@@ -1250,7 +1254,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             currentDisplayList = gemProducts;
             applySortAndRender();
-            if (currentPage !== 'detail.html') {
+            if (currentPage === 'TrungBaySP.html') {
                 updateBreadcrumb('Tất cả sản phẩm');
             }
         }
