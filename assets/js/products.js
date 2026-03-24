@@ -908,7 +908,7 @@ const gemProducts = [
     },
     {
         id: 68,
-        name: "KIM CƯƠNG TỰ NHIÊN",
+        name: "Kim Cương Tự Nhiên",
         price: null,
         imgMain: "./assets/img/ItemTrungBaySP/cuc-kim-cuong.webp",
         imgHover: "./assets/img/ItemTrungBaySP/cuc-kim-cuong-hover.png",

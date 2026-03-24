@@ -26,7 +26,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Helper function để tạo HTML cho thông số kỹ thuật (dưới dạng bảng)
     let specsHtml = '';
-    if (product.specs && Object.keys(product.specs).length > 0) {
+    
+    // Xử lý bộ lọc thông số riêng cho sản phẩm Kim Cương Tự Nhiên (ID: 68)
+    if (product.id == 68) {
+        specsHtml = `
+        <div class="diamond-filter-box mt-5 p-4 border rounded-4 bg-white shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold mb-0" style="color: #001f3f; letter-spacing: 1px;">BỘ LỌC KIM CƯƠNG CHUYÊN SÂU</h4>
+                <button class="btn btn-sm text-muted" onclick="location.reload()"><i class="fas fa-redo me-1"></i> Làm mới</button>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                
+                <div class="col">
+                    <label class="fw-bold mb-3 d-block text-uppercase small">Giác cắt</label>
+                    <div class="row g-2">
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond">Fair</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond">Good</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond">Very Good</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond">Excellent</button></div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label class="fw-bold mb-3 d-block text-uppercase small">Kích thước (Ly)</label>
+                    <div class="row g-2">
+                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">3ly6</button></div>
+                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">4ly1</button></div>
+                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">4ly5</button></div>
+                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">5ly4</button></div>
+                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">6ly3</button></div>
+                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">7ly2</button></div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label class="fw-bold mb-2 d-block text-uppercase small">Cấp màu</label>
+                    <div class="filter-visual mb-2 rounded" style="height: 35px; background: linear-gradient(to right, #f8f9fa, #e9ecef, #dee2e6); border: 1px solid #eee;">
+                        </div>
+                    <input type="range" class="form-range diamond-range" min="0" max="5" step="1">
+                    <div class="d-flex justify-content-between px-1 small fw-bold text-muted">
+                        <span>I</span><span>H</span><span>G</span><span>F</span><span>E</span><span>D</span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label class="fw-bold mb-2 d-block text-uppercase small">Độ tinh khiết</label>
+                    <div class="filter-visual mb-2 rounded" style="height: 35px; background: linear-gradient(to right, #dee2e6, #ced4da, #adb5bd); border: 1px solid #eee;">
+                        </div>
+                    <input type="range" class="form-range diamond-range" min="0" max="4" step="1">
+                    <div class="d-flex justify-content-between px-1 small fw-bold text-muted">
+                        <span>VS2</span><span>VS1</span><span>VVS2</span><span>VVS1</span><span>IF</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-dark px-5 py-3 fw-bold shadow-sm" style="background-color: #001f3f; border-radius: 50px;">
+                    LƯU CẤU HÌNH KIM CƯƠNG CỦA BẠN
+                </button>
+            </div>
+        </div>
+        `;
+    } else if (product.specs && Object.keys(product.specs).length > 0) {
         const specLabels = {
             weight: 'Trọng lượng',
             purity: 'Độ tinh khiết',
