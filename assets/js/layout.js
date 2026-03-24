@@ -355,7 +355,7 @@ function initSearchOverlay() {
             flex-wrap: wrap;
             gap: 10px;
         }
-        .suggestion-tags span {
+        .suggestion-tags span, .suggestion-tags a {
             background: #f5f5f5;
             color: #555;
             padding: 8px 16px;
@@ -364,11 +364,17 @@ function initSearchOverlay() {
             cursor: pointer;
             transition: 0.2s;
             border: 1px solid transparent;
+            text-decoration: none;
         }
-        .suggestion-tags span:hover {
+        .suggestion-tags:not(.readonly-tags) span:hover, .suggestion-tags a:hover {
             background: #fffbf0;
             color: #D4AF37;
             border-color: #D4AF37;
+        }
+        .readonly-tags span {
+            cursor: default;
+            background-color: #f8f9fa;
+            color: #6c757d;
         }
         /* Live Search Results Styles */
         .overlay-search-results {
@@ -479,11 +485,11 @@ function initSearchOverlay() {
                 </div>
                 <div class="suggestion-col">
                     <h4><i class="fas fa-bolt text-warning"></i> Dịch vụ hot</h4>
-                    <div class="suggestion-tags">
-                        <span onclick="window.location.href='about.html'">Trả góp 0%</span>
-                        <span onclick="window.location.href='about.html'">Giao hàng 3h</span>
-                        <span onclick="window.location.href='about.html'">Thu đổi 48h</span>
-                        <span onclick="window.location.href='about.html'">Làm sạch miễn phí</span>
+                    <div class="suggestion-tags readonly-tags">
+                        <span>Trả góp 0%</span>
+                        <span>Giao hàng 3h</span>
+                        <span>Thu đổi 48h</span>
+                        <span>Làm sạch miễn phí</span>
                     </div>
                 </div>
             </div>
