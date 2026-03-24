@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 
                 <div class="col">
-                    <label class="fw-bold mb-3 d-block text-uppercase small">Giác cắt</label>
+                    <label class="fw-bold mb-3 d-block text-uppercase small">Cut (Giác cắt)</label>
                     <div class="row g-2">
                         <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">Fair</button></div>
                         <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">Good</button></div>
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
                 <div class="col">
-                    <label class="fw-bold mb-2 d-block text-uppercase small">Cấp màu</label>
+                    <label class="fw-bold mb-2 d-block text-uppercase small">Color (Cấp màu)</label>
                     <div class="filter-visual mb-2 rounded" style="height: 45px; border: 1px solid #eee; overflow: hidden;">
                         <img src="./assets/img/ItemTrungBaySP/cap-mau-kim-cuong.webp" style="width: 100%; height: 100%; object-fit: cover;" alt="Thang đo cấp màu" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'">
                     </div>
@@ -72,13 +72,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
                 <div class="col">
-                    <label class="fw-bold mb-2 d-block text-uppercase small">Độ tinh khiết</label>
+                    <label class="fw-bold mb-2 d-block text-uppercase small">Clarity (Độ tinh khiết)</label>
                     <div class="filter-visual mb-2 rounded" style="height: 45px; border: 1px solid #eee; overflow: hidden;">
                         <img src="./assets/img/ItemTrungBaySP/do-tinh-khiet.webp" style="width: 100%; height: 100%; object-fit: cover;" alt="Thang đo độ tinh khiết" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'">
                     </div>
                     <input type="range" class="form-range diamond-range" min="0" max="4" step="1">
                     <div class="d-flex justify-content-between px-1 small fw-bold text-muted">
                         <span>VS2</span><span>VS1</span><span>VVS2</span><span>VVS1</span><span>IF</span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label class="fw-bold mb-2 d-block text-uppercase small">Carat (Trọng lượng)</label>
+                    <input type="range" class="form-range diamond-range" min="0" max="4" step="1">
+                    <div class="d-flex justify-content-between px-1 small fw-bold text-muted">
+                        <span>0.3</span><span>0.5</span><span>1.0</span><span>1.5</span><span>2.0+</span>
                     </div>
                 </div>
             </div>
