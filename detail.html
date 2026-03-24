@@ -73,18 +73,63 @@
         display: flex; align-items: center; gap: 8px;
       }
 
-      /* Thumbnail Selector */
-      .thumbnail-selector {
-        width: 80px; 
-        height: 80px; 
-        object-fit: cover; 
-        cursor: pointer;
-        transition: all 0.2s ease;
+      /* Vertical Thumbnail Slider */
+      .thumbnail-vertical-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          width: 80px; /* Width of thumbnails */
       }
-      .thumbnail-selector:hover, .thumbnail-selector.active {
-        border-color: #001f3f;
-        transform: scale(1.05);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+      .thumb-nav-btn {
+          background: #f0f0f0;
+          border: none;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          color: #555;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .thumb-nav-btn:hover {
+          background: #001f3f;
+          color: white;
+      }
+
+      .thumb-nav-btn:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+      }
+
+      .thumbnail-track-wrapper {
+          height: 280px; /* Adjust to show ~3 items */
+          overflow: hidden;
+          width: 100%;
+      }
+
+      .thumbnail-track {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          transition: transform 0.4s ease;
+      }
+
+      .thumbnail-selector {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          cursor: pointer;
+          border: 2px solid transparent;
+          border-radius: 6px;
+          transition: all 0.2s ease;
+      }
+      .thumbnail-selector.active, .thumbnail-selector:hover {
+          border-color: #001f3f;
       }
     </style>
   </head>

@@ -10,7 +10,13 @@ const gemProducts = [
         detail: "Nhẫn bạc nữ đính kim cương Moissanite Aidan mang vẻ đẹp thanh lịch, hiện đại. Sự lựa chọn hoàn hảo giúp phái đẹp tỏa sáng rạng rỡ với ánh sáng tinh khiết của kim cương.",
         sold: 432,
         sizes: [10, 11, 12, 13, 14],
-        specs: { weight: '0.8 chỉ (3.0g)', purity: 'VVS1', color: 'D', cut: 'Round Brilliant' }
+        specs: { weight: '0.8 chỉ (3.0g)', purity: 'VVS1', color: 'D', cut: 'Round Brilliant' },
+        gallery: [
+            './assets/img/ItemTrungBaySP/id18.png',
+            './assets/img/ItemTrungBaySP/id19.jpg',
+            './assets/img/ItemTrungBaySP/id20.png',
+            './assets/img/ItemTrungBaySP/id21.png'
+        ]
     },
     {
         id: 2,

@@ -38,43 +38,48 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .slice(0, 2);
 
+  // Create a unified gallery for thumbnails
+  const allImages = [product.imgMain];
+  if (product.imgHover) {
+    allImages.push(product.imgHover);
+  }
+  if (product.gallery && Array.isArray(product.gallery)) {
+    allImages.push(...product.gallery);
+  }
+
   // RENDER UI
   container.innerHTML = `
     <div class="row g-4">
       
       <!-- IMAGE -->
-      <div class="col-md-6">
-        <!-- ẢNH CHÍNH -->
-        <img id="mainImage"
-          src="${product.imgMain}" 
-          class="img-fluid rounded shadow-sm w-100"
-          style="height: 480px; object-fit: cover;">
+      <div class="col-md-7">
+        <div class="d-flex gap-3">
+            <!-- Vertical Thumbnails -->
+            <div class="thumbnail-vertical-container">
+                <button class="thumb-nav-btn thumb-prev"><i class="fas fa-chevron-up"></i></button>
+                <div class="thumbnail-track-wrapper">
+                    <div class="thumbnail-track">
+                        ${allImages.map((img, index) => `<img src="${img}" class="thumbnail-selector ${index === 0 ? 'active' : ''}" onclick="changeImage(this, '${img}')">`).join('')}
+                    </div>
+                </div>
+                <button class="thumb-nav-btn thumb-next"><i class="fas fa-chevron-down"></i></button>
+            </div>
 
-        <!-- ẢNH NHỎ -->
-        <div class="d-flex gap-3 mt-3 justify-content-start" id="thumbnail-container">
-            <img src="${product.imgMain}"
-                class="img-thumbnail thumbnail-selector active"
-                style="width: 70px; height: 70px;"
-                onclick="changeImage(this, '${product.imgMain}')">
-            ${
-              product.imgHover
-                ? `<img src="${product.imgHover}"
-                      class="img-thumbnail thumbnail-selector"
-                      style="width: 70px; height: 70px;"
-                      onclick="changeImage(this, '${product.imgHover}')">`
-                : ""
-            }
+            <!-- Main Image -->
+            <div class="main-image-wrapper flex-grow-1">
+                <img id="mainImage" src="${product.imgMain}" class="img-fluid rounded shadow-sm w-100" style="height: 100%; min-height: 356px; object-fit: cover;">
+            </div>
         </div>
       </div>
 
       <!-- INFO -->
-      <div class="col-md-6 d-flex flex-column">
+      <div class="col-md-5 d-flex flex-column">
 
   <h3 class="fw-bold">${product.name}</h3>
 
   <!-- GIÁ + ĐÃ BÁN -->
   <div class="d-flex align-items-center gap-3">
-    <p class="text-danger fs-3 fw-bold mb-0">
+    <p class="text-danger fs-4 fw-bold mb-0">
       ${product.price ? product.price.toLocaleString() + "đ" : "Giá liên hệ"}
     </p>
     <span class="text-muted">
@@ -132,12 +137,12 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 
   <!-- BUTTON -->
-  <button class="btn btn-danger w-100 py-2 fs-5 fw-bold mt-auto"
+  <button class="btn btn-danger w-100 py-3 fs-5 fw-bold mt-auto"
           onclick="buyNow(${product.id})" ${!product.price ? 'disabled' : ''}>
     <i class="fas fa-shopping-bag me-2"></i> ${product.price ? 'Mua ngay' : 'Sản phẩm chưa mở bán'}
   </button>
 
-  <button class="btn btn-outline-dark w-100 mt-2 py-2 fs-5 fw-bold"
+  <button class="btn btn-outline-dark w-100 mt-3 py-3 fs-5 fw-bold"
           onclick="addToCartById(${product.id})" ${!product.price ? 'disabled' : ''}>
     <i class="fas fa-cart-plus me-2"></i> ${product.price ? 'Thêm vào giỏ hàng' : 'Sản phẩm chưa mở bán'}
   </button>
@@ -213,6 +218,38 @@ document.addEventListener("DOMContentLoaded", () => {
           this.classList.add('active');
       });
   });
+
+  // Vertical thumbnail slider logic
+  const track = document.querySelector('.thumbnail-track');
+  if (track) {
+      const prevBtn = document.querySelector('.thumb-prev');
+      const nextBtn = document.querySelector('.thumb-next');
+      const thumbnails = track.querySelectorAll('.thumbnail-selector');
+      const thumbHeight = thumbnails.length > 0 ? thumbnails[0].offsetHeight + 10 : 90; // 80px height + 10px gap
+      const wrapperHeight = document.querySelector('.thumbnail-track-wrapper').offsetHeight;
+      const visibleThumbs = Math.floor(wrapperHeight / thumbHeight);
+      const maxScroll = Math.max(0, (thumbnails.length - visibleThumbs) * thumbHeight);
+      let currentPosition = 0;
+
+      function updateButtons() {
+          prevBtn.disabled = currentPosition >= 0;
+          nextBtn.disabled = currentPosition <= -maxScroll || thumbnails.length <= visibleThumbs;
+      }
+
+      prevBtn.addEventListener('click', () => {
+          currentPosition = Math.min(0, currentPosition + thumbHeight);
+          track.style.transform = `translateY(${currentPosition}px)`;
+          updateButtons();
+      });
+
+      nextBtn.addEventListener('click', () => {
+          currentPosition = Math.max(-maxScroll, currentPosition - thumbHeight);
+          track.style.transform = `translateY(${currentPosition}px)`;
+          updateButtons();
+      });
+      
+      updateButtons();
+  }
 });
 function changeImage(element, src) {
   const mainImg = document.getElementById("mainImage");
@@ -220,7 +257,7 @@ function changeImage(element, src) {
     mainImg.src = src;
   }
   // Xử lý trạng thái active cho ảnh thumbnail
-  const thumbnails = document.querySelectorAll('.thumbnail-selector');
+  const thumbnails = document.querySelectorAll('.thumbnail-vertical-container .thumbnail-selector');
   thumbnails.forEach(thumb => thumb.classList.remove('active'));
   if (element) {
     element.classList.add('active');
