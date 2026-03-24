@@ -49,7 +49,7 @@ class AppHeader extends HTMLElement {
                               <li><a href="TrangSuc.html?category=NhanDon">Nhẫn đơn</a></li>
                               <li><a href="TrangSuc.html?category=DayChuyen">Dây chuyền</a></li>
                               <li><a href="TrangSuc.html?category=BongTai">Bông tai</a></li>
-                              <li><a href="TrangSuc.html?category=LacTay">Lắc tay</a></li>
+                              <li><a href="TrangSuc.html?category=LacTay">Vòng & Lắc tay</a></li>
                               <li><a href="TrangSuc.html?category=NhanCuoi">Nhẫn cưới</a></li>
                             </ul>
                           </div>

@@ -31,7 +31,17 @@ document.addEventListener("DOMContentLoaded", function () {
             weight: 'Trọng lượng',
             purity: 'Độ tinh khiết',
             color: 'Màu sắc',
-            cut: 'Giác cắt'
+            cut: 'Giác cắt',
+            material: 'Chất liệu',
+            stone: 'Loại đá',
+            brand: 'Thương hiệu',
+            technology: 'Công nghệ',
+            includes: 'Bao gồm',
+            function: 'Công dụng',
+            size: 'Kích thước',
+            usage: 'Sử dụng cho',
+            certification: 'Chứng nhận',
+            type: 'Loại'
         };
         specsHtml = `
             <div class="product-specs-container mt-5 pt-5 border-top">
@@ -40,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <tbody>
                         ${Object.entries(product.specs).map(([key, value]) => `
                             <tr>
-                                <td class="fw-bold" style="width: 30%; background-color: #f8f9fa;">${specLabels[key] || key}</td>
+                                <td class="fw-bold" style="width: 30%; background-color: #f8f9fa;">${specLabels[key] || (key.charAt(0).toUpperCase() + key.slice(1))}</td>
                                 <td>${value}</td>
                             </tr>
                         `).join('')}
@@ -53,11 +63,25 @@ document.addEventListener("DOMContentLoaded", function () {
     // Helper function để tạo HTML cho các kích thước (size)
     let sizesHtml = '';
     if (product.sizes && product.sizes.length > 0) {
+        let guideType = 'ring'; // Mặc định là nhẫn
+        const subCats = product.subCategory || [];
+        if (subCats.includes('LacTay') || subCats.includes('VongTayTyHuu') || subCats.includes('VongTay')) {
+            guideType = 'bracelet';
+        } 
+        // Vòng cổ thường không có size, nhưng vẫn thêm logic để dự phòng
+        else if (subCats.includes('DayChuyen') || subCats.includes('DayDeoThayThe')) {
+            guideType = 'necklace';
+        }
+
+        const anchorId = `${guideType}-guide-anchor`;
+
         sizesHtml = `
             <div class="size-selection mt-4">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="mb-0 fw-bold">Chọn kích thước (Size)</h6>
-                    <a href="#" class="small text-decoration-none" data-bs-toggle="modal" data-bs-target="#sizeGuideModal">
+                    <a href="#" class="small text-decoration-none" 
+                       data-bs-toggle="modal" data-bs-target="#sizeGuideModal" 
+                       onclick="prepareSizeGuideScroll('${anchorId}')">
                         <i class="fas fa-ruler-horizontal me-1"></i>Hướng dẫn đo size
                     </a>
                 </div>
@@ -149,6 +173,27 @@ function changeMainImage(src, thumbElement) {
     document.getElementById('main-product-image').src = src;
     document.querySelectorAll('.thumbnail-selector').forEach(el => el.classList.remove('active'));
     thumbElement.classList.add('active');
+}
+
+function prepareSizeGuideScroll(anchorId) {
+    const modalEl = document.getElementById('sizeGuideModal');
+    if (!modalEl) return;
+
+    // Hàm xử lý cuộn khi modal đã hiển thị
+    const scrollHandler = () => {
+        const anchor = document.getElementById(anchorId);
+        if (anchor) {
+            const modalBody = modalEl.querySelector('.modal-body');
+            const y = anchor.offsetTop;
+            modalBody.scrollTo({
+                top: y - 20, // Trừ đi một chút padding để tiêu đề không bị dính sát mép trên
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    // Lắng nghe sự kiện 'shown.bs.modal' và chỉ chạy một lần
+    modalEl.addEventListener('shown.bs.modal', scrollHandler, { once: true });
 }
 
 function selectSize(btn) {
