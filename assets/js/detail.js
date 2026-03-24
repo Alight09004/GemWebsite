@@ -41,29 +41,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="col">
                     <label class="fw-bold mb-3 d-block text-uppercase small">Giác cắt</label>
                     <div class="row g-2">
-                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond">Fair</button></div>
-                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond">Good</button></div>
-                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond">Very Good</button></div>
-                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond">Excellent</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">Fair</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">Good</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">Very Good</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">Excellent</button></div>
                     </div>
                 </div>
 
                 <div class="col">
                     <label class="fw-bold mb-3 d-block text-uppercase small">Kích thước (Ly)</label>
                     <div class="row g-2">
-                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">3ly6</button></div>
-                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">4ly1</button></div>
-                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">4ly5</button></div>
-                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">5ly4</button></div>
-                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">6ly3</button></div>
-                        <div class="col-4"><button class="btn btn-outline-dark w-100 py-1 btn-filter-diamond">7ly2</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">3ly6</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">4ly1</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">4ly5</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">5ly4</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">6ly3</button></div>
+                        <div class="col-6"><button class="btn btn-outline-dark w-100 py-2 btn-filter-diamond" onclick="selectDiamondFilter(this)">7ly2</button></div>
                     </div>
                 </div>
 
                 <div class="col">
                     <label class="fw-bold mb-2 d-block text-uppercase small">Cấp màu</label>
-                    <div class="filter-visual mb-2 rounded" style="height: 35px; background: linear-gradient(to right, #f8f9fa, #e9ecef, #dee2e6); border: 1px solid #eee;">
-                        </div>
+                    <div class="filter-visual mb-2 rounded" style="height: 45px; border: 1px solid #eee; overflow: hidden;">
+                        <img src="./assets/img/ItemTrungBaySP/cap-mau-kim-cuong.webp" style="width: 100%; height: 100%; object-fit: cover;" alt="Thang đo cấp màu" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'">
+                    </div>
                     <input type="range" class="form-range diamond-range" min="0" max="5" step="1">
                     <div class="d-flex justify-content-between px-1 small fw-bold text-muted">
                         <span>I</span><span>H</span><span>G</span><span>F</span><span>E</span><span>D</span>
@@ -72,8 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <div class="col">
                     <label class="fw-bold mb-2 d-block text-uppercase small">Độ tinh khiết</label>
-                    <div class="filter-visual mb-2 rounded" style="height: 35px; background: linear-gradient(to right, #dee2e6, #ced4da, #adb5bd); border: 1px solid #eee;">
-                        </div>
+                    <div class="filter-visual mb-2 rounded" style="height: 45px; border: 1px solid #eee; overflow: hidden;">
+                        <img src="./assets/img/ItemTrungBaySP/do-tinh-khiet.webp" style="width: 100%; height: 100%; object-fit: cover;" alt="Thang đo độ tinh khiết" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'">
+                    </div>
                     <input type="range" class="form-range diamond-range" min="0" max="4" step="1">
                     <div class="d-flex justify-content-between px-1 small fw-bold text-muted">
                         <span>VS2</span><span>VS1</span><span>VVS2</span><span>VVS1</span><span>IF</span>
@@ -82,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
             <div class="text-center mt-4">
-                <button class="btn btn-dark px-5 py-3 fw-bold shadow-sm" style="background-color: #001f3f; border-radius: 50px;">
+                <button class="btn btn-save-diamond px-5 py-3 fw-bold shadow-sm" onclick="alert('Đã lưu cấu hình, nhân viên Jade Chamber sẽ liên hệ cho bạn.')">
                     LƯU CẤU HÌNH KIM CƯƠNG CỦA BẠN
                 </button>
             </div>
@@ -367,4 +369,12 @@ function initThumbnailSlider() {
     });
 
     updateButtons();
+}
+
+function selectDiamondFilter(btn) {
+    const parentRow = btn.closest('.row');
+    if (parentRow) {
+        parentRow.querySelectorAll('.btn-filter-diamond').forEach(b => b.classList.remove('active'));
+    }
+    btn.classList.add('active');
 }
