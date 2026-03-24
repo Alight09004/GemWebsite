@@ -162,7 +162,7 @@ const gemProducts = [
         imgHover: "./assets/img/ItemTrangChu(1)/spnb6-2.jpg",
         category: ["VangBac", "TrangSuc"],
         subCategory: ["VangTrang", "NhanDon"],
-        detail: "Bản đai lớn nam tính, mạnh mẽ cùng giác cắt ECZ tinh xảo. Nhẫn nam MANCODE cao cấp thể hiện trọn vẹn phong độ, sự lịch lãm và bản lĩnh của phái mạnh.",
+        detail: "Mô phỏng nét tin yêu cùng vẻ đẹp tinh tế, thanh tú của nàng, PNJ mang đến hơi thở mới mẻ từ những chi tiết giản đơn cho thiết kế trang sức mới của mình. Chiếc mặt dây chuyền vàng được chế tác từ sắc vàng Ý 18K trên thiết kế đậm chất phóng khoáng và hiện đại. Sản phẩm chính là sự hội tụ của phong cách thiết kế hiện đại kết hợp đỉnh cao của trình độ chế tác và sẽ trở thành xu hướng trang sức Ý mới, mang đến cho phái đẹp thêm nhiều sự lựa chọn cho bộ sưu tập của mình.",
         sold: 65
     },
     {
@@ -749,6 +749,17 @@ const gemProducts = [
         detail: "Vàng miếng SJC 1 chỉ nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
         sold: 386
     },
+    {
+        id: 68,
+        name: "KIM CƯƠNG TỰ NHIÊN",
+        price: null,
+        imgMain: "./assets/img/ItemTrungBaySP/cuc-kim-cuong.webp",
+        imgHover: "./assets/img/ItemTrungBaySP/cuc-kim-cuong-hover.png",
+        category: ["DaQuy"],
+        subCategory: ["KimCuong"],
+        detail: "Kim cương tự nhiên GIA uy tín hàng đầu Việt Nam.",
+        sold: 12
+    },
 ];
 
 
@@ -883,6 +894,26 @@ function filterCat(catKey) {
     currentPageIndex = 1; // Đặt lại về trang 1 khi đổi danh mục
     applySortAndRender();
     updateBreadcrumb(categoryNames[catKey] || 'Tất cả sản phẩm');
+
+    // Hiển thị Accordion nếu chọn danh mục Kim Cương
+    const kimCuongAccordion = document.getElementById('kim-cuong-accordion-container');
+    if (kimCuongAccordion) {
+        if (catKey === 'KimCuong') {
+            kimCuongAccordion.classList.remove('d-none');
+        } else {
+            kimCuongAccordion.classList.add('d-none');
+        }
+    }
+
+    // Hiển thị Hero Video Kim Cương
+    const kimCuongVideo = document.getElementById('kim-cuong-hero-video');
+    if (kimCuongVideo) {
+        if (catKey === 'KimCuong') {
+            kimCuongVideo.classList.remove('d-none');
+        } else {
+            kimCuongVideo.classList.add('d-none');
+        }
+    }
 }
 
 // --- HÀM XỬ LÝ SẮP XẾP ---
@@ -1030,6 +1061,18 @@ function searchProducts(query) {
     currentPageIndex = 1; // Đặt lại về trang 1 khi tìm kiếm
     applySortAndRender();
     updateBreadcrumb(`Kết quả cho: "${query}"`);
+
+    // Đảm bảo ẩn Accordion khi đang ở chế độ tìm kiếm
+    const kimCuongAccordion = document.getElementById('kim-cuong-accordion-container');
+    if (kimCuongAccordion) {
+        kimCuongAccordion.classList.add('d-none');
+    }
+
+    // Ẩn Video Kim cương khi tìm kiếm
+    const kimCuongVideo = document.getElementById('kim-cuong-hero-video');
+    if (kimCuongVideo) {
+        kimCuongVideo.classList.add('d-none');
+    }
 }
 
 // --- HÀM TẠO GRID SẢN PHẨM (GIỐNG TRANG CHỦ) ---

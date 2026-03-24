@@ -33,6 +33,48 @@
     </div>
     <script src="./assets/js/breadcrumb.js"></script>
 
+    <!-- Video Kim Cương -->
+    <div id="kim-cuong-hero-video" class="d-none text-center mb-4">
+        <!-- Ảnh Hero Kim Cương -->
+        <img src="./assets/img/ItemTrungBaySP/hero-kim-cuong.png" alt="Banner Kim Cương" class="w-100 d-block" style="height: 70vh; object-fit: cover; margin-bottom: 40px;">
+        
+        <h2 class="fw-normal mb-4" style="color: #001f3f; font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 2px;">Dẫn Đầu Công Nghệ<br>Kiểm Định Kim Cương</h2>
+        <div class="position-relative d-inline-block" style="width: 1048px; max-width: 100%;">
+            <video id="diamondVideo" autoplay muted loop playsinline style="width: 100%; height: 550px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <source src="./assets/img/ItemTrungBaySP/Jadechamber.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+            </video>
+            <!-- Nút điều khiển video -->
+            <div class="position-absolute top-0 end-0 p-3" style="z-index: 10;">
+                <button id="btnPlayPause" class="btn rounded-circle shadow-sm me-2" style="width: 40px; height: 40px; background-color: rgba(0, 31, 63, 0.7); color: white; border: 1px solid rgba(212, 175, 55, 0.5); transition: 0.3s;" onclick="togglePlayPause()" title="Tạm dừng/Phát" onmouseover="this.style.backgroundColor='#D4AF37'; this.style.color='#001f3f'" onmouseout="this.style.backgroundColor='rgba(0, 31, 63, 0.7)'; this.style.color='white'">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <button id="btnMuteUnmute" class="btn rounded-circle shadow-sm" style="width: 40px; height: 40px; background-color: rgba(0, 31, 63, 0.7); color: white; border: 1px solid rgba(212, 175, 55, 0.5); transition: 0.3s;" onclick="toggleMuteUnmute()" title="Bật/Tắt âm thanh" onmouseover="this.style.backgroundColor='#D4AF37'; this.style.color='#001f3f'" onmouseout="this.style.backgroundColor='rgba(0, 31, 63, 0.7)'; this.style.color='white'">
+                    <i class="fas fa-volume-mute"></i>
+                </button>
+            </div>
+        </div>
+        <script>
+            function togglePlayPause() {
+                const video = document.getElementById('diamondVideo');
+                const icon = document.querySelector('#btnPlayPause i');
+                if (video.paused) {
+                    video.play();
+                    icon.className = 'fas fa-pause';
+                } else {
+                    video.pause();
+                    icon.className = 'fas fa-play';
+                }
+            }
+            function toggleMuteUnmute() {
+                const video = document.getElementById('diamondVideo');
+                const icon = document.querySelector('#btnMuteUnmute i');
+                video.muted = !video.muted;
+                icon.className = video.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+            }
+        </script>
+    </div>
+
     <!-- Side bar and Sort Bar -->
     <div class="container-fluid px-lg-5 my-5">
         <div class="row">
@@ -74,6 +116,102 @@
                 <!-- Pagination Container -->
                 <div class="d-flex justify-content-center mt-5" id="pagination-container"></div>
             </main>
+        </div>
+    </div>
+
+    <!-- Khung Accordion Kim Cương -->
+    <div class="container-fluid px-lg-5 mb-5 d-none" id="kim-cuong-accordion-container">
+        <h4 class="fw-bold mb-4 text-start" style="color: #001f3f;">Các câu hỏi thường gặp</h4>
+        <div class="accordion accordion-flush" id="kimCuongAccordion">
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button shadow-none bg-transparent fw-bold text-dark px-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Tiêu Chuẩn Kim Cương Của Jade Chamber Khác Gì So Với Thị Trường?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#kimCuongAccordion">
+                    <div class="accordion-body text-muted px-0" style="line-height: 1.8;">
+                        <p>Mỗi viên kim cương tại Jade Chamber đều trải qua quy trình tuyển chọn khắt khe theo tiêu chuẩn 4C’s:</p>
+                        <ul>
+                            <li><b>Color:</b> Từ nước I trở lên</li>
+                            <li><b>Clarity:</b> Từ VS2 trở lên</li>
+                            <li><b>Cut:</b> Triple Excellent, bao gồm Excellent Cut, Excellent Symmetry, Excellent Polish</li>
+                            <li><b>Fluorescence:</b> Từ None đến Medium</li>
+                        </ul>
+                        <p>Đặc biệt, Jade Chamber loại bỏ hoàn toàn kim cương có lỗi ảnh hưởng đến độ bền và kết cấu như Indented Natural, Chip, Cavity, Twinning Wisp, Bearding. Vì vậy, mỗi viên kim cương tại Jade Chamber đều đạt chất lượng cao về thẩm mỹ, giá trị, đảm bảo tài sản bền vững cho khách hàng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed shadow-none bg-transparent fw-bold text-dark px-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Kim Cương Thiên Nhiên GIA là gì?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#kimCuongAccordion">
+                    <div class="accordion-body text-muted px-0" style="line-height: 1.8;">
+                        <p>Kim cương thiên nhiên GIA là kim cương được hình thành hoàn toàn trong tự nhiên, trải qua hàng tỷ năm dưới áp suất và nhiệt độ cực cao trong lòng đất. Sau khi khai thác, những viên kim cương này được Viện Ngọc học Hoa Kỳ (GIA) - Tổ chức giám định uy tín nhất thế giới kiểm định và cấp chứng thư xác nhận.</p> 
+                        <p>Chứng nhận GIA ghi rõ thông tin chi tiết về 4Cs (Carat, Color, Clarity, Cut) của từng viên kim cương, đảm bảo tính xác thực, minh bạch và giá trị quốc tế.</p>
+                    </div>
+                </div>
+            </div>
+                    
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed shadow-none bg-transparent fw-bold text-dark px-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Tiêu chuẩn 4Cs GIA là gì?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#kimCuongAccordion">
+                    <div class="accordion-body text-muted px-0" style="line-height: 1.8;">
+                        <p>Tiêu chuẩn 4Cs của GIA (Gemological Institute of America) là hệ thống đánh giá chất lượng kim cương toàn cầu, gồm Carat (Trọng lượng), Cut (Giác cắt), Color (Màu sắc) và Clarity (Độ tinh khiết).</p>
+                        <p>Bốn yếu tố trong 4Cs giúp xác định, so sánh và định giá kim cương một cách khách quan, minh bạch và chính xác, phản ánh độ hiếm, giá trị và vẻ đẹp tự nhiên của từng viên. Tiêu chuẩn 4Cs cũng là nền tảng trong chứng nhận GIA, đảm bảo kim cương có nguồn gốc rõ ràng và chất lượng được kiểm định khoa học.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed shadow-none bg-transparent fw-bold text-dark px-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Vì sao cùng kích thước nhưng giá kim cương lại khác nhau?
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#kimCuongAccordion">
+                    <div class="accordion-body text-muted px-0" style="line-height: 1.8;">
+                        <p>Mặc dù có cùng kích thước, giá kim cương vẫn có thể khác nhau do còn phụ thuộc vào ba yếu tố còn lại trong tiêu chuẩn 4Cs của GIA: Giác cắt (Cut), Màu sắc (Color) và Độ tinh khiết (Clarity), cùng với một số yếu tố khác như độ huỳnh quang và chứng nhận GIA,...</p>
+                        <p>Một viên kim cương có giác cắt xuất sắc, màu trắng hơn và ít tì vết hơn sẽ hiếm gặp, phản xạ ánh sáng rực rỡ hơn, vì vậy có giá trị cao hơn dù có cùng kích thước với viên khác.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed shadow-none bg-transparent fw-bold text-dark px-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Làm sao để chọn viên kim cương GIA đẹp và tối ưu ngân sách nhất?
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#kimCuongAccordion">
+                    <div class="accordion-body text-muted px-0" style="line-height: 1.8;">
+                        <p>Tại Jade Chamber, đội ngũ chuyên viên tư vấn được đào tạo và cấp chứng chỉ trực tiếp từ GIA sẽ hỗ trợ bạn lựa chọn viên kim cương đẹp, đúng giá trị và phù hợp ngân sách. Dựa trên tiêu chuẩn 4Cs, Jade giúp bạn hiểu rõ yếu tố ảnh hưởng đến giá trị kim cương và tối ưu ngân sách để sở hữu viên kim cương sáng đẹp, chất lượng cao nhất trong tầm giá mong muốn.</p>
+                        <p>Đội ngũ Jade đảm bảo rằng viên kim cương bạn sở hữu có tiêu chuẩn quốc tế cao, đảm bảo độ bền và giá trị toàn cầu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed shadow-none bg-transparent fw-bold text-dark px-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        Chính sách thu mua - thu đổi kim cương của Jade Chamber có gì tốt so với thị trường?
+                    </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#kimCuongAccordion">
+                    <div class="accordion-body text-muted px-0" style="line-height: 1.8;">
+                        <p>Chính sách thu mua - thu đổi kim cương tại Jade Chamber lên đến 100% giá trị, giúp khách hàng dễ dàng nâng cấp hoặc đổi sang viên kim cương mới mà không lo mất giá.</p>
+                        <p>Chính sách luôn minh bạch, công khai trên Website, đảm bảo quyền lợi tối đa cho khách hàng.</p>
+                    </div>      
+                </div>
+            </div>
         </div>
     </div>
 
