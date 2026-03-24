@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <!-- Image Gallery -->
             <div class="col-lg-1 d-none d-lg-block">
                 <div class="thumbnail-vertical-container">
-                    <button id="thumb-up" class="thumb-nav-btn mb-2"><i class="fas fa-chevron-up"></i></button>
+                    <button id="thumb-up" class="thumb-nav-btn mb-2" onclick="previousImage()"><i class="fas fa-chevron-up"></i></button>
                     <div class="thumbnail-track-wrapper">
                         <div class="thumbnail-track">
                             ${galleryImages.map((img, index) => `
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             `).join('')}
                         </div>
                     </div>
-                    <button id="thumb-down" class="thumb-nav-btn mt-2"><i class="fas fa-chevron-down"></i></button>
+                    <button id="thumb-down" class="thumb-nav-btn mt-2" onclick="nextImage()"><i class="fas fa-chevron-down"></i></button>
                 </div>
             </div>
             <div class="col-lg-5">
@@ -228,6 +228,24 @@ document.addEventListener("DOMContentLoaded", function () {
     initThumbnailSlider();
 });
 
+function nextImage() {
+    const activeThumb = document.getElementsByClassName('thumbnail-selector active');
+    const inactiveThumbs = Array.from(document.querySelectorAll('.thumbnail-selector:not(.active)'));
+    if (activeThumb.length > 0 && inactiveThumbs.length > 0) {
+        const nextThumb = inactiveThumbs[0];
+        changeMainImage(nextThumb.src, nextThumb);
+    }
+}
+
+function previousImage() {
+    const activeThumb = document.getElementsByClassName('thumbnail-selector active');
+    const inactiveThumbs = Array.from(document.querySelectorAll('.thumbnail-selector:not(.active)'));
+    if (activeThumb.length > 0 && inactiveThumbs.length > 0) {
+        const prevThumb = inactiveThumbs[inactiveThumbs.length - 1];
+        changeMainImage(prevThumb.src, prevThumb);
+    }
+}
+
 function changeMainImage(src, thumbElement) {
     document.getElementById('main-product-image').src = src;
     document.querySelectorAll('.thumbnail-selector').forEach(el => el.classList.remove('active'));
@@ -285,10 +303,10 @@ function initThumbnailSlider() {
     let currentPosition = 0;
     const maxPosition = track.scrollHeight - wrapperHeight;
 
-    function updateButtons() {
-        upBtn.disabled = currentPosition <= 0;
-        downBtn.disabled = currentPosition >= maxPosition;
-    }
+    // function updateButtons() {
+    //     upBtn.disabled = currentPosition <= 0;
+    //     downBtn.disabled = currentPosition >= maxPosition;
+    // }
 
     upBtn.addEventListener('click', () => {
         currentPosition -= itemHeight;
