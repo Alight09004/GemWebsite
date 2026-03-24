@@ -743,6 +743,17 @@ const gemProducts = [
         detail: "Vàng miếng SJC 1 chỉ nguyên chất 99.99% là lựa chọn tối ưu để tích trữ tài sản, đầu tư sinh lời. Sản phẩm vàng miếng cao cấp, được bảo chứng bởi thương hiệu uy tín hàng đầu Việt Nam.",
         sold: 386
     },
+    {
+        id: 68,
+        name: "KIM CƯƠNG TỰ NHIÊN",
+        price: null,
+        imgMain: "./assets/img/ItemTrungBaySP/cuc-kim-cuong.webp",
+        imgHover: "./assets/img/ItemTrungBaySP/cuc-kim-cuong-hover.png",
+        category: ["DaQuy"],
+        subCategory: ["KimCuong"],
+        detail: "Kim cương tự nhiên GIA uy tín hàng đầu Việt Nam.",
+        sold: 12
+    },
 ];
 
 
