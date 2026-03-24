@@ -8,7 +8,9 @@ const gemProducts = [
         category: ["DaQuy", "TrangSuc"],
         subCategory: ["KimCuong", "NhanDon"],
         detail: "Nhẫn bạc nữ đính kim cương Moissanite Aidan mang vẻ đẹp thanh lịch, hiện đại. Sự lựa chọn hoàn hảo giúp phái đẹp tỏa sáng rạng rỡ với ánh sáng tinh khiết của kim cương.",
-        sold: 432
+        sold: 432,
+        sizes: [10, 11, 12, 13, 14],
+        specs: { weight: '0.8 chỉ (3.0g)', purity: 'VVS1', color: 'D', cut: 'Round Brilliant' }
     },
     {
         id: 2,
@@ -41,7 +43,8 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Vang18K", "LacTay"],
         detail: "Lắc tay Vàng 58,5% (14K) điệu đà uốn lượn trên cổ tay ngọc ngà, khẳng định gu thẩm mỹ tinh tế. Một món trang sức cao cấp mang giá trị vượt thời gian.",
-        sold: 86
+        sold: 86,
+        specs: { weight: '11.6g' }
     },
     {
         id: 5,
@@ -52,7 +55,8 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["VangTrang", "LacTay", "Vang18K"],
         detail: "Trang sức Ý nổi tiếng với độ tinh xảo. Lắc tay Vàng trắng Ý 75% (18K) mang đến diện mạo sang trọng, kiêu sa cho những quý cô hiện đại trong bất kỳ buổi tiệc nào.",
-        sold: 72
+        sold: 72,
+        specs: { weight: '10.5g' }
     },
     {
         id: 6,
@@ -63,7 +67,8 @@ const gemProducts = [
         category: ["DaQuy", "TrangSuc"],
         subCategory: ["KimCuong", "BongTai"],
         detail: "Tuyệt tác Bông tai Kim cương Vàng trắng 58,5% (14K) lộng lẫy. Kim cương lấp lánh kết hợp vàng trắng mang đến sự quyền quý và đẳng cấp tuyệt đối cho người sở hữu.",
-        sold: 23
+        sold: 23,
+        specs: { weight: '2.5g', purity: 'VVS1', color: 'D', cut: 'Excellent' }
     },
     {
         id: 7,
@@ -74,7 +79,8 @@ const gemProducts = [
         category: ["DaQuy", "TrangSuc"],
         subCategory: ["KimCuong", "NhanDon"],
         detail: "Mẫu Nhẫn Kim cương Vàng trắng 58,5% (14K) với viên chủ nổi bật. Chế tác tinh xảo khiến sản phẩm trở thành biểu tượng của tình yêu và sự vĩnh cửu hoàn mỹ.",
-        sold: 45
+        sold: 45,
+        specs: { weight: '1.5 chỉ (5.6g)', purity: 'VVS2', color: 'F', cut: 'Excellent' }
     },
     {
         id: 8,
@@ -162,7 +168,8 @@ const gemProducts = [
         category: ["VangBac", "TrangSuc"],
         subCategory: ["Vang18K", "NhanDon"],
         detail: "Thiết kế nhẫn Vàng 18K cổ điển, tinh giản nhưng đầy sắc sảo từ PNJ. Một sự lựa chọn thông minh, bền bỉ và dễ dàng kết hợp cùng nhiều phong cách thời trang.",
-        sold: 412
+        sold: 412,
+        specs: { weight: '1.2 chỉ (4.5g)' }
     },
     {
         id: 16,
