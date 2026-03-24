@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (subCats.includes('LacTay') || subCats.includes('VongTayTyHuu') || subCats.includes('VongTay')) {
             guideType = 'bracelet';
         } 
-        // Vòng cổ thường không có size, nhưng vẫn thêm logic để dự phòng
         else if (subCats.includes('DayChuyen') || subCats.includes('DayDeoThayThe')) {
             guideType = 'necklace';
         }
@@ -95,6 +94,42 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hình ảnh chính và các ảnh thumbnail
     const mainImage = product.imgMain;
     const galleryImages = [mainImage, ...(product.gallery || [])];
+
+    // Logic to find related products
+    let relatedProductsHtml = '';
+    // Đảm bảo currentSubCategories luôn là một mảng để xử lý đồng nhất
+    const currentSubCategories = Array.isArray(product.subCategory) ? product.subCategory : (product.subCategory ? [product.subCategory] : []);
+
+    if (currentSubCategories.length > 0) {
+        const relatedProducts = gemProducts.filter(p => {
+            if (p.id == product.id) return false; // Exclude the current product
+            
+            // Đảm bảo pSubCats cũng luôn là một mảng
+            const pSubCats = Array.isArray(p.subCategory) ? p.subCategory : (p.subCategory ? [p.subCategory] : []);
+
+            // Check if there's any common subcategory
+            return pSubCats.some(subCat => currentSubCategories.includes(subCat));
+        }).slice(0, 4); // Get max 4 related products
+
+        if (relatedProducts.length > 0) {
+            relatedProductsHtml = '<div class="row g-3">';
+            relatedProductsHtml += relatedProducts.map(rp => `
+                <div class="col-6">
+                    <a href="detail.html?id=${rp.id}" class="related-product-item-vertical text-decoration-none d-block">
+                        <img src="${rp.imgMain}" alt="${rp.name}" class="img-fluid" style="aspect-ratio: 1/1; object-fit: cover;">
+                        <div class="p-2 text-center">
+                            <h6 class="mb-1 related-product-name-small">${rp.name}</h6>
+                            <p class="mb-0 text-danger fw-bold small">${rp.price ? rp.price.toLocaleString() + 'đ' : 'Giá liên hệ'}</p>
+                        </div>
+                    </a>
+                </div>
+            `).join('');
+            relatedProductsHtml += '</div>';
+        }
+    }
+    if (relatedProductsHtml === '') {
+        relatedProductsHtml = '<p class="text-muted small">Không có sản phẩm liên quan.</p>';
+    }
 
     const productHtml = `
         <div class="row g-5">
@@ -163,6 +198,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <!-- Product Specs -->
         ${specsHtml}
+
+        <!-- After-sales & Related Products Section -->
+        <div class="row mt-5 pt-5 border-top">
+            <!-- Left Column: After-sales Service -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h3 class="mb-4 fw-bold" style="font-family: 'Playfair Display', serif; color: #001f3f; border-left: 4px solid #D4AF37; padding-left: 15px;">Dịch vụ hậu mãi / Bảo hành</h3>
+                <p class="text-muted" style="line-height: 1.8;">Tại Jade Chamber, chúng tôi cam kết đồng hành cùng quý khách qua chính sách hậu mãi và bảo hành toàn diện.</p>
+                <ul class="list-unstyled mt-3">
+                    <li class="mb-2 d-flex align-items-start"><i class="fas fa-check-circle text-success me-2 mt-1"></i><span><strong>Bảo hành 12 tháng:</strong> Áp dụng cho các lỗi kỹ thuật sản xuất.</span></li>
+                    <li class="mb-2 d-flex align-items-start"><i class="fas fa-check-circle text-success me-2 mt-1"></i><span><strong>Làm sạch, làm mới miễn phí trọn đời.</strong></span></li>
+                    <li class="mb-2 d-flex align-items-start"><i class="fas fa-check-circle text-success me-2 mt-1"></i><span><strong>Chính sách thu đổi hấp dẫn.</strong></span></li>
+                </ul>
+                <a href="about.html" class="btn btn-outline-dark btn-sm mt-3">Xem chi tiết chính sách</a>
+                <img src="./assets/img/ItemAboutUs/service.png" alt="Dịch vụ hậu mãi Jade Chamber" class="img-fluid rounded shadow-sm mt-4" style="max-width: 400px; display: block; margin: auto;">
+            </div>
+
+            <!-- Right Column: Related Products -->
+            <div class="col-lg-6">
+                <h3 class="mb-4 fw-bold" style="font-family: 'Playfair Display', serif; color: #001f3f; border-left: 4px solid #D4AF37; padding-left: 15px;">Sản phẩm liên quan</h3>
+                <div id="related-products-container">
+                    ${relatedProductsHtml}
+                </div>
+            </div>
+        </div>
     `;
 
     container.innerHTML = productHtml;
