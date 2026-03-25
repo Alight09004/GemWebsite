@@ -42,10 +42,49 @@ function showPage(page, element = null) {
 }
 
 let users = JSON.parse(localStorage.getItem("users")) || [];
+if (users.length < 5) {
+    const mockUsers = [
+        { id: 'usr_' + (Date.now() + 1), username: 'Nguyễn Văn An', email: 'nva@gmail.com', role: 'user' },
+        { id: 'usr_' + (Date.now() + 2), username: 'Trần Thị Bình', email: 'ttb@gmail.com', role: 'user' },
+        { id: 'usr_' + (Date.now() + 3), username: 'Lê Văn Cương', email: 'lvc@gmail.com', role: 'user' },
+        { id: 'usr_' + (Date.now() + 4), username: 'Phạm Thị Dung', email: 'ptd@gmail.com', role: 'user' },
+        { id: 'usr_' + (Date.now() + 5), username: 'Hoàng Văn Minh', email: 'hvm@gmail.com', role: 'user' },
+        { id: 'usr_' + (Date.now() + 6), username: 'Vũ Thị Thùy Trâm', email: 'vttt@gmail.com', role: 'user' },
+        { id: 'usr_' + (Date.now() + 7), username: 'Đặng Văn Giang', email: 'dvg@gmail.com', role: 'user' }
+    ];
+    users = [...users, ...mockUsers];
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
+if (orders.length < 5) {
+    const nowMs = Date.now();
+    const mockOrders = [
+        { id: 'ORD' + (nowMs - 2 * 86400000), product: 'Nhẫn bạc nữ đính kim cương Moissanite Aidan', productName: 'Nhẫn bạc nữ đính kim cương Moissanite Aidan', price: 2181000 },
+        { id: 'ORD' + (nowMs - 12 * 86400000), product: 'Dây chuyền bạc nữ đính đá CZ cá tiên', productName: 'Dây chuyền bạc nữ đính đá CZ cá tiên', price: 1824000 },
+        { id: 'ORD' + (nowMs - 25 * 86400000), product: 'Bông tai Vàng trắng 41,6% (10K) đính đá', productName: 'Bông tai Vàng trắng 41,6% (10K) đính đá', price: 13070000 },
+        { id: 'ORD' + (nowMs - 40 * 86400000), product: 'Lắc tay Vàng 58,5% (14K)', productName: 'Lắc tay Vàng 58,5% (14K)', price: 15370000 },
+        { id: 'ORD' + (nowMs - 55 * 86400000), product: 'Bông tai Kim cương Vàng trắng 58,5% (14K)', productName: 'Bông tai Kim cương Vàng trắng 58,5% (14K)', price: 46200000 },
+        { id: 'ORD' + (nowMs - 70 * 86400000), product: 'Nhẫn Kim cương Vàng trắng 58,5% (14K)', productName: 'Nhẫn Kim cương Vàng trắng 58,5% (14K)', price: 34620000 },
+        { id: 'ORD' + (nowMs - 85 * 86400000), product: 'Mặt dây chuyền Vàng trắng 58,5% (14K) đính đá Sapphire', productName: 'Mặt dây chuyền Vàng trắng 58,5% (14K) đính đá Sapphire', price: 8740000 },
+        { id: 'ORD' + (nowMs - 100 * 86400000), product: 'Mặt dây chuyền Vàng 75% (18K) đính Ngọc trai Southsea', productName: 'Mặt dây chuyền Vàng 75% (18K) đính Ngọc trai Southsea', price: 24610000 },
+        { id: 'ORD' + (nowMs - 115 * 86400000), product: 'Nhẫn Vàng trắng 58,5% (14K) đính đá', productName: 'Nhẫn Vàng trắng 58,5% (14K) đính đá', price: 10551000 },
+        { id: 'ORD' + (nowMs - 130 * 86400000), product: 'Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá', productName: 'Vòng tay bạc nữ đá Chalcedony Chrysoprase cỏ 4 lá', price: 7615000 },
+        { id: 'ORD' + (nowMs - 145 * 86400000), product: 'Nhẫn bạc nữ đính kim cương Moissanite Aidan', productName: 'Nhẫn bạc nữ đính kim cương Moissanite Aidan', price: 2181000 },
+        { id: 'ORD' + (nowMs - 160 * 86400000), product: 'Dây chuyền bạc nữ đính đá CZ cá tiên', productName: 'Dây chuyền bạc nữ đính đá CZ cá tiên', price: 1824000 },
+        { id: 'ORD' + (nowMs - 170 * 86400000), product: 'Nhẫn Kim cương Vàng trắng 58,5% (14K)', productName: 'Nhẫn Kim cương Vàng trắng 58,5% (14K)', price: 34620000 }
+    ];
+    orders = [...mockOrders, ...orders];
+    // Sắp xếp đơn hàng theo thời gian giảm dần (mới nhất lên đầu)
+    orders.sort((a, b) => parseInt(b.id.substring(3)) - parseInt(a.id.substring(3)));
+    localStorage.setItem("orders", JSON.stringify(orders));
+}
+
 let employees = JSON.parse(localStorage.getItem("employees")) || [];
 let managedProducts = JSON.parse(localStorage.getItem("managedProducts")) || gemProducts;
 let productModal = null; // To hold the modal instance
+let currentProductPage = 1;
+const productsPerPage = 10;
 
 function saveData() {
   localStorage.setItem("users", JSON.stringify(users));
@@ -282,14 +321,25 @@ function renderProducts(searchTerm = "") {
         return name.includes(term) || id.includes(term);
     });
 
-    if (filteredProducts.length === 0) {
+    const totalItems = filteredProducts.length;
+    const totalPages = Math.ceil(totalItems / productsPerPage);
+
+    if (currentProductPage > totalPages && totalPages > 0) currentProductPage = totalPages;
+    if (currentProductPage < 1) currentProductPage = 1;
+
+    const startIndex = (currentProductPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+    if (paginatedProducts.length === 0) {
         tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-4">Không có sản phẩm nào.</td></tr>`;
+        renderProductPagination(0);
         return;
     }
 
-    tableBody.innerHTML = filteredProducts.map((p, index) => `
+    tableBody.innerHTML = paginatedProducts.map((p, index) => `
         <tr>
-            <td class="text-center text-muted fw-bold">${index + 1}</td>
+            <td class="text-center text-muted fw-bold">${startIndex + index + 1}</td>
             <td><img src="${p.imgMain}" alt="${p.name}" width="60" height="60" style="object-fit: cover; border-radius: 8px;" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'"></td>
             <td class="fw-bold" style="color: #001f3f;">${p.name}</td>
             <td class="text-end text-danger fw-bold">${p.price ? p.price.toLocaleString('vi-VN') + 'đ' : 'N/A'}</td>
@@ -300,6 +350,53 @@ function renderProducts(searchTerm = "") {
             </td>
         </tr>
     `).join('');
+    
+    renderProductPagination(totalPages);
+}
+
+function renderProductPagination(totalPages) {
+    const container = document.getElementById("productPagination");
+    if (!container) return;
+
+    if (totalPages <= 1) {
+        container.innerHTML = "";
+        return;
+    }
+
+    let html = '<ul class="pagination mb-0 shadow-sm">';
+    
+    html += `<li class="page-item ${currentProductPage === 1 ? 'disabled' : ''}">
+                <a class="page-link text-dark" href="#" onclick="event.preventDefault(); changeProductPage(${currentProductPage - 1})"><i class="fas fa-chevron-left"></i></a>
+             </li>`;
+
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || (i >= currentProductPage - 1 && i <= currentProductPage + 1)) {
+            let activeClass = i === currentProductPage ? 'bg-warning text-dark border-warning fw-bold' : 'text-dark';
+            html += `<li class="page-item ${i === currentProductPage ? 'active' : ''}">
+                        <a class="page-link ${activeClass}" href="#" onclick="event.preventDefault(); changeProductPage(${i})">${i}</a>
+                     </li>`;
+        } else if (i === currentProductPage - 2 || i === currentProductPage + 2) {
+            html += `<li class="page-item disabled"><span class="page-link text-muted border-0 bg-light">...</span></li>`;
+        }
+    }
+
+    html += `<li class="page-item ${currentProductPage === totalPages ? 'disabled' : ''}">
+                <a class="page-link text-dark" href="#" onclick="event.preventDefault(); changeProductPage(${currentProductPage + 1})"><i class="fas fa-chevron-right"></i></a>
+             </li>`;
+
+    html += '</ul>';
+    container.innerHTML = html;
+}
+
+function changeProductPage(page) {
+    currentProductPage = page;
+    renderProducts(document.getElementById("searchProduct")?.value || "");
+    
+    // Cuộn lên đầu bảng để dễ nhìn
+    const table = document.getElementById('products');
+    if (table) {
+        table.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 function showProductModal(id = null) {
