@@ -1076,6 +1076,41 @@ function filterCat(catKey) {
             kimCuongVideo.classList.add('d-none');
         }
     }
+
+    // Hiển thị ảnh hướng dẫn chọn đá theo mệnh
+    let daTheoMenhGuide = document.getElementById('da-theo-menh-guide-container');
+    if (catKey === 'DaTheoMenh') {
+        if (!daTheoMenhGuide) {
+            daTheoMenhGuide = document.createElement('div');
+            daTheoMenhGuide.id = 'da-theo-menh-guide-container';
+            daTheoMenhGuide.className = 'container-fluid px-lg-5 my-5 text-center';
+            daTheoMenhGuide.innerHTML = `
+                <h3 class="fw-bold mb-4" style="font-family: 'Playfair Display', serif; color: #001f3f;">Bảng Hướng Dẫn Chọn Đá Theo Mệnh</h3>
+                <img src="./assets/img/ItemTrungBaySP/chon-da-theo-menh-gemini.png" alt="Hướng dẫn chọn đá theo mệnh" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid #eee;">
+            `;
+            
+            const productGrid = document.getElementById('product-display-grid');
+            
+            if (productGrid) {
+                const mainContainer = productGrid.closest('.container-fluid');
+                if (mainContainer) {
+                    mainContainer.parentNode.insertBefore(daTheoMenhGuide, mainContainer);
+                } else {
+                    productGrid.parentNode.insertBefore(daTheoMenhGuide, productGrid);
+                }
+            } else {
+                const footerElement = document.querySelector('app-footer');
+                if (footerElement) {
+                    footerElement.parentNode.insertBefore(daTheoMenhGuide, footerElement);
+                } else {
+                    document.body.appendChild(daTheoMenhGuide);
+                }
+            }
+        }
+        daTheoMenhGuide.classList.remove('d-none');
+    } else if (daTheoMenhGuide) {
+        daTheoMenhGuide.classList.add('d-none');
+    }
 }
 
 // --- HÀM XỬ LÝ SẮP XẾP ---
@@ -1234,6 +1269,11 @@ function searchProducts(query) {
     const kimCuongVideo = document.getElementById('kim-cuong-hero-video');
     if (kimCuongVideo) {
         kimCuongVideo.classList.add('d-none');
+    }
+
+    const daTheoMenhGuide = document.getElementById('da-theo-menh-guide-container');
+    if (daTheoMenhGuide) {
+        daTheoMenhGuide.classList.add('d-none');
     }
 }
 
