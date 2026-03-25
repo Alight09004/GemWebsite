@@ -1,3 +1,5 @@
+let revenueChartInstance = null;
+let topProductsChartInstance = null;
 document.addEventListener("DOMContentLoaded", function () {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (!currentUser || currentUser.role !== "admin") {
@@ -14,12 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (document.getElementById("adminUsserName")) document.getElementById("adminUsserName").value = adminAccount.username;
         if (document.getElementById("adminEmail")) document.getElementById("adminEmail").value = adminAccount.email;
     }
-}); //huỷ đăng nhập khi phát hiện sai quyền truy cập
 
-function updateStats() {
-  document.getElementById("totalUsers").innerText = users.length;
-  document.getElementById("totalOrders").innerText = orders.length;
-}
+    // Initialize the product modal instance
+    const productModalEl = document.getElementById('productModal');
+    if (productModalEl) {
+        productModal = new bootstrap.Modal(productModalEl);
+    }
+}); //huỷ đăng nhập khi phát hiện sai quyền truy cập
 
 function showPage(page, element = null) {
   document.querySelectorAll(".page").forEach((p) => {
@@ -33,17 +36,128 @@ function showPage(page, element = null) {
     element.classList.add('active');
   }
 
-  updateStats();
+  if (page === 'dashboard') {
+    renderDashboard();
+  }
 }
 
 let users = JSON.parse(localStorage.getItem("users")) || [];
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 let employees = JSON.parse(localStorage.getItem("employees")) || [];
+let managedProducts = JSON.parse(localStorage.getItem("managedProducts")) || gemProducts;
+let productModal = null; // To hold the modal instance
 
 function saveData() {
   localStorage.setItem("users", JSON.stringify(users));
   localStorage.setItem("orders", JSON.stringify(orders));
   localStorage.setItem("employees", JSON.stringify(employees));
+}
+
+function saveManagedProducts() {
+    localStorage.setItem("managedProducts", JSON.stringify(managedProducts));
+}
+
+function renderDashboard() {
+    document.getElementById('totalUsers').innerText = users.length;
+    document.getElementById('totalOrders').innerText = orders.length;
+    document.getElementById('totalProducts').innerText = managedProducts.length;
+
+    // 1. Tính tổng doanh thu
+    const totalRevenue = orders.reduce((sum, order) => sum + order.price, 0);
+    document.getElementById('totalRevenue').innerText = totalRevenue.toLocaleString('vi-VN') + 'đ';
+
+    // 2. Chuẩn bị dữ liệu cho biểu đồ doanh thu (6 tháng gần nhất)
+    const revenueByMonth = {};
+    const monthLabels = [];
+    const now = new Date();
+
+    for (let i = 5; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const monthKey = `${d.getFullYear()}-${d.getMonth() + 1}`;
+        monthLabels.push(`Tháng ${d.getMonth() + 1}/${d.getFullYear()}`);
+        revenueByMonth[monthKey] = 0;
+    }
+
+    orders.forEach(order => {
+        const timestamp = parseInt(order.id.substring(3));
+        if (!isNaN(timestamp)) {
+            const orderDate = new Date(timestamp);
+            const monthKey = `${orderDate.getFullYear()}-${orderDate.getMonth() + 1}`;
+            if (monthKey in revenueByMonth) {
+                revenueByMonth[monthKey] += order.price;
+            }
+        }
+    });
+
+    const revenueData = Object.values(revenueByMonth);
+
+    // 3. Chuẩn bị dữ liệu cho biểu đồ Top sản phẩm
+    const productCounts = orders.reduce((acc, order) => {
+        acc[order.productName] = (acc[order.productName] || 0) + 1;
+        return acc;
+    }, {});
+
+    const sortedProducts = Object.entries(productCounts)
+        .sort(([, a], [, b]) => b - a)
+        .slice(0, 5);
+
+    const topProductsLabels = sortedProducts.map(p => p[0]);
+    const topProductsData = sortedProducts.map(p => p[1]);
+
+    // 4. Hiển thị các đơn hàng gần đây
+    const recentOrders = orders.slice(0, 5);
+    const recentOrdersTable = document.getElementById('recentOrdersTable');
+    if (recentOrders.length > 0) {
+        recentOrdersTable.innerHTML = `
+            <thead class="table-light">
+                <tr>
+                    <th class="ps-4">Mã Đơn Hàng</th>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th class="text-end pe-4">Ngày tạo</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${recentOrders.map(order => `
+                    <tr>
+                        <td class="ps-4 fw-bold">${order.id}</td>
+                        <td>${order.productName}</td>
+                        <td>${order.price.toLocaleString('vi-VN')}đ</td>
+                        <td class="text-end pe-4 text-muted small">${new Date(parseInt(order.id.substring(3))).toLocaleDateString('vi-VN')}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        `;
+    } else {
+        recentOrdersTable.innerHTML = '<tbody><tr><td colspan="4" class="text-center text-muted p-4">Chưa có đơn hàng nào.</td></tr></tbody>';
+    }
+
+    // 5. Vẽ biểu đồ
+    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+    if (revenueChartInstance) revenueChartInstance.destroy();
+    revenueChartInstance = new Chart(revenueCtx, { type: 'line', data: { labels: monthLabels, datasets: [{ label: 'Doanh thu', data: revenueData, borderColor: '#001f3f', backgroundColor: 'rgba(0, 31, 63, 0.1)', fill: true, tension: 0.4 }] }, options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { callback: value => value.toLocaleString('vi-VN') + 'đ' } } } } });
+
+    const topProductsCtx = document.getElementById('topProductsChart').getContext('2d');
+    if (topProductsChartInstance) topProductsChartInstance.destroy();
+    topProductsChartInstance = new Chart(topProductsCtx, {
+        type: 'doughnut',
+        data: {
+            labels: topProductsLabels.length > 0 ? topProductsLabels : ['Chưa có dữ liệu'],
+            datasets: [{
+                label: 'Số lượng bán',
+                data: topProductsData.length > 0 ? topProductsData : [1],
+                backgroundColor: topProductsData.length > 0 ? ['#001f3f', '#D4AF37', '#6c757d', '#17a2b8', '#e83e8c'] : ['#f0f0f0'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom', display: topProductsLabels.length > 0 }
+            }
+        }
+    });
 }
 
 function renderUsers(searchTerm = "") {
@@ -80,8 +194,6 @@ function renderUsers(searchTerm = "") {
   });
 
   document.getElementById("userTable").innerHTML = table;
-
-  updateStats();
 }
 
 function deleteUser(id) {
@@ -159,6 +271,106 @@ function deleteEmployee(id) {
   }
 }
 
+function renderProducts(searchTerm = "") {
+    const tableBody = document.getElementById("productTable");
+    if (!tableBody) return;
+
+    const filteredProducts = managedProducts.filter(p => {
+        const term = searchTerm.toLowerCase();
+        const name = (p.name || "").toLowerCase();
+        const id = String(p.id).toLowerCase();
+        return name.includes(term) || id.includes(term);
+    });
+
+    if (filteredProducts.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-4">Không có sản phẩm nào.</td></tr>`;
+        return;
+    }
+
+    tableBody.innerHTML = filteredProducts.map((p, index) => `
+        <tr>
+            <td class="text-center text-muted fw-bold">${index + 1}</td>
+            <td><img src="${p.imgMain}" alt="${p.name}" width="60" height="60" style="object-fit: cover; border-radius: 8px;" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'"></td>
+            <td class="fw-bold" style="color: #001f3f;">${p.name}</td>
+            <td class="text-end text-danger fw-bold">${p.price ? p.price.toLocaleString('vi-VN') + 'đ' : 'N/A'}</td>
+            <td class="text-center">${p.stock || 0}</td>
+            <td class="text-center">
+                <button class="btn btn-outline-primary btn-sm shadow-sm me-1" onclick="showProductModal('${p.id}')" title="Sửa"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-outline-danger btn-sm shadow-sm" onclick="deleteProduct('${p.id}')" title="Xóa"><i class="fas fa-trash-alt"></i></button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function showProductModal(id = null) {
+    const form = document.getElementById('productForm');
+    form.reset();
+    document.getElementById('productId').value = '';
+
+    if (id) {
+        // Edit mode
+        const product = managedProducts.find(p => p.id == id);
+        if (product) {
+            document.getElementById('productModalTitle').innerText = 'Chỉnh sửa sản phẩm';
+            document.getElementById('productId').value = product.id;
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productStock').value = product.stock;
+            document.getElementById('productImgMain').value = product.imgMain;
+            document.getElementById('productImgHover').value = product.imgHover || '';
+            document.getElementById('productCategory').value = Array.isArray(product.category) ? product.category.join(', ') : (product.category || '');
+            document.getElementById('productSubCategory').value = Array.isArray(product.subCategory) ? product.subCategory.join(', ') : (product.subCategory || '');
+            document.getElementById('productDetail').value = product.detail || '';
+        }
+    } else {
+        // Add mode
+        document.getElementById('productModalTitle').innerText = 'Thêm sản phẩm mới';
+    }
+
+    productModal.show();
+}
+
+function saveProduct() {
+    const id = document.getElementById('productId').value;
+    const name = document.getElementById('productName').value;
+    const price = parseFloat(document.getElementById('productPrice').value);
+    const stock = parseInt(document.getElementById('productStock').value);
+    const imgMain = document.getElementById('productImgMain').value;
+    const imgHover = document.getElementById('productImgHover').value;
+    const category = document.getElementById('productCategory').value.split(',').map(s => s.trim()).filter(Boolean);
+    const subCategory = document.getElementById('productSubCategory').value.split(',').map(s => s.trim()).filter(Boolean);
+    const detail = document.getElementById('productDetail').value;
+
+    if (!name || isNaN(price) || isNaN(stock) || !imgMain) {
+        alert('Vui lòng điền đầy đủ các trường bắt buộc.');
+        return;
+    }
+
+    if (id) {
+        const productIndex = managedProducts.findIndex(p => p.id == id);
+        if (productIndex > -1) {
+            managedProducts[productIndex] = { ...managedProducts[productIndex], name, price, stock, imgMain, imgHover, category, subCategory, detail };
+        }
+    } else {
+        const newProduct = { id: 'prod_' + Date.now(), name, price, stock, imgMain, imgHover, category, subCategory, detail, sold: 0 };
+        managedProducts.unshift(newProduct);
+    }
+
+    saveManagedProducts();
+    renderProducts(document.getElementById("searchProduct")?.value || "");
+    renderDashboard(); // Update dashboard stats
+    productModal.hide();
+}
+
+function deleteProduct(id) {
+    if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này? Hành động này không thể hoàn tác.')) {
+        managedProducts = managedProducts.filter(p => p.id != id);
+        saveManagedProducts();
+        renderProducts(document.getElementById("searchProduct")?.value || "");
+        renderDashboard(); // Update dashboard stats
+    }
+}
+
 function renderOrders(searchTerm = "") {
   let table = "";
 
@@ -183,8 +395,6 @@ function renderOrders(searchTerm = "") {
   });
 
   document.getElementById("orderTable").innerHTML = table;
-
-  updateStats();
 }
 
 function deleteOrder(id) {
@@ -262,12 +472,13 @@ function changeAdminPassword() {
   document.getElementById("confirmPassword").value = "";
 }
 
+renderDashboard();
 renderUsers();
 renderOrders();
 renderEmployees();
-updateStats();
-
+renderProducts();
 let salesChartInstance = null;
+
 function showChart(id) {
     const emp = employees.find(e => e.id === id);
     if(!emp) return;

@@ -62,6 +62,11 @@
               </a>
             </li>
             <li class="nav-item mt-2">
+              <a class="nav-link" onclick="showPage('products', this)" style="cursor: pointer;">
+                <i class="fa fa-box-open fa-fw me-3"></i> Sản phẩm
+              </a>
+            </li>
+            <li class="nav-item mt-2">
               <a class="nav-link" onclick="showPage('orders', this)" style="cursor: pointer;">
                 <i class="fa fa-shopping-cart fa-fw me-3"></i> Đơn hàng
               </a>
@@ -96,12 +101,12 @@
           <div id="dashboard" class="page fade-in">
             <h5 class="fw-bold mb-4" style="color: #001f3f;">Tổng quan hệ thống</h5>
             
-            <div class="row mt-4 g-4">
-              <div class="col-md-6 col-lg-4">
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-3">
                 <div class="card border-0 shadow-sm h-100 text-white" style="background: linear-gradient(135deg, #001f3f, #003366);">
                   <div class="card-body p-4 d-flex align-items-center justify-content-between">
                     <div>
-                      <div class="text-uppercase mb-1 text-warning fw-bold small">Tổng người dùng</div>
+                      <div class="text-uppercase mb-1 fw-bold small">Tổng người dùng</div>
                       <h3 class="fw-bold mb-0" id="totalUsers">0</h3>
                     </div>
                     <i class="fa fa-users fa-2x opacity-50"></i>
@@ -109,15 +114,114 @@
                 </div>
               </div>
               
-              <div class="col-md-6 col-lg-4">
+              <div class="col-md-6 col-lg-3">
                 <div class="card border-0 shadow-sm h-100 text-white" style="background: linear-gradient(135deg, #D4AF37, #bfa02e);">
                   <div class="card-body p-4 d-flex align-items-center justify-content-between">
                     <div>
-                      <div class="text-uppercase mb-1 text-white fw-bold small">Tổng đơn hàng</div>
+                      <div class="text-uppercase mb-1 fw-bold small">Tổng đơn hàng</div>
                       <h3 class="fw-bold mb-0" id="totalOrders">0</h3>
                     </div>
                     <i class="fa fa-shopping-bag fa-2x opacity-50"></i>
                   </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 text-white" style="background: linear-gradient(135deg, #17a2b8, #138496);">
+                  <div class="card-body p-4 d-flex align-items-center justify-content-between">
+                    <div>
+                      <div class="text-uppercase mb-1 fw-bold small">Tổng sản phẩm</div>
+                      <h3 class="fw-bold mb-0" id="totalProducts">0</h3>
+                    </div>
+                    <i class="fa fa-box-open fa-2x opacity-50"></i>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 text-white" style="background: linear-gradient(135deg, #28a745, #218838);">
+                  <div class="card-body p-4 d-flex align-items-center justify-content-between">
+                    <div>
+                      <div class="text-uppercase mb-1 fw-bold small">Tổng doanh thu</div>
+                      <h3 class="fw-bold mb-0" id="totalRevenue">0đ</h3>
+                    </div>
+                    <i class="fas fa-dollar-sign fa-2x opacity-50"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-4 g-4">
+              <div class="col-lg-8">
+                <div class="card border-0 shadow-sm h-100">
+                  <div class="card-header bg-white border-0 py-3">
+                    <h6 class="mb-0 fw-bold text-dark">Doanh thu 6 tháng gần nhất</h6>
+                  </div>
+                  <div class="card-body p-3">
+                    <canvas id="revenueChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                  <div class="card-header bg-white border-0 py-3">
+                    <h6 class="mb-0 fw-bold text-dark">Top 5 sản phẩm</h6>
+                  </div>
+                  <div class="card-body p-3 d-flex align-items-center justify-content-center">
+                    <canvas id="topProductsChart" style="max-height: 280px;"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mt-4">
+              <div class="card-header bg-white border-0 py-3">
+                <h6 class="mb-0 fw-bold text-dark">5 đơn hàng gần đây</h6>
+              </div>
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0" id="recentOrdersTable">
+                    <!-- Recent orders will be injected here -->
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCTS -->
+          <div id="products" class="page d-none fade-in">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2 class="fw-bold mb-0" style="color: #001f3f;"><i class="fa fa-box-open me-2 text-warning"></i> Quản lý sản phẩm</h2>
+              <button class="btn btn-gold shadow-sm fw-bold" onclick="showProductModal()">
+                <i class="fa fa-plus me-2"></i> Thêm sản phẩm mới
+              </button>
+            </div>
+
+            <div class="row mb-4">
+              <div class="col-md-5">
+                <div class="input-group shadow-sm">
+                  <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                  <input type="text" id="searchProduct" class="form-control border-start-0" placeholder="Tìm kiếm sản phẩm (Tên, ID)..." oninput="renderProducts(this.value)">
+                </div>
+              </div>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-center rounded-top-left" style="width: 60px">STT</th>
+                        <th style="width: 100px;">Hình ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th class="text-end">Giá</th>
+                        <th class="text-center">Tồn kho</th>
+                        <th class="text-center rounded-top-right" style="width: 120px">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody id="productTable"></tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -389,6 +493,61 @@
           <div class="modal-body">
             <canvas id="salesChart" width="400" height="180"></canvas>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT MODAL -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <form id="productForm" onsubmit="event.preventDefault(); saveProduct();">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold" id="productModalTitle">Thêm sản phẩm</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="productId">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label">Tên sản phẩm</label>
+                  <input type="text" class="form-control" id="productName" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Giá</label>
+                  <input type="number" class="form-control" id="productPrice" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Tồn kho</label>
+                  <input type="number" class="form-control" id="productStock" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">URL Hình ảnh chính</label>
+                  <input type="text" class="form-control" id="productImgMain" placeholder="VD: ./assets/img/sp.jpg" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">URL Hình ảnh Hover (Tùy chọn)</label>
+                  <input type="text" class="form-control" id="productImgHover" placeholder="VD: ./assets/img/sp-hover.jpg">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Danh mục chính (VD: DaQuy, VangBac)</label>
+                  <input type="text" class="form-control" id="productCategory" placeholder="Phân cách bởi dấu phẩy nếu có nhiều">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Danh mục phụ (VD: KimCuong, NhanDon)</label>
+                  <input type="text" class="form-control" id="productSubCategory" placeholder="Phân cách bởi dấu phẩy nếu có nhiều">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Mô tả chi tiết</label>
+                  <textarea class="form-control" id="productDetail" rows="4"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+              <button type="submit" class="btn btn-gold">Lưu sản phẩm</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
