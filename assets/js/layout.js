@@ -218,9 +218,24 @@ class AppGlobals extends HTMLElement {
     }
 }
 
+class AppBreadcrumb extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+        <div class="breadcrumb-wrapper">
+            <div class="container-fluid px-lg-5">
+                <nav aria-label="breadcrumb" class="py-3">
+                    <ol class="breadcrumb mb-0" id="dynamic-breadcrumb"></ol>
+                </nav>
+            </div>
+        </div>
+        `;
+    }
+}
+
 customElements.define('app-header', AppHeader);
 customElements.define('app-footer', AppFooter);
 customElements.define('app-globals', AppGlobals);
+customElements.define('app-breadcrumb', AppBreadcrumb);
 
 function initSearchOverlay() {
     // Tránh inject nhiều lần nếu script bị gọi trùng
