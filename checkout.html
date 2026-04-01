@@ -377,7 +377,7 @@
         }
       }
 
-      // 3.5. HÀM XỬ LÝ KHI KHÁCH HÀNG NHẬP SỐ TRỰC TIẾP
+      // HÀM XỬ LÝ KHI KHÁCH HÀNG NHẬP SỐ TRỰC TIẾP
       function inputCheckoutQty(index, newQty) {
         let currentCart =
           JSON.parse(localStorage.getItem("jade_chamber_cart")) || [];
@@ -408,7 +408,7 @@
         }
       }
 
-      // 4. HÀM XỬ LÝ NÚT XÓA (THÙNG RÁC)
+      // HÀM XỬ LÝ NÚT XÓA (THÙNG RÁC)
       function removeCheckoutItem(index) {
         let currentCart =
           JSON.parse(localStorage.getItem("jade_chamber_cart")) || [];
@@ -423,7 +423,7 @@
         }
       }
 
-      // 5. ĐỒNG BỘ GIỎ HÀNG TRÊN NAVBAR
+      // ĐỒNG BỘ GIỎ HÀNG TRÊN NAVBAR
       function syncHeaderCart(updatedCart) {
         if (typeof window.cart !== "undefined") {
           window.cart = updatedCart;
@@ -433,7 +433,7 @@
         }
       }
 
-      // 6. CÁC HÀM TÍNH TIỀN
+      // CÁC HÀM TÍNH TIỀN
       function updateTotalUI() {
         const subtotalEl = document.getElementById("checkout-subtotal");
         const totalEl = document.getElementById("checkout-total-price");
@@ -504,7 +504,7 @@
         updateTotalUI();
       }
 
-      // 7. XÁC NHẬN ĐẶT HÀNG VÀ KIỂM TRA LỖI (VALIDATION)
+      // XÁC NHẬN ĐẶT HÀNG VÀ KIỂM TRA LỖI (VALIDATION)
       function placeOrder(event) {
         event.preventDefault();
 
@@ -521,7 +521,7 @@
         const address = document.getElementById("address").value.trim();
         const city = document.getElementById("city").value;
 
-        // 1. KIỂM TRA BỎ TRỐNG: Đảm bảo khách nhập đủ các ô có dấu *
+        // KIỂM TRA BỎ TRỐNG: Đảm bảo khách nhập đủ các ô có dấu *
         if (!name || !phone || !address || !city) {
           alert(
             "Vui lòng điền đầy đủ các thông tin giao hàng bắt buộc (có dấu *)!",
@@ -529,7 +529,7 @@
           return;
         }
 
-        // 2. KIỂM TRA SỐ ĐIỆN THOẠI: Phải là số từ 0-9 và có độ dài đúng 10 hoặc 11 số
+        // KIỂM TRA SỐ ĐIỆN THOẠI: Phải là số từ 0-9 và có độ dài đúng 10 hoặc 11 số
         const phoneRegex = /^[0-9]{10,11}$/;
         if (!phoneRegex.test(phone)) {
           alert(
@@ -539,7 +539,7 @@
           return; // Dừng lại, không cho đặt hàng
         }
 
-        // 3. KIỂM TRA EMAIL: Nếu khách có gõ chữ vào thì bắt buộc phải đúng định dạng có @ và dấu chấm
+        // KIỂM TRA EMAIL: Nếu khách có gõ chữ vào thì bắt buộc phải đúng định dạng có @ và dấu chấm
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email !== "" && !emailRegex.test(email)) {
           alert(
