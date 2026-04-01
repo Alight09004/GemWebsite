@@ -183,7 +183,9 @@
                     <option value="Tỉnh Phú Thọ">Tỉnh Phú Thọ</option>
                     <option value="Tỉnh Bắc Ninh">Tỉnh Bắc Ninh</option>
                     <option value="Tỉnh Hưng Yên">Tỉnh Hưng Yên</option>
-                    <option value="Thành phố Hải Phòng">Thành phố Hải Phòng</option>
+                    <option value="Thành phố Hải Phòng">
+                      Thành phố Hải Phòng
+                    </option>
                     <option value="Tỉnh Ninh Bình">Tỉnh Ninh Bình</option>
                     <option value="Tỉnh Quảng Trị">Tỉnh Quảng Trị</option>
                     <option value="Thành phố Đà Nẵng">Thành phố Đà Nẵng</option>
@@ -192,7 +194,9 @@
                     <option value="Tỉnh Khánh Hòa">Tỉnh Khánh Hòa</option>
                     <option value="Tỉnh Lâm Đồng">Tỉnh Lâm Đồng</option>
                     <option value="Tỉnh Đắk Lắk">Tỉnh Đắk Lắk</option>
-                    <option value="Thành phố Hồ Chí Minh">Thành phố Hồ Chí Minh</option>
+                    <option value="Thành phố Hồ Chí Minh">
+                      Thành phố Hồ Chí Minh
+                    </option>
                     <option value="Tỉnh Đồng Nai">Tỉnh Đồng Nai</option>
                     <option value="Tỉnh Tây Ninh">Tỉnh Tây Ninh</option>
                     <option value="Thành phố Cần Thơ">Thành phố Cần Thơ</option>
@@ -500,7 +504,7 @@
         updateTotalUI();
       }
 
-      // 7. XÁC NHẬN ĐẶT HÀNG
+      // 7. XÁC NHẬN ĐẶT HÀNG VÀ KIỂM TRA LỖI (VALIDATION)
       function placeOrder(event) {
         event.preventDefault();
 
@@ -510,8 +514,47 @@
           return;
         }
 
-        const name = document.getElementById("fullName").value;
-        alert("Cảm ơn " + name + "! Đơn hàng của bạn đã được đặt thành công.");
+        // Lấy giá trị từ các ô nhập liệu và xóa khoảng trắng dư thừa ở hai đầu (.trim())
+        const name = document.getElementById("fullName").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const city = document.getElementById("city").value;
+
+        // 1. KIỂM TRA BỎ TRỐNG: Đảm bảo khách nhập đủ các ô có dấu *
+        if (!name || !phone || !address || !city) {
+          alert(
+            "Vui lòng điền đầy đủ các thông tin giao hàng bắt buộc (có dấu *)!",
+          );
+          return;
+        }
+
+        // 2. KIỂM TRA SỐ ĐIỆN THOẠI: Phải là số từ 0-9 và có độ dài đúng 10 hoặc 11 số
+        const phoneRegex = /^[0-9]{10,11}$/;
+        if (!phoneRegex.test(phone)) {
+          alert(
+            "Số điện thoại không hợp lệ! Vui lòng nhập đúng 10 hoặc 11 chữ số.",
+          );
+          document.getElementById("phone").focus(); // Tự động đưa con trỏ chuột nhấp nháy ở ô lỗi
+          return; // Dừng lại, không cho đặt hàng
+        }
+
+        // 3. KIỂM TRA EMAIL: Nếu khách có gõ chữ vào thì bắt buộc phải đúng định dạng có @ và dấu chấm
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email !== "" && !emailRegex.test(email)) {
+          alert(
+            "Email không hợp lệ! Vui lòng nhập đúng định dạng (VD: nguyenvan_a@gmail.com).",
+          );
+          document.getElementById("email").focus(); // Tự động đưa con trỏ chuột về ô email
+          return; // Dừng lại, không cho đặt hàng
+        }
+
+        // Nếu vượt qua toàn bộ các vòng kiểm tra trên, đơn hàng mới được xác nhận
+        alert(
+          "Cảm ơn " +
+            name +
+            "! Đơn hàng của bạn đã được hệ thống Jade Chamber ghi nhận.",
+        );
         localStorage.removeItem("jade_chamber_cart");
         window.location.href = "index.html";
       }
