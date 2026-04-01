@@ -234,12 +234,26 @@ class AppGlobals extends HTMLElement {
                   <div class="mb-4">
                     <textarea class="form-control" id="feedbackContent" rows="4" placeholder="Nhập ý kiến đóng góp của bạn vào đây... *" required></textarea>
                   </div>
-                  <button type="submit" class="btn w-100 text-white fw-bold py-2" style="background-color: #001f3f; transition: 0.3s;">GỬI Ý KIẾN</button>
+                  <button type="submit" class="btn btn-custom w-100 text-white fw-bold py-2">GỬI Ý KIẾN</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
+        <style>
+            /* Trạng thái bình thường */
+            .btn-custom {
+                background-color: #001f3f;
+                transition: all 0.3s ease; 
+            }
+
+            /* Trạng thái khi rê chuột vào (Hover) */
+            .btn-custom:hover {
+                transform: translateY(-5px); /* Bay lên 5px */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ cho giống đang nổi thật */
+                background-color: #003366; /* Có thể đổi màu một chút cho sinh động */
+            }
+        </style>
         `;
     }
 }
