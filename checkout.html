@@ -239,7 +239,8 @@
                     >Thanh toán khi nhận hàng (COD)</label
                   >
                 </div>
-                <div class="form-check">
+
+                <div class="form-check mb-2">
                   <input
                     id="bank"
                     name="paymentMethod"
@@ -250,6 +251,20 @@
                   <label class="form-check-label" for="bank"
                     >Chuyển khoản qua ngân hàng</label
                   >
+                </div>
+
+                <div class="form-check">
+                  <input
+                    id="ewallet"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    required
+                  />
+                  <label class="form-check-label" for="ewallet">
+                    Thanh toán qua ví điện tử (VNPay / ZaloPay)
+                    <i class="fas fa-qrcode ms-1" style="color: #000c1d"></i>
+                  </label>
                 </div>
               </div>
 
