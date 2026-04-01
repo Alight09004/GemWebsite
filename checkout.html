@@ -337,10 +337,17 @@
             count += item.quantity;
 
             return `
-            <li class="list-group-item d-flex justify-content-between lh-sm py-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center lh-sm py-3">
+                <div class="me-3" style="width: 65px; height: 65px; flex-shrink: 0;">
+                    <img src="${item.img}" alt="${item.name}" 
+                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid #eee;" 
+                         onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'">
+                </div>
+
                 <div class="flex-grow-1 me-3">
                     <h6 class="my-0 mb-2" style="font-size: 14px; line-height: 1.4; color: #000c1d;">${item.name}</h6>
-                      <div class="d-flex align-items-center gap-2 mt-2">
+                    
+                    <div class="d-flex align-items-center gap-2 mt-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2" onclick="changeCheckoutQty(${index}, -1)">-</button>
                         
                         <input type="number" class="form-control form-control-sm text-center fw-bold px-1" 
@@ -355,7 +362,8 @@
                         </button>
                     </div>
                 </div>
-                <span class="text-muted fw-bold">${itemTotal.toLocaleString("vi-VN")}đ</span>
+
+                <span class="text-muted fw-bold" style="white-space: nowrap;">${itemTotal.toLocaleString("vi-VN")}đ</span>
             </li>`;
           })
           .join("");
