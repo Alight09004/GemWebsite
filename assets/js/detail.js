@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
                 <div class="d-grid gap-2">
-                    <button class="btn btn-dark btn-lg fw-bold" onclick="addToCart('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.imgMain}')">
+                    <button class="btn btn-dark btn-lg fw-bold" onclick="addToCart('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.imgMain}', parseInt(document.getElementById('quantity-input').value) || 1)">
                         <i class="fas fa-cart-plus me-2"></i> Thêm vào giỏ hàng
                     </button>
                     <button class="btn btn-warning btn-lg fw-bold" onclick="buyNow('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.imgMain}')">
@@ -409,7 +409,8 @@ function changeDetailQty(delta) {
 }
 
 function buyNow(name, price, img) {
-    addToCart(name, price, img);
+    const qty = parseInt(document.getElementById('quantity-input').value) || 1;
+    addToCart(name, price, img, qty);
     window.location.href = 'checkout.html';
 }
 

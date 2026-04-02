@@ -1,15 +1,19 @@
 // Cart Management
 let cart = JSON.parse(localStorage.getItem('jade_chamber_cart')) || [];
+if (!Array.isArray(cart)) cart = [];
 let selectedItems = new Set();
 let discountApplied = 0;
 
 // Initialize UI when DOM is ready for all pages
 document.addEventListener('DOMContentLoaded', () => {
     cart = JSON.parse(localStorage.getItem('jade_chamber_cart')) || [];
+    if (!Array.isArray(cart)) cart = [];
     console.log('Cart loaded:', cart);
 
     updateCartUI();
     updateCartDropdownUI();
+
+    // SỬA Ở ĐÂY: Chuyển về chữ thường để so sánh cho chắc chắn
     const currentPage = window.location.pathname.toLowerCase();
 
     if (currentPage.includes('cart.html')) {
@@ -27,19 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function addToCart(name, price, img) {
-    console.log('addToCart called with:', { name, price, img });
+function addToCart(name, price, img, qty = 1) {
+    console.log('addToCart called with:', { name, price, img, qty });
     cart = JSON.parse(localStorage.getItem('jade_chamber_cart')) || [];
+    if (!Array.isArray(cart)) cart = [];
 
     const existingItem = cart.find(item => item.name === name); // Check if product already exists
     if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity += qty;
     } else {
-        cart.push({ name, price, img, quantity: 1 });
+        cart.push({ name, price, img, quantity: qty });
     }
     
     console.log('Item added to cart. Current cart state:', cart); // Crucial log for debugging
     saveAndUpdate();
+    alert('Đã thêm sản phẩm vào giỏ hàng thành công!');
 }
 
 function removeFromCart(index) {
@@ -49,7 +55,7 @@ function removeFromCart(index) {
     }
 }
 
-// Change quantity of an item 
+// Change quantity of an item (used in dropdown and Cart.html)
 function changeQuantity(index, delta) {
     if (cart[index]) {
         cart[index].quantity += delta;
@@ -61,14 +67,15 @@ function changeQuantity(index, delta) {
     }
 }
 
+// Save data and update UI
 function saveAndUpdate() {
     localStorage.setItem('jade_chamber_cart', JSON.stringify(cart));
     updateCartUI();
     updateCartDropdownUI();
     updateCheckoutUI();
-    if (window.location.pathname.includes('Cart.html')) {
+    if (window.location.pathname.toLowerCase().includes('cart.html')) {
         console.log('saveAndUpdate: Re-rendering Cart.html page. Current cart:', cart);
-        renderCartPage(); 
+        renderCartPage(); // Re-render the main cart table if on Cart.html
     }
 }
 
@@ -102,7 +109,8 @@ function updateCartUI() {
     }
 
     cart.forEach((item, index) => {
-        total += item.price * item.quantity;
+        const price = item.price || 0;
+        total += price * item.quantity;
         count += item.quantity;
 
         html += `
@@ -110,7 +118,7 @@ function updateCartUI() {
                 <img src="${item.img}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;" class="me-3" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'">
                 <div class="flex-grow-1">
                     <h6 class="mb-0 small fw-bold text-uppercase" style="color: #001f3f; max-width: 150px; overflow: hidden; text-overflow: ellipsis;">${item.name}</h6>
-                    <p class="mb-2 small text-danger fw-bold">${item.price.toLocaleString()}đ</p>
+                    <p class="mb-2 small text-danger fw-bold">${price > 0 ? price.toLocaleString() + 'đ' : 'Liên hệ'}</p>
                     <div class="d-flex align-items-center gap-2">
                         <button class="btn btn-sm btn-outline-secondary py-0 px-2" onclick="changeQuantity(${index}, -1)" style="min-width: 28px;">-</button>
                         <span class="small fw-bold" style="min-width: 25px; text-align: center;">${item.quantity}</span>
@@ -135,7 +143,7 @@ function updateCartUI() {
 
     // Update total price
     if (totalPriceElem) {
-        totalPriceElem.innerText = total.toLocaleString() + 'đ';
+        totalPriceElem.innerText = total > 0 ? total.toLocaleString() + 'đ' : '0đ';
     }
 }
 
@@ -144,7 +152,6 @@ function updateCartDropdownUI() {
     const container = document.getElementById('cart-dropdown-items');
     const countBadge = document.getElementById('cart-count');
     const totalPriceElem = document.getElementById('cart-dropdown-total');
-    const btnDropdownCheckout = document.getElementById('btn-dropdown-checkout');
     
     if (!container) return;
 
@@ -162,13 +169,12 @@ function updateCartDropdownUI() {
         if (totalPriceElem) {
             totalPriceElem.innerText = '0đ';
         }
-        if (btnDropdownCheckout) btnDropdownCheckout.disabled = true;
         return;
     }
 
-    if (btnDropdownCheckout) btnDropdownCheckout.disabled = false;
     cart.forEach((item, index) => {
-        total += item.price * item.quantity;
+        const price = item.price || 0;
+        total += price * item.quantity;
         count += item.quantity;
 
         html += `
@@ -176,7 +182,7 @@ function updateCartDropdownUI() {
                 <img src="${item.img}" alt="${item.name}" onerror="this.src='./assets/img/ItemTrangChu(1)/default.jpg'">
                 <div class="cart-dropdown-item-info">
                     <div class="cart-dropdown-item-name">${item.name}</div>
-                    <div class="cart-dropdown-item-price">${item.price.toLocaleString()}đ</div>
+                    <div class="cart-dropdown-item-price">${price > 0 ? price.toLocaleString() + 'đ' : 'Liên hệ'}</div>
                     <div class="cart-dropdown-item-qty">Số lượng: ${item.quantity}</div>
                 </div>
                 <button class="cart-dropdown-item-remove" onclick="removeFromCart(${index})" title="Xóa">
@@ -196,7 +202,7 @@ function updateCartDropdownUI() {
 
     // Update total price
     if (totalPriceElem) {
-        totalPriceElem.innerText = total.toLocaleString() + 'đ';
+        totalPriceElem.innerText = total > 0 ? total.toLocaleString() + 'đ' : '0đ';
     }
 }
 
@@ -223,7 +229,8 @@ function updateCheckoutUI() {
     const itemsToDisplay = JSON.parse(localStorage.getItem('jade_chamber_checkout_selection')) || cart; // Use selected items if available, else full cart
 
     itemsToDisplay.forEach(item => {
-        total += item.price * item.quantity; // Calculate total based on itemsToDisplay
+        const price = item.price || 0;
+        total += price * item.quantity; 
         count += item.quantity;
 
         html += `
@@ -232,7 +239,7 @@ function updateCheckoutUI() {
                     <h6 class="my-0 text-truncate" style="max-width: 200px;" title="${item.name}">${item.name}</h6>
                     <small class="text-muted">Số lượng: ${item.quantity}</small>
                 </div>
-                <span class="text-muted text-nowrap ms-3">${(item.price * item.quantity).toLocaleString()}đ</span>
+                <span class="text-muted text-nowrap ms-3">${price > 0 ? (price * item.quantity).toLocaleString() + 'đ' : 'Liên hệ'}</span>
             </li>
         `;
     });
@@ -240,8 +247,10 @@ function updateCheckoutUI() {
     list.innerHTML = html;
 
     if (countBadge) countBadge.innerText = count;
-    if (totalPriceElem) totalPriceElem.innerText = total.toLocaleString() + 'đ';
+    if (totalPriceElem) totalPriceElem.innerText = total > 0 ? total.toLocaleString() + 'đ' : '0đ';
 }
+
+// --- Functions specific to Cart.html ---
 
 // Generate a mock stock quantity based on product name hash
 const getStock = (name) => {
@@ -260,22 +269,19 @@ function renderCartPage() {
     console.log('renderCartPage() called.'); // Crucial log for debugging
     const container = document.getElementById('cart-page-items');
     if (!container) { console.error('Error: #cart-page-items container not found!'); return; } 
-    
-    const btnProceed = document.getElementById('btn-proceed-checkout');
 
     // Use the global 'cart' variable
     console.log('Cart length for renderCartPage:', cart.length, 'Cart content:', cart); // Crucial log
     if (cart.length === 0) {
         container.innerHTML = '<tr><td colspan="6" class="text-center py-5 text-muted"><i class="fas fa-shopping-basket fa-3x mb-3 opacity-25"></i><br>Giỏ hàng của bạn đang trống</td></tr>';
         updateTotals(); // Still call updateTotals to reset totals to 0
-        if (btnProceed) btnProceed.disabled = true;
         return;
     }
 
-    if (btnProceed) btnProceed.disabled = false;
     let html = '';
-    cart.forEach((item, index) => { 
+    cart.forEach((item, index) => { // Use 'cart' instead of 'cartItems'
         const stock = getStock(item.name);
+        const price = item.price || 0;
         const isSelected = selectedItems.has(index) ? 'checked' : '';
 
         html += `
@@ -292,7 +298,7 @@ function renderCartPage() {
                         </div>
                     </div>
                 </td>
-                <td class="text-muted fw-bold">${item.price.toLocaleString()}đ</td>
+                <td class="text-muted fw-bold">${price > 0 ? price.toLocaleString() + 'đ' : 'Liên hệ'}</td>
                 <td>
                     <div class="d-flex align-items-center">
                         <button class="btn btn-outline-secondary btn-qty" onclick="updateQtyPage(${index}, -1, ${stock})">-</button>
@@ -300,7 +306,7 @@ function renderCartPage() {
                         <button class="btn btn-outline-secondary btn-qty" onclick="updateQtyPage(${index}, 1, ${stock})">+</button>
                     </div>
                 </td>
-                <td class="fw-bold text-danger">${(item.price * item.quantity).toLocaleString()}đ</td>
+                <td class="fw-bold text-danger">${price > 0 ? (price * item.quantity).toLocaleString() + 'đ' : 'Liên hệ'}</td>
                 <td>
                     <button class="btn btn-sm text-danger p-0" onclick="removePageItem(${index})" title="Xóa">
                         <i class="fas fa-trash-alt"></i>
@@ -324,7 +330,7 @@ function updateQtyPage(index, delta, maxStock) {
             alert(`Sản phẩm này hiện chỉ còn ${maxStock} chiếc trong kho!`);
         } else {
             cart[index].quantity = newQty;
-            saveAndUpdate(); 
+            saveAndUpdate(); // This will re-render Cart.html if on that page
         }
     }
 }
@@ -362,7 +368,7 @@ function removePageItem(index) {
         });
         selectedItems = newSelected;
 
-        saveAndUpdate(); 
+        saveAndUpdate(); // This will re-render Cart.html if on that page
     }
 }
 
@@ -372,7 +378,7 @@ function toggleItem(index) {
         document.getElementById('selectAll').checked = false;
     } else {
         selectedItems.add(index);
-        if (selectedItems.size === cart.length && cart.length > 0) { 
+        if (selectedItems.size === cart.length && cart.length > 0) { // Use 'cart'
             document.getElementById('selectAll').checked = true;
         }
     }
@@ -383,7 +389,7 @@ function toggleAll() {
     const isChecked = document.getElementById('selectAll').checked;
     selectedItems.clear();
     if (isChecked) {
-        cart.forEach((_, i) => selectedItems.add(i)); 
+        cart.forEach((_, i) => selectedItems.add(i)); // Use 'cart'
     }
     document.querySelectorAll('.item-checkbox').forEach(cb => cb.checked = isChecked);
     updateTotals();
@@ -393,7 +399,7 @@ function updateTotals() {
     let subtotal = 0;
     cart.forEach((item, index) => { // Use 'cart'
         if (selectedItems.has(index)) {
-            subtotal += item.price * item.quantity;
+            subtotal += (item.price || 0) * item.quantity;
         }
     });
 
@@ -416,13 +422,7 @@ function applyDiscount() {
         msg.innerText = 'Áp dụng thành công mã giảm giá 10%!';
         msg.className = 'small mt-1 text-success';
         msg.classList.remove('d-none');
-    } else if (code === 'JADE15') {
-        discountApplied = 0.15;
-        msg.innerText = 'Áp dụng thành công mã giảm giá 15%!';
-        msg.className = 'small mt-1 text-success';
-        msg.classList.remove('d-none'); 
-    }
-    else {
+    } else {
         discountApplied = 0;
         msg.innerText = 'Mã giảm giá không hợp lệ hoặc đã hết hạn!';
         msg.className = 'small mt-1 text-danger';
@@ -431,11 +431,7 @@ function applyDiscount() {
     updateTotals();
 }
 
-function proceedToCheckout() { 
-    if (cart.length === 0) {
-        alert("Giỏ hàng của bạn đang trống!");
-        return;
-    }
+function proceedToCheckout() { // Redirects to checkout page with selected items
     if (selectedItems.size === 0) {
         alert("Vui lòng chọn ít nhất một sản phẩm để tiến hành thanh toán!");
         return;
@@ -443,15 +439,6 @@ function proceedToCheckout() {
     // Store selected items for checkout
     const itemsToCheckout = Array.from(selectedItems).map(index => cart[index]);
     localStorage.setItem('jade_chamber_checkout_selection', JSON.stringify(itemsToCheckout));
-    window.location.href = "checkout.html";
-}
-
-function proceedToCheckoutFromDropdown() {
-    if (cart.length === 0) {
-        alert("Giỏ hàng của bạn đang trống!");
-        return;
-    }
-    localStorage.setItem('jade_chamber_checkout_selection', JSON.stringify(cart));
     window.location.href = "checkout.html";
 }
 
@@ -525,7 +512,7 @@ function placeOrder() {
     }
 
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
-    let total = itemsToOrder.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let total = itemsToOrder.reduce((sum, item) => sum + ((item.price || 0) * item.quantity), 0);
     let productDesc = itemsToOrder.map(item => `${item.name} (x${item.quantity})`).join(', ');
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 

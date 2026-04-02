@@ -332,7 +332,8 @@
         // Vẽ danh sách sản phẩm
         checkoutList.innerHTML = cart
           .map((item, index) => {
-            let itemTotal = item.price * item.quantity;
+            let itemPrice = item.price || 0;
+            let itemTotal = itemPrice * item.quantity;
             globalSubtotal += itemTotal;
             count += item.quantity;
 
@@ -363,7 +364,7 @@
                     </div>
                 </div>
 
-                <span class="text-muted fw-bold" style="white-space: nowrap;">${itemTotal.toLocaleString("vi-VN")}đ</span>
+            <span class="text-muted fw-bold" style="white-space: nowrap;">${itemTotal > 0 ? itemTotal.toLocaleString("vi-VN") + 'đ' : 'Liên hệ'}</span>
             </li>`;
           })
           .join("");

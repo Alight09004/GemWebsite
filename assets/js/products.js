@@ -943,25 +943,30 @@ const itemsPerPage = 12; // Số sản phẩm trên 1 trang
 function renderProducts(data) {
     const container = document.getElementById('product-display-grid');
     if (!container) return;
-    container.innerHTML = data.map(product => `
+    container.innerHTML = data.map(product => {
+        const safeName = product.name.replace(/'/g, "\\'");
+        return `
         <div class="col-lg-3 col-md-6 mb-4">
-            <a href="detail.html?id=${product.id}" class="product-card-v2-link">
-                <div class="product-card-v2">
-                    <div class="product-img-box">
-                        <img src="${product.imgMain}" class="img-main" />
-                        <img src="${product.imgHover}" class="img-hover"/>
+            <div class="product-card-v2 h-100 d-flex flex-column" style="cursor: pointer;" onclick="window.location.href='detail.html?id=${product.id}'">
+                <div class="product-img-box">
+                    <img src="${product.imgMain}" class="img-main" />
+                    <img src="${product.imgHover}" class="img-hover"/>
+                </div>
+                <div class="product-info flex-grow-1 d-flex flex-column">
+                    <h3 class="p-name text-center mb-1">${product.name}</h3>
+                    <p class="p-price text-center mb-1">${product.price ? product.price.toLocaleString() + 'đ' : '<i style="font-weight: normal;">Liên hệ</i>'}</p>
+                    <div class="text-end w-100 mb-2">
+                        <span class="text-muted small" style="font-size: 0.75rem;">Đã bán: ${product.sold || 0}</span>
                     </div>
-                    <div class="product-info">
-                        <h3 class="p-name text-center mb-1">${product.name}</h3>
-                        <p class="p-price text-center mb-1">${product.price ? product.price.toLocaleString() + 'đ' : '<i style="font-weight: normal;">Liên hệ</i>'}</p>
-                        <div class="text-end w-100">
-                            <span class="text-muted small" style="font-size: 0.75rem;">Đã bán: ${product.sold || 0}</span>
-                        </div>
+                    <div class="p-buttons mt-auto">
+                        <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
+                        <a href="checkout.html" class="btn-buy-now text-decoration-none text-center" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">MUA NGAY</a>
                     </div>
                 </div>
-            </a>
+            </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
 }
 
 
