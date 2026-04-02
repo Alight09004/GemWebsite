@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function addToCart(name, price, img, qty = 1) {
-    console.log('addToCart called with:', { name, price, img, qty });
+function addToCart(name, price, img, qty = 1, showAlert = true) {
+    console.log('addToCart called with:', { name, price, img, qty, showAlert });
     cart = JSON.parse(localStorage.getItem('jade_chamber_cart')) || [];
     if (!Array.isArray(cart)) cart = [];
 
@@ -45,7 +45,9 @@ function addToCart(name, price, img, qty = 1) {
     
     console.log('Item added to cart. Current cart state:', cart); // Crucial log for debugging
     saveAndUpdate();
-    alert('Đã thêm sản phẩm vào giỏ hàng thành công!');
+    if (showAlert) {
+        alert('Đã thêm sản phẩm vào giỏ hàng thành công!');
+    }
 }
 
 function removeFromCart(index) {

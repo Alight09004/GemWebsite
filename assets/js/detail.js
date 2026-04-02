@@ -410,7 +410,7 @@ function changeDetailQty(delta) {
 
 function buyNow(name, price, img) {
     const qty = parseInt(document.getElementById('quantity-input').value) || 1;
-    addToCart(name, price, img, qty);
+    addToCart(name, price, img, qty, false);
     window.location.href = 'checkout.html';
 }
 
@@ -433,17 +433,14 @@ function initThumbnailSlider() {
         currentPosition -= itemHeight;
         if (currentPosition < 0) currentPosition = 0;
         track.style.transform = `translateY(-${currentPosition}px)`;
-        updateButtons();
     });
 
     downBtn.addEventListener('click', () => {
         currentPosition += itemHeight;
         if (currentPosition > maxPosition) currentPosition = maxPosition;
         track.style.transform = `translateY(-${currentPosition}px)`;
-        updateButtons();
     });
 
-    updateButtons();
 }
 
 function selectDiamondFilter(btn) {

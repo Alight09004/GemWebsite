@@ -945,6 +945,12 @@ function renderProducts(data) {
     if (!container) return;
     container.innerHTML = data.map(product => {
         const safeName = product.name.replace(/'/g, "\\'");
+        const buttonsHtml = product.price ? `
+            <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
+            <a href="checkout.html" class="btn-buy-now text-decoration-none text-center" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}', 1, false)">MUA NGAY</a>
+        ` : `
+            <a href="https://m.me/yourprofile" target="_blank" class="btn-buy-now text-decoration-none text-center w-100" onclick="event.stopPropagation();"><i class="fab fa-facebook-messenger me-2"></i> TƯ VẤN NGAY</a>
+        `;
         return `
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="product-card-v2 h-100 d-flex flex-column" style="cursor: pointer;" onclick="window.location.href='detail.html?id=${product.id}'">
@@ -959,8 +965,7 @@ function renderProducts(data) {
                         <span class="text-muted small" style="font-size: 0.75rem;">Đã bán: ${product.sold || 0}</span>
                     </div>
                     <div class="p-buttons mt-auto">
-                        <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
-                        <a href="checkout.html" class="btn-buy-now text-decoration-none text-center" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">MUA NGAY</a>
+                        ${buttonsHtml}
                     </div>
                 </div>
             </div>
@@ -1290,6 +1295,12 @@ function renderProductGrid4(containerId, products) {
     let html = '<div class="product-grid-4">';
     products.forEach(product => {
         const safeName = product.name.replace(/'/g, "\\'");
+        const buttonsHtml = product.price ? `
+            <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
+            <a href="checkout.html" class="btn-buy-now text-decoration-none text-center" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}', 1, false)">MUA NGAY</a>
+        ` : `
+            <a href="https://m.me/yourprofile" target="_blank" class="btn-buy-now text-decoration-none text-center w-100" onclick="event.stopPropagation();"><i class="fab fa-facebook-messenger me-2"></i> TƯ VẤN NGAY</a>
+        `;
         html += `
             <div class="product-card-v2 h-100 d-flex flex-column" style="cursor: pointer;" onclick="window.location.href='detail.html?id=${product.id}'">
                 <div class="product-img-box">
@@ -1300,8 +1311,7 @@ function renderProductGrid4(containerId, products) {
                     <h3 class="p-name">${product.name}</h3>
                     <p class="p-price">${product.price ? product.price.toLocaleString() + 'đ' : '<i style="font-weight: normal;">Liên hệ</i>'}</p>
                     <div class="p-buttons mt-auto">
-                        <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">THÊM GIỎ HÀNG</button>
-                        <a href="checkout.html" class="btn-buy-now text-decoration-none text-center" onclick="event.stopPropagation(); addToCart('${safeName}', ${product.price}, '${product.imgMain}')">MUA NGAY</a>
+                        ${buttonsHtml}
                     </div>
                 </div>
             </div>
