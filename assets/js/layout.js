@@ -110,7 +110,7 @@ class AppHeader extends HTMLElement {
                         <span class="fw-bold">TỔNG:</span>
                         <span id="cart-dropdown-total" class="fw-bold text-danger">0đ</span>
                       </div>
-                      <button class="btn btn-dark w-100 py-2 fw-bold btn-sm" onclick="window.location.href='checkout.html'">THANH TOÁN</button>
+                      <button id="btn-dropdown-checkout" class="btn btn-dark w-100 py-2 fw-bold btn-sm" onclick="proceedToCheckoutFromDropdown()">THANH TOÁN</button>
                     </div>
                   </div>
                 </div>
@@ -193,7 +193,7 @@ class AppFooter extends HTMLElement {
             <div class="footer-column feedback">
               <h3>Ý KIẾN ĐÓNG GÓP</h3>
               <p>Jade Chamber luôn mong nhận được ý kiến từ bạn để nâng cao dịch vụ.</p>
-              <button class="btn-feedback">GỬI Ý KIẾN</button>
+              <button class="btn-feedback" data-bs-toggle="modal" data-bs-target="#feedbackModal">GỬI Ý KIẾN</button>
             </div>
           </div>
           <div class="footer-bottom">
@@ -214,6 +214,46 @@ class AppGlobals extends HTMLElement {
             </svg>
           </button>
         </a>
+
+        <!-- Feedback Modal -->
+        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+              <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold" id="feedbackModalLabel" style="color: #001f3f;">Gửi ý kiến đóng góp</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body pt-3 pb-4 px-4">
+                <form id="feedbackForm" onsubmit="submitFeedback(event)">
+                  <div class="mb-3">
+                    <input type="text" class="form-control" id="feedbackName" placeholder="Họ và tên của bạn *" required>
+                  </div>
+                  <div class="mb-3">
+                    <input type="email" class="form-control" id="feedbackEmail" placeholder="Email liên hệ *" required>
+                  </div>
+                  <div class="mb-4">
+                    <textarea class="form-control" id="feedbackContent" rows="4" placeholder="Nhập ý kiến đóng góp của bạn vào đây... *" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-custom w-100 text-white fw-bold py-2">GỬI Ý KIẾN</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <style>
+            /* Trạng thái bình thường */
+            .btn-custom {
+                background-color: #001f3f;
+                transition: all 0.3s ease; 
+            }
+
+            /* Trạng thái khi rê chuột vào (Hover) */
+            .btn-custom:hover {
+                transform: translateY(-5px); /* Bay lên 5px */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ cho giống đang nổi thật */
+                background-color: #003366; /* Có thể đổi màu một chút cho sinh động */
+            }
+        </style>
         `;
     }
 }
@@ -652,4 +692,17 @@ window.closeFullscreenSearch = function() {
     if (overlay) {
         overlay.classList.remove("open");
     }
+};
+
+// Hàm xử lý khi ấn nút "GỬI Ý KIẾN" trong Form
+window.submitFeedback = function(event) {
+    event.preventDefault(); // Ngăn trang bị reload
+    alert("Cảm ơn bạn đã gửi ý kiến đóng góp! Jade Chamber sẽ ghi nhận và phản hồi sớm nhất.");
+    
+    // Đóng modal và reset trắng form
+    const modalInstance = bootstrap.Modal.getInstance(document.getElementById('feedbackModal'));
+    if (modalInstance) {
+        modalInstance.hide();
+    }
+    document.getElementById('feedbackForm').reset();
 };

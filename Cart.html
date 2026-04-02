@@ -72,7 +72,7 @@
         <ul class="nav nav-tabs cart-tabs" id="cartTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="cart-tab" data-bs-toggle="tab" data-bs-target="#cart-content" type="button" role="tab" aria-controls="cart-content" aria-selected="true">
-<i class="fas fa-shopping-cart me-2 fs-5"></i>Giỏ hàng
+                    <i class="fas fa-shopping-cart me-2 fs-5"></i>Giỏ hàng
                 </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -121,7 +121,7 @@
                                     <span class="fw-bold" id="cart-subtotal">0đ</span>
                                 </div>
                                 <div class="mb-3 border-bottom pb-3">
-<label class="form-label small text-muted">Mã giảm giá</label>
+                                    <label class="form-label small text-muted">Mã giảm giá</label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="discountCode" placeholder="Nhập mã (VD: JADE10)">
                                         <button class="btn btn-outline-dark" type="button" onclick="applyDiscount()">Áp dụng</button>
@@ -132,7 +132,7 @@
                                     <span class="fw-bold fs-5" style="color: #001f3f;">Tổng cộng:</span>
                                     <span class="fw-bold fs-5 text-danger" id="cart-total">0đ</span>
                                 </div>
-                                <button class="btn btn-dark w-100 py-3 fw-bold shadow-sm" style="background-color: #001f3f;" onclick="proceedToCheckout()">TIẾN HÀNH THANH TOÁN</button>
+                                <button id="btn-proceed-checkout" class="btn btn-dark w-100 py-3 fw-bold shadow-sm" style="background-color: #001f3f;" onclick="proceedToCheckout()">TIẾN HÀNH THANH TOÁN</button>
                             </div>
                         </div>
                     </div>

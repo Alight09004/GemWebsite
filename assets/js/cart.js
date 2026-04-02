@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateCartUI();
     updateCartDropdownUI();
-
-    // SỬA Ở ĐÂY: Chuyển về chữ thường để so sánh cho chắc chắn
     const currentPage = window.location.pathname.toLowerCase();
 
     if (currentPage.includes('cart.html')) {
@@ -51,7 +49,7 @@ function removeFromCart(index) {
     }
 }
 
-// Change quantity of an item (used in dropdown and Cart.html)
+// Change quantity of an item 
 function changeQuantity(index, delta) {
     if (cart[index]) {
         cart[index].quantity += delta;
@@ -63,7 +61,6 @@ function changeQuantity(index, delta) {
     }
 }
 
-// Save data and update UI
 function saveAndUpdate() {
     localStorage.setItem('jade_chamber_cart', JSON.stringify(cart));
     updateCartUI();
@@ -71,7 +68,7 @@ function saveAndUpdate() {
     updateCheckoutUI();
     if (window.location.pathname.includes('Cart.html')) {
         console.log('saveAndUpdate: Re-rendering Cart.html page. Current cart:', cart);
-        renderCartPage(); // Re-render the main cart table if on Cart.html
+        renderCartPage(); 
     }
 }
 
@@ -147,6 +144,7 @@ function updateCartDropdownUI() {
     const container = document.getElementById('cart-dropdown-items');
     const countBadge = document.getElementById('cart-count');
     const totalPriceElem = document.getElementById('cart-dropdown-total');
+    const btnDropdownCheckout = document.getElementById('btn-dropdown-checkout');
     
     if (!container) return;
 
@@ -164,9 +162,11 @@ function updateCartDropdownUI() {
         if (totalPriceElem) {
             totalPriceElem.innerText = '0đ';
         }
+        if (btnDropdownCheckout) btnDropdownCheckout.disabled = true;
         return;
     }
 
+    if (btnDropdownCheckout) btnDropdownCheckout.disabled = false;
     cart.forEach((item, index) => {
         total += item.price * item.quantity;
         count += item.quantity;
@@ -243,8 +243,6 @@ function updateCheckoutUI() {
     if (totalPriceElem) totalPriceElem.innerText = total.toLocaleString() + 'đ';
 }
 
-// --- Functions specific to Cart.html ---
-
 // Generate a mock stock quantity based on product name hash
 const getStock = (name) => {
     if (typeof gemProducts !== 'undefined') {
@@ -262,17 +260,21 @@ function renderCartPage() {
     console.log('renderCartPage() called.'); // Crucial log for debugging
     const container = document.getElementById('cart-page-items');
     if (!container) { console.error('Error: #cart-page-items container not found!'); return; } 
+    
+    const btnProceed = document.getElementById('btn-proceed-checkout');
 
     // Use the global 'cart' variable
     console.log('Cart length for renderCartPage:', cart.length, 'Cart content:', cart); // Crucial log
     if (cart.length === 0) {
         container.innerHTML = '<tr><td colspan="6" class="text-center py-5 text-muted"><i class="fas fa-shopping-basket fa-3x mb-3 opacity-25"></i><br>Giỏ hàng của bạn đang trống</td></tr>';
         updateTotals(); // Still call updateTotals to reset totals to 0
+        if (btnProceed) btnProceed.disabled = true;
         return;
     }
 
+    if (btnProceed) btnProceed.disabled = false;
     let html = '';
-    cart.forEach((item, index) => { // Use 'cart' instead of 'cartItems'
+    cart.forEach((item, index) => { 
         const stock = getStock(item.name);
         const isSelected = selectedItems.has(index) ? 'checked' : '';
 
@@ -322,7 +324,7 @@ function updateQtyPage(index, delta, maxStock) {
             alert(`Sản phẩm này hiện chỉ còn ${maxStock} chiếc trong kho!`);
         } else {
             cart[index].quantity = newQty;
-            saveAndUpdate(); // This will re-render Cart.html if on that page
+            saveAndUpdate(); 
         }
     }
 }
@@ -360,7 +362,7 @@ function removePageItem(index) {
         });
         selectedItems = newSelected;
 
-        saveAndUpdate(); // This will re-render Cart.html if on that page
+        saveAndUpdate(); 
     }
 }
 
@@ -370,7 +372,7 @@ function toggleItem(index) {
         document.getElementById('selectAll').checked = false;
     } else {
         selectedItems.add(index);
-        if (selectedItems.size === cart.length && cart.length > 0) { // Use 'cart'
+        if (selectedItems.size === cart.length && cart.length > 0) { 
             document.getElementById('selectAll').checked = true;
         }
     }
@@ -381,7 +383,7 @@ function toggleAll() {
     const isChecked = document.getElementById('selectAll').checked;
     selectedItems.clear();
     if (isChecked) {
-        cart.forEach((_, i) => selectedItems.add(i)); // Use 'cart'
+        cart.forEach((_, i) => selectedItems.add(i)); 
     }
     document.querySelectorAll('.item-checkbox').forEach(cb => cb.checked = isChecked);
     updateTotals();
@@ -414,7 +416,13 @@ function applyDiscount() {
         msg.innerText = 'Áp dụng thành công mã giảm giá 10%!';
         msg.className = 'small mt-1 text-success';
         msg.classList.remove('d-none');
-    } else {
+    } else if (code === 'JADE15') {
+        discountApplied = 0.15;
+        msg.innerText = 'Áp dụng thành công mã giảm giá 15%!';
+        msg.className = 'small mt-1 text-success';
+        msg.classList.remove('d-none'); 
+    }
+    else {
         discountApplied = 0;
         msg.innerText = 'Mã giảm giá không hợp lệ hoặc đã hết hạn!';
         msg.className = 'small mt-1 text-danger';
@@ -423,7 +431,11 @@ function applyDiscount() {
     updateTotals();
 }
 
-function proceedToCheckout() { // Redirects to checkout page with selected items
+function proceedToCheckout() { 
+    if (cart.length === 0) {
+        alert("Giỏ hàng của bạn đang trống!");
+        return;
+    }
     if (selectedItems.size === 0) {
         alert("Vui lòng chọn ít nhất một sản phẩm để tiến hành thanh toán!");
         return;
@@ -431,6 +443,15 @@ function proceedToCheckout() { // Redirects to checkout page with selected items
     // Store selected items for checkout
     const itemsToCheckout = Array.from(selectedItems).map(index => cart[index]);
     localStorage.setItem('jade_chamber_checkout_selection', JSON.stringify(itemsToCheckout));
+    window.location.href = "checkout.html";
+}
+
+function proceedToCheckoutFromDropdown() {
+    if (cart.length === 0) {
+        alert("Giỏ hàng của bạn đang trống!");
+        return;
+    }
+    localStorage.setItem('jade_chamber_checkout_selection', JSON.stringify(cart));
     window.location.href = "checkout.html";
 }
 
