@@ -138,6 +138,12 @@
                         return;
                     }
 
+                    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Vui lòng nhập đúng định dạng email (vd: example@gmail.com)!');
+                        return;
+                    }
+
                     let currentUsers = JSON.parse(localStorage.getItem('users')) || [];
                     if (currentUsers.find(u => u.email === email)) {
                         alert('Email này đã được sử dụng!');
